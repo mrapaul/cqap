@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  cqap-server:
+    build: ./cqap-server
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://writer:writer@mongodb:27017/cqap
+    links:
+      - mongodb:cqap
+    depends_on:
+      - mongodb
+#    build: ./cqap-web
+#    ports:
+#      - "8090:8090"
+#    depends_on:
+#      - cqap-server
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: writer
+      MONGO_INITDB_ROOT_PASSWORD: writer
+      MONGO_INITDB_DATABASE: cqap
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  mongodb-data:

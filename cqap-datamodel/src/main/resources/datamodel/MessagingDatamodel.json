@@ -1,0 +1,327 @@
+{
+    "package": "com.lakeland.hl7.datamodel",
+    "imports": [ "java.util.*", "com.lakeland.ris.datamodel.*" ],
+    "includeLocations": [ "src/main/resources/datamodel/Enums.json" ],
+    "visitor": "HL7Visitor",
+    "visitable": "HL7Visitable",
+    "messages":
+    [
+        {
+            "name": "HL7Message",
+            "imports": [ "java.util.Date" ],
+            "type": 1,
+            "equals": true,
+            "fields":
+            [
+                { "name": "Id", "type": "String", "optional": true },
+                { "name": "ViewId", "type": "String", "optional": true },
+                { "name": "Received", "type": "Date"},
+                { "name": "Type", "type": "String"},
+                { "name": "Version", "type": "String"},
+                { "name": "RawMessage", "type" : "String"}
+            ]
+        },
+        {
+            "name": "HL7Messages",
+            "type": 2,
+            "equals": true,
+            "fields":
+            [
+                { "name": "Messages", "type": "Collection", "typeName": "HL7Message", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "TimedMessage",
+            "abstract": true,
+            "fields":
+            [
+                { "name": "Timestamp", "type": "Date" }
+            ]
+        },
+        {
+            "name": "HL7Order",
+            "type": 3,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Id", "type": "String" },
+                { "name": "OrderId", "type": "String" },
+                { "name": "MessageId", "type": "String" },
+                { "name": "Deleted", "type": "boolean" },
+                { "name": "Status", "type": "enum", "typeName": "OrderStatus" } ,
+                { "name": "Priority", "type": "enum", "typeName": "OrderPriority" } ,
+                { "name": "AssignedTo", "type": "String", "optional": true },
+                { "name": "DicomStudyId", "type": "String", "optional": true },
+                { "name": "Critical", "type": "boolean" },
+                { "name": "UrgentExamType", "type": "enum", "typeName": "UrgentExamType", "optional": true }
+            ]
+        },
+        {
+            "name": "HL7Orders",
+            "type": 4,
+            "equals": true,
+            "fields":
+            [
+                { "name": "Orders", "type": "Collection", "typeName": "HL7Order", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "NewOrder",
+            "type": 5,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "OrderId", "type": "String"}
+            ]
+        },
+        {
+            "name": "OrderActivity",
+            "type": 6,
+            "extends": "TimedMessage",
+            "abstract": true,
+            "fields":
+            [
+                { "name": "OrderId", "type": "String" },
+                { "name": "UserId", "type": "String" }
+            ]
+        },
+        {
+            "name": "OrderBidLocation",
+            "type": 7,
+            "extends": "OrderActivity",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Location", "type": "String" },
+                { "name": "OrderCount", "type": "int" }
+            ]
+        },
+        {
+            "name": "OrderBidTelerad",
+            "type": 22,
+            "extends": "OrderActivity",
+            "equals": true,
+            "fields":
+            [
+                { "name": "OrderCount", "type": "int" }
+            ]
+        },
+        {
+            "name": "OrderBidConfirm",
+            "type": 8,
+            "extends": "OrderActivity",
+            "equals": true
+        },
+        {
+            "name": "OrderBidRejected",
+            "type": 9,
+            "extends": "OrderActivity",
+            "equals": true
+        },
+        {
+            "name": "OrderStatusChange",
+            "type": 10,
+            "extends": "OrderActivity",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Status", "type": "enum", "typeName": "OrderStatus" },
+                { "name": "AssignedTo", "type": "String", "optional": true }
+            ]
+        },
+        {
+            "name": "AdministrationSnapshotRequest",
+            "type": 11,
+            "extends": "TimedMessage",
+            "fields":
+            [
+                { "name": "UserId", "type": "String" }
+            ]
+        },
+        {
+            "name": "AdministrationSnapshotBegin",
+            "type": 12,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "UserId", "type": "String" }
+            ]
+        },
+        {
+            "name": "AdministrationSnapshotPart",
+            "type": 13,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "UserId", "type": "String" },
+                { "name": "Order", "type": "String" }
+            ]
+        },
+        {
+            "name": "AdministrationSnapshotEnd",
+            "type": 14,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "UserId", "type": "String" }
+            ]
+        },
+        {
+            "name": "AdministrationSnapshot",
+            "type": 31,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Orders", "type": "Collection", "typeName": "HL7Order", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "RadiologistSnapshotRequest",
+            "type": 13,
+            "extends": "TimedMessage",
+            "fields":
+            [
+                { "name": "UserId", "type": "String" }
+            ]
+        },
+        {
+            "name": "RadiologistSnapshotBegin",
+            "type": 30,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "UserId", "type": "String" }
+            ]
+        },
+        {
+            "name": "RadiologistSnapshotPart",
+            "type": 14,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "UserId", "type": "String" },
+                { "name": "Order", "type": "String" }
+            ]
+        },
+        {
+            "name": "RadiologistSnapshotEnd",
+            "type": 29,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "UserId", "type": "String" }
+            ]
+        },
+        {
+            "name": "RadiologistSnapshot",
+            "type": 32,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "UserId", "type": "String" },
+                { "name": "Orders", "type": "Collection", "typeName": "HL7Order", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "HL7RawMessage",
+            "type": 15,
+            "fields":
+            [
+                { "name": "Message", "type": "String" }
+            ]
+        },
+        {
+            "name": "ManualAssignOrder",
+            "type": 16,
+            "extends": "OrderActivity",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Orders", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "AssignUserId", "type": "String" }
+            ]
+        },
+        {
+            "name": "PullOrders",
+            "type": 17,
+            "extends": "OrderActivity",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Orders", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "DeleteOrders",
+            "type": 18,
+            "extends": "OrderActivity",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Orders", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "OrderUpdated",
+            "type": 19,
+            "extends": "OrderActivity",
+            "equals": true
+        },
+        {
+            "name": "OrderActivities",
+            "type": 20,
+            "fields":
+            [
+                { "name": "Activity", "type": "Collection", "typeName": "OrderActivity", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "NewOrders",
+            "type": 21,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "OrderId", "type": "Collection", "typeName": "NewOrder", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "AssignImage",
+            "type": 28,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "UserId", "type": "String" },
+                { "name": "OrderId", "type": "String"},
+                { "name": "DicomStudyId", "type": "String"}
+            ]
+        },
+        {
+            "name": "CreateDicomOrder",
+            "type": 33,
+            "extends": "TimedMessage",
+            "equals": true,
+            "fields":
+            [
+                { "name": "UserId", "type": "String" },
+                { "name": "DicomStudyId", "type": "String"},
+                { "name": "PatientHistory", "type": "String" },
+                { "name": "ReferringPhysician", "type": "String" },
+                { "name": "Priority", "type": "enum", "typeName": "OrderPriority" },
+                { "name": "AssignedTo", "type": "String", "optional": true },
+                { "name": "TechNote", "type": "String", "optional": true }
+            ]
+        }
+    ]
+}

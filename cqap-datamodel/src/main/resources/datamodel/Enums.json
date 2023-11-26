@@ -1,0 +1,94 @@
+{
+    "package": "com.lakeland.ris.datamodel",
+    "enums":
+    [
+        {
+            "name" : "Modality",
+            "fields" :
+            [
+                { "name" : "Description", "type" : "String" }
+            ],
+            "labels" :
+            [
+                "CT",
+                "NM",
+                "US",
+                "XR",
+                "MR",
+                "XA",
+                "MG",
+                "DX",
+                "OTHER"
+            ],
+            "arguments" :
+            [
+                [ "CT/SR" ],
+                [ "NM" ],
+                [ "US" ],
+                [ "XR/CR/RF" ],
+                [ "MR" ],
+                [ "XA/IV" ],
+                [ "MG" ],
+                [ "DX" ],
+                [ "OTHER" ]
+            ]
+        },
+        {
+            "name" : "OrderStatus",
+            "labels" :
+            [
+                "DRAFT",
+                "ORDERED",
+                "READY",
+                "ASSIGNED",
+                "PENDING",
+                "READ",
+                "CLOSED",
+                "FINAL",
+                "DELETED"
+            ]
+        },
+        {
+            "name" : "YesNo",
+            "labels" :
+            [
+                "Y",
+                "N"
+            ]
+        },
+        {
+            "name" : "OrderPriority",
+            "fields" :
+            [
+                { "name" : "Rank", "type" : "int" },
+                { "name" : "Description", "type" : "String" }
+            ],
+            "labels" :
+            [
+                "Prior",
+                "Duplicate",
+                "Low",
+                "Medium",
+                "STAT",
+                "SuperSTAT"
+            ],
+            "arguments" :
+            [
+                [ 0, "Priors" ],
+                [ 1, "Duplicate" ],
+                [ 2, "Low (24 hour) – All routine exams" ],
+                [ 3, "Medium (2 hour) – Non-STAT inpatients" ],
+                [ 4, "STAT (30 Minutes) – ED and STAT inpatients" ],
+                [ 5, "Super STAT (20 Minutes) – Trauma, Stroke Protocol, AAA, PE" ]
+            ]
+        },
+        {
+            "name" : "UrgentExamType",
+            "labels" :
+            [
+                "STROKE_PROTOCOL",
+                "AAA"
+            ]
+        }
+    ]
+}

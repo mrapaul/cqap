@@ -1,0 +1,4 @@
+{
+    "outputDir": "target/generated-sources/java",
+    "classPrefix" : "HL7"
+}

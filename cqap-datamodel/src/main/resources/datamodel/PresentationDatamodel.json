@@ -1,0 +1,825 @@
+{
+    "package": "com.lakeland.ris.ui.datamodel",
+    "imports": [ "java.util.*", "com.lakeland.ris.datamodel.*" ],
+    "includeLocations": [ "src/main/resources/datamodel/Enums.json" ],
+    "messages":
+    [
+        {
+            "name": "HL7MessageItem",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Id", "type": "String" },
+                { "name": "Received", "type": "Date" },
+                { "name": "Institution", "type" : "String" },
+                { "name": "PatientID", "type" : "String" },
+                { "name": "PatientName", "type" : "String" },
+                { "name": "AccessionNumber", "type" : "String" },
+                { "name": "Modality", "type" : "String" },
+                { "name": "StudyDescription", "type" : "String" }
+            ]
+        },
+        {
+            "name": "CPTCodePrimaryGroup",
+            "equals": true,
+            "fields":
+            [
+                { "name": "SubspecialtyPrimary", "type": "String" },
+                { "name": "SecondaryGroups", "type": "Collection", "typeName": "CPTCodeSecondaryGroup", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "CPTCodeSecondaryGroup",
+            "equals": true,
+            "fields":
+            [
+                { "name": "SubspecialtySecondary", "type": "String" },
+                { "name": "Codes", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "CPTCodePrimaryGroups",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Groups", "type": "Collection", "typeName": "CPTCodePrimaryGroup", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "HL7MessageQuery",
+            "equals": true,
+            "fields":
+            [
+                { "name": "OrderNumber", "type": "String", "optional": true },
+                { "name": "CreatedStartDate", "type": "Date", "optional": true },
+                { "name": "CreatedEndDate", "type": "Date", "optional": true },
+                { "name": "UpdatedStartDate", "type": "Date", "optional": true },
+                { "name": "UpdatedEndDate", "type": "Date", "optional": true },
+                { "name": "FirstName", "type": "String", "optional": true },
+                { "name": "LastName", "type": "String", "optional": true },
+                { "name": "MRN", "type": "String", "optional": true },
+                { "name": "Accession", "type": "String", "optional": true },
+                { "name": "Modality", "type": "String", "optional": true },
+                { "name": "StudyDescription", "type": "String", "optional": true },
+                { "name": "CPTCode", "type": "String", "optional": true },
+                { "name": "Institutions", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet", "optional": true },
+                { "name": "ExactSearch", "type": "boolean", "optional": true },
+                { "name": "Statuses", "type": "Collection", "typeName": "OrderStatus", "collectionInterface": "Collection", "collectionImpl": "HashSet", "optional": true },
+                { "name": "Priorities", "type": "Collection", "typeName": "OrderPriority", "collectionInterface": "Collection", "collectionImpl": "HashSet", "optional": true },
+                { "name": "DOB", "type": "String", "optional": true },
+                { "name": "Critical", "type": "boolean", "optional": true },
+                { "name": "Reporters", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet", "optional": true },
+                { "name": "ReportStartDate", "type": "Date", "optional": true },
+                { "name": "ReportEndDate", "type": "Date", "optional": true }
+            ]
+        },
+        {
+            "name": "UserCodes",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Codes", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "DetailedOrder",
+            "fields":
+            [
+                { "name": "OrderId", "type": "String" },
+                { "name": "Status", "type": "enum", "typeName": "OrderStatus" },
+                { "name": "OrderPriority", "type": "enum", "typeName": "OrderPriority", "default": "OrderPriority.Low" },
+                { "name": "AssignedTo", "type": "String" },
+                { "name": "DicomStudyId", "type": "String", "optional": true },
+                { "name": "PatientFirstName", "type": "String", "optional": true },
+                { "name": "PatientMiddleName", "type": "String", "optional": true },
+                { "name": "PatientLastName", "type": "String", "optional": true },
+                { "name": "PatientId", "type": "String", "optional": true },
+                { "name": "PatientBirthDate", "type": "Date", "optional": true },
+                { "name": "PatientAge", "type": "String", "optional": true },
+                { "name": "PatientSex", "type": "String", "optional": true },
+                { "name": "PatientSuffix", "type": "String", "optional": true },
+                { "name": "AlternatePatientId", "type": "String", "optional": true },
+                { "name": "PatientAccountNumber", "type": "String", "optional": true },
+                { "name": "PatientAddressee", "type": "String", "optional": true },
+                { "name": "PatientAddressType", "type": "String", "optional": true },
+                { "name": "PatientStreetAddress", "type": "String", "optional": true },
+                { "name": "PatientStreetName", "type": "String", "optional": true },
+                { "name": "PatientAddressBuildingNumber", "type": "String", "optional": true },
+                { "name": "PatientAddressCity", "type": "String", "optional": true },
+                { "name": "PatientAddressState", "type": "String", "optional": true },
+                { "name": "PatientAddressCounty", "type": "String", "optional": true },
+                { "name": "PatientAddressZipcode", "type": "String", "optional": true },
+                { "name": "PatientAddressCountry", "type": "String", "optional": true },
+                { "name": "PatientAliasLastName", "type": "String", "optional": true },
+                { "name": "PatientAliasFirstName", "type": "String", "optional": true },
+                { "name": "PatientAliasMiddleName", "type": "String", "optional": true },
+                { "name": "PatientAlias", "type": "String", "optional": true },
+                { "name": "PatientSSN", "type": "String", "optional": true },
+                { "name": "PatientRace", "type": "String", "optional": true },
+                { "name": "PatientCitizenship", "type": "String", "optional": true },
+                { "name": "MaritalStatus", "type": "String", "optional": true },
+                { "name": "PatientEmail", "type": "String", "optional": true },
+                { "name": "PatientHomePhone", "type": "String", "optional": true },
+                { "name": "PatientWorkPhone", "type": "String", "optional": true },
+                { "name": "PatientFax", "type": "String", "optional": true },
+                { "name": "PatientMobile", "type": "String", "optional": true },
+                { "name": "PatientOtherPhone", "type": "String", "optional": true },
+                { "name": "PatientNotificationPreference", "type": "String", "optional": true },
+                { "name": "PatientEmployer", "type": "String", "optional": true },
+                { "name": "PatientEmployerStatus", "type": "String", "optional": true },
+                { "name": "PatientEmployerPhone", "type": "String", "optional": true },
+                { "name": "PatientStudentStatus", "type": "String", "optional": true },
+                { "name": "PatientSchool", "type": "String", "optional": true },
+                { "name": "PatientNoticeOfPrivacy", "type": "String", "optional": true },
+                { "name": "PatientDateOfPrivacy", "type": "Date", "optional": true },
+                { "name": "PatientDateOfDeath", "type": "Date", "optional": true },
+                { "name": "PatientCauseOfDeath", "type": "String", "optional": true },
+                { "name": "PatientEmergencyContactName", "type": "String", "optional": true },
+                { "name": "PatientEmergencyContactPhone", "type": "String", "optional": true },
+                { "name": "PatientPreferredLanguage", "type": "String", "optional": true },
+                { "name": "PatientSmokingStatus", "type": "String", "optional": true },
+                { "name": "PatientEthnicity", "type": "String", "optional": true },
+                { "name": "PatientBirthState", "type": "String", "optional": true },
+                { "name": "PatientBirthCountry", "type": "String", "optional": true },
+                { "name": "PatientBirthOrder", "type": "String", "optional": true },
+                { "name": "PatientMothersLastName", "type": "String", "optional": true },
+                { "name": "PatientMothersFirstName", "type": "String", "optional": true },
+                { "name": "PatientMothersMiddleName", "type": "String", "optional": true },
+                { "name": "PatientMothersMaidenName", "type": "String", "optional": true },
+                { "name": "InstitutionName", "type": "String", "optional": true },
+                { "name": "AccessionNumber", "type": "String", "optional": true },
+                { "name": "CPTCode", "type": "String", "optional": true },
+                { "name": "CPTMnemonic", "type": "String", "optional": true },
+                { "name": "Modality", "type": "String", "optional": true },
+                { "name": "StudyDescription", "type": "String", "optional": true },
+                { "name": "Pregnant", "type": "String", "optional": true },
+                { "name": "VipIndicator", "type": "String", "optional": true },
+                { "name": "AdmitDate", "type": "Date", "optional": true },
+                { "name": "AdmissionType", "type": "String", "optional": true },
+                { "name": "PatientLocationBed", "type": "String", "optional": true },
+                { "name": "PatientLocationBuilding", "type": "String", "optional": true },
+                { "name": "PatientLocationFacility", "type": "String", "optional": true },
+                { "name": "PatientLocationFloor", "type": "String", "optional": true },
+                { "name": "PatientLocationDescription", "type": "String", "optional": true },
+                { "name": "PatientLocationAssigningAuthority", "type": "String", "optional": true },
+                { "name": "PatientLocationComprehensiveDescription", "type": "String", "optional": true },
+                { "name": "PatientLocationStatus", "type": "String", "optional": true },
+                { "name": "PatientLocationType", "type": "String", "optional": true },
+                { "name": "PatientStation", "type": "String", "optional": true },
+                { "name": "PatientClass", "type": "String", "optional": true },
+                { "name": "ReferringDoctorLastName", "type": "String", "optional": true },
+                { "name": "ReferringDoctorFirstName", "type": "String", "optional": true },
+                { "name": "ReferringDoctorDegree", "type": "String", "optional": true },
+                { "name": "ReferringDoctorFullName", "type": "String", "optional": true },
+                { "name": "OrderingDoctorLastName", "type": "String", "optional": true },
+                { "name": "OrderingDoctorFirstName", "type": "String", "optional": true },
+                { "name": "OrderingDoctorDegree", "type": "String", "optional": true },
+                { "name": "OrderingDoctorFullName", "type": "String", "optional": true },
+                { "name": "OrderNumber", "type": "String", "optional": true },
+                { "name": "SendingFacility", "type": "String", "optional": true },
+                { "name": "TechName", "type": "String", "optional": true },
+                { "name": "AuthorizationNumber", "type": "String", "optional": true },
+                { "name": "NumberOfFilms", "type": "String", "optional": true },
+                { "name": "FilmType", "type": "String", "optional": true },
+                { "name": "EffectiveDate", "type": "Date", "optional": true },
+                { "name": "Findings", "type": "String", "optional": true },
+                { "name": "ApprovalDate", "type": "String", "optional": true },
+                { "name": "DeliveryDate", "type": "String", "optional": true },
+                { "name": "Modifiers", "type": "String", "optional": true },
+                { "name": "DiagnosisCode", "type": "String", "optional": true },
+                { "name": "ReportId", "type": "String", "optional": true },
+                { "name": "hl7", "type": "String", "optional": true },
+                { "name": "CoPayAmount", "type": "String", "optional": true },
+                { "name": "FeeAmount", "type": "String", "optional": true },
+                { "name": "AllowableAmount", "type": "String", "optional": true },
+                { "name": "VisitNumber", "type": "String", "optional": true },
+                { "name": "DeductibleAmount", "type": "String", "optional": true },
+                { "name": "LoggedAmount", "type": "String", "optional": true },
+                { "name": "CardChequeNumber", "type": "String", "optional": true },
+                { "name": "ExternalVisitId", "type": "String", "optional": true },
+                { "name": "PaymentMethod", "type": "String", "optional": true },
+                { "name": "ExpiryDate", "type": "Date", "optional": true },
+                { "name": "HospitalService", "type": "String", "optional": true },
+                { "name": "ProcedureStartDate", "type": "String", "optional": true },
+                { "name": "ReasonForExam", "type": "String", "optional": true },
+                { "name": "Priority", "type": "String", "optional": true },
+                { "name": "ProcedureCode", "type": "String", "optional": true },
+                { "name": "ProcedureCodeScheme", "type": "String", "optional": true },
+                { "name": "OrderStatus", "type": "String", "optional": true },
+                { "name": "Laterality", "type": "String", "optional": true },
+                { "name": "PrincipalResultInterpreter", "type": "String", "optional": true },
+                { "name": "ResponsibleObserver", "type": "String", "optional": true },
+                { "name": "RelevantClinicalInformation", "type": "String", "optional": true },
+                { "name": "Physicians", "type": "Collection", "typeName": "Physician", "collectionInterface": "Collection", "collectionImpl": "HashSet", "optional": true },
+                { "name": "FollowUpCode", "type": "String", "optional": true },
+                { "name": "GuarantorName", "type": "String", "optional": true },
+                { "name": "GuarantorAddress", "type": "String", "optional": true },
+                { "name": "GuarantorPhone", "type": "String", "optional": true },
+                { "name": "GuarantorDOB", "type": "Date", "optional": true },
+                { "name": "ServiceType", "type": "String", "optional": true },
+                { "name": "DateOfService", "type": "Date", "optional": true },
+                { "name": "TransportType", "type": "String", "optional": true },
+                { "name": "InpatientLocation", "type": "String", "optional": true },
+                { "name": "Room", "type": "String", "optional": true },
+                { "name": "IV", "type": "boolean", "optional": true },
+                { "name": "O2", "type": "boolean", "optional": true },
+                { "name": "Monitor", "type": "boolean", "optional": true },
+                { "name": "DischargeDate", "type": "Date", "optional": true },
+                { "name": "InsuredName", "type": "String", "optional": true },
+                { "name": "Relationship", "type": "String", "optional": true },
+                { "name": "ReleaseSigned", "type": "boolean", "optional": true },
+                { "name": "CoPay", "type": "String", "optional": true },
+                { "name": "Deductible", "type": "String", "optional": true },
+                { "name": "DateSigned", "type": "Date", "optional": true },
+                { "name": "CoInsurance", "type": "String", "optional": true },
+                { "name": "PatientInsurances", "type": "Collection", "typeName": "PatientInsurance", "collectionInterface": "Collection", "collectionImpl": "HashSet", "optional": true },
+                { "name": "VisitInsurances", "type": "Collection", "typeName": "VisitInsurance", "collectionInterface": "Collection", "collectionImpl": "HashSet", "optional": true },
+                { "name": "Allergies", "type": "Collection", "typeName": "Allergy", "collectionInterface": "Collection", "collectionImpl": "HashSet", "optional": true },
+                { "name": "Referrals", "type": "Collection", "typeName": "Referral", "collectionInterface": "Collection", "collectionImpl": "HashSet", "optional": true },
+                { "name": "Medications", "type": "Collection", "typeName": "Medication", "collectionInterface": "Collection", "collectionImpl": "HashSet", "optional": true },
+                { "name": "Report", "type": "OrderReport", "optional": true},
+                { "name": "UpdatedBy", "type": "String", "optional": true },
+                { "name": "UpdateTime", "type": "Date", "optional": true },
+                { "name": "TechNotes", "type": "String", "optional": true },
+                { "name": "Critical", "type": "boolean", "optional": true },
+                { "name": "StudyDate", "type": "String", "optional": true },
+                { "name": "StudyTime", "type": "String", "optional": true },
+                { "name": "ArrivalDate", "type": "String", "optional": true },
+                { "name": "ArrivalTime", "type": "String", "optional": true },
+                { "name": "AdditionalAccessions", "type": "String", "optional": true },
+                { "name": "UrgentExamType", "type": "enum", "typeName": "UrgentExamType", "optional": true },
+                { "name": "ReadingRadiologist", "type": "String", "optional": true }
+            ]
+        },
+        {
+            "name": "Physician",
+            "fields":
+            [
+                { "name": "Name", "type": "String", "optional": true },
+                { "name": "Role", "type": "String", "optional": true },
+                { "name": "Address", "type": "String", "optional": true },
+                { "name": "City", "type": "String", "optional": true },
+                { "name": "State", "type": "String", "optional": true },
+                { "name": "Zipcode", "type": "String", "optional": true },
+                { "name": "Phone", "type": "String", "optional": true },
+                { "name": "Fax", "type": "String", "optional": true },
+                { "name": "Email", "type": "String", "optional": true }
+            ]
+        },
+        {
+            "name": "PatientInsurance",
+            "fields":
+            [
+                { "name": "Plan", "type": "String", "optional": true },
+                { "name": "Carrier", "type": "String", "optional": true },
+                { "name": "PolicyNumber", "type": "String" , "optional": true},
+                { "name": "EffectiveDate", "type": "Date", "optional": true },
+                { "name": "GroupNumber", "type": "String", "optional": true },
+                { "name": "Address", "type": "String", "optional": true },
+                { "name": "City", "type": "String", "optional": true },
+                { "name": "State", "type": "String", "optional": true },
+                { "name": "Zipcode", "type": "String", "optional": true },
+                { "name": "Phone", "type": "String", "optional": true },
+                { "name": "Fax", "type": "String", "optional": true },
+                { "name": "Email", "type": "String", "optional": true }
+            ]
+        },
+        {
+            "name": "VisitInsurance",
+            "fields":
+            [
+                { "name": "Plan", "type": "String", "optional": true },
+                { "name": "PolicyNumber", "type": "String", "optional": true },
+                { "name": "GroupNumber", "type": "String", "optional": true },
+                { "name": "AuthorizationNumber", "type": "String", "optional": true },
+                { "name": "EffectiveDate", "type": "String", "optional": true },
+                { "name": "PreCertificationNumber", "type": "String", "optional": true },
+                { "name": "Address", "type": "String", "optional": true },
+                { "name": "City", "type": "String", "optional": true },
+                { "name": "State", "type": "String", "optional": true },
+                { "name": "Zipcode", "type": "String", "optional": true },
+                { "name": "Phone", "type": "String", "optional": true },
+                { "name": "Fax", "type": "String", "optional": true },
+                { "name": "Email", "type": "String", "optional": true }
+            ]
+        },
+        {
+            "name": "Allergy",
+            "fields":
+            [
+                { "name": "Name", "type": "String", "optional": true },
+                { "name": "Type", "type": "String", "optional": true },
+                { "name": "Description", "type": "String", "optional": true },
+                { "name": "Severity", "type": "String", "optional": true },
+                { "name": "Reaction", "type": "String", "optional": true },
+                { "name": "IdentificationDate", "type": "String", "optional": true }
+            ]
+        },
+        {
+            "name": "Referral",
+            "fields":
+            [
+                { "name": "EffectiveDate", "type": "Date", "optional": true },
+                { "name": "Status", "type": "String", "optional": true },
+                { "name": "ReferredBy", "type": "String", "optional": true },
+                { "name": "ReferredTo", "type": "String", "optional": true },
+                { "name": "Reason", "type": "String", "optional": true }
+            ]
+        },
+        {
+            "name": "Medication",
+            "fields":
+            [
+                { "name": "DrugName", "type": "String", "optional": true },
+                { "name": "GenericName", "type": "String", "optional": true },
+                { "name": "OrderingPhysician", "type": "String", "optional": true },
+                { "name": "Pharmacy", "type": "String", "optional": true },
+                { "name": "Status", "type": "String", "optional": true },
+                { "name": "LastRefillDate", "type": "Date", "optional": true },
+                { "name": "DaysSupply", "type": "String", "optional": true },
+                { "name": "Refills", "type": "String", "optional": true },
+                { "name": "Quantity", "type": "String", "optional": true },
+                { "name": "Qualifier", "type": "String", "optional": true },
+                { "name": "Substitution", "type": "String", "optional": true },
+                { "name": "PharmacyNotes", "type": "String", "optional": true },
+                { "name": "Directions", "type": "String", "optional": true },
+                { "name": "OrderDate", "type": "Date", "optional": true },
+                { "name": "ReconcileDate", "type": "Date", "optional": true }
+            ]
+        },
+        {
+            "name": "OrderTag",
+            "fields":
+            [
+                { "name": "Timestamp", "type": "Date" },
+                { "name": "OrderId", "type": "String" },
+                { "name": "UserId", "type": "String" },
+                { "name": "Tag", "type": "String" },
+                { "name": "UserPrivate", "type": "boolean" }
+            ]
+        },
+        {
+            "name": "OrderTags",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Tags", "type": "Collection", "typeName": "OrderTag", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "OrderNote",
+            "fields":
+            [
+                { "name": "Timestamp", "type": "Date" },
+                { "name": "OrderId", "type": "String" },
+                { "name": "UserId", "type": "String" },
+                { "name": "Note", "type": "String" }
+            ]
+        },
+        {
+            "name": "OrderNotes",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Notes", "type": "Collection", "typeName": "OrderNote", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "OrderChange",
+            "fields":
+            [
+                { "name": "Timestamp", "type": "Date" },
+                { "name": "UserId", "type": "String" },
+                { "name": "Status", "type": "enum", "typeName": "OrderStatus" }
+            ]
+        },
+        {
+            "name": "DisplayOrder",
+            "fields":
+            [
+                { "name": "OrderId", "type": "String" },
+                { "name": "MessageId", "type": "String" },
+                { "name": "Status", "type": "enum", "typeName": "OrderStatus" },
+                { "name": "Priority", "type": "enum", "typeName": "OrderPriority" },
+                { "name": "AssignedTo", "type": "String", "optional": true },
+                { "name": "Created", "type": "Date" },
+                { "name": "Updated", "type": "Date", "optional": true },
+                { "name": "FirstName", "type": "String", "optional": true },
+                { "name": "MiddleName", "type": "String", "optional": true },
+                { "name": "LastName", "type": "String", "optional": true },
+                { "name": "PatientId", "type": "String", "optional": true },
+                { "name": "BirthDate", "type": "String", "optional": true },
+                { "name": "Sex", "type": "String", "optional": true },
+                { "name": "AlternatePatientId", "type": "String", "optional": true },
+                { "name": "InstitutionName", "type": "String", "optional": true },
+                { "name": "AccessionNumber", "type": "String", "optional": true },
+                { "name": "CPTCode", "type": "String", "optional": true },
+                { "name": "CPTMnemonic", "type": "String", "optional": true },
+                { "name": "Modality", "type": "String", "optional": true },
+                { "name": "StudyDescription", "type": "String", "optional": true },
+                { "name": "DicomStudyId", "type": "String", "optional": true },
+                { "name": "ImageCount", "type": "int", "optional": true },
+                { "name": "TimeElapsed", "type": "long" },
+                { "name": "Critical", "type": "boolean" },
+                { "name": "StudyDate", "type": "String", "optional": true },
+                { "name": "StudyTime", "type": "String", "optional": true },
+                { "name": "ArrivalDate", "type": "String", "optional": true },
+                { "name": "ArrivalTime", "type": "String", "optional": true },
+                { "name": "ReadingRadiologist", "type": "String", "optional": true }
+            ]
+        },
+        {
+            "name": "DisplayOrders",
+            "fields":
+            [
+                { "name": "Orders", "type": "Collection", "typeName": "DisplayOrder", "collectionInterface": "Collection", "collectionImpl": "ArrayList" }
+            ]
+        },
+        {
+            "name": "OrderReport",
+            "fields":
+            [
+                { "name": "Id", "type": "String" },
+                { "name": "OrderId", "type": "String" },
+                { "name": "Timestamp", "type": "Date" },
+                { "name": "UserId", "type": "String" },
+                { "name": "Report", "type": "String" },
+                { "name": "Location", "type": "String" },
+                { "name": "Addenda", "type": "Collection", "typeName": "ReportAddendum", "collectionInterface": "Collection", "collectionImpl": "ArrayList" }
+            ]
+        },
+        {
+            "name": "ReportAddendum",
+            "fields":
+            [
+                { "name": "Timestamp", "type": "Date" },
+                { "name": "UserId", "type": "String" },
+                { "name": "Addendum", "type": "String" }
+            ]
+        },
+        {
+            "name": "ReportTemplates",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Templates", "type": "Collection", "typeName": "ReportTemplate", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "ReportMacro",
+            "fields":
+            [
+                { "name": "MacroId", "type": "String", "optional": true },
+                { "name": "Name", "type": "String" },
+                { "name": "Macro", "type": "String" }
+            ]
+        },
+        {
+            "name": "ReportMacros",
+            "equals": true,
+            "fields":
+            [
+                { "name": "Macros", "type": "Collection", "typeName": "ReportMacro", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "Attachment",
+            "fields":
+            [
+                { "name": "id", "type": "String" },
+                { "name": "orderId", "type": "String" },
+                { "name": "fileName", "type": "String" },
+                { "name": "uploadDate", "type": "Date" }
+            ]
+        },
+        {
+            "name": "Attachments",
+            "fields":
+            [
+                { "name": "Attachments", "type": "Collection", "typeName": "Attachment", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "ReportTemplate",
+            "fields":
+            [
+                { "name": "Id", "type": "String" },
+                { "name": "CPTCode", "type": "String" },
+                { "name": "LakelandDescription", "type": "String", "optional": true  },
+                { "name": "CPTDescription", "type": "String", "optional": true  },
+                { "name": "TriggerPhrase", "type": "String", "optional": true },
+                { "name": "Template1", "type": "String", "optional": true  },
+                { "name": "Template2", "type": "String", "optional": true },
+                { "name": "Template3", "type": "String", "optional": true },
+                { "name": "ImagingModality", "type": "String", "optional": true  },
+                { "name": "Comments", "type": "String", "optional": true },
+                { "name": "Region", "type": "String", "optional": true },
+                { "name": "Modifiers", "type": "String", "optional": true },
+                { "name": "IVBased", "type": "enum", "typeName": "YesNo", "optional": true },
+                { "name": "RadiologistLocation", "type": "String", "optional": true  },
+                { "name": "CMORadiologistLocation", "type": "String", "optional": true },
+                { "name": "SubspecialtyPrimary", "type": "String", "optional": true },
+                { "name": "SubspecialtySecondary", "type": "String", "optional": true }
+            ]
+        },
+        {
+            "name": "OrderAuditEntry",
+            "fields":
+             [
+                 { "name": "Id", "type": "String" },
+                 { "name": "Date", "type": "Date" },
+                 { "name": "UserId", "type": "String" },
+                 { "name": "OrderId", "type": "String" },
+                 { "name": "Field", "type": "String" },
+                 { "name": "OldValue", "type": "Object", "optional": true },
+                 { "name": "NewValue", "type": "Object"}
+             ]
+        },
+        {
+            "name": "OrderAuditEntries",
+            "fields":
+            [
+                { "name": "Entries", "type": "Collection", "typeName": "OrderAuditEntry", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "OrderWrapper",
+            "imports": [ "com.peirs.datamodel.dicom.*" ],
+            "fields":
+            [
+                { "name": "Order", "type": "DetailedOrder" },
+                { "name": "Notes", "type": "Collection", "typeName": "OrderNote", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "Tags", "type": "Collection", "typeName": "OrderTag", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "AuditEntries", "type": "Collection", "typeName": "OrderAuditEntry", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "Attachments", "type": "Collection", "typeName": "Attachment", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "RelatedOrders", "type": "Collection", "typeName": "DicomStudy", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "Changes", "type": "Collection", "typeName": "OrderChange", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "Priors", "type": "Collection", "typeName": "DetailedOrder", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "PacsConfiguration",
+            "fields":
+            [
+                { "name": "Host", "type": "String" },
+                { "name": "Port", "type": "int" },
+                { "name": "AETitle", "type": "String" }
+            ]
+        },
+        {
+            "name": "OrdersPerUser",
+            "fields":
+            [
+                { "name": "Counts", "type": "Collection", "typeName": "UserOrderCount", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "UserOrderCount",
+            "fields":
+            [
+                { "name": "User", "type": "String" },
+                { "name": "Count", "type": "int" }
+            ]
+        },
+        {
+            "name": "OrdersPerStatus",
+            "fields":
+            [
+                { "name": "Counts", "type": "Collection", "typeName": "StatusOrderCount", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "StatusOrderCount",
+            "fields":
+            [
+                { "name": "User", "type": "String" },
+                { "name": "Count", "type": "int" }
+            ]
+        },
+        {
+            "name": "OrdersPerDay",
+            "fields":
+            [
+                { "name": "Counts", "type": "Collection", "typeName": "DayOrderCount", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "DayOrderCount",
+            "fields":
+            [
+                { "name": "Date", "type": "Date" },
+                { "name": "Count", "type": "int" },
+                { "name": "MorningShift", "type": "int" },
+                { "name": "AfternoonShift", "type": "int" },
+                { "name": "EveningShift", "type" : "int" }
+            ]
+        },
+        {
+            "name": "TagCounts",
+            "fields":
+            [
+                { "name": "Counts", "type": "Collection", "typeName": "TagCount", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "TagCount",
+            "fields":
+            [
+                { "name": "Tag", "type": "String" },
+                { "name": "Count", "type": "int" }
+            ]
+        },
+        {
+            "name": "ModalityOrderCount",
+            "fields":
+            [
+                { "name": "Modality", "type": "String" },
+                { "name": "Count", "type": "int" }
+            ]
+        },
+        {
+            "name": "InstitutionOrderCount",
+            "fields":
+            [
+                { "name": "Institution", "type": "String" },
+                { "name": "Count", "type": "int" }
+            ]
+        },
+        {
+            "name": "InstitutionDayOrderCount",
+            "fields":
+            [
+                { "name": "Institution", "type": "String" },
+                { "name": "Counts", "type": "Collection", "typeName": "DayOrderCount", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "InstitutionDayOrderCounts",
+            "fields":
+            [
+                { "name": "Counts", "type": "Collection", "typeName": "InstitutionDayOrderCount", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "OrderReportData",
+            "fields":
+            [
+                { "name": "Id", "type": "int" },
+                { "name": "PatientName", "type": "String" },
+                { "name": "PatientId", "type": "String", "optional": true },
+                { "name": "Accession", "type": "String", "optional": true },
+                { "name": "Modality", "type": "String", "optional": true },
+                { "name": "BodyPart", "type": "String", "optional": true },
+                { "name": "ImageCount", "type": "int", "optional": true },
+                { "name": "Priority", "type": "String", "optional": true },
+                { "name": "StudyTime", "type": "Date", "optional": true },
+                { "name": "ArrivalTime", "type": "Date", "optional": true },
+                { "name": "ReadyTime", "type": "Date", "optional": true },
+                { "name": "AssignedTime", "type": "Date", "optional": true },
+                { "name": "ReadTime", "type": "Date", "optional": true },
+                { "name": "FinalTime", "type": "Date", "optional": true },
+                { "name": "Radiologist", "type": "String", "optional": true },
+                { "name": "Description", "type": "String", "optional": true },
+                { "name": "Status", "type": "String", "optional": true },
+                { "name": "Site", "type": "String", "optional": true },
+                { "name": "CPTCode", "type": "String", "optional": true },
+                { "name": "CMSRVU", "type": "String", "optional": true },
+                { "name": "Critical", "type": "boolean", "optional": true },
+                { "name": "Addendum", "type": "boolean", "optional": true }
+            ]
+        },
+        {
+            "name": "OrderIds",
+            "fields":
+            [
+                { "name": "Ids", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "CPTMnemonic",
+            "fields":
+            [
+                { "name": "Modality", "type": "String" },
+                { "name": "Number", "type": "String", "optional": true },
+                { "name": "Mnemonic", "type": "String" },
+                { "name": "CPTCode", "type": "String", "optional": true },
+                { "name": "Institution", "type": "String", "optional": true }
+            ]
+        },
+        {
+            "name": "RadiologistPreferences",
+            "fields":
+            [
+                { "name": "Institutions", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "CPTCodes", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "CPTPrimarySpecialities", "type": "Collection", "typeName": "String", "collectionInterface": "Set", "collectionImpl": "HashSet" },
+                { "name": "CPTSecondarySpecialities", "type": "Collection", "typeName": "String", "collectionInterface": "Set", "collectionImpl": "HashSet" },
+                { "name": "Location", "type": "UserLocation", "optional": true }
+            ]
+        },
+        {
+            "name": "UserSession",
+            "fields":
+            [
+                { "name": "Username", "type": "String" },
+                { "name": "IP", "type": "String" },
+                { "name": "Timestamp", "type": "Date" }
+            ]
+        },
+        {
+            "name": "UserLocation",
+            "fields":
+            [
+                { "name": "Username", "type": "String" },
+                { "name": "LocationCode", "type": "String" },
+                { "name": "Description", "type": "String" },
+                { "name": "Address", "type": "String" }
+            ]
+        },
+        {
+            "name": "UserLocations",
+            "fields":
+            [
+                { "name": "Locations", "type": "Collection", "typeName": "UserLocation", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "AddAddendum",
+            "fields":
+            [
+                { "name": "OrderId", "type": "String" },
+                { "name": "Timestamp", "type": "Date" },
+                { "name": "UserId", "type": "String" },
+                { "name": "Addendum", "type": "String" }
+            ]
+        },
+        {
+            "name": "SystemPreferences",
+            "fields":
+            [
+                { "name": "Id", "type": "String", "optional": true },
+                { "name": "NotifyNewOrders", "type": "boolean", "optional": true },
+                { "name": "NotificationAddress", "type": "String", "optional": true }
+
+            ]
+        },
+        {
+            "name": "ExternalDicomStudy",
+            "fields":
+            [
+                { "name": "StudyId", "type": "String", "optional": true },
+                { "name": "StudyInstanceUID", "type": "String", "optional": true },
+                { "name": "PatientName", "type": "String", "optional": true },
+                { "name": "PatientId", "type": "String", "optional": true },
+                { "name": "StudyDescription", "type": "String", "optional": true },
+                { "name": "AccessionNumber", "type": "String", "optional": true },
+                { "name": "StudyDate", "type": "String", "optional": true },
+                { "name": "StudyTime", "type": "String", "optional": true },
+                { "name": "ImageCount", "type": "int", "optional": true }
+            ]
+        },
+        {
+            "name": "ExternalDicomStudies",
+            "fields":
+            [
+                 { "name": "Studies", "type": "Collection", "typeName": "ExternalDicomStudy", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "OrderReportDatas",
+            "fields":
+            [
+                { "name": "Data", "type": "Collection", "typeName": "OrderReportData", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "OrderReportDataRequest",
+            "fields":
+            [
+                { "name": "Start", "type": "Date"},
+                { "name": "End", "type" : "Date" },
+                { "name": "Radiologists", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "Institutions", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "Priorities", "type": "Collection", "typeName": "OrderPriority", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        },
+        {
+            "name": "ExternalDicomStudyRequest",
+            "fields":
+            [
+                { "name": "RequestDate", "type": "Date"}
+            ]
+        },
+        {
+            "name": "RadiologistWorklistFilter",
+            "imports": [ "com.peirs.datamodel.*" ],
+            "equals": true,
+            "fields":
+            [
+                { "name": "Institutions", "type": "Collection", "typeName": "Institution", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "Modalities", "type": "Collection", "typeName": "String", "collectionInterface": "Collection", "collectionImpl": "HashSet" },
+                { "name": "Priorities", "type": "Collection", "typeName": "OrderPriority", "collectionInterface": "Collection", "collectionImpl": "HashSet" }
+            ]
+        }
+    ]
+}

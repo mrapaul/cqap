@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>cqap-server</artifactId>
-    <packaging>jar</packaging>
 
     <dependencies>
 

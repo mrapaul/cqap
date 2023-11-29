@@ -1,24 +1,31 @@
 package com.cqap.client;
 
-import ch.lambdaj.*;
-import ch.lambdaj.collection.*;
-import com.google.common.collect.*;
-import com.lakeland.ris.ui.datamodel.*;
+import com.lakeland.ris.ui.datamodel.CPTCodePrimaryGroup;
+import com.lakeland.ris.ui.datamodel.CPTCodePrimaryGroups;
 import com.peirs.datamodel.*;
 import com.peirs.datamodel.attachments.Attachment;
 import com.peirs.datamodel.attachments.Attachments;
 import com.peirs.datamodel.dicom.*;
 import com.peirs.datamodel.hl7.*;
 import com.peirs.datamodel.ticket.*;
-import org.jetbrains.annotations.*;
-import org.slf4j.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.core.io.*;
-import org.springframework.util.*;
-import org.springframework.web.client.*;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.ResponseErrorHandler;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ClientRestService
 {
@@ -26,10 +33,10 @@ public class ClientRestService
     private final String theServerURL;
     @Autowired private RestTemplate theRestTemplate;
 
-    public ClientRestService(String aServerURL)
+    public ClientRestService(ClientProperties clientProperties)
     {
-        LOGGER.info("DicomStudyService is using server URL '{}'", aServerURL);
-        theServerURL = aServerURL;
+        theServerURL = clientProperties.getServerUrl();
+        LOGGER.info("DicomStudyService is using server URL '{}'", theServerURL);
     }
 
     public List<DicomStudyQueryResult> findDicomStudies(DicomStudyQuery aQuery)
@@ -113,7 +120,7 @@ public class ClientRestService
     public User loginUser(String aUsername)
     {
         LOGGER.info("Login to server using name: {}", aUsername);
-        Map<String, Object> myValues = Maps.newHashMap();
+        Map<String, Object> myValues = new HashMap<>();
         myValues.put("name", aUsername);
         User myUser = theRestTemplate.getForObject(
                 theServerURL + "/user/login?name={name}", User.class, myValues);
@@ -124,12 +131,12 @@ public class ClientRestService
     public List<String> findUsersForRole(Role aRole)
     {
         LOGGER.info("Searching for users for role: {}", aRole);
-        Map<String, Object> myValues = Maps.newHashMap();
+        Map<String, Object> myValues = new HashMap<>();
         myValues.put("role", aRole);
         Users myUsers = theRestTemplate.getForObject(
                 theServerURL + "/user/findByRole?role={role}", Users.class, myValues);
         LOGGER.info("Server responded with: {}", myUsers);
-        return LambdaCollections.with(myUsers.getUsers()).extract(Lambda.on(User.class).getName());
+        return myUsers.getUsers().stream().map(User::getName).collect(Collectors.toList());
     }
 
     public List<User> findAllUsers()

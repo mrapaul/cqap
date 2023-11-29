@@ -1,8 +1,5 @@
 # Start with a base image containing Java runtime
-FROM openjdk:19-jdk-slim
-
-# Add Maintainer Info
-LABEL maintainer="dev@highfreqjava.com"
+FROM openjdk:19-jdk-slim as build
 
 # The application's jar file
 ARG JAR_FILE=target/*.jar

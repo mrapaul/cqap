@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.capstone</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>cqap-datamodel</artifactId>
         </dependency>
         <dependency>
@@ -25,38 +25,9 @@
             <artifactId>cqap-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.googlecode.lambdaj</groupId>
-            <artifactId>lambdaj</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-        <!-- Spring and supporting toolkits -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <exclusions>
-                <!-- Exclude Commons Logging in favor of SLF4j -->
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-        </dependency>
-
         <!-- Jackson JSON Mapper -->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>

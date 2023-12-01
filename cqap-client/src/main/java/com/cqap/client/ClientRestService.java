@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.ResponseErrorHandler;
@@ -27,16 +28,20 @@ import java.io.InputStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Service
 public class ClientRestService
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(ClientRestService.class);
     private final String theServerURL;
-    @Autowired private RestTemplate theRestTemplate;
+    private final RestTemplate theRestTemplate;
 
-    public ClientRestService(ClientProperties clientProperties)
+    @Autowired
+    public ClientRestService(ClientProperties clientProperties, RestTemplate aRestTemplate)
     {
         theServerURL = clientProperties.getServerUrl();
-        LOGGER.info("DicomStudyService is using server URL '{}'", theServerURL);
+        theRestTemplate = aRestTemplate;
+        LOGGER.info("ClientRestService is using server URL '{}'", theServerURL);
+        System.setProperty("proxyPort", "8080");
     }
 
     public List<DicomStudyQueryResult> findDicomStudies(DicomStudyQuery aQuery)
@@ -48,12 +53,17 @@ public class ClientRestService
 
     public List<DicomStudy> findDicomStudiesByStudyInstanceUID(String aStudyInstanceUID)
     {
-        MultiValueMap<String, Object> myValues = new LinkedMultiValueMap<>();
-        myValues.add("studyInstanceUID", aStudyInstanceUID);
-        DicomStudies myStudies = theRestTemplate.postForObject(theServerURL + "/dicomStudy/findByStudyInstanceUID",
-                myValues,
-                DicomStudies.class);
-        return myStudies.getStudies();
+        try {
+            MultiValueMap<String, Object> myValues = new LinkedMultiValueMap<>();
+            myValues.add("studyInstanceUID", aStudyInstanceUID);
+            DicomStudies myStudies = theRestTemplate.postForObject(theServerURL + "/dicomStudy/findByStudyInstanceUID",
+                    myValues,
+                    DicomStudies.class);
+            return myStudies.getStudies();
+        } catch (Exception e) {
+            LOGGER.error("Error retrieving studies", e);
+            return Collections.emptyList();
+        }
     }
 
     public DicomStudy findDicomStudy(String aId)
@@ -171,11 +181,16 @@ public class ClientRestService
         theRestTemplate.postForLocation(theServerURL + "/group/delete", aGroup);
     }
 
-    public List<Institution> findAllInstitutions()
-    {
-        Institutions myInstitutions =
-                theRestTemplate.getForObject(theServerURL + "/institution/findAll", Institutions.class);
-        return myInstitutions.getInstitutions();
+    public List<Institution> findAllInstitutions() {
+        try {
+            Institutions myInstitutions = theRestTemplate
+                    .getForObject(theServerURL + "/institution/findAll", Institutions.class);
+            return myInstitutions.getInstitutions();
+        } catch (Exception e) { // This catches any exception that occurs
+            LOGGER.error("Failed to retrieve institutions: {}", e.getMessage());
+            // Return an empty list to indicate failure
+            return Collections.emptyList();
+        }
     }
 
     public void createOrUpdateInstitution(Institution aInstitution)

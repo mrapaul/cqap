@@ -97,7 +97,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>com.vaadin</groupId>
                 <!-- Replace artifactId with vaadin-core to use only free components -->
@@ -252,8 +251,9 @@
                 <version>2.3.1</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-logging</artifactId>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>2.2.0</version>
             </dependency>
             <dependency>
                 <groupId>org.easytesting</groupId>

@@ -1,0 +1,29 @@
+@mixin dashboard-accordion {
+  .v-accordion {
+    border: none;
+  }
+  .v-accordion-item {
+    background-color: #333537;
+  }
+  .v-accordion-item-caption {
+    background: #AA8808;
+    line-height: normal;
+    color: white;
+    font-size: 14px;
+  }
+  .v-accordion-item-first .v-accordion-item-caption {
+    color: white;
+
+    font-size: 14px;
+  }
+  .v-accordion-item-caption .v-caption {
+    padding: 3px 0 5px 10px;
+    color: white;
+    font-size: 12px;
+  }
+  .v-ie .v-accordion-item-caption .v-caption {
+    padding: 2px 0 6px 10px;
+    color: white;
+    font-size: 12px;
+  }
+}

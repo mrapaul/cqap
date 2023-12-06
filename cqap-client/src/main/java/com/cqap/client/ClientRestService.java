@@ -13,8 +13,13 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -73,11 +78,21 @@ public class ClientRestService
         return theRestTemplate.postForObject(theServerURL + "/dicomStudy/findOne", myValues, DicomStudy.class);
     }
 
+    @Retryable(
+            value = { RestClientException.class }, // Specify the exceptions on which to retry
+            maxAttempts = 3,                      // Retry up to 3 times
+            backoff = @Backoff(delay = 1000)      // Wait 1 second between attempts
+    )
     public DicomStudy createOrUpdateDicomStudy(DicomStudy aDicomStudy)
     {
-        return theRestTemplate.postForObject(theServerURL + "/dicomStudy/createOrUpdate",
-                aDicomStudy,
-                DicomStudy.class);
+        try {
+            return theRestTemplate.postForObject(theServerURL + "/dicomStudy/createOrUpdate",
+                    aDicomStudy,
+                    DicomStudy.class);
+        } catch (RestClientException e) {
+           LOGGER.error("Error creating dicom study", e);
+           throw e;
+        }
     }
 
     public List<TicketQueryResult> findProfessionalTickets(TicketQuery aQuery)
@@ -183,12 +198,15 @@ public class ClientRestService
 
     public List<Institution> findAllInstitutions() {
         try {
-            Institutions myInstitutions = theRestTemplate
-                    .getForObject(theServerURL + "/institution/findAll", Institutions.class);
-            return myInstitutions.getInstitutions();
-        } catch (Exception e) { // This catches any exception that occurs
-            LOGGER.error("Failed to retrieve institutions: {}", e.getMessage());
-            // Return an empty list to indicate failure
+            ResponseEntity<Institutions> response = theRestTemplate.exchange(
+                    theServerURL + "/institution/findAll",
+                    HttpMethod.GET,
+                    null,
+                    new ParameterizedTypeReference<Institutions>() {}
+            );
+            return response.getBody().getInstitutions();
+        } catch (RestClientException e) {
+            LOGGER.error("Failed to retrieve institutions: {}", e.getMessage(), e);
             return Collections.emptyList();
         }
     }

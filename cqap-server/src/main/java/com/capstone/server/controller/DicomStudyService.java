@@ -26,7 +26,7 @@ import static ch.lambdaj.collection.LambdaCollections.*;
 import static com.cqap.util.DicomStudyTagValueFinder.*;
 import static org.apache.commons.lang.StringUtils.*;
 
-@Component("DicomStudyService")
+@Service("DicomStudyService")
 public class DicomStudyService
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(DicomStudyService.class);
@@ -40,7 +40,11 @@ public class DicomStudyService
 
     public DicomStudy createOrUpdate(DicomStudy aStudy)
     {
-        return theRepository.save(aStudy);
+        try {
+            return theRepository.save(aStudy);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void delete(DicomStudy aStudy)

@@ -15,7 +15,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
-@SpringBootApplication(scanBasePackages = {"com.cqap.*"})
+@SpringBootApplication(scanBasePackages = {"com.cqap.*", "com.lakeland.*", "com.peirs.*", "com.capstone.*"})
 public class DicomScraperMain {
 
     private static final Logger logger = LoggerFactory.getLogger(DicomScraperMain.class);

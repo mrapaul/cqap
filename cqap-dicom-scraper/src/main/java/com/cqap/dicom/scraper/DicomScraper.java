@@ -167,14 +167,21 @@ public class DicomScraper {
             }
         }
 
+        LOGGER.info("Processed {} dicom images", myImages.size());
+
         for (String myStudyId : myImages.keySet()) {
             DicomStudy myStudy = new DicomStudy();
             myStudy.setImages(myImages.get(myStudyId));
-            myStudy.setInstitution(InstitutionFinder.findInstitution(myStudy.getInstitutions(),
-                    new ArrayList<HL7>(),
-                    theInstitutions));
+            if (!myStudy.getInstitutions().isEmpty()) {
+                myStudy.setInstitution(InstitutionFinder.findInstitution(myStudy.getInstitutions(),
+                        new ArrayList<HL7>(),
+                        theInstitutions));
+                LOGGER.warn("No Institution found for Dicom Image with Study Id {}", myStudyId);
+            }
             myStudies.add(myStudy);
         }
+
+        LOGGER.info("Converted {} dicom images to {} studies", myImages.size(), myStudies.size());
 
         return myStudies;
     }

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.cqap.*", "com.lakeland.*", "com.peirs.*", "com.capstone.*"})
 @EnableMongoRepositories
 @EnableWebMvc
 public class Server

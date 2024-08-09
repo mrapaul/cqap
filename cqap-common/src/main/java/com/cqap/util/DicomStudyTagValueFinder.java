@@ -3,7 +3,6 @@ package com.cqap.util;
 import com.peirs.datamodel.dicom.*;
 import org.dcm4che2.data.*;
 import org.dcm4che2.util.*;
-import org.joda.time.*;
 
 import java.text.*;
 import java.util.*;
@@ -11,7 +10,6 @@ import java.util.*;
 public final class DicomStudyTagValueFinder
 {
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd MMM yyyy HH:mm:ss");
-    private static final DateFormat DOB_FORMAT = new SimpleDateFormat("MMM dd yyyy");
 
     private DicomStudyTagValueFinder()
     {
@@ -22,32 +20,16 @@ public final class DicomStudyTagValueFinder
     {
         Date myDate = DateUtils.parseDA(aStudy.getPatientBirthDate(), false);
 
-        return myDate != null ? DOB_FORMAT.format(myDate) : "N/A";
+        return myDate != null ? myDate.toString() : "N/A";
     }
 
     public static String getStudyDateToString(DicomStudy aStudy)
     {
         String myStudyTime = findValue(aStudy, Tag.StudyTime);
-        String myStudyDate = aStudy.getStudyDate();
-        Date myDate = ((myStudyTime != null && !myStudyTime.equals("N/A")) && myStudyDate != null) ?
-                DateUtils.parseDT(myStudyDate + myStudyTime, false) : null;
+        Date myDate = (myStudyTime != null && !myStudyTime.equals("N/A")) && aStudy.getStudyDate() != null ?
+                DateUtils.parseDT(aStudy.getStudyDate() + myStudyTime, false) : null;
 
-        return myDate != null ? DATE_FORMAT.format(myDate) : (myStudyDate != null ? myStudyDate : "N/A");
-    }
-
-    public static String calculateAge(DicomStudy study)
-    {
-        Date myDate = DateUtils.parseDA(study.getPatientBirthDate(), false);
-
-        Years age = null;
-        if (myDate != null)
-        {
-            LocalDate birthdate = new LocalDate(myDate);
-            LocalDate now = new LocalDate();
-            age = Years.yearsBetween(birthdate, now);
-        }
-
-        return age != null ? String.valueOf(age.getYears()) : "N/A";
+        return myDate != null ? DATE_FORMAT.format(myDate) : "N/A";
     }
 
     public static Date toDate(String aDate)

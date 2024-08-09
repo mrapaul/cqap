@@ -2,44 +2,56 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.capstone</groupId>
         <artifactId>cqap</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>SNAPSHOT</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cqap-dicom</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.capstone</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>cqap-datamodel</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>dcm4che</groupId>
             <artifactId>dcm4che-core</artifactId>
+            <version>${dcm4che.version}</version>
         </dependency>
         <dependency>
             <groupId>dcm4che</groupId>
             <artifactId>dcm4che-imageio</artifactId>
+            <version>${dcm4che.version}</version>
         </dependency>
         <dependency>
             <groupId>dcm4che</groupId>
             <artifactId>dcm4che-imageio-rle</artifactId>
+            <version>${dcm4che.version}</version>
         </dependency>
         <dependency>
             <groupId>gov.nih.imagej</groupId>
             <artifactId>imagej</artifactId>
+            <version>1.46</version>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-           <scope>test</scope>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.easytesting</groupId>
             <artifactId>fest-assert</artifactId>
+            <version>${fest-assert.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

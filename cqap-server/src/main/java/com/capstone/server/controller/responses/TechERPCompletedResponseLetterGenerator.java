@@ -9,19 +9,14 @@ public final class TechERPCompletedResponseLetterGenerator extends BaseResponseL
                                                    UserRepository aUserRepository,
                                                    StorageService aStorageService,
                                                    String aTicketId,
-                                                   String aUserId,
-                                                   boolean aStoreAttachment,
-                                                   String aMailAddresses)
+                                                   String aUserId)
     {
-        super(aRepository, aUserRepository, aStorageService, aTicketId, aUserId, aStoreAttachment, aMailAddresses);
+        super(aRepository, aUserRepository, aStorageService, aTicketId, aUserId);
     }
 
-    @Override protected void generateResponseLetter(ResponseLetters aLetters,
-                                                    ProfessionalTicket aTicket,
-                                                    boolean aStoreAttachment,
-                                                    String aMailAddresses)
+    @Override protected void generateResponseLetter(ResponseLetters aLetters, ProfessionalTicket aTicket)
     {
-        aLetters.generateTechERPReport(aTicket, aStoreAttachment, aMailAddresses);
+        aLetters.generateTechERPReport(aTicket);
     }
 
     @Override protected String getResponseLetterName()

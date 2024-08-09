@@ -79,13 +79,4 @@ public class DicomTag
         myresult = 31 * myresult + (value != null ? value.hashCode() : 0);
         return myresult;
     }
-
-    @Override
-    public String toString() {
-        return "DicomTag{" +
-                "dicomTag=" + dicomTag +
-                ", dicomTagName='" + dicomTagName + '\'' +
-                ", value='" + value + '\'' +
-                '}';
-    }
 }

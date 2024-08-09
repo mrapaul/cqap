@@ -15,13 +15,10 @@ public final class DicomStudyQuery
     private List<String> theModalities;
     private String theStudyDescription;
     private String theAccessionNumber;
-    private String theStudyBeginDate;
-    private String theStudyEndDate;
     private String theStudyDate;
     private String theIIR;
     private String theSiteTechnologist;
     private String theCPTCode;
-    private String theStudyInstanceUID;
 
     public DicomStudyQuery()
     {
@@ -38,11 +35,9 @@ public final class DicomStudyQuery
                            String aStudyDescription,
                            String aAccessionNumber,
                            String aStudyDate,
-                           String aStudyBeginDate,
-                           String aStudyEndDate, String aIIR,
+                           String aIIR,
                            String aSiteTechnologist,
-                           String aCPTCode,
-                           String aStudyInstanceUID)
+                           String aCPTCode)
     {
         theGroup = aGroup;
         theInstitution = aInstitution;
@@ -54,12 +49,9 @@ public final class DicomStudyQuery
         theStudyDescription = aStudyDescription;
         theAccessionNumber = aAccessionNumber;
         theStudyDate = aStudyDate;
-        theStudyBeginDate = aStudyBeginDate;
-        theStudyEndDate = aStudyEndDate;
         theIIR = aIIR;
         theSiteTechnologist = aSiteTechnologist;
         theCPTCode = aCPTCode;
-        theStudyInstanceUID = aStudyInstanceUID;
     }
 
     public Group getGroup()
@@ -172,22 +164,6 @@ public final class DicomStudyQuery
         theIIR = aIIR;
     }
 
-    public String getStudyBeginDate() {
-        return theStudyBeginDate;
-    }
-
-    public void setStudyBeginDate(String aStudyBeginDate) {
-        this.theStudyBeginDate = aStudyBeginDate;
-    }
-
-    public String getStudyEndDate() {
-        return theStudyEndDate;
-    }
-
-    public void setStudyEndDate(String aStudyEndDate) {
-        this.theStudyEndDate = aStudyEndDate;
-    }
-
     public String getSiteTechnologist()
     {
         return theSiteTechnologist;
@@ -206,15 +182,5 @@ public final class DicomStudyQuery
     public void setCPTCode(String aCPTCode)
     {
         theCPTCode = aCPTCode;
-    }
-
-    public String getStudyInstanceUID()
-    {
-        return theStudyInstanceUID;
-    }
-
-    public void setStudyInstanceUID(String aStudyInstanceUID)
-    {
-        this.theStudyInstanceUID = aStudyInstanceUID;
     }
 }

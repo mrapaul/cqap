@@ -1,126 +1,180 @@
 package com.capstone.server.controller;
 
-import com.mongodb.client.gridfs.GridFSFindIterable;
-import com.mongodb.client.gridfs.model.GridFSFile;
+import com.mongodb.*;
+import com.mongodb.gridfs.*;
 import com.peirs.datamodel.attachments.*;
 import com.peirs.datamodel.dicom.*;
-import org.bson.Document;
-import org.bson.types.ObjectId;
+import org.apache.commons.io.*;
+import org.bson.types.*;
 import org.slf4j.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.gridfs.GridFsTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.data.mongodb.core.*;
+import org.springframework.stereotype.*;
 
 import java.io.*;
 import java.util.*;
 
 @Component("StorageService")
-public class StorageService {
+public class StorageService
+{
     private static final Logger LOGGER = LoggerFactory.getLogger(StorageService.class);
+    @Autowired private MongoTemplate theMongoTemplate;
+    private GridFS theGridFS;
 
-    @Autowired
-    private GridFsTemplate gridFsTemplate;
 
-    public void storeImage(DicomImage aImage, File aFile) {
-        try (InputStream stream = new FileInputStream(aFile)) {
-            Document metadata = new Document("studyInstanceUID", aImage.getStudyInstanceUID());
-            gridFsTemplate.store(stream, aFile.getName(), metadata);
-        } catch (IOException e) {
+    public void storeImage(DicomImage aImage, File aFile)
+    {
+        theGridFS = new GridFS(theMongoTemplate.getDb());
+        try
+        {
+            GridFSInputFile myInputFile = theGridFS.createFile(aFile);
+            myInputFile.setFilename(aFile.getAbsoluteFile().getName());
+            DBObject myObject = new BasicDBObject();
+            myObject.put("studyInstanceUID", aImage.getStudyInstanceUID());
+            myInputFile.setMetaData(myObject);
+            myInputFile.save();
+        }
+        catch (IOException e)
+        {
             LOGGER.error("Error creating file", e);
         }
     }
 
-    public List<Attachment> getImages(DicomStudy aStudy) {
+    public List<Attachment> getImages(DicomStudy aStudy)
+    {
         List<Attachment> myImages = new ArrayList<>();
-        Query query = new Query(Criteria.where("metadata.studyInstanceUID").is(aStudy.getStudyInstanceUID()));
-        GridFSFindIterable files = gridFsTemplate.find(query);
-        for (GridFSFile file : files) {
-            myImages.add(convertToAttachment(file));
+        try
+        {
+            convert(myImages, getUnconvertedImages(aStudy));
+        }
+        catch (IOException e)
+        {
+            LOGGER.error("Error reading file", e);
         }
         return myImages;
     }
 
-    public void storeAttachment(String aTicketId, String aFileName, byte[] aBytes) {
-        Document metadata = new Document("ticketId", new ObjectId(aTicketId));
-        try (InputStream stream = new ByteArrayInputStream(aBytes)) {
-            gridFsTemplate.store(stream, aFileName, metadata);
-        } catch (IOException e) {
-            LOGGER.error("Error storing file", e);
-        }
+    public List<GridFSDBFile> getUnconvertedImages(DicomStudy aStudy)
+    {
+        theGridFS = new GridFS(theMongoTemplate.getDb());
+        DBObject myObject = new BasicDBObject();
+        myObject.put("metadata.studyInstanceUID", aStudy.getStudyInstanceUID());
+        return theGridFS.find(myObject);
     }
 
-    public void storePatientReport(String aStudyId, String aFileName, byte[] aBytes) {
-        Document metadata = new Document("studyId", new ObjectId(aStudyId));
-        try (InputStream stream = new ByteArrayInputStream(aBytes)) {
-            gridFsTemplate.store(stream, aFileName, metadata);
-        } catch (IOException e) {
-            LOGGER.error("Error storing file", e);
-        }
+    public void storeAttachment(String aTicketId, String aFileName, byte[] aBytes)
+    {
+        DBObject myObject = new BasicDBObject();
+        myObject.put("ticketId", new ObjectId(aTicketId));
+        storeFile(myObject, aFileName, aBytes);
     }
 
-    public List<Attachment> getAttachmentNames(String aTicketId, String aStudyId) {
+    public void storePatientReport(String aStudyId, String aFileName, byte[] aBytes)
+    {
+        DBObject myObject = new BasicDBObject();
+        myObject.put("studyId", new ObjectId(aStudyId));
+        storeFile(myObject, aFileName, aBytes);
+    }
+
+    private void storeFile(DBObject aMetadata, String aFileName, byte[] aBytes)
+    {
+        theGridFS = new GridFS(theMongoTemplate.getDb());
+        GridFSInputFile myInputFile = theGridFS.createFile(aBytes);
+        myInputFile.setFilename(aFileName);
+        myInputFile.setMetaData(aMetadata);
+        myInputFile.save();
+    }
+
+    public List<Attachment> getAttachmentNames(String aTicketId, String aStudyId)
+    {
         List<Attachment> myAttachments = new ArrayList<>();
-        Query ticketIdQuery = new Query(Criteria.where("metadata.ticketId").is(new ObjectId(aTicketId)));
-        GridFSFindIterable ticketFiles = gridFsTemplate.find(ticketIdQuery);
-        for (GridFSFile file : ticketFiles) {
-            myAttachments.add(convertToAttachment(file));
+        theGridFS = new GridFS(theMongoTemplate.getDb());
+        DBObject myObject = new BasicDBObject();
+        myObject.put("metadata.ticketId", new ObjectId(aTicketId));
+        findFiles(aTicketId, aStudyId, myAttachments, myObject);
+        myObject = new BasicDBObject();
+        myObject.put("metadata.studyId", new ObjectId(aStudyId));
+        findFiles(aTicketId, aStudyId, myAttachments, myObject);
+        return myAttachments;
+    }
+
+    private void findFiles(String aTicketId, String aStudyId, List<Attachment> aAttachments, DBObject aObject)
+    {
+        List<GridFSDBFile> myFiles = theGridFS.find(aObject);
+        for (GridFSDBFile myFile : myFiles)
+        {
+            aAttachments.add(new Attachment(myFile.getId().toString(),
+                    aTicketId,
+                    aStudyId,
+                    myFile.getFilename(),
+                    myFile.getUploadDate()));
         }
-        Query studyIdQuery = new Query(Criteria.where("metadata.studyId").is(new ObjectId(aStudyId)));
-        GridFSFindIterable studyFiles = gridFsTemplate.find(studyIdQuery);
-        for (GridFSFile file : studyFiles) {
-            myAttachments.add(convertToAttachment(file));
+    }
+
+
+    public List<Attachment> getAttachments(String aTicketId)
+    {
+        List<Attachment> myAttachments = new ArrayList<>();
+        theGridFS = new GridFS(theMongoTemplate.getDb());
+        try
+        {
+            DBObject myObject = new BasicDBObject();
+            myObject.put("metadata.ticketId", new ObjectId(aTicketId));
+            convert(myAttachments, theGridFS.find(myObject));
+        }
+        catch (IOException e)
+        {
+            LOGGER.error("Error reading file", e);
         }
         return myAttachments;
     }
 
-    public List<Attachment> getAttachments(String aTicketId) {
-        List<Attachment> myAttachments = new ArrayList<>();
-        Query query = new Query(Criteria.where("metadata.ticketId").is(new ObjectId(aTicketId)));
-        GridFSFindIterable files = gridFsTemplate.find(query);
-        for (GridFSFile file : files) {
-            myAttachments.add(convertToAttachment(file));
+    private void convert(List<Attachment> aImages, List<GridFSDBFile> aFiles) throws IOException
+    {
+        for (GridFSDBFile myFile : aFiles)
+        {
+            aImages.add(createAttachment(myFile));
         }
-        return myAttachments;
     }
 
-    private Attachment convertToAttachment(GridFSFile file) {
-        Document metadata = file.getMetadata();
-        Object ticketId = metadata != null ? metadata.get("ticketId") : null;
-        Object studyId = metadata != null ? metadata.get("studyId") : null;
-        return new Attachment(file.getObjectId().toString(),
-                ticketId != null ? ticketId.toString() : null,
-                studyId != null ? studyId.toString() : null,
-                file.getFilename(),
-                file.getUploadDate());
+    private Attachment createAttachment(GridFSDBFile aFile) throws IOException
+    {
+        ByteArrayOutputStream myOutputStream = new ByteArrayOutputStream();
+        aFile.writeTo(myOutputStream);
+        Object myTicketId = aFile.getMetaData().get("ticketId");
+        Object myStudyId = aFile.getMetaData().get("studyId");
+        return new Attachment(aFile.getId().toString(),
+                myTicketId != null ? myTicketId.toString() : null,
+                myStudyId != null ? myStudyId.toString() : null,
+                aFile.getFilename(),
+                aFile.getUploadDate());
     }
 
-    public File getAttachment(String aId) {
-        Query query = new Query(Criteria.where("_id").is(new ObjectId(aId)));
-        GridFSFile gridFSFile = gridFsTemplate.findOne(query);
-        if (gridFSFile != null) {
-            try {
-                String filename = gridFSFile.getFilename();
-                File file = File.createTempFile(filename.substring(0, filename.indexOf(".")),
-                        filename.substring(filename.indexOf(".")));
-                try (OutputStream os = new FileOutputStream(file); InputStream is = gridFsTemplate.getResource(gridFSFile).getInputStream()) {
-                    byte[] buffer = new byte[1024];
-                    int bytesRead;
-                    while ((bytesRead = is.read(buffer)) != -1) {
-                        os.write(buffer, 0, bytesRead);
-                    }
-                }
-                return file;
-            } catch (IOException e) {
-                LOGGER.error("Error reading file", e);
+    public File getAttachment(String aId)
+    {
+        theGridFS = new GridFS(theMongoTemplate.getDb());
+        try
+        {
+            GridFSDBFile myGridFSDBFile = theGridFS.findOne(new ObjectId(aId));
+            if (myGridFSDBFile != null)
+            {
+                ByteArrayOutputStream myOutputStream = new ByteArrayOutputStream();
+                myGridFSDBFile.writeTo(myOutputStream);
+                File myFile = new File(myGridFSDBFile.getFilename());
+                FileUtils.writeByteArrayToFile(myFile, myOutputStream.toByteArray());
+                return myFile;
             }
         }
+        catch (IOException e)
+        {
+            LOGGER.error("Error reading file", e);
+        }
+
         return null;
     }
 
-    public void deleteAttachment(String aId) {
-        Query query = new Query(Criteria.where("_id").is(new ObjectId(aId)));
-        gridFsTemplate.delete(query);
+    public void deleteAttachment(String aId)
+    {
+        theGridFS.remove(new ObjectId(aId));
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@RestController
+@Controller
 public class CountriesController
 {
     @RequestMapping("/countries/findAll")

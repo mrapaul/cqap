@@ -3,20 +3,16 @@ package com.capstone.server.controller;
 import com.peirs.datamodel.dicom.*;
 import com.peirs.datamodel.ticket.*;
 import org.junit.*;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.*;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.context.annotation.*;
 import org.springframework.test.context.*;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.*;
 
 import java.util.*;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.assertions.Assertions.*;
 
-@DataMongoTest
-@ExtendWith(SpringExtension.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {MongoTestConfiguration.class,
         ProfessionalTicketService.class,
@@ -27,7 +23,7 @@ import static org.fest.assertions.Assertions.assertThat;
         InstitutionService.class,
         CounterService.class})
 @ActiveProfiles(profiles = "dev")
-public class TicketProviderTest
+public class TicketProviderTest extends BaseRepositoryTest
 {
     private ProfessionalTicketService theTicketService;
     private DicomStudyService theStudyService;
@@ -37,6 +33,8 @@ public class TicketProviderTest
     @Before
     public void setUp() throws Exception
     {
+        super.setUp();
+
         AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext();
         theTicketService = myContext.getBean(ProfessionalTicketService.class);
         theStudyService = myContext.getBean(DicomStudyService.class);

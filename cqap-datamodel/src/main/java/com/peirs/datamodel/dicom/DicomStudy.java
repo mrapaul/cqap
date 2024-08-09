@@ -10,8 +10,8 @@ import java.util.*;
 @Document(collection = "DicomStudy")
 public class DicomStudy
 {
-    public transient boolean theImport;
     @Id private String theId;
+    public transient boolean theImport;
     private String theStudyId;
     @Indexed private String theStudyInstanceUID;
     private String theStudyDate;
@@ -40,26 +40,6 @@ public class DicomStudy
         theSeriesInstanceUIDs = new HashSet<>();
     }
 
-    private static DicomImage selectImage(Collection<DicomImage> aImages)
-    {
-        for (DicomImage myImage : aImages)
-        {
-            if (imageContainsData(myImage))
-            {
-                return myImage;
-            }
-        }
-
-        return null;
-    }
-
-    private static boolean imageContainsData(DicomImage myImage)
-    {
-        return myImage.getPatientName() != null &&
-                myImage.getModality() != null &&
-                myImage.getStudyInstanceUID() != null;
-    }
-
     public void setImages(Collection<DicomImage> aImages)
     {
         theImageCount = aImages.size();
@@ -82,15 +62,31 @@ public class DicomStudy
             theScheduledProcedureStepDescription = mySelectedImage.getScheduledProcedureStepDescription();
             theOperatorName = mySelectedImage.getOperatorName();
             theInstitutions = mySelectedImage.getInstitutions();
-            theTags = new ArrayList<>();
-            theTags.addAll(mySelectedImage.getTags());
+            theTags = mySelectedImage.getTags();
             theSeriesInstanceUIDs.add(mySelectedImage.getSeriesInstanceUID());
+        }
+    }
 
-            if (theStudyDescription == null && theScheduledProcedureStepDescription != null)
+    private DicomImage selectImage(Collection<DicomImage> aImages)
+    {
+        for (DicomImage myImage : aImages)
+        {
+            if (imageContainsData(myImage))
             {
-                theStudyDescription = theScheduledProcedureStepDescription;
+                return myImage;
             }
         }
+
+        return null;
+    }
+
+    private boolean imageContainsData(DicomImage myImage)
+    {
+        return !myImage.getTags().isEmpty() &&
+                myImage.getPatientName() != null &&
+                myImage.getModality() != null &&
+                myImage.getStudyDescription() != null &&
+                myImage.getStudyInstanceUID() != null;
     }
 
     public String getId()

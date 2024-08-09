@@ -7,14 +7,16 @@ import org.springframework.stereotype.*;
 @Component("UserService")
 public class UserService
 {
-    @Autowired private UserRepository theUserRepository;
+    private UserRepository theUserRepository;
+
+    @Autowired
+    public UserService(UserRepository aUserRepository)
+    {
+        theUserRepository = aUserRepository;
+    }
 
     public User findByUsername(String aName)
     {
-        System.out.println("Looking up user " + aName);
-
-        createAdminUserIfMissing();
-
         User myUser = theUserRepository.findByTheUsername(aName);
 
         return myUser != null ? myUser : new User();
@@ -38,19 +40,5 @@ public class UserService
     public void delete(User aUser)
     {
         theUserRepository.delete(aUser);
-    }
-
-    private void createAdminUserIfMissing()
-    {
-        User admin = theUserRepository.findByTheUsername("admin");
-        if (admin == null)
-        {
-            User user = new User();
-            user.setUsername("admin");
-            user.setName("Administrator");
-            user.setAlias("Administrator");
-            user.setRole(Role.QAD);
-            createOrUpdate(user);
-        }
     }
 }

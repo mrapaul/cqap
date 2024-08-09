@@ -24,11 +24,8 @@ public class User
     private NotificationPreference theNotificationPreference;
     private CompletedNotification theCompletedNotification;
     private String theAlias;
-    private Set<String> theCPTPrimarySpecialities;
-    private Set<String> theCPTSecondarySpecialities;
-    private OsirixConfiguration theOsirixConfiguration;
-    private String theRadiologistID;
-    private String theRadiologistNPI;
+    private List<String> theCPTPrimarySpecialities;
+    private List<String> theCPTSecondarySpecialities;
 
     public String getId()
     {
@@ -196,53 +193,23 @@ public class User
         theAlias = aAlias;
     }
 
-    public Set<String> getCPTPrimarySpecialities()
+    public List<String> getCPTPrimarySpecialities()
     {
         return theCPTPrimarySpecialities;
     }
 
-    public void setCPTPrimarySpecialities(Set<String> aCPTPrimarySpecialities)
+    public void setCPTPrimarySpecialities(List<String> aCPTPrimarySpecialities)
     {
         theCPTPrimarySpecialities = aCPTPrimarySpecialities;
     }
 
-    public Set<String> getCPTSecondarySpecialities()
+    public List<String> getCPTSecondarySpecialities()
     {
         return theCPTSecondarySpecialities;
     }
 
-    public void setCPTSecondarySpecialities(Set<String> aCPTSecondarySpecialities)
+    public void setCPTSecondarySpecialities(List<String> aCPTSecondarySpecialities)
     {
         theCPTSecondarySpecialities = aCPTSecondarySpecialities;
-    }
-
-    public OsirixConfiguration getOsirixConfiguration()
-    {
-        return theOsirixConfiguration;
-    }
-
-    public void setOsirixConfiguration(OsirixConfiguration aOsirixConfiguration)
-    {
-        theOsirixConfiguration = aOsirixConfiguration;
-    }
-
-    public String getRadiologistNPI()
-    {
-        return theRadiologistNPI;
-    }
-
-    public void setRadiologistNPI(String aRadiologistNPI)
-    {
-        this.theRadiologistNPI = aRadiologistNPI;
-    }
-
-    public String getRadiologistID()
-    {
-        return theRadiologistID;
-    }
-
-    public void setRadiologistID(String aRadiologistID)
-    {
-        this.theRadiologistID = aRadiologistID;
     }
 }

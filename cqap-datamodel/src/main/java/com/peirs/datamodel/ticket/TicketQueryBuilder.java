@@ -2,6 +2,8 @@ package com.peirs.datamodel.ticket;
 
 import com.peirs.datamodel.*;
 
+import java.util.*;
+
 public class TicketQueryBuilder
 {
     private String theTicketId;
@@ -13,7 +15,7 @@ public class TicketQueryBuilder
     private String thePatientLastName;
     private String thePatientFirstName;
     private String thePatientID;
-    private String theModality;
+    private List<String> theModalities;
     private String theStudyDescription;
     private String theAccessionNumber;
     private String theCPTCode;
@@ -30,7 +32,7 @@ public class TicketQueryBuilder
 
     public TicketQueryBuilder()
     {
-        // empty
+        theModalities = new ArrayList<>();
     }
 
     public TicketQueryBuilder setTicketId(String aTicketId)
@@ -87,9 +89,9 @@ public class TicketQueryBuilder
         return this;
     }
 
-    public TicketQueryBuilder setModality(String aModality)
+    public TicketQueryBuilder setModalities(List<String> aModalities)
     {
-        theModality = aModality;
+        theModalities = aModalities;
         return this;
     }
 
@@ -182,7 +184,7 @@ public class TicketQueryBuilder
                 thePatientLastName,
                 thePatientFirstName,
                 thePatientID,
-                theModality,
+                theModalities,
                 theStudyDescription,
                 theAccessionNumber,
                 theCPTCode,

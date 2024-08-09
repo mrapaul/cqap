@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class GroupController
 {
     private final GroupService theGroupService;

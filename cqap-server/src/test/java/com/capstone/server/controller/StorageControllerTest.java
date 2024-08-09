@@ -1,24 +1,17 @@
 package com.capstone.server.controller;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.converter.ByteArrayHttpMessageConverter;
-import org.springframework.http.converter.FormHttpMessageConverter;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
+import com.peirs.datamodel.attachments.*;
+import org.codehaus.jackson.map.*;
+import org.junit.*;
+import org.springframework.core.io.*;
+import org.springframework.http.converter.*;
+import org.springframework.http.converter.json.*;
+import org.springframework.util.*;
+import org.springframework.web.client.*;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 public class StorageControllerTest
 {
@@ -31,7 +24,6 @@ public class StorageControllerTest
         theRestTemplate = restTemplate();
     }
 
-    @Disabled
     @Test
     public void uploadFile() throws Exception
     {
@@ -47,33 +39,14 @@ public class StorageControllerTest
 
     }
 
-//    @Test
-//    public void selectTicket() throws Exception
-//    {
-//        MongoTemplate myTemplate = new MongoTemplate(new SimpleMongoDbFactory(new MongoURI("mongodb://writer:writer@172.19.217.204:27017/peirs")));
-//        BasicQuery query1 = new BasicQuery("{ theViewId : 'PR-915' }");
-//        List<ProfessionalTicket> myPRTickets = myTemplate.find(query1, ProfessionalTicket.class, "PRTickets");
-//        System.out.println(myPRTickets);
-//
-//        Query myQuery = new Query();
-//        myQuery.with(new Sort(Sort.Direction.DESC, "theSubmittedTime"));
-//        myQuery.addCriteria(Criteria.where("theViewId").in("PR-915"));
-//        myQuery.addCriteria(Criteria.where("theDeleted").is(false));
-//        List<ProfessionalTicket> myProfessionalTickets = myTemplate.find(myQuery, ProfessionalTicket.class);
-//        System.out.println(myProfessionalTickets);
-//        LambdaList<TicketQueryResult> myQueryResults =
-//                with(myProfessionalTickets).convert(new TicketQueryResultConverter());
-//        System.out.println(myQueryResults);
-//    }
-
     public RestTemplate restTemplate()
     {
         RestTemplate myRestTemplate = new RestTemplate();
         List<HttpMessageConverter<?>> myConverters = new ArrayList<HttpMessageConverter<?>>();
-        MappingJackson2HttpMessageConverter myMapper = new MappingJackson2HttpMessageConverter();
+        MappingJacksonHttpMessageConverter myMapper = new MappingJacksonHttpMessageConverter();
         ObjectMapper myObjectMapper = new ObjectMapper();
-        myObjectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        myObjectMapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
+        myObjectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        myObjectMapper.configure(DeserializationConfig.Feature.READ_ENUMS_USING_TO_STRING, true);
         myMapper.setObjectMapper(myObjectMapper);
         myConverters.add(new ByteArrayHttpMessageConverter());
         myConverters.add(new FormHttpMessageConverter());

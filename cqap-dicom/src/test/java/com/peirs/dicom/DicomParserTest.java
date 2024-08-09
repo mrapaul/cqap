@@ -1,19 +1,23 @@
 package com.peirs.dicom;
 
-import com.peirs.datamodel.dicom.DicomImage;
-import ij.ImagePlus;
-import ij.io.Opener;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import com.peirs.datamodel.dicom.*;
+import ij.*;
+import ij.io.*;
+import org.junit.*;
 
-import java.io.File;
-import java.net.URL;
+import javax.imageio.*;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.*;
+import javax.swing.*;
+import java.awt.image.*;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 //@Ignore
 public class DicomParserTest
 {
-    @Disabled
-    @Test
+    @Ignore @Test
     public void search() throws Exception
     {
 //        DicomImageRepository myRepository = new DicomImageRepository();
@@ -89,15 +93,15 @@ public class DicomParserTest
 //        }
 //    }
 
-
-    @Disabled
+    @Ignore
     @Test
     public void imageJ() throws Exception
     {
-        URL fileURL = ClassLoader.getSystemResource("images/131423_001.dcm");
+        File file = new File(getClass().getClassLoader().getResource("images/IM-0001-0001.dcm").getPath());
+
         // open a file with ImageJ
         Opener myOpener = new Opener();
-        final ImagePlus imp = myOpener.openImage(fileURL.getPath());
+        final ImagePlus imp = myOpener.openImage(file.getAbsolutePath());
         // display it via ImageJ
         imp.show();
 
@@ -173,10 +177,10 @@ public class DicomParserTest
 //            personRepository.insert(myStudy);
 //        }
 
-        URL fileURL = ClassLoader.getSystemResource("images/131423_001.dcm");
+        URL myResource = getClass().getClassLoader().getResource("images/739699.dcm");
 
         DicomParser myParser = new DicomParser();
-        DicomImage myStudy = myParser.parse(new File(fileURL.getPath()));
+        DicomImage myStudy = myParser.parse(new File(myResource.getPath()));
         System.out.println(myStudy);
     }
 

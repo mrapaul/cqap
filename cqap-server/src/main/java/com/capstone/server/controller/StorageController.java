@@ -12,7 +12,7 @@ import org.springframework.web.multipart.*;
 
 import java.io.*;
 
-@RestController
+@Controller
 public class StorageController
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(StorageController.class);

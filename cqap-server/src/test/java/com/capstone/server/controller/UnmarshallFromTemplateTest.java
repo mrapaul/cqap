@@ -24,14 +24,11 @@ public class UnmarshallFromTemplateTest
         UnmarshallFromTemplate myUnmarshallFromTemplate = new UnmarshallFromTemplate();
         File myFile = myUnmarshallFromTemplate.unmarshall("ERP_Category_1_Response_Letter.docx",
                 myMappings,
-                "test",
-                "cqap",
-                "cqap");
+                "test");
 
         assertThat(myFile).isNotNull();
     }
 
-    @Ignore
     @Test
     public void testPDF() throws Exception
     {

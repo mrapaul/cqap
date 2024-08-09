@@ -7,7 +7,12 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+import java.util.*;
+
+import static ch.lambdaj.collection.LambdaCollections.*;
+import static org.hamcrest.CoreMatchers.*;
+
+@Controller
 public class HL7Controller
 {
     private final HL7Service theService;
@@ -27,19 +32,12 @@ public class HL7Controller
     @RequestMapping(value = "hl7/findForStudy", method = RequestMethod.POST)
     public @ResponseBody HL7Messages findForStudy(@RequestBody DicomStudy aStudy)
     {
-        return theService.findMessagesForStudy(aStudy);
-//        return new HL7Messages(HL7Finder.findHL7Messages(findAll().getMessages(), aStudy));
+        return new HL7Messages(HL7Finder.findHL7Messages(findAll().getMessages(), aStudy));
     }
 
-//    @RequestMapping(value = "hl7/createOrUpdate", method = RequestMethod.POST)
-//    public @ResponseBody void createOrUpdate(@RequestBody MergeHL7Message aMessage)
-//    {
-//        theService.createOrUpdate(aMessage);
-//    }
-
-    @RequestMapping(value = "hl7/store", method = RequestMethod.POST)
-    public @ResponseBody void store(@RequestBody String aMessage)
+    @RequestMapping(value = "hl7/createOrUpdate", method = RequestMethod.POST)
+    public @ResponseBody void createOrUpdate(@RequestBody MergeHL7Message aMessage)
     {
-        theService.store(aMessage);
+        theService.createOrUpdate(aMessage);
     }
 }

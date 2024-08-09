@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class UserController
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
@@ -45,8 +45,8 @@ public class UserController
         return theUserService.createOrUpdate(aUser);
     }
 
-    @RequestMapping(value = "/user/delete", method = RequestMethod.POST)
-    public @ResponseBody void deleteUser(@RequestBody User aUser)
+    @RequestMapping(value = "/user/delete", method = RequestMethod.DELETE)
+    public void deleteUser(@RequestBody User aUser)
     {
         theUserService.delete(aUser);
     }

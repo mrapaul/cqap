@@ -10,8 +10,8 @@ import java.util.*;
 public class SendMail
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(SendMail.class);
-    private static final String USERNAME = "quality@fortisqualitas.com";
-    private static final String PASSWORD = "Qu@l!t@s";
+    private static final String USERNAME = "qa@capstoneradiology.com";
+    private static final String PASSWORD = "Q@C@pst0n3";
 
     public static void sendMail(String aTo,
                                 String aSubject,
@@ -45,16 +45,11 @@ public class SendMail
             MimeBodyPart myBody = new MimeBodyPart();
             myBody.setText(aBody);
             myMultipart.addBodyPart(myBody);
-
-            if (aAttachmentName != null && aAttachmentLocation != null)
-            {
-                MimeBodyPart myAttachment = new MimeBodyPart();
-                DataSource myDataSource = new FileDataSource(aAttachmentLocation);
-                myAttachment.setDataHandler(new DataHandler(myDataSource));
-                myAttachment.setFileName(aAttachmentName);
-                myMultipart.addBodyPart(myAttachment);
-            }
-
+            MimeBodyPart myAttachment = new MimeBodyPart();
+            DataSource myDataSource = new FileDataSource(aAttachmentLocation);
+            myAttachment.setDataHandler(new DataHandler(myDataSource));
+            myAttachment.setFileName(aAttachmentName);
+            myMultipart.addBodyPart(myAttachment);
             myMessage.setContent(myMultipart);
 
             Transport.send(myMessage);

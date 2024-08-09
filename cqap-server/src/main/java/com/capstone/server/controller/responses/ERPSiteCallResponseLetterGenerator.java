@@ -9,19 +9,14 @@ public class ERPSiteCallResponseLetterGenerator extends BaseResponseLetterGenera
                                               UserRepository aUserRepository,
                                               StorageService aStorageService,
                                               String aTicketId,
-                                              String aUserId,
-                                              boolean aStoreAttachment,
-                                              String aMailAddresses)
+                                              String aUserId)
     {
-        super(aRepository, aUserRepository, aStorageService, aTicketId, aUserId, aStoreAttachment, aMailAddresses);
+        super(aRepository, aUserRepository, aStorageService, aTicketId, aUserId);
     }
 
-    @Override protected void generateResponseLetter(ResponseLetters aLetters,
-                                                    ProfessionalTicket aTicket,
-                                                    boolean aStoreAttachment,
-                                                    String aMailAddresses)
+    @Override protected void generateResponseLetter(ResponseLetters aLetters, ProfessionalTicket aTicket)
     {
-        aLetters.generateERPSiteCallReport(aTicket, aStoreAttachment, aMailAddresses);
+        aLetters.generateERPSiteCallReport(aTicket);
     }
 
     @Override protected String getResponseLetterName()

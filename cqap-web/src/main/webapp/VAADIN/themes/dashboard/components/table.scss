@@ -193,143 +193,18 @@
 	
 	.v-table.plain .v-table-row,
 	.v-table.plain .v-table-row-odd {
-        color: white;
 		background: transparent;
 	}
 	
 	.v-table.plain .v-table-cell-content {
 		border-left-color: transparent;
+		border-bottom: 1px solid #eee;
 		padding-top: .3em;
 		padding-bottom: .3em;
 	}
 	
 	.v-table.plain .v-table-caption-container {
 		border-left-color: transparent;
-        background-color: transparent;
-        color: #AA8808;
-        text-shadow: none;
 	}
-
-    .v-caption-plain {
-
-      color: #AA8808;
-      font-size: 22px;
-      line-height: 1;
-      font-weight: normal;
-      padding: .5em 0;
-      -webkit-font-smoothing: antialiased;
-      padding-left: 0.5em;
-    }
-
-  .v-table.plain .v-selected {
-    color: white;
-    background: #AA8808;
-    background: -moz-linear-gradient(top, #AA8808 0%, #937a07 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#AA8808), color-stop(100%,#937a07));
-    background: -webkit-linear-gradient(top, #AA8808 0%,#937a07 100%);
-    background: -o-linear-gradient(top, #AA8808 0%,#937a07 100%);
-    background: -ms-linear-gradient(top, #AA8808 0%,#937a07 100%);
-    /* background: linear-gradient(to bottom, #75b0e7 0%,#5f9de1 100%); */
-  }
-
-  .v-table.plain .v-selected + .v-selected {
-    background: #AA8808;
-  }
-
-  .v-table-cell-content-rtrc {
-    background-color: darkred;
-  }
-
-  .v-table-cell-content-rtrt {
-    background-color: #dacf0c;
-  }
-
-  .v-table-cell-content-ur {
-    background-color: #2a3f97;
-  }
-
-  .v-table-cell-content-tr {
-    background-color: #5c5c5c;
-  }
-
-  .v-table-cell-content-rr {
-    background-color: #1a1a1a;
-  }
-
-
-  .v-app .v-table .filters-panel input.v-textfield.v-widget,
-  .v-window .v-table .filters-panel input.v-textfield.v-widget {
-    height: 23px;
-    border-radius: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    -o-border-radius: 0px;
-    padding: 1px 2px; /* Fixes issue with Chameleon theme's TextField paddings in em's */
-    color: #AA8808;
-    background: #AA8808;
-  }
-
-  .filters-panel {
-    background-color: #353637;
-    width: 90000px;
-    overflow: hidden;
-    height: 23px;
-    color: #AA8808;
-  }
-
-/* DateFilter button styles */
-  .datefilterpopup .v-popupbutton,
-  .datefilterpopup .v-popupbutton:focus,
-  .datefilterpopup .v-popupbutton:active,
-  .datefilterpopup .v-popupbutton.v-pressed {
-    background: #353637 none repeat-x 0 100%;
-    height: 23px;
-    border: none;
-    position: relative;
-    border-bottom: 2px solid #AA8808;
-  }
-
-  .datefilterpopup .v-popupbutton:focus,
-  .datefilterpopup .v-popupbutton:active,
-  .datefilterpopup .v-popupbutton.v-pressed {
-    border: none;
-  }
-
-  .datefilterpopup .v-popupbutton .v-button-wrap,
-  .datefilterpopup .v-popupbutton:focus .v-button-wrap,
-  .datefilterpopup .v-popupbutton:active .v-button-wrap,
-  .datefilterpopup .v-popupbutton.v-pressed .v-button-wrap {
-    color: #AA8808;
-    overflow: hidden;
-    padding: 0;
-    text-align: left;
-    padding-top: 1px;
-  }
-
-
-  .datefilterpopup .v-popupbutton .v-popup-indicator {
-    height: 21px;
-    width: 18px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    zoom: 1;
-    background-position: -5px -8px;
-  }
-
-  .v-ie .datefilterpopup .v-popupbutton .v-popup-indicator {
-    display: inline;
-  }
-
-  .datefilterpopup .v-popupbutton .v-button-caption {
-    display: inline-block;
-    color: #AA8808;
-    height: 12px;
-    padding: 0;
-    padding-top: 2px;
-    font-size: 12px;
-    font-weight: normal;
-    font-size: 12px;
-  }
 
 }

@@ -16,12 +16,9 @@ public class DicomStudyQueryBuilder
     private String theStudyDescription;
     private String theAccessionNumber;
     private String theStudyDate;
-    private String theStudyBeginDate;
-    private String theStudyEndDate;
     private String theIIR;
     private String theSiteTechnologist;
     private String theCPTCode;
-    private String theStudyInstanceUID;
 
     public DicomStudyQueryBuilder()
     {
@@ -106,20 +103,6 @@ public class DicomStudyQueryBuilder
         return this;
     }
 
-    public DicomStudyQueryBuilder setStudyInstanceUID(String aStudyInstanceUID)
-    {
-        this.theStudyInstanceUID = aStudyInstanceUID;
-        return this;
-    }
-
-    public void setStudyBeginDate(String aStudyBeginDate) {
-        this.theStudyBeginDate = aStudyBeginDate;
-    }
-
-    public void setStudyEndDate(String aStudyEndDate) {
-        this.theStudyEndDate = aStudyEndDate;
-    }
-
     public DicomStudyQuery build()
     {
         return new DicomStudyQuery(theGroup,
@@ -132,10 +115,8 @@ public class DicomStudyQueryBuilder
                 theStudyDescription,
                 theAccessionNumber,
                 theStudyDate,
-                theStudyBeginDate,
-                theStudyEndDate,
                 theIIR,
                 theSiteTechnologist,
-                theCPTCode, theStudyInstanceUID);
+                theCPTCode);
     }
 }

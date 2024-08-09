@@ -1,8 +1,8 @@
 package com.peirs.datamodel.hl7;
 
-import java.lang.*;import java.lang.Override;import java.lang.String;public class HL7
+public class HL7
 {
-    private java.lang.String theMergeHL7Message;
+    private String theMergeHL7Message;
     private String theInternalPatientId;
     private String thePatientJacketNumber;
     private String thePatientReport;

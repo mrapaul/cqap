@@ -3,18 +3,33 @@
 	$outline: 0 0 0 2px rgba(49,50,51,.07);
 
 	.v-button {
-		color: black;
+		color: $text-color;
 		padding: .3em 1.4em;
 		
 		line-height: 1;
 		letter-spacing: -0.03em;
+		text-shadow: 0 .1em 0 rgba(255,255,255,.75);
 		
 		@include border-radius(.25em);
-
-        border-color: #AA8808;
-        border-top-color: #9e7d08;
-        border-bottom-color: #ba9208;
-        background: #AA8808;
+		
+		border: .1em solid #b3b4b5;
+		border-top-color: #d4d4d6;
+		border-bottom-color: #989b9c;
+	
+		@include box-shadow($outline);
+	/* 	-webkit-box-shadow: 0 0 0 2px rgba(49,50,51,.07); */
+	/* 	-moz-box-shadow: 0 0 0 2px rgba(49,50,51,.07); */
+	/* 	box-shadow: 0 0 0 2px rgba(40,50,51,.07); */
+		
+		background: #f2f2f3;
+		
+		background: -moz-linear-gradient(top, #ffffff 0%, #fafafa 5%, #eaebec 94%, #e2e3e4 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(5%,#fafafa), color-stop(94%,#eaebec), color-stop(100%,#e2e3e4));
+		background: -webkit-linear-gradient(top, #ffffff 0%,#fafafa 5%,#eaebec 94%,#e2e3e4 100%);
+		background: -o-linear-gradient(top, #ffffff 0%,#fafafa 5%,#eaebec 94%,#e2e3e4 100%);
+		background: -ms-linear-gradient(top, #ffffff 0%,#fafafa 5%,#eaebec 94%,#e2e3e4 100%);
+		/* Sass compiler chokes on this */
+	/* 	background: linear-gradient(to bottom, #ffffff 0%,#fafafa 5%,#eaebec 94%,#e2e3e4 100%); */
 	}
 	
 	.v-webkit & .v-button {
@@ -105,20 +120,7 @@
 	
 		@include box-shadow($outline);
 	}
-
-
-    .fq.v-button {
-    color: black;
-    text-shadow: none;
-    font-weight: bold;
-    -webkit-font-smoothing: antialiased;
-
-    border-color: #AA8808;
-    border-top-color: #9e7d08;
-    border-bottom-color: #ba9208;
-
-    background: #AA8808;
-  }
+	
 	
 	
 	.small.v-button {
@@ -167,28 +169,5 @@
 		-mox-box-shadow: none;
 		box-shadow: none;
 	}
-
-  .round.v-button {
-    display: block;
-    border-color: #AA8808;
-    border-top-color: #9e7d08;
-    border-bottom-color: #ba9208;
-
-    background: #AA8808;
-    //margin: 20px;
-    width: 50px;
-    height: 50px;
-    position: relative;
-    text-align: center;
-    line-height: 70px;
-    border-radius: 100%;
-    //box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
-  }
-
-  .round.v-button:hover {
-    text-decoration: none;
-    color: #555;
-    background: #f5f5f5;
-  }
 
 }

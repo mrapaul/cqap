@@ -9,7 +9,7 @@ public enum Modality
     MR("MR"),
     XA("XA/IV"),
     MG("MG"),
-    OTHER("OT");
+    OTHER("OTHER");
 
     private final String theDescription;
 

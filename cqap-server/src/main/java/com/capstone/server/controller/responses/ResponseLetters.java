@@ -7,13 +7,13 @@ import com.peirs.datamodel.*;
 import com.peirs.datamodel.dicom.*;
 import com.peirs.datamodel.ticket.*;
 import org.apache.commons.io.*;
+import org.docx4j.openpackaging.exceptions.*;
 import org.slf4j.*;
 
+import javax.xml.bind.*;
 import java.io.*;
 import java.text.*;
 import java.util.*;
-
-import static org.apache.commons.lang.StringUtils.*;
 
 public class ResponseLetters
 {
@@ -21,254 +21,114 @@ public class ResponseLetters
     private static final SimpleDateFormat STUDY_DATE_FORMAT = new SimpleDateFormat("yyyymmdd");
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd MMM yyyy");
     private final StorageService theStorageRepository;
-//    private final UnmarshallFromTemplate theUnmarshallFromTemplate;
+    private final UnmarshallFromTemplate theUnmarshallFromTemplate;
     private final PDFFormFiller thePDFFormFiller;
 
     public ResponseLetters(StorageService aStorageRepository)
     {
         theStorageRepository = aStorageRepository;
-//        theUnmarshallFromTemplate = new UnmarshallFromTemplate();
+        theUnmarshallFromTemplate = new UnmarshallFromTemplate();
         thePDFFormFiller = new PDFFormFiller();
     }
 
-    public void generateERPReport(ProfessionalTicket aTicket, boolean aStoreAttachment, String aMailAddresses)
+    public void generateERPReport(ProfessionalTicket aTicket)
     {
-        HashMap<String, String> myMappings = setERPReportValues(aTicket);
+        HashMap<String, String> myMappings = setReportValues(aTicket);
 
-        String myTemplateName = "PRSC";
+        String myTemplateName = "ERP_Category_" + aTicket.getERPReport().getCategory() + "_Response_Letter";
         String myFilename = aTicket.getViewId() + "_" + myTemplateName;
-        if (createAndAttachPdf(aTicket,
-                myTemplateName,
-                myFilename,
-                myMappings,
-                "Expert Review Panel Response",
-                aStoreAttachment,
-                aMailAddresses) && aStoreAttachment)
+        if (createAndAttachDocx(aTicket, myTemplateName, myFilename, myMappings, "Expert Review Panel Response"))
         {
             aTicket.addAttachment(myFilename);
         }
     }
 
-    public void generateTechERPReport(ProfessionalTicket aTicket, boolean aStoreAttachment, String aMailAddresses)
+    public void generateTechERPReport(ProfessionalTicket aTicket)
     {
-        HashMap<String, String> myMappings = setTechReportValues(aTicket);
+        HashMap<String, String> myMappings = setReportValues(aTicket);
 
-        String myTemplateName = "TRSC";
+        String myTemplateName = "TRT_ERP_Category_" + aTicket.getTechReport().getCategory() + "_Response_Letter";
         String myFilename = aTicket.getViewId() + "_" + myTemplateName;
-        if (createAndAttachPdf(aTicket,
-                myTemplateName,
-                myFilename,
-                myMappings,
-                "Technical Expert Review Panel Response",
-                aStoreAttachment,
-                aMailAddresses) && aStoreAttachment)
+        if (createAndAttachDocx(aTicket, myTemplateName, myFilename, myMappings, "Technical Expert Review Panel Response"))
         {
             aTicket.addAttachment(myFilename);
         }
     }
 
-    public void generateCMOReport(ProfessionalTicket aTicket, boolean aStoreAttachment, String aMailAddresses)
+    public void generateCMOReport(ProfessionalTicket aTicket)
     {
-        HashMap<String, String> myMappings = setCMOReportValues(aTicket);
+        HashMap<String, String> myMappings = setReportValues(aTicket);
         CMOReport myCMOReport = aTicket.getCMOReport();
         if (myCMOReport != null && myCMOReport.getCMO() != null)
         {
-            String myTemplateName = "PRSCCMO";
-            String myFilename = aTicket.getViewId() + "_" + myTemplateName;
-            if (createAndAttachPdf(aTicket,
+            int myERPReportCategory = aTicket.getERPReport().getCategory();
+            int myCMOCategory = myCMOReport.getCategory() != 0 ?
+                    myCMOReport.getCategory() :
+                    myERPReportCategory;
+
+            String myTemplateName = "CMO_Category_" + myERPReportCategory + "_to_" + myCMOCategory + "_Response_Letter";
+            String myFilename = aTicket.toString() + "_" + myTemplateName;
+            if (createAndAttachDocx(aTicket,
                     myTemplateName,
                     myFilename,
                     myMappings,
-                    "Chief Medical Officer Review Response",
-                    aStoreAttachment,
-                    aMailAddresses) && aStoreAttachment)
+                    "Chief Medical Officer Review Response"))
             {
                 aTicket.addAttachment(myFilename);
             }
         }
     }
 
-    private HashMap<String, String> setERPReportValues(ProfessionalTicket aTicket)
+    private HashMap<String, String> setReportValues(ProfessionalTicket aTicket)
     {
-        DicomStudy myStudy = aTicket.getStudy();
-        ERPReport myReport = aTicket.getERPReport();
-        ProfessionalTicketCategory myCategory = ProfessionalTicketCategory.lookup(myReport.getCategory());
         HashMap<String, String> myMappings = new HashMap<>();
         myMappings.put("TicketNumber", aTicket.getViewId());
-        myMappings.put("DateOfStudy", myStudy.getStudyDate() != null ? myStudy.getStudyDate() :
-                DATE_FORMAT.format(new Date()));
-        String myPatientName = myStudy.getPatientName().replaceAll("^", " ");
-        myMappings.put("PatientName", myPatientName);
-        myMappings.put("PatientMRN", myStudy.getPatientID());
-        myMappings.put("PatientDOB", myStudy.getPatientBirthDate());
-        myMappings.put("AccessionNumber", myStudy.getAccessionNumber());
-        myMappings.put("StudyDescription", myStudy.getStudyDescription());
-        myMappings.put("Category", String.valueOf(myReport.getCategory()));
-        myMappings.put("ReportAccuracyScore/100", String.valueOf(myCategory.getScore()) + "/100");
-        myMappings.put("ReportQualityScore/100", String.valueOf(myReport.getReportQuality() + "/100"));
-        myMappings.put("IQS/200",
-                String.valueOf(myReport.getReportQuality() + myCategory.getScore()) + "/200");
-        myMappings.put("ReportAccuracyComments",
-                myReport.getReportAccuracyComments() != null ? myReport.getReportAccuracyComments() : "No Comments");
-        myMappings.put("ReportQualityComments",
-                myReport.getReportQualityComments() != null ? myReport.getReportQualityComments() : "No Comments");
-        myMappings.put("Category", String.valueOf(myReport.getCategory()));
-        myMappings.put("Radiologist", myReport.getERP().getName());
-
-        return myMappings;
-    }
-
-    private HashMap<String, String> setCMOReportValues(ProfessionalTicket aTicket)
-    {
-        DicomStudy myStudy = aTicket.getStudy();
-        CMOReport myCMOReport = aTicket.getCMOReport();
-        ProfessionalTicketCategory myCategory = ProfessionalTicketCategory.lookup(myCMOReport.getCategory());
-        HashMap<String, String> myMappings = new HashMap<>();
-        myMappings.put("TicketNumber", aTicket.getViewId());
-        myMappings.put("DateOfStudy", myStudy.getStudyDate() != null ? myStudy.getStudyDate() :
-                DATE_FORMAT.format(new Date()));
-        String myPatientName = myStudy.getPatientName().replaceAll("^", " ");
-        myMappings.put("PatientName", myPatientName);
-        myMappings.put("PatientMRN", myStudy.getPatientID());
-        myMappings.put("PatientDOB", myStudy.getPatientBirthDate());
-        myMappings.put("AccessionNumber", myStudy.getAccessionNumber());
-        myMappings.put("StudyDescription", myStudy.getStudyDescription());
-        myMappings.put("ReportAccuracyScore/100", String.valueOf(myCategory.getScore()) + "/100");
-        myMappings.put("ReportQualityScore/100", String.valueOf(myCMOReport.getReportQuality() + "/100"));
-        myMappings.put("IQS/200",
-                String.valueOf(myCMOReport.getReportQuality() + myCategory.getScore()) + "/200");
-        myMappings.put("CMOReportAccuracyComments",
-                myCMOReport.getReportAccuracyComments() != null ?
-                        myCMOReport.getReportAccuracyComments() :
-                        "No Comments");
-        myMappings.put("CMOReportQualityComments",
-                myCMOReport.getReportQualityComments() != null ?
-                        myCMOReport.getReportQualityComments() :
-                        "No Comments");
-        myMappings.put("CMOCategory", String.valueOf(myCMOReport.getCategory()));
-        myMappings.put("ERPCategory", String.valueOf(aTicket.getERPReport().getCategory()));
-        myMappings.put("CMOusername", myCMOReport.getCMO().getName());
-        myMappings.put("Radiologist", myCMOReport.getCMO().getName());
-
-        return myMappings;
-    }
-
-    private HashMap<String, String> setTechReportValues(ProfessionalTicket aTicket)
-    {
-        DicomStudy myStudy = aTicket.getStudy();
-        TechReport myReport = aTicket.getTechReport();
-        ProfessionalTicketCategory myCategory = ProfessionalTicketCategory.lookup(myReport.getCategory());
-        HashMap<String, String> myMappings = new HashMap<>();
-        myMappings.put("TicketNumber", aTicket.getViewId());
-        myMappings.put("DateOfStudy", myStudy.getStudyDate() != null ? myStudy.getStudyDate() :
-                DATE_FORMAT.format(new Date()));
+        myMappings.put("Date", DATE_FORMAT.format(new Date()));
         myMappings.put("Recipient", "Site Quality Assurance Administrator");
-        String myPatientName = myStudy.getPatientName().replaceAll("^", " ");
-        myMappings.put("PatientName", myPatientName);
-        myMappings.put("PatientMRN", myStudy.getPatientID());
-        myMappings.put("PatientDOB", myStudy.getPatientBirthDate());
-        myMappings.put("AccessionNumber", myStudy.getAccessionNumber());
-        myMappings.put("StudyDescription", myStudy.getStudyDescription());
-        myMappings.put("Category", String.valueOf(myReport.getCategory()));
-        myMappings.put("MedicalImageQualityScore/100", String.valueOf(myCategory.getScore()) + "/100");
-        myMappings.put("TechnicalImageQualityScore/100", String.valueOf(myReport.getReportQuality() + "/100"));
-        myMappings.put("TIQS/200",
-                String.valueOf(myReport.getReportQuality() + myCategory.getScore()) + "/200");
-        myMappings.put("MedicalImageQualityComments",
-                myReport.getMedicalImageQualityComments() != null ?
-                        myReport.getMedicalImageQualityComments() :
-                        "No Comments");
-        myMappings.put("TechnicalImageQualityComments",
-                myReport.getTechnicalImageQualityComments() != null ?
-                        myReport.getTechnicalImageQualityComments() :
-                        "No Comments");
-        myMappings.put("Category", String.valueOf(myReport.getCategory()));
-        myMappings.put("Technologist", myReport.getERP().getName());
-
         return myMappings;
     }
 
-    public void generateERPSiteCallReport(ProfessionalTicket aTicket, boolean aStoreAttachment, String aMailAddresses)
+    public void generateERPSiteCallReport(ProfessionalTicket aTicket)
     {
         HashMap<String, String> myMappings = new HashMap<>();
         getStudyDetails(aTicket, myMappings);
-        DicomStudy myStudy = aTicket.getStudy();
+
         ERPReport myERPReport = aTicket.getERPReport();
         if (myERPReport != null)
         {
-            myMappings.put("TicketNumber", aTicket.getViewId());
-            myMappings.put("StudyDate", myStudy.getStudyDate() != null ? myStudy.getStudyDate() :
-                    DATE_FORMAT.format(new Date()));
-            myMappings.put("Date", DATE_FORMAT.format(new Date()));
-            String myPatientName = myStudy.getPatientName().replaceAll("\\^", " ");
-            myMappings.put("PatientName", myPatientName);
-            myMappings.put("PatientID", myStudy.getPatientID());
-            myMappings.put("PatientDOB", myStudy.getPatientBirthDate());
-            myMappings.put("AccessionNumber", myStudy.getAccessionNumber());
-            myMappings.put("StudyDescription", myStudy.getStudyDescription());
-            myMappings.put("ReportAccuracyComments",
-                    myERPReport.getReportAccuracyComments() != null ?
-                            myERPReport.getReportAccuracyComments() :
-                            "No Comments");
-            myMappings.put("ReportQualityComments",
-                    myERPReport.getReportQualityComments() != null ?
-                            myERPReport.getReportQualityComments() :
-                            "No Comments");
             myMappings.put("CMOusername", myERPReport.getERP().getName());
+            myMappings.put("ReportAccuracyComments", myERPReport.getReportAccuracyComments());
             myMappings.put("AdditionalFindingsComments", myERPReport.getAdditionalFactFindings());
             populateSiteCallReport(myMappings, myERPReport.getSiteCallReport());
         }
-        createAndAttachSiteCallReport(aTicket, myMappings, aStoreAttachment, aMailAddresses);
+        createAndAttachSiteCallReport(aTicket, myMappings);
     }
 
-    public void generateCMOSiteCallReport(ProfessionalTicket aTicket, boolean aStoreAttachment, String aMailAddresses)
+    public void generateCMOSiteCallReport(ProfessionalTicket aTicket)
     {
         HashMap<String, String> myMappings = new HashMap<>();
         getStudyDetails(aTicket, myMappings);
 
-        DicomStudy myStudy = aTicket.getStudy();
         CMOReport myCMOReport = aTicket.getCMOReport();
         if (myCMOReport != null)
         {
-            myMappings.put("TicketNumber", aTicket.getViewId());
-            myMappings.put("StudyDate", myStudy.getStudyDate() != null ? myStudy.getStudyDate() :
-                    DATE_FORMAT.format(new Date()));
-            myMappings.put("Date", DATE_FORMAT.format(new Date()));
-            String myPatientName = myStudy.getPatientName().replaceAll("\\^", " ");
-            myMappings.put("PatientName", myPatientName);
-            myMappings.put("PatientID", myStudy.getPatientID());
-            myMappings.put("PatientDOB", myStudy.getPatientBirthDate());
-            myMappings.put("AccessionNumber", myStudy.getAccessionNumber());
-            myMappings.put("StudyDescription", myStudy.getStudyDescription());
-            myMappings.put("ReportAccuracyComments",
-                    myCMOReport.getReportAccuracyComments() != null ?
-                            myCMOReport.getReportAccuracyComments() :
-                            "No Comments");
-            myMappings.put("ReportQualityComments",
-                    myCMOReport.getReportQualityComments() != null ?
-                            myCMOReport.getReportQualityComments() :
-                            "No Comments");
             myMappings.put("CMOusername", myCMOReport.getCMO().getName());
+            myMappings.put("ReportAccuracyComments", myCMOReport.getReportAccuracyComments());
             myMappings.put("AdditionalFindingsComments", myCMOReport.getAdditionalFactFindings());
             populateSiteCallReport(myMappings, myCMOReport.getSiteCallReport());
         }
-        createAndAttachSiteCallReport(aTicket, myMappings, aStoreAttachment, aMailAddresses);
+        createAndAttachSiteCallReport(aTicket, myMappings);
     }
 
-    private void createAndAttachSiteCallReport(ProfessionalTicket aTicket,
-                                               HashMap<String, String> aMappings,
-                                               boolean aStoreAttachment,
-                                               String aMailAddresses)
+    private void createAndAttachSiteCallReport(ProfessionalTicket aTicket, HashMap<String, String> aMappings)
     {
-        String myTemplateName = "PSFC";
-        String myFilename = aTicket.getViewId() + "_" + myTemplateName;
-        if (createAndAttachPdf(aTicket,
+        String myTemplateName = "AFFS";
+        String myFilename = aTicket.toString() + "_" + myTemplateName;
+        if (createAndAttachDocx(aTicket,
                 myTemplateName,
                 myFilename,
                 aMappings,
-                "Primary or Secondary Findings Communication",
-                aStoreAttachment,
-                aMailAddresses) && aStoreAttachment)
+                "Primary or Secondary Findings Communication"))
         {
             aTicket.addAttachment(myFilename);
         }
@@ -293,29 +153,18 @@ public class ResponseLetters
         Institution myInstitution = aTicket.getStudy().getInstitution();
         if (myInstitution != null)
         {
-            String institution = myInstitution.getName();
-            aMappings.put("Recipient",
-                    myInstitution.getBillingContactName() != null ?
-                            myInstitution.getBillingContactName() :
-                            "Whomever it may concern");
+            aMappings.put("Institution", myInstitution.getName());
+            aMappings.put("Recipient", myInstitution.getBillingContactName());
             Address myAddress = myInstitution.getAddress();
             if (myAddress != null)
             {
-                if (myAddress.getCity() != null)
-                {
-                    institution += " " + myAddress.getCity();
-                }
-
-                if (myAddress.getState() != null)
-                {
-                    institution += " ," + myAddress.getState();
-                }
+                aMappings.put("Town", myAddress.getCity());
+                aMappings.put("State", myAddress.getState());
             }
-            aMappings.put("Institution - Town, State", institution);
         }
         DicomStudy myStudy = aTicket.getStudy();
         aMappings.put("PatientName", myStudy.getPatientName().replace('^', ' '));
-        aMappings.put("PatientID", myStudy.getPatientID());
+        aMappings.put("PatientMRN", myStudy.getPatientID());
         aMappings.put("StudyDescription", myStudy.getStudyDescription());
         aMappings.put("PatientDOB", formatDate(myStudy.getPatientBirthDate()));
         aMappings.put("StudyDate", formatDate(myStudy.getStudyDate()));
@@ -323,11 +172,6 @@ public class ResponseLetters
 
     private String formatDate(String aDate)
     {
-        if (aDate == null)
-        {
-            return "N/A";
-        }
-
         try
         {
             return DATE_FORMAT.format(STUDY_DATE_FORMAT.parse(aDate));
@@ -340,57 +184,45 @@ public class ResponseLetters
         return aDate;
     }
 
-//    private boolean createAndAttachDocx(ProfessionalTicket aTicket,
-//                                        String aTemplateName,
-//                                        String aFilename,
-//                                        HashMap<String, String> aMappings,
-//                                        String aResponseType)
-//    {
-//        try
-//        {
-//            Institution myInstitution = aTicket.getStudy().getStudyInstitution();
-//            String myUserPassword = myInstitution != null ? myInstitution.getUserPassword() : null;
-//            String myOwnerPassword = myInstitution != null ? myInstitution.getOwnerPassword() : null;
-//            File myFile = theUnmarshallFromTemplate.unmarshall(aTemplateName + ".docx",
-//                    aMappings,
-//                    aFilename,
-//                    myUserPassword != null ? myUserPassword : "CQAP",
-//                    myOwnerPassword != null ? myOwnerPassword : "CQAP");
-//            theStorageRepository.storeAttachment(aTicket.getId(),
-//                    myFile.getName(),
-//                    FileUtils.readFileToByteArray(myFile));
-//            sendMail(aTicket, myFile, aResponseType);
-//            myFile.delete();
-//        }
-//        catch (Docx4JException | JAXBException | IOException | DocumentException e)
-//        {
-//            LOGGER.error("Error creating response letter", e);
-//
-//            return false;
-//        }
-//
-//        return true;
-//    }
+    private boolean createAndAttachDocx(ProfessionalTicket aTicket,
+                                        String aTemplateName,
+                                        String aFilename,
+                                        HashMap<String, String> aMappings,
+                                        String aResponseType)
+    {
+        try
+        {
+            File myFile = theUnmarshallFromTemplate.unmarshall(aTemplateName + ".docx", aMappings, aFilename);
+            theStorageRepository.storeAttachment(aTicket.getId(),
+                    myFile.getName(),
+                    FileUtils.readFileToByteArray(myFile));
+            sendMail(aTicket, myFile, aResponseType);
+            myFile.delete();
+        }
+        catch (Docx4JException | JAXBException | IOException e)
+        {
+            LOGGER.error("Error creating response letter", e);
+
+            return false;
+        }
+
+        return true;
+    }
 
     private boolean createAndAttachPdf(ProfessionalTicket aTicket,
                                        String aTemplateName,
                                        String aFilename,
                                        HashMap<String, String> aMappings,
-                                       String aResponseType,
-                                       boolean aStoreAttachment,
-                                       String aMailAddresses)
+                                       String aResponseType)
     {
         try
         {
-            File myFile = thePDFFormFiller.fillForm(aTemplateName, aMappings, aFilename);
-            if (aStoreAttachment)
-            {
-                theStorageRepository.storeAttachment(aTicket.getId(),
-                        myFile.getName(),
-                        FileUtils.readFileToByteArray(myFile));
-            }
-            sendMail(aTicket, myFile, aResponseType, aMailAddresses);
-            FileUtils.deleteQuietly(myFile);
+            File myFile = thePDFFormFiller.fillForm(aTemplateName + ".pdf", aMappings, aFilename);
+            theStorageRepository.storeAttachment(aTicket.getId(),
+                    myFile.getName(),
+                    FileUtils.readFileToByteArray(myFile));
+            sendMail(aTicket, myFile, aResponseType);
+            myFile.delete();
         }
         catch (DocumentException | IOException e)
         {
@@ -402,37 +234,38 @@ public class ResponseLetters
         return true;
     }
 
-    private void sendMail(ProfessionalTicket aTicket, File aFile, String aResponseType, String aMailAddresses)
+    private void sendMail(ProfessionalTicket aTicket, File aFile, String aResponseType)
     {
         try
         {
-            String addresses = getAddresses(aTicket, aMailAddresses);
-            if (isNotEmpty(addresses))
+            Institution myInstitution = aTicket.getStudy().getInstitution();
+            if (myInstitution != null &&
+                    myInstitution.getBillingEmail() != null &&
+                    myInstitution.getBillingEmail().getAddress() != null &&
+                    !myInstitution.getBillingEmail().getAddress().trim().isEmpty())
             {
+                String myAddress = myInstitution.getBillingEmail().getAddress();
                 String myTicketId = aTicket.getViewId();
-                String mySubject = "Fortis Qualitas " + aResponseType + " - " + myTicketId
-                        + "[ " + (aTicket.isSubmittedVariance() ? "Submitted" : "Random" + " ]");
-                String contact = getContactName(aTicket, aMailAddresses);
-                String myBody =
-                        new StringBuilder(contact != null ? contact : "Whomever it may concern")
-                                .append(",")
-                                .append("\n\n")
-                                .append("Please find the results attached.")
-                                .append("\n\n")
-                                .append("Regards,")
-                                .append("\n")
-                                .append("Fortis Qualitas.").toString();
-                SendMail.sendMail(addresses,
+                String mySubject = "Capstone Radiology " + aResponseType + " - " + myTicketId;
+                String myBody = new StringBuilder(myInstitution.getBillingContactName())
+                        .append(",")
+                        .append("\n\n")
+                        .append("Please find the results attached.")
+                        .append("\n\n")
+                        .append("Regards,")
+                        .append("\n")
+                        .append("Capstone Radiology.").toString();
+                SendMail.sendMail(myAddress,
                         mySubject,
                         myBody,
                         aResponseType + myTicketId + ".pdf",
                         aFile.getAbsolutePath());
 
-                LOGGER.info("Sent mail for {} to {}", myTicketId, addresses);
+                LOGGER.info("Sent mail for {} to {}", myTicketId, myAddress);
             }
             else
             {
-                LOGGER.info("No valid mail addresses set for ticket {}, response was not mailed out",
+                LOGGER.info("No institution or billing email set for ticket {}, response was not mailed out",
                         aTicket.getViewId());
             }
         }
@@ -440,40 +273,5 @@ public class ResponseLetters
         {
             LOGGER.error("Error sending mail", e);
         }
-    }
-
-    private String getContactName(ProfessionalTicket aTicket, String mailAddresses)
-    {
-        if (isNotEmpty(mailAddresses))
-        {
-            return "Whomever it may concern";
-        }
-
-        Institution myInstitution = aTicket.getStudy().getInstitution();
-
-        if (isNotEmpty(myInstitution.getBillingContactName()))
-        {
-            return myInstitution.getBillingContactName();
-        }
-
-        return "Whomever it may concern";
-    }
-
-    private String getAddresses(ProfessionalTicket aTicket, String aMailAddresses)
-    {
-        if (isNotEmpty(aMailAddresses))
-        {
-            return aMailAddresses;
-        }
-
-        Institution myInstitution = aTicket.getStudy().getInstitution();
-        if (myInstitution != null &&
-                myInstitution.getBillingEmail() != null &&
-                isNotEmpty(myInstitution.getBillingEmail().getAddress()))
-        {
-            return myInstitution.getBillingEmail().getAddress();
-        }
-
-        return null;
     }
 }

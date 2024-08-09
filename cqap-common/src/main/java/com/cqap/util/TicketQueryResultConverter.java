@@ -5,8 +5,6 @@ import com.peirs.datamodel.*;
 import com.peirs.datamodel.dicom.*;
 import com.peirs.datamodel.ticket.*;
 
-import java.util.*;
-
 public class TicketQueryResultConverter implements Converter<ProfessionalTicket, TicketQueryResult>
 {
     @Override public TicketQueryResult convert(ProfessionalTicket aProfessionalTicket)
@@ -26,22 +24,14 @@ public class TicketQueryResultConverter implements Converter<ProfessionalTicket,
             if (myERPReport != null)
             {
                 myResult.setERPCategory(myERPReport.getCategory());
-                User myERP = myERPReport.getERP();
-                if (myERP != null)
-                {
-                    myResult.setERP(myERP.getName());
-                }
+                myResult.setERP(myERPReport.getERP().getName());
             }
 
             CMOReport myCMOReport = aProfessionalTicket.getCMOReport();
             if (myCMOReport != null)
             {
                 myResult.setCMOCategory(myCMOReport.getCategory());
-                User myCMO = myCMOReport.getCMO();
-                if (myCMO != null)
-                {
-                    myResult.setCMO(myCMO.getName());
-                }
+                myResult.setCMO(myCMOReport.getCMO().getName());
             }
 
             int myTicketCategory = myResult.getCMOCategory() != 0 ?
@@ -55,11 +45,7 @@ public class TicketQueryResultConverter implements Converter<ProfessionalTicket,
             if (myTechReport != null)
             {
                 myResult.setCategory(myTechReport.getCategory());
-                User myERP = myTechReport.getERP();
-                if (myERP != null)
-                {
-                    myResult.setERP(myERP.getName());
-                }
+                myResult.setERP(myTechReport.getERP().getName());
             }
         }
 

@@ -1,10 +1,12 @@
 package com.capstone.server.controller;
 
+import com.peirs.datamodel.*;
 import com.peirs.datamodel.ticket.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class ProfessionalTicketController
 {
     private final ProfessionalTicketService theTicketService;
@@ -36,7 +38,7 @@ public class ProfessionalTicketController
     @RequestMapping(value = "professionalTickets/createOrUpdate", method = RequestMethod.POST)
     public @ResponseBody ProfessionalTicket createOrUpdate(@RequestBody ProfessionalTicket aTicket)
     {
-        return theTicketService.createOrUpdate(aTicket, false);
+        return theTicketService.createOrUpdate(aTicket);
     }
 
     @RequestMapping(value = "professionalTickets/delete", method = RequestMethod.POST)

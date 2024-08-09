@@ -225,29 +225,4 @@ public class DicomImage
     {
         return theSeriesInstanceUID;
     }
-
-    @Override
-    public String toString() {
-        return "DicomImage{" +
-                "theId='" + theId + '\'' +
-                ", theImportedTime=" + theImportedTime +
-                ", theStudyId='" + theStudyId + '\'' +
-                ", theStudyInstanceUID='" + theStudyInstanceUID + '\'' +
-                ", theStudyDate='" + theStudyDate + '\'' +
-                ", thePatientName='" + thePatientName + '\'' +
-                ", thePatientID='" + thePatientID + '\'' +
-                ", thePatientBirthDate='" + thePatientBirthDate + '\'' +
-                ", thePatientSex='" + thePatientSex + '\'' +
-                ", theAccessionNumber='" + theAccessionNumber + '\'' +
-                ", theStudyDescription='" + theStudyDescription + '\'' +
-                ", theModality='" + theModality + '\'' +
-                ", theInstitutionName='" + theInstitutionName + '\'' +
-                ", theInstitutionalDepartmentName='" + theInstitutionalDepartmentName + '\'' +
-                ", theScheduledProcedureStepDescription='" + theScheduledProcedureStepDescription + '\'' +
-                ", theOperatorName='" + theOperatorName + '\'' +
-                ", theInstitutions=" + theInstitutions +
-                ", theTags=" + theTags +
-                ", theSeriesInstanceUID='" + theSeriesInstanceUID + '\'' +
-                '}';
-    }
 }

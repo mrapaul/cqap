@@ -1,5 +1,7 @@
 package com.peirs.datamodel;
 
+import java.util.*;
+
 public class Contract
 {
     private long theStartDate;

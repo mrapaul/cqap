@@ -2,12 +2,12 @@ package com.peirs.datamodel.hl7;
 
 
 import org.springframework.data.annotation.*;
-import org.springframework.data.annotation.Id;import org.springframework.data.mongodb.core.mapping.*;import org.springframework.data.mongodb.core.mapping.Document;import java.lang.*;import java.lang.String;
+import org.springframework.data.mongodb.core.mapping.*;
 
 @Document(collection = "MergeHL7Messages")
 public class MergeHL7Message
 {
-    @Id private java.lang.String theId;
+    @Id private String theId;
     private String theMessage;
 
     public MergeHL7Message()

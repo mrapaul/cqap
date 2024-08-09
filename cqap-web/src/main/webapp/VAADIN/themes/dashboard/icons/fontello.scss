@@ -18,29 +18,28 @@
 	  font-family: 'fontello';
 	  font-style: normal;
 	  font-weight: normal;
-      font-size: 2em;
 	  speak: none;
 	  display: inline-block;
 	  text-decoration: inherit;
 	  text-align: center;
-	  //line-height: 1;
-	  //margin-right: .4em;
-	  //vertical-align: 1px;
+	  line-height: 1;
+	  margin-right: .4em;
+	  vertical-align: 1px;
 	}
 	
 	[class^="icon-"] > .v-button-wrap:before,
 	[class*=" icon-"] > .v-button-wrap:before,
 	[class^="icon-"].v-nativebutton:before,
 	[class*=" icon-"].v-nativebutton:before {
-		//margin: 0;
-		//margin-left: -.3em;
+		margin: 0;
+		margin-left: -.3em;
 	}
-
+	
 	[class^="icon-"] > span > .v-button-caption,
 	[class^="icon-"] > .v-nativebutton-caption,
 	[class*=" icon-"] > span > .v-button-caption,
 	[class*=" icon-"] > .v-nativebutton-caption {
-	  //margin-left: .3em;
+	  margin-left: .3em;
 	}
 	
 	@include icon(transactions, '\21c4');
@@ -55,10 +54,5 @@
 	@include icon(edit, '\270d');
 	@include icon(bell, '\1f514');
 	@include icon(cancel, '\2715');
-    @include icon(institutions, '\e724');
-    @include icon(administration, '\1f4bb');
-    @include icon(archive, '\1f4c1');
-    @include icon(groups, '\e722');
-    @include icon(statistics, '\1f4c8');
-    @include icon(new, '\2b');
+	
 }

@@ -1,60 +1,50 @@
 package com.cqap.dicom.scraper;
 
-import com.cqap.client.ClientRestService;
-import jakarta.annotation.PreDestroy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import com.cqap.client.*;
+import org.springframework.context.*;
+import org.springframework.context.annotation.*;
 
-import java.nio.file.Paths;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.io.*;
+import java.nio.file.*;
+import java.util.concurrent.*;
 
-
-@SpringBootApplication(scanBasePackages = {"com.cqap.*", "com.lakeland.*", "com.peirs.*", "com.capstone.*"})
-public class DicomScraperMain {
-
-    private static final Logger logger = LoggerFactory.getLogger(DicomScraperMain.class);
-
-    private final ClientRestService clientRestService;
+public class DicomScraperMain
+{
     private final ScheduledExecutorService theExecutorService;
-    private ParsingTask theParsingTask;
+    private final ParsingTask theParsingTask;
 
-    public DicomScraperMain(ClientRestService clientRestService) {
-        this.clientRestService = clientRestService;
-        this.theExecutorService = Executors.newSingleThreadScheduledExecutor();
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(DicomScraperMain.class, args);
-    }
-
-    @Bean
-    public CommandLineRunner commandLineRunner() {
-        return args -> {
-            if (args.length == 0) {
-                logger.error("No directory provided. Usage: java DicomScraperMain dir");
-                System.exit(-1);
-            }
-            start(args[0]);
-        };
-    }
-
-    public void start(String aDirectory) {
-        logger.info("Starting Dicom Scraper for directory: {}", aDirectory);
-        DicomScraper myDicomScraper = new DicomScraper(clientRestService);
+    public DicomScraperMain(String aDirectory)
+    {
+        theExecutorService = Executors.newSingleThreadScheduledExecutor();
+        ConfigurableApplicationContext myContext = new AnnotationConfigApplicationContext(ClientServiceProvider.class);
+        ClientRestService myClientRestService = myContext.getBean(ClientRestService.class);
+        DicomScraper myDicomScraper = new DicomScraper(myClientRestService);
         theParsingTask = new ParsingTask(myDicomScraper, Paths.get(aDirectory));
-        theExecutorService.scheduleAtFixedRate(theParsingTask, 0, 5, TimeUnit.SECONDS);
-        logger.info("Started Dicom Scraper for directory: {}", aDirectory);
     }
 
-    @PreDestroy
-    public void cleanUp() {
-        logger.info("Shutting down executor service");
-        theExecutorService.shutdown();
+    public static void main(String[] anArguments) throws IOException
+    {
+        if (anArguments.length == 0)
+        {
+            usage();
+        }
+
+        System.setProperty("prod", Boolean.toString(true));
+        new DicomScraperMain(anArguments[0]).start();
+    }
+
+    public void start()
+    {
+        theExecutorService.scheduleAtFixedRate(theParsingTask,
+                0,
+                5,
+                TimeUnit.MINUTES);
+
+    }
+
+    static void usage()
+    {
+        System.err.println("usage: java DicomScraperMain dir");
+        System.exit(-1);
     }
 }

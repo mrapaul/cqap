@@ -7,6 +7,7 @@ import org.mockito.*;
 import java.util.*;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class UserServiceTest
@@ -19,7 +20,7 @@ public class UserServiceTest
     public void setUp() throws Exception
     {
         MockitoAnnotations.initMocks(this);
-        theUserService = new UserService();
+        theUserService = new UserService(theUserRepository);
     }
 
     @Test

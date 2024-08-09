@@ -1,13 +1,8 @@
 package com.peirs.dicom;
 
-
-import com.peirs.datamodel.dicom.DicomImage;
-import com.peirs.datamodel.dicom.DicomTag;
-import org.dcm4che2.data.DicomElement;
-import org.dcm4che2.data.DicomObject;
-import org.dcm4che2.data.SpecificCharacterSet;
-import org.dcm4che2.data.Tag;
-import org.dcm4che2.io.DicomInputStream;
+import com.peirs.datamodel.dicom.*;
+import org.dcm4che2.data.*;
+import org.dcm4che2.io.*;
 import org.slf4j.*;
 
 import java.io.*;
@@ -19,24 +14,10 @@ public class DicomParser
 
     public DicomImage parse(File aFile)
     {
-        try
-        {
-            return parse(new DicomInputStream(aFile));
-        }
-        catch (IOException anException)
-        {
-            LOGGER.error("Error parsing dicom file", anException);
-        }
-
-        return new DicomImage();
-    }
-
-    public DicomImage parse(DicomInputStream aInputStream)
-    {
         DicomImage myImage = new DicomImage();
-        try
+        try (DicomInputStream myInputStream = new DicomInputStream(aFile))
         {
-            DicomObject myObject = aInputStream.readDicomObject();
+            DicomObject myObject = myInputStream.readDicomObject();
             if (myObject != null)
             {
                 parseImage(myImage, myObject);
@@ -47,10 +28,11 @@ public class DicomParser
         {
             LOGGER.error("Error parsing dicom file", anException);
         }
+
         return myImage;
     }
 
-    public void parseFields(DicomImage aImage, DicomObject aObject)
+    private void parseFields(DicomImage aImage, DicomObject aObject)
     {
         SpecificCharacterSet myCharacterSet = aObject.getSpecificCharacterSet();
         Iterator<DicomElement> myIterator = aObject.iterator();
@@ -88,6 +70,7 @@ public class DicomParser
         myTag.setDicomTagName(aObject.nameOf(aTag));
         myTag.setValue(myValue != null ? myValue.trim() : myValue);
         aImage.addTag(myTag);
+
         switch (myDicomTag)
         {
             case Tag.StudyID:
@@ -128,10 +111,7 @@ public class DicomParser
             }
             case Tag.AccessionNumber:
             {
-                if (aImage.getAccessionNumber() == null || aImage.getAccessionNumber().isEmpty())
-                {
-                    aImage.setAccessionNumber(myValue);
-                }
+                aImage.setAccessionNumber(myValue);
 
                 break;
             }
@@ -161,11 +141,7 @@ public class DicomParser
             }
             case Tag.ScheduledProcedureStepDescription:
             {
-                if (aImage.getScheduledProcedureStepDescription() == null || aImage
-                        .getScheduledProcedureStepDescription().isEmpty())
-                {
-                    aImage.setScheduledProcedureStepDescription(myValue);
-                }
+                aImage.setScheduledProcedureStepDescription(myValue);
 
                 break;
             }
@@ -184,27 +160,6 @@ public class DicomParser
             case Tag.SeriesInstanceUID:
             {
                 aImage.setSeriesInstanceUID(myValue);
-
-                break;
-            }
-            case Tag.AdditionalPatientHistory:
-            {
-
-//                if (aImage.add() == null || aImage.getPatientHistory().isEmpty())
-//                {
-//                    aImage.setPatientHistory(myValue);
-//                }
-
-                break;
-            }
-            case Tag.ReasonForStudy:
-            {
-//                if (aImage.getPatientHistory() == null || aImage.getPatientHistory().isEmpty())
-//                {
-//                    aImage.setPatientHistory(myValue);
-//                }
-
-                break;
             }
         }
     }
@@ -219,8 +174,7 @@ public class DicomParser
 
     private void parseImage(DicomImage aObject, DicomObject aImage)
     {
+        //            DicomElement myImageElement = myObject.get(Tag.PixelData);
         aImage.remove(Tag.PixelData);
-        aImage.remove(Tag.RequestAttributesSequence);
     }
 }
-

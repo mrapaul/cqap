@@ -1,4 +1,4 @@
-/target/
+**/target/
 .idea/
 .vscode/
 .settings
@@ -21,3 +21,13 @@ error-screenshots/
 webpack.generated.js
 
 **/*.dcm
+/3rdpary-dependencies/target/classes/hl7lib231.jar
+/3rdpary-dependencies/target/classes/hl7lib240.jar
+/3rdpary-dependencies/target/classes/hl7lib251.jar
+/3rdpary-dependencies/target/classes/hl7lib260.jar
+/3rdpary-dependencies/target/classes/hl7samples.jar
+/3rdpary-dependencies/target/classes/LightHl7Lib.jar
+/3rdpary-dependencies/target/classes/loci_tools.jar
+/3rdpary-dependencies/target/classes/mc3hl7.jar
+/3rdpary-dependencies/target/maven-archiver/pom.properties
+/3rdpary-dependencies/target/3rdpary-dependencies-202411-SNAPSHOT.jar

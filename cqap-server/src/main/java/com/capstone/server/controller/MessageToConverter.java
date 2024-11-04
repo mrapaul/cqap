@@ -6,6 +6,7 @@ import ca.uhn.hl7v2.model.v26.segment.*;
 import ca.uhn.hl7v2.parser.*;
 import ch.lambdaj.function.convert.*;
 import com.mongodb.*;
+import com.mongodb.util.JSON;
 import org.jetbrains.annotations.*;
 import org.json.*;
 import org.slf4j.*;
@@ -38,7 +39,8 @@ public class MessageToConverter implements Converter<String, Message>
             String xmlToJson = XML.toJSONObject(xml).toString();
             xmlToJson = xmlToJson.replace(".", "");
             JSONObject jsonObject = JSONML.toJSONObject(xmlToJson);
-            BasicDBObject parsedMessageToDBObject = BasicDBObject.parse(jsonObject.toString());
+            Object parsedObject = JSON.parse(jsonObject.toString());
+            BasicDBObject parsedMessageToDBObject = (BasicDBObject) parsedObject;
 
             return new Message(date,
                     messageTypeCode,

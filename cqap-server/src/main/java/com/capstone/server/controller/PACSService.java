@@ -69,11 +69,11 @@ public class PACSService
             List<DicomObject> objects = dicomStudyFinder.detailedQuery(pacs, externalDicomStudy.getAccessionNumber());
             for (DicomObject object : objects)
             {
-                List<DicomStudy> dicomStudies = dicomStudyService.processImage(object);
-                if (dicomStudies != null)
-                {
-                    studies.addAll(dicomStudies);
-                }
+//                List<DicomStudy> dicomStudies = dicomStudyService.processImage(object);
+//                if (dicomStudies != null)
+//                {
+//                    studies.addAll(dicomStudies);
+//                }
             }
         }
         catch (Exception e)

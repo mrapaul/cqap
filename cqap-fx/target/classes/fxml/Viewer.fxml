@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="834.0" prefWidth="1339.0" styleClass="background" xmlns:fx="http://javafx.com/fxml" fx:controller="com.capstone.fx.controllers.ViewerController">
+  <children>
+    <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="1339.0" spacing="10.0" BorderPane.alignment="CENTER">
+          <children>
+            <ProgressBar fx:id="theProgress" maxWidth="1.7976931348623157E308" prefWidth="1283.0" progress="0.0" HBox.hgrow="ALWAYS">
+              <HBox.margin>
+                <Insets right="30.0" />
+              </HBox.margin>
+            </ProgressBar>
+          </children>
+          <padding>
+            <Insets left="20.0" />
+          </padding>
+        </HBox>
+      </bottom>
+      <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+          <children>
+            <ImageView fx:id="theImage" fitHeight="781.0" fitWidth="1041.3333333333333" pickOnBounds="true" preserveRatio="true" />
+          </children>
+        </AnchorPane>
+      </center>
+      <left>
+        <ListView fx:id="theImagesList" prefHeight="200.0" prefWidth="200.0" />
+      </left>
+    </BorderPane>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/main.css" />
+  </stylesheets>
+</AnchorPane>

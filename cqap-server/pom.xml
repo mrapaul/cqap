@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
@@ -6,44 +5,14 @@
 
     <!-- This module is part of the bigger project, this allows us to build the whole project in one hit -->
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>0.5.0.M4</version>
+        <groupId>com.capstone</groupId>
+        <artifactId>cqap</artifactId>
+        <version>202411-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.capstone</groupId>
     <artifactId>cqap-server</artifactId>
-    <version>SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <properties>
-        <cglib.version>2.2.2</cglib.version>
-        <commons-io.version>2.4</commons-io.version>
-        <commons-lang.version>2.6</commons-lang.version>
-        <commons-collections.version>3.2.1</commons-collections.version>
-        <dcm4che.version>2.0.27</dcm4che.version>
-        <ektorp.version>1.3.0</ektorp.version>
-        <fest-assert.version>1.4</fest-assert.version>
-        <guava.version>14.0.1</guava.version>
-        <jackson-databind.version>2.2.3</jackson-databind.version>
-        <javafx.version>2.2</javafx.version>
-        <javax.validation.version>1.0.0.GA</javax.validation.version>
-        <junit.version>4.8.1</junit.version>
-        <lambdaj.version>2.3.3</lambdaj.version>
-        <mongo-java-driver.version>2.10.1</mongo-java-driver.version>
-        <slf4j-api.version>1.6.1</slf4j-api.version>
-        <swingx.version>1.6.1</swingx.version>
-        <spring.data.mongo.version>1.3.1.RELEASE</spring.data.mongo.version>
-        <maven-jetty-plugin.version>6.1.10</maven-jetty-plugin.version>
-        <org.springframework.version>3.2.4.RELEASE</org.springframework.version>
-        <org.slf4j.version>1.6.1</org.slf4j.version>
-        <org.codehaus.jackson.version>1.9.5</org.codehaus.jackson.version>
-        <log4j.version>1.2.16</log4j.version>
-        <resteasy-jaxrs.version>2.2.1.GA</resteasy-jaxrs.version>
-        <resteasy-jackson-provider.version>2.2.1.GA</resteasy-jackson-provider.version>
-        <start-class>com.capstone.server.controller.Server</start-class>
-        <java.version>1.7</java.version>
-    </properties>
 
     <build>
         <finalName>cqap-server-test</finalName>
@@ -51,7 +20,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.0.0.RELEASE</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -67,58 +35,16 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>maven-central</id>
-            <url>https://repo1.maven.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>dcm4che</id>
-            <url>https://www.dcm4che.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>com.springsource.repository.bundles.external</id>
-            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-            <url>https://repository.springsource.com/maven/bundles/external</url>
-        </repository>
-        <repository>
-            <id>loaduiRepositoryJar</id>
-            <url>https://www.soapui.org/repository/</url>
-        </repository>
-        <repository>
-            <id>spring-repo</id>
-            <name>Spring Repository</name>
-            <url>http://repo.spring.io/release</url>
-        </repository>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/libs-milestone</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/libs-snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
     <dependencies>
 
         <!-- Common module -->
         <dependency>
             <groupId>com.capstone</groupId>
             <artifactId>cqap-datamodel</artifactId>
-            <version>SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.capstone</groupId>
             <artifactId>cqap-merge</artifactId>
-            <version>SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>
@@ -126,6 +52,7 @@
             <version>${commons-lang.version}</version>
         </dependency>
         <!--  Spring -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -133,45 +60,116 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
-            <version>${spring.data.mongo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>${org.springframework.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>dcm4che</groupId>
+            <artifactId>dcm4che-net</artifactId>
+            <version>${dcm4che.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dcm4che.tool</groupId>
+            <artifactId>dcm4che-tool-dcmqr</artifactId>
+            <version>2.0.27</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20150729</version>
         </dependency>
         <!-- Jackson JSON Mapper -->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
-            <version>${org.codehaus.jackson.version}</version>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.lambdaj</groupId>
+            <artifactId>lambdaj</artifactId>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-base</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-structures-v21</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-structures-v22</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-structures-v23</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-structures-v231</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-structures-v24</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-structures-v25</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-structures-v251</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-structures-v26</artifactId>
+            <version>${hapi.version}</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.lambdaj</groupId>
             <artifactId>lambdaj</artifactId>
             <version>${lambdaj.version}</version>
         </dependency>
-        <!-- Logging -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.docx4j</groupId>
-            <artifactId>docx4j</artifactId>
-            <version>2.8.0</version>
+            <groupId>org.nule</groupId>
+            <artifactId>lightHl7Lib</artifactId>
+            <version>0.43</version>
         </dependency>
         <!-- icu4j -->
         <dependency>
@@ -179,6 +177,13 @@
             <artifactId>icu4j</artifactId>
             <version>51.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10.14</version>
+        </dependency>
+
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
@@ -202,11 +207,13 @@
             <version>1.11</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>dcm4che</id>
+            <url>https://maven.dcm4che.org/</url>
+        </repository>
+    </repositories>
 </project>

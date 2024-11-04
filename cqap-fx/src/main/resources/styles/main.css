@@ -1,0 +1,418 @@
+
+.background {
+    -fx-background-image: url("../images/CoarseGrid.png");
+    -fx-background-repeat: repeat;
+    -fx-background-color:
+        linear-gradient(#FFFFFF 0%, #ffffff 20%, #0048E0 100%),
+        linear-gradient(#0048E0, rgba(114,131,148,0.9)),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+}
+
+.dashboard-background {
+    -fx-background-color: lightsteelblue;
+    -fx-border-color:
+        transparent transparent rgb(0, 72, 224, 0.08) transparent,
+        transparent transparent rgb(0, 0, 0, 0.5) transparent;
+    -fx-border-width: 2;
+    -fx-border-insets: -1, 0;
+    -fx-border-radius:0 0 15 15;
+}
+
+.light-background {
+    -fx-background-color: royalblue;
+}
+
+.test-background {
+    -fx-background-color: darkred;
+}
+
+.grey-background {
+    -fx-background-color:
+        linear-gradient(#FFFFFF 0%, #ffffff 20%, rgba(0, 0, 0, 0.38) 100%),
+        linear-gradient(rgba(0, 0, 0, 0.15), rgba(114,131,148,0.9)),
+        radial-gradient(center 50% 0%, radius 100%, rgba(0, 0, 0, 0), rgba(107, 107, 107, 0.61));;
+}
+
+.top-segment {
+    -fx-background-color: rgba(0, 72, 224, 0.05);
+    -fx-border-color:
+        transparent transparent rgb(0, 72, 224, 0.08) transparent,
+        transparent transparent rgb(0, 0, 0, 0.5) transparent;
+    -fx-border-width: 1, 1.5;
+    -fx-border-insets: -1, 0;
+}
+
+.label {
+    -fx-font-size: 14;
+    -fx-text-fill: #ffffff;
+}
+
+.darklabel {
+    -fx-font-size: 15;
+    -fx-text-fill: #000000;
+}
+
+.profileTitle {
+    -fx-font-size: 18;
+}
+
+.hyperlink {
+    -fx-font-size: 15;
+    -fx-text-fill: rgb(255, 255, 255, 0.4);
+    -fx-effect: dropshadow( one-pass-box , rgb(0, 0, 0, 0.6), 0, 0.0 , 0 , 1 );
+    -fx-border-width: 0;
+}
+
+.hyperlink:focused {
+    -fx-text-fill: rgb(255, 255, 255, 0.6);
+}
+
+.check-box .box {
+    -fx-background-color:
+        rgb(255, 255, 255, 0.1),
+        rgb(0, 0, 0, 1),
+        -fx-outer-border,
+        -fx-inner-border,
+        -fx-body-color;
+    -fx-background-insets: 0 -1.6 -2 -1.6, -1.4, 0, 1, 2;
+}
+
+.check-box:focused .box {
+    -fx-background-color:
+        rgb(255, 255, 255, 0.15),
+        rgb(0, 0, 0, 0.8),
+        -fx-outer-border,
+        -fx-inner-border,
+        white;
+}
+
+.button .text {
+    -fx-effect: dropshadow( one-pass-box , rgb(0, 0, 0, 0.8), 0, 0.0 , 0 , -1 );
+}
+
+.button {
+    -fx-background-color:
+        rgb(255, 255, 255, 0.08),
+        rgb(0, 0, 0, 0.8),
+        #090a0c,
+        linear-gradient(#4a5661 0%, #1f2429 20%, #1f242a 100%),
+        linear-gradient(#242a2e, #23282e),
+        radial-gradient(center 50% 0%, radius 100%, rgba(135,142,148,0.9),
+        rgba(255,255,255,0));
+    -fx-background-radius: 7, 6, 5, 4, 3, 5;
+    -fx-background-insets: -3 -3 -4 -3, -3, 0, 1, 2, 0;
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+    -fx-padding: 10 20 10 20;
+}
+
+.button:focused, .button:hover {
+    -fx-background-color:
+        rgb(255, 255, 255, 0.08),
+        rgb(0, 0, 0, 0.8),
+        #090a0c,
+        linear-gradient(#4a5661 0%, #1f2429 20%, #1f242a 100%),
+        linear-gradient(#3f4950, #23282e),
+        radial-gradient(center 50% 0%, radius 100%, rgba(135,142,148,0.9),
+        rgba(255,255,255,0));
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TextField                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color:#0048E0;
+    -fx-text-fill: black;
+    -fx-background-radius: 0, 0, 0, 0;
+    -fx-border-style: ridge;
+}
+
+.text-field:readonly {
+    -fx-background-color: transparent;
+    -fx-border-color: #0048E0;
+    -fx-text-fill: white;
+}
+
+.text-field, text-area:focused {
+    -fx-border-color: #000000;
+}
+/*******************************************************************************
+ *                                                                             *
+ * TextArea                                                                    *
+ *                                                                             *
+ ******************************************************************************/
+.text-area {
+    -fx-padding: 6 5 6 5;
+}
+
+.text-area:readonly {
+     -fx-background-color: transparent;
+     -fx-border-color: #0048E0;
+     -fx-text-fill: white;
+}
+
+
+.button-dark-blue {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-size: 12px;
+    -fx-font: "Arial";
+    -fx-padding: 10 20 10 20;
+}
+
+.button-dark-blue .text {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.9) , 1, 0.0 , 0 , 1 );
+}
+
+.button-rich-blue {
+    -fx-background-color:
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.button-rich-blue .text {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , 1);
+}
+
+.list-view {
+    -fx-base: #0048E0;
+    -fx-control-inner-background: transparent;
+    -fx-background-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view {
+    -fx-base: #0048E0;
+    -fx-control-inner-background: transparent;
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35pt;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color:
+        transparent
+        transparent
+        derive(-fx-base, 80%)
+        transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font: "Arial";
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.tool-bar {
+    -fx-font: "Arial";
+    -fx-font-size: 12pt;
+    -fx-background-color:
+        linear-gradient(to bottom, derive(#000510,-30%), derive(#00050e,-60%)),
+        linear-gradient(to bottom, -light-black 2%, -dark-black 98%);
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-effect: dropshadow(two-pass-box,black,5,.2,0,0);
+}
+
+.error{
+    -fx-background-color: red,linear-gradient(to bottom, derive(red,60%) 5%,derive(red,90%) 40%);
+    -fx-control-inner-background: red;
+    -fx-accent: derive(-fx-control-inner-background, -40%);
+    -fx-cell-hover-color: derive(-fx-control-inner-background, -20%);
+}
+
+.rtrc {
+    -fx-fill: red,linear-gradient(to bottom, derive(red,60%) 5%,derive(red,90%) 40%);
+    -fx-control-inner-background: red;
+    -fx-accent: derive(-fx-control-inner-background, -40%);
+    -fx-cell-hover-color: derive(-fx-control-inner-background, -20%);
+}
+
+.rtrt {
+    -fx-fill: orange,linear-gradient(to bottom, derive(orange,10%) 5%,derive(orange,10%) 30%);
+    -fx-control-inner-background: orange;
+    -fx-accent: derive(-fx-control-inner-background, -40%);
+    -fx-cell-hover-color: derive(-fx-control-inner-background, -20%);
+}
+
+.ur {
+    -fx-fill: cornflowerblue,linear-gradient(to bottom, derive(cornflowerblue,60%) 5%,derive(cornflowerblue,90%) 40%);
+    -fx-control-inner-background: cornflowerblue;
+    -fx-accent: derive(-fx-control-inner-background, -40%);
+    -fx-cell-hover-color: derive(-fx-control-inner-background, -20%);
+}
+
+.tr {
+    -fx-fill: darkgrey,linear-gradient(to bottom, derive(darkgrey,60%) 5%,derive(darkgrey,90%) 40%);
+    -fx-control-inner-background: darkgrey;
+    -fx-accent: derive(-fx-control-inner-background, -40%);
+    -fx-cell-hover-color: derive(-fx-control-inner-background, -20%);
+}
+
+.rr {
+    -fx-fill: #000000,linear-gradient(to bottom, derive(#000000,60%) 5%,derive(#000000,90%) 40%);
+    -fx-control-inner-background: #000000;
+    -fx-accent: derive(-fx-control-inner-background, -40%);
+    -fx-cell-hover-color: derive(-fx-control-inner-background, -20%);
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ComboBox                                                                    *
+ *                                                                             *
+ ******************************************************************************/
+.combo-box-base  {
+    -fx-background-color: transparent, #bababa, transparent, white;
+    -fx-background-radius: 0, 0, 0, 0;
+}
+
+.combo-box-base:hover {
+    -fx-background-color: transparent, #909090, transparent, white;
+
+}
+
+.combo-box-base:disabled {
+    -fx-opacity: .4;
+}
+
+/* ------- OPEN BUTTON ------- */
+.combo-box-base .arrow-button {
+    -fx-background-color: transparent, transparent, white;
+}
+
+/* ------- ARROW* ------- */
+.combo-box-base .arrow {
+    -fx-padding: 4, 4, 4, 4; /* 4 4 4 4 */
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #909090, -fx-control-inner-background;
+}
+
+.combo-box-popup .list-view .list-cell:hover{
+    -fx-background-color: #dedede;
+    -fx-text-fill: #1d1d1d;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected{
+    -fx-background-color: #55c4fe;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected:hover {
+    -fx-background-color: #6dcdff;
+}
+
+.combo-box-popup .list-view .list-cell:filled:pressed, .combo-box-popup .list-view .list-cell:filled:selected:pressed
+{
+    -fx-background-color: #d3d3d3;
+    -ftext-fill: #1d1d1d;
+}
+
+.titled-pane {
+    -fx-animated: false;
+    -fx-text-fill: #505050;
+    -fx-background-radius: 0 0 0 0, 0 0 0 0, 0 0 0 0;
+}
+
+.titled-pane .title .arrow-button .arrow {
+    -fx-shape: "";
+}
+
+.split-pane:vertical > * > .split-pane-divider {
+    -fx-border-color: transparent #1d1d1d transparent #1d1d1d;
+    -fx-background-color: transparent, derive(#1d1d1d,20%);
+}
+
+.split-pane {
+    -fx-padding: 1 0 0 0;
+}
+
+.button-metro {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button-metro:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.button-metro:pressed, .button:default:hover:pressed {
+    -fx-background-color: white;
+    -fx-text-fill: #1d1d1d;
+}
+
+.button-metro:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button-metro:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.button-metro:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button-metro:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
+}
+
+.grid-pane{
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 17.5 17.5 17.5 17.5;
+    -fx-border-color: #000000;
+
+    -fx-border-width: 5;
+}
+
+.rounded-tool-bar{
+    -fx-background-color: black;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 17.5;
+    -fx-border-color: black;
+}

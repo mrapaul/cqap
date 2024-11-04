@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import jfxtras.labs.scene.control.*?>
+<?scenebuilder-classpath-element ../lib/jfxtras-labs-2.2-r4.jar?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="851.0" prefWidth="1130.9999000000025" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.capstone.fx.controllers.MyTicketController">
+  <children>
+    <BorderPane prefHeight="642.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <TableView fx:id="theTicketTable" prefHeight="376.0" prefWidth="1004.0">
+          <columns>
+            <TableColumn editable="false" prefWidth="75.0" text="Ticket #" fx:id="theTicketIdColumn" />
+            <TableColumn editable="false" prefWidth="75.0" text="Status" fx:id="theStatusColumn" />
+            <TableColumn editable="false" id="" prefWidth="75.0" text="Institution" fx:id="theInstitutionColumn" />
+            <TableColumn editable="false" minWidth="50.0" prefWidth="110.0" text="Patient Name" fx:id="thePatientNameColumn" />
+            <TableColumn editable="false" prefWidth="75.0" text="Patient ID" fx:id="thePatientIDColumn" />
+            <TableColumn editable="false" prefWidth="75.0" text="Modality" fx:id="theModalityColumn" />
+            <TableColumn editable="false" prefWidth="150.0" text="Study Date" fx:id="theStudyDateColumn" />
+            <TableColumn editable="false" prefWidth="175.0" text="Study Description" fx:id="theStudyDescriptionColumn" />
+            <TableColumn editable="false" prefWidth="100.0" text="PIR/ST" fx:id="thePRTRColumn" />
+            <TableColumn editable="false" prefWidth="75.0" text="ERP" fx:id="theERPColumn" />
+            <TableColumn editable="false" prefWidth="150.0" text="Confirmed Category" fx:id="theCategoryColumn" />
+          </columns>
+          <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+          </BorderPane.margin>
+        </TableView>
+      </center>
+      <top>
+        <BorderPane prefHeight="381.0" prefWidth="1131.0">
+          <bottom>
+            <ToolBar minHeight="-Infinity" prefHeight="43.0" styleClass="rounded-tool-bar">
+              <items>
+                <HBox fx:id="theProgressBox" prefHeight="34.4970703125" prefWidth="200.0">
+                  <children>
+                    <ProgressIndicator fx:id="theSearchProgress" prefHeight="43.0" progress="0.0" visible="false">
+                      <HBox.margin>
+                        <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+                      </HBox.margin>
+                    </ProgressIndicator>
+                    <Label fx:id="theResultCountLabel">
+                      <HBox.margin>
+                        <Insets bottom="15.0" top="15.0" />
+                      </HBox.margin>
+                    </Label>
+                  </children>
+                </HBox>
+                <HBox id="theLowerToolbar" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" spacing="10.0">
+                  <children>
+                    <Button id="theSearchButton" mnemonicParsing="false" onAction="#onTicketSearch" prefHeight="41.0" prefWidth="116.0" styleClass="button-metro" text="Search">
+                      <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" fx:id="x5" />
+                      </HBox.margin>
+                    </Button>
+                    <Button id="theResetButton" mnemonicParsing="false" onAction="#onTicketSearchReset" prefHeight="41.0" prefWidth="116.0" styleClass="button-metro" text="Reset" HBox.margin="$x5" />
+                  </children>
+                </HBox>
+              </items>
+              <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x4" />
+              </BorderPane.margin>
+            </ToolBar>
+          </bottom>
+          <center>
+            <GridPane alignment="CENTER" hgap="5.0" prefHeight="314.9999000000025" prefWidth="817.0" styleClass="grid-pane" vgap="5.0">
+              <children>
+                <Label text="PIR" GridPane.columnIndex="0" GridPane.rowIndex="8">
+                  <GridPane.margin>
+                    <Insets left="10.0" fx:id="x1" />
+                  </GridPane.margin>
+                </Label>
+                <Label text="Study Description" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                  <GridPane.margin>
+                    <Insets left="30.0" fx:id="x3" />
+                  </GridPane.margin>
+                </Label>
+                <Label text="Accession Number" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                    <Insets left="30.0" fx:id="x5" />
+                  </GridPane.margin>
+                </Label>
+                <Label text="Institution" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="7" />
+                <Label text="Group" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="6" />
+                <Label text="Patient MRN" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="5" />
+                <Label text="Patient Last Name" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="3" />
+                <Label text="Ticket Priority" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="1" />
+                <Label text="Ticket Status" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="2" />
+                <ComboBox fx:id="theTicketPriority" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                    <Insets fx:id="x2" />
+                  </GridPane.margin>
+                </ComboBox>
+                <TextField id="thePatientName" fx:id="thePatientLastName" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="thePatientMRN" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <ComboBox fx:id="theStatus" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                <ComboBox fx:id="theGroup" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" />
+                <ComboBox fx:id="theInstitution" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" />
+                <TextField fx:id="theStudyDescription" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x7" />
+                  </GridPane.margin>
+                </TextField>
+                <TextField fx:id="theAccessionNumber" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x8" />
+                  </GridPane.margin>
+                </TextField>
+                <Label text="ERP" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                  <GridPane.margin>
+                    <Insets left="30.0" fx:id="x9" />
+                  </GridPane.margin>
+                </Label>
+                <TextField fx:id="theERP" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x10" />
+                  </GridPane.margin>
+                </TextField>
+                <Label text="Submitted By" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                  <GridPane.margin>
+                    <Insets left="30.0" fx:id="x12" />
+                  </GridPane.margin>
+                </Label>
+                <TextField fx:id="theSubmittedBy" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x13" />
+                  </GridPane.margin>
+                </TextField>
+                <Label text="Date Submitted To" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                  <GridPane.margin>
+                    <Insets left="30.0" fx:id="x14" />
+                  </GridPane.margin>
+                </Label>
+                <Label text="Date of Study" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <GridPane.margin>
+                    <Insets left="30.0" fx:id="x16" />
+                  </GridPane.margin>
+                </Label>
+                <TextField fx:id="theStudyDate" prefWidth="200.0" promptText="yyyymmdd" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x17" />
+                  </GridPane.margin>
+                </TextField>
+                <Label text="CPT Code" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                    <Insets left="30.0" fx:id="x18" />
+                  </GridPane.margin>
+                </Label>
+                <TextField fx:id="theCPTCode" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x19" />
+                  </GridPane.margin>
+                </TextField>
+                <Label text="Patient First Name" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="4" />
+                <TextField id="thePatientName" fx:id="thePatientFirstName" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <GridPane.margin>
+                    <Insets fx:id="x2" />
+                  </GridPane.margin>
+                </TextField>
+                <Label text="Date Sumitted From" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <GridPane.margin>
+                    <Insets left="30.0" fx:id="x22" />
+                  </GridPane.margin>
+                </Label>
+                <Label text="Ticket ID" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="0" />
+                <TextField fx:id="theTicketId" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <ComboBox fx:id="theIIR" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                <Label text="Site Technologist" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                  <GridPane.margin>
+                    <Insets left="30.0" fx:id="x3" />
+                  </GridPane.margin>
+                </Label>
+                <ComboBox fx:id="theSiteTechnologist" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Item 1" />
+                      <String fx:value="Item 2" />
+                      <String fx:value="Item 3" />
+                    </FXCollections>
+                  </items>
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x7" />
+                  </GridPane.margin>
+                </ComboBox>
+                <CalendarTextField fx:id="theDateSubmittedFrom" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x7" />
+                  </GridPane.margin>
+                </CalendarTextField>
+                <CalendarTextField fx:id="theDateSubmittedTo" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x7" />
+                  </GridPane.margin>
+                </CalendarTextField>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="507.0" minWidth="10.0" prefWidth="187.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="507.0" minWidth="10.0" prefWidth="318.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="507.0" minWidth="10.0" prefWidth="196.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="507.0" minWidth="10.0" prefWidth="308.0" />
+              </columnConstraints>
+              <padding>
+                <Insets bottom="10.0" top="10.0" />
+              </padding>
+              <rowConstraints>
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+              <BorderPane.margin>
+                <Insets left="10.0" right="10.0" />
+              </BorderPane.margin>
+            </GridPane>
+          </center>
+          <top>
+            <ToolBar minHeight="-Infinity" prefHeight="37.0" styleClass="rounded-tool-bar" BorderPane.margin="$x4">
+              <items>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="My Tickets">
+                  <font>
+                    <Font name="Helvetica Bold" size="30.0" />
+                  </font>
+                </Text>
+                <HBox fx:id="theSpacer" prefHeight="19.0" prefWidth="200.0" />
+                <Button mnemonicParsing="false" onAction="#onHome" prefHeight="41.0" prefWidth="116.0" styleClass="button-metro" text="Home" />
+              </items>
+            </ToolBar>
+          </top>
+        </BorderPane>
+      </top>
+    </BorderPane>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/main.css" />
+  </stylesheets>
+</AnchorPane>

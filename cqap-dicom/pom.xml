@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.capstone</groupId>
         <artifactId>cqap</artifactId>
-        <version>SNAPSHOT</version>
+        <version>202411-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,7 +15,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cqap-datamodel</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>dcm4che</groupId>
@@ -55,4 +54,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>dcm4che</id>
+            <url>https://maven.dcm4che.org/</url>
+        </repository>
+    </repositories>
 </project>

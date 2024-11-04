@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0000999999975" prefWidth="650.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.capstone.fx.controllers.LoginController">
+  <children>
+    <AnchorPane prefHeight="300.0" prefWidth="500.0" styleClass="top-segment" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <VBox id="VBox" alignment="CENTER" prefHeight="300.0" prefWidth="421.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0">
+          <children>
+            <AnchorPane id="AnchorPane" minHeight="101.5" prefHeight="101.5" prefWidth="578.0">
+              <children>
+                <Label layoutX="14.0" layoutY="67.0" styleClass="darklabel" text="Username" />
+                <Label layoutX="14.0" layoutY="139.0" styleClass="darklabel" text="Password" />
+                <TextField fx:id="theUserId" layoutY="86.0" prefWidth="415.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" />
+                <PasswordField fx:id="thePassword" layoutY="157.0" prefWidth="415.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" />
+              </children>
+            </AnchorPane>
+          </children>
+        </VBox>
+      </children>
+    </AnchorPane>
+    <HBox alignment="CENTER" prefHeight="25.0" prefWidth="418.0" AnchorPane.bottomAnchor="156.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="41.0">
+      <children>
+        <Label fx:id="theErrorMessage" />
+      </children>
+    </HBox>
+    <BorderPane prefHeight="601.0000999999975" prefWidth="656.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <FlowPane hgap="10.0" prefHeight="91.0" prefWidth="650.0">
+          <children>
+            <Button fx:id="theLogin" defaultButton="true" onAction="#processLogin" prefHeight="70.0" prefWidth="285.0" styleClass="button-rich-blue" text="Login" />
+            <Button id="theLogin" cancelButton="true" onAction="#processCancel" prefHeight="70.0" prefWidth="285.0" styleClass="button-rich-blue" text="Cancel" />
+          </children>
+          <padding>
+            <Insets left="35.0" />
+          </padding>
+        </FlowPane>
+      </bottom>
+      <center>
+        <RadioButton id="theTEstMode" fx:id="theTestMode" mnemonicParsing="false" prefHeight="46.0" text="Trial Mode">
+          <font>
+            <Font name="Helvetica Bold" size="15.0" />
+          </font>
+          <BorderPane.margin>
+            <Insets bottom="50.0" top="100.0" />
+          </BorderPane.margin>
+        </RadioButton>
+      </center>
+      <top>
+        <ImageView id="logo.png" blendMode="MULTIPLY" BorderPane.alignment="CENTER_LEFT">
+          <image>
+            <Image url="@../images/logo.png" preserveRatio="true" smooth="true" />
+          </image>
+          <BorderPane.margin>
+            <Insets left="40.0" top="15.0" />
+          </BorderPane.margin>
+        </ImageView>
+      </top>
+    </BorderPane>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/main.css" />
+  </stylesheets>
+</AnchorPane>

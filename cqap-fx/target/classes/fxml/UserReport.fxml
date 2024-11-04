@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="684.0" styleClass="background" xmlns:fx="http://javafx.com/fxml" fx:controller="com.capstone.fx.controllers.UserReportController">
+  <children>
+    <BorderPane prefHeight="545.0" prefWidth="682.0" styleClass="background" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <ToolBar BorderPane.alignment="CENTER_RIGHT">
+          <items>
+            <HBox fx:id="theSpacer" prefHeight="42.0" prefWidth="200.0" />
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#onClose" styleClass="button-rich-blue" text="Close" />
+          </items>
+        </ToolBar>
+      </bottom>
+      <center>
+        <TextArea fx:id="theReport" editable="false" prefHeight="493.0" prefWidth="667.0" wrapText="true" />
+      </center>
+    </BorderPane>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/main.css" />
+  </stylesheets>
+</AnchorPane>

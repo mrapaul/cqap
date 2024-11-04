@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2310.00035585936" prefWidth="1582.0000558593674" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.capstone.fx.controllers.CMOOpenController">
+  <children>
+    <BorderPane prefHeight="1024.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <ToolBar>
+          <items>
+            <FlowPane fx:id="theSpacer1" alignment="CENTER_RIGHT" hgap="15.0" minHeight="22.0" prefHeight="42.0" prefWidth="1154.0">
+              <children>
+                <Button id="" mnemonicParsing="false" onAction="#onSave" styleClass="button-rich-blue" text="Save" />
+                <Button fx:id="theCompleteButton" mnemonicParsing="false" onAction="#onComplete" styleClass="button-rich-blue" text="Complete" />
+                <Button fx:id="theCallSiteButton" mnemonicParsing="false" onAction="#onSiteCallRequired" styleClass="button-rich-blue" text="Complete &amp; Call Required" />
+                <Button fx:id="thePendingButton" mnemonicParsing="false" onAction="#onPending" styleClass="button-rich-blue" text="Pending" />
+                <Button mnemonicParsing="false" onAction="#onCancel" styleClass="button-rich-blue" text="Cancel" />
+              </children>
+            </FlowPane>
+          </items>
+        </ToolBar>
+      </bottom>
+      <center>
+        <AnchorPane prefHeight="1117.0" prefWidth="996.0" styleClass="background">
+          <children>
+            <ScrollPane prefHeight="2083.0000999999975" prefWidth="1032.9998779296875" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="2153.0" prefWidth="1030.0" styleClass="background">
+                  <children>
+                    <GridPane prefHeight="1024.0" prefWidth="900.0" AnchorPane.bottomAnchor="-0.5" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.5">
+                      <children>
+                        <GridPane prefHeight="216.0" prefWidth="883.0" vgap="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                          <children>
+                            <Label text="Institution" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Time Zone" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="2" />
+                            <Label text="Date Submitted" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="3" />
+                            <Label fx:id="theInstitution" text="N/A" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                            <Label fx:id="theTimeZone" text="N/A" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                            <Label fx:id="theSubmittedDate" text="N/A" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                            <Label text="Submitted By" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="theSubmittedBy" text="N/A" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                            <VBox prefHeight="25.0" prefWidth="1011.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="0">
+                              <children>
+                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Details">
+                                  <font>
+                                    <Font name="Arial Bold" size="18.0" fx:id="x2" />
+                                  </font>
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                              <GridPane.margin>
+                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" fx:id="x5" />
+                              </GridPane.margin>
+                            </VBox>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="386.0" minWidth="10.0" prefWidth="310.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="685.0" minWidth="10.0" prefWidth="268.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="685.0" minWidth="10.0" prefWidth="162.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="685.0" minWidth="10.0" prefWidth="210.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                        <GridPane prefHeight="181.0" prefWidth="1021.0" vgap="5.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                          <children>
+                            <Label text="Patient Name" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="thePatientName" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <Label text="Admitting Date" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="theAdmittingDate" text="N/A" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                            <Label text="Patient MRN" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="thePatientMRN" text="N/A" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                            <Label text="Patient DOB" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="thePatientDOB" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <Label text="Patient Age" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="thePatientAge" text="N/A" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                            <Label text="Patient Sex" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="thePatientSex" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <Label text="Admitting Diagnosis Code" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Admitting Diagnosis Description" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="theAdmittingDiagnosisCode" text="N/A" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+                            <Label fx:id="theAdmittingDiagnosisDescription" text="N/A" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+                            <VBox prefHeight="25.0" prefWidth="1011.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.margin="$x5" GridPane.rowIndex="0">
+                              <children>
+                                <Text fill="WHITE" font="$x2" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Details">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                            </VBox>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.0" minWidth="10.0" prefWidth="297.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="658.0" minWidth="10.0" prefWidth="261.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="658.0" minWidth="10.0" prefWidth="154.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="658.0" minWidth="10.0" prefWidth="188.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="23.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="23.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="23.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="23.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="23.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="23.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                        <GridPane prefHeight="253.0" prefWidth="950.0" vgap="5.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                          <children>
+                            <Label text="Patient History" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Comparison Study" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="theComparisonStudy" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <TextArea fx:id="thePatientHistory" editable="false" focusTraversable="false" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
+                              <GridPane.margin>
+                                <Insets right="30.0" fx:id="x3" />
+                              </GridPane.margin>
+                            </TextArea>
+                            <Label text="Category" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Report Accuracy Comments" GridPane.columnIndex="0" GridPane.rowIndex="7">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <TextArea fx:id="theReportAccuracyComments" editable="false" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="7">
+                              <GridPane.margin>
+                                <Insets right="30.0" fx:id="x3" />
+                              </GridPane.margin>
+                            </TextArea>
+                            <Label fx:id="theCategory" text="0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                            <VBox prefHeight="25.0" prefWidth="1011.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="0">
+                              <children>
+                                <Text fill="WHITE" font="$x2" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Details">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                              <GridPane.margin>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="2.0" fx:id="x4" />
+                              </GridPane.margin>
+                            </VBox>
+                            <VBox prefHeight="25.0" prefWidth="1011.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.margin="$x4" GridPane.rowIndex="3">
+                              <children>
+                                <Text fill="WHITE" font="$x2" strokeType="OUTSIDE" strokeWidth="0.0" text="ERP Review Details">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                            </VBox>
+                            <FlowPane alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="708.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                              <children>
+                                <Button mnemonicParsing="false" onAction="#onAdditionalFactFindings" styleClass="button-rich-blue" text="Additional Findings" />
+                              </children>
+                              <padding>
+                                <Insets left="30.0" right="30.0" />
+                              </padding>
+                            </FlowPane>
+                            <Label text="Report Accuracy Score" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="theReportAccuracyScore" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                            <VBox prefHeight="50.0" prefWidth="474.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
+                              <children>
+                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Accuracy">
+                                  <font>
+                                    <Font name="Arial Bold" size="16.0" fx:id="x7" />
+                                  </font>
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                              <GridPane.margin>
+                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" fx:id="x5" />
+                              </GridPane.margin>
+                            </VBox>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="386.0" minWidth="10.0" prefWidth="313.0" />
+                            <ColumnConstraints hgrow="ALWAYS" maxWidth="806.0" minWidth="10.0" prefWidth="697.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                          <GridPane.margin>
+                            <Insets />
+                          </GridPane.margin>
+                        </GridPane>
+                        <GridPane vgap="5.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                          <children>
+                            <GridPane hgap="5.0" prefHeight="106.0" prefWidth="911.0" vgap="10.0" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+                              <children>
+                                <Label text="1. The report includes a conclusion or impression?" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                  <GridPane.margin>
+                                    <Insets left="5.0" fx:id="x6" />
+                                  </GridPane.margin>
+                                </Label>
+                                <Label text="2. The report addresses clinical history and/or symptoms or provides differential diagnosis?" GridPane.columnIndex="0" GridPane.margin="$x6" GridPane.rowIndex="1" />
+                                <Label text="3. The report addresses the relevant positive and/or negative findings?" GridPane.columnIndex="0" GridPane.margin="$x6" GridPane.rowIndex="2" />
+                                <Label text="4. The report is organized in a structured format?" GridPane.columnIndex="0" GridPane.margin="$x6" GridPane.rowIndex="3" />
+                                <Label text="5. The report text contains no errors that would impact patient care or outcome?" GridPane.columnIndex="0" GridPane.margin="$x6" GridPane.rowIndex="4" />
+                                <Label fx:id="theCriteria1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label fx:id="theCriteria2" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label fx:id="theCriteria3" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Label fx:id="theCriteria4" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <Label fx:id="theCriteria5" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="ALWAYS" maxWidth="757.0" minWidth="10.0" prefWidth="697.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="0.0" prefWidth="0.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </GridPane>
+                            <Label text="Report Quality Comments" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Recommendations ( if any )" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <TextArea id="theReportQualityCommen" fx:id="theReportQualityComments" editable="false" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                <Insets right="30.0" fx:id="x3" />
+                              </GridPane.margin>
+                            </TextArea>
+                            <TextArea fx:id="theRecommendations" editable="false" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <GridPane.margin>
+                                <Insets right="30.0" fx:id="x3" />
+                              </GridPane.margin>
+                            </TextArea>
+                            <Label text="Report Quality Score" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label id="theReportQualityScore" fx:id="theReportQuality" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <VBox prefHeight="23.0" prefWidth="1011.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="0">
+                              <children>
+                                <Text fill="WHITE" font="$x7" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Quality ">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                              <GridPane.margin>
+                                <Insets bottom="12.0" left="5.0" right="5.0" top="2.0" />
+                              </GridPane.margin>
+                            </VBox>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="386.0" minWidth="10.0" prefWidth="313.0" />
+                            <ColumnConstraints hgrow="ALWAYS" maxWidth="809.0" minWidth="10.0" prefWidth="697.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                        <GridPane GridPane.columnIndex="0" GridPane.rowIndex="2">
+                          <children>
+                            <Label text="Modality" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Study Description" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Accession Number" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Date &amp; Time of Study" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="CPT Code" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Number of Images/Slices" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Slice Thickness" GridPane.columnIndex="0" GridPane.rowIndex="7">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Scan Length" GridPane.columnIndex="0" GridPane.rowIndex="8">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="CTDI Volume" GridPane.columnIndex="0" GridPane.rowIndex="9">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Manufacturer" GridPane.columnIndex="0" GridPane.rowIndex="10">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Manufacturer's Model Name" GridPane.columnIndex="0" GridPane.rowIndex="11">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="theStudyDescription" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <Label fx:id="theModality" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <Label fx:id="theAccessionNumber" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <Label fx:id="theStudyDate" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                            <Label fx:id="theCPTCode" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                            <Label fx:id="theImageCount" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                            <Label fx:id="theSliceThickness" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                            <Label fx:id="theScanLength" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                            <Label fx:id="theCTDIVolume" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                            <Label fx:id="theManufacturer" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                            <Label fx:id="theManufacturerModel" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                            <VBox prefHeight="25.0" prefWidth="1011.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="0">
+                              <children>
+                                <Text fill="WHITE" font="$x2" strokeType="OUTSIDE" strokeWidth="0.0" text="Study Details">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                              <GridPane.margin>
+                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" fx:id="x5" />
+                              </GridPane.margin>
+                            </VBox>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="578.0" minWidth="10.0" prefWidth="317.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="806.0" minWidth="10.0" prefWidth="693.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                        <GridPane prefHeight="186.0" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                          <children>
+                            <Label text="Decision of ERP Review" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Comments " GridPane.columnIndex="0" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <TextArea fx:id="theDisagreeComments" editable="false" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                <Insets bottom="10.0" right="30.0" />
+                              </GridPane.margin>
+                            </TextArea>
+                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <children>
+                                <Label id="theERPDescision" fx:id="theIIRDecision" text="N/A" />
+                              </children>
+                            </HBox>
+                            <VBox prefHeight="26.0" prefWidth="1011.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="0">
+                              <children>
+                                <Text fill="WHITE" font="$x2" strokeType="OUTSIDE" strokeWidth="0.0" text="PIR Review Details">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                              <GridPane.margin>
+                                <Insets bottom="30.0" left="5.0" right="5.0" />
+                              </GridPane.margin>
+                            </VBox>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="523.0" minWidth="10.0" prefWidth="313.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="723.0" minWidth="10.0" prefWidth="708.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                          <GridPane.margin>
+                            <Insets top="10.0" />
+                          </GridPane.margin>
+                        </GridPane>
+                        <GridPane prefHeight="258.0" prefWidth="1073.0" vgap="5.0" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                          <children>
+                            <Label text="Category" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Report Accuracy Comments" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <ComboBox fx:id="theCMOCategory" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="1" />
+                                  <String fx:value="2" />
+                                  <String fx:value="3" />
+                                  <String fx:value="4" />
+                                  <String fx:value="5" />
+                                </FXCollections>
+                              </items>
+                              <GridPane.margin>
+                                <Insets right="30.0" fx:id="x3" />
+                              </GridPane.margin>
+                            </ComboBox>
+                            <TextArea id="theReportAccuracyComments" fx:id="theCMOReportAccuracyComments" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
+                              <GridPane.margin>
+                                <Insets right="30.0" fx:id="x3" />
+                              </GridPane.margin>
+                            </TextArea>
+                            <VBox prefHeight="25.0" prefWidth="1020.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="0">
+                              <children>
+                                <Text fill="WHITE" font="$x2" strokeType="OUTSIDE" strokeWidth="0.0" text="CMO Review Details">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                              <GridPane.margin>
+                                <Insets bottom="15.0" left="5.0" right="5.0" top="2.0" />
+                              </GridPane.margin>
+                            </VBox>
+                            <Label text="Report Accuracy Score" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label fx:id="theCMOReportAccuracyScore" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <VBox prefHeight="25.0" prefWidth="1020.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+                              <children>
+                                <Text fill="WHITE" font="$x7" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Accuracy">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                              <GridPane.margin>
+                                <Insets bottom="15.0" left="5.0" right="5.0" top="2.0" />
+                              </GridPane.margin>
+                            </VBox>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="386.0" minWidth="10.0" prefWidth="313.0" />
+                            <ColumnConstraints hgrow="ALWAYS" maxWidth="718.0" minWidth="10.0" prefWidth="708.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="1.0" prefHeight="1.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                        <GridPane vgap="5.0" GridPane.columnIndex="0" GridPane.rowIndex="7">
+                          <children>
+                            <GridPane hgap="5.0" prefHeight="106.0" prefWidth="911.0" vgap="10.0" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+                              <children>
+                                <Label text="1.   Does the report reach a conclusion, and when applicable include an impression?" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                  <GridPane.margin>
+                                    <Insets left="5.0" fx:id="x6" />
+                                  </GridPane.margin>
+                                </Label>
+                                <Label text="2.   Does the report address the patient history and/or provide an alternative diagnosis?" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                  <GridPane.margin>
+                                    <Insets left="5.0" fx:id="x6" />
+                                  </GridPane.margin>
+                                </Label>
+                                <Label text="3.   Are the pertinent negative and/or positive findings discussed?" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                                  <GridPane.margin>
+                                    <Insets left="5.0" fx:id="x6" />
+                                  </GridPane.margin>
+                                </Label>
+                                <Label text="4.   Is the report formatted for ease of reading?" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                                  <GridPane.margin>
+                                    <Insets left="5.0" fx:id="x6" />
+                                  </GridPane.margin>
+                                </Label>
+                                <Label text="5.   Is the report free of serious transcription errors? " GridPane.columnIndex="0" GridPane.rowIndex="4">
+                                  <GridPane.margin>
+                                    <Insets left="5.0" fx:id="x6" />
+                                  </GridPane.margin>
+                                </Label>
+                                <CheckBox id="theCriteria2" fx:id="theCMOCriteria2" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <CheckBox id="theCriteria3" fx:id="theCMOCriteria3" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <CheckBox id="theCriteria4" fx:id="theCMOCriteria4" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <CheckBox id="theCriteria5" fx:id="theCMOCriteria5" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <CheckBox id="theCriteria1" fx:id="theCMOCriteria1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="ALWAYS" maxWidth="757.0" minWidth="10.0" prefWidth="697.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="0.0" prefWidth="0.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </GridPane>
+                            <Label text="Report Quality Comments" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Recommendations ( if any )" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <TextArea id="theReportQualityCommen" fx:id="theCMOReportQualityComments" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                <Insets right="30.0" fx:id="x3" />
+                              </GridPane.margin>
+                            </TextArea>
+                            <TextArea id="theRecommendations" fx:id="theCMORecommendations" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <GridPane.margin>
+                                <Insets right="30.0" fx:id="x3" />
+                              </GridPane.margin>
+                            </TextArea>
+                            <VBox prefHeight="28.0" prefWidth="1020.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="0">
+                              <children>
+                                <Text fill="WHITE" font="$x7" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Quality ">
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                              <GridPane.margin>
+                                <Insets bottom="15.0" left="5.0" right="5.0" top="2.0" />
+                              </GridPane.margin>
+                            </VBox>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="386.0" minWidth="10.0" prefWidth="313.0" />
+                            <ColumnConstraints hgrow="ALWAYS" maxWidth="711.0" minWidth="10.0" prefWidth="708.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="150.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="50.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="210.0" prefHeight="5.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="260.0" prefHeight="230.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="210.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="210.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                  </children>
+                  <stylesheets>
+                    <URL value="@../styles/main.css" />
+                  </stylesheets>
+                </AnchorPane>
+              </content>
+            </ScrollPane>
+          </children>
+          <stylesheets>
+            <URL value="@../styles/main.css" />
+          </stylesheets>
+        </AnchorPane>
+      </center>
+      <right>
+        <Accordion fx:id="theDetails" prefHeight="1353.0" prefWidth="550.0">
+          <expandedPane>
+            <TitledPane fx:id="x12" animated="false" expanded="true" styleClass="first-titled-pane" text="Referring Physician / PIR">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="1605.0" prefWidth="547.0" styleClass="background">
+                  <children>
+                    <GridPane prefHeight="1241.0" prefWidth="546.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <Label text="Physician Name :" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                          <GridPane.margin>
+                            <Insets left="10.0" fx:id="x8" />
+                          </GridPane.margin>
+                        </Label>
+                        <Label fx:id="theReferringPhysicianName" text="N/A" GridPane.columnIndex="1" GridPane.margin="$x8" GridPane.rowIndex="0" />
+                        <Label text="Phone # :" GridPane.columnIndex="0" GridPane.margin="$x8" GridPane.rowIndex="1" />
+                        <Label fx:id="theReferringPhysicianPhone" text="N/A" GridPane.columnIndex="1" GridPane.margin="$x8" GridPane.rowIndex="1" />
+                        <Label text="Address :" GridPane.columnIndex="0" GridPane.margin="$x8" GridPane.rowIndex="2" />
+                        <Label fx:id="theReferringPhysicianAddress" text="N/A" GridPane.columnIndex="1" GridPane.margin="$x8" GridPane.rowIndex="2" />
+                        <Label text="ID Sequence :" GridPane.columnIndex="0" GridPane.margin="$x8" GridPane.rowIndex="3" />
+                        <Label fx:id="theReferringPhysicianID" text="N/A" GridPane.columnIndex="1" GridPane.margin="$x8" GridPane.rowIndex="3" />
+                        <Label text="Primary Interpreting Radiologist :" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                          <GridPane.margin>
+                            <Insets left="10.0" fx:id="x8" />
+                          </GridPane.margin>
+                        </Label>
+                        <Label fx:id="thePIR" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                          <GridPane.margin>
+                            <Insets left="10.0" fx:id="x8" />
+                          </GridPane.margin>
+                        </Label>
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="10.0" prefWidth="48.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="0.0" prefWidth="300.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+          </expandedPane>
+          <panes>
+            <TitledPane id="x12" fx:id="thePatientReportPane" animated="false" prefHeight="1218.0" prefWidth="550.0" styleClass="first-titled-pane" text="Patient Report">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="background">
+                  <children>
+                    <TextArea fx:id="thePatientReport" editable="false" prefHeight="1186.0" prefWidth="545.0" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+            <fx:reference source="x12" />
+            <TitledPane fx:id="x9" animated="false" text="Additional Study Details">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="background">
+                  <children>
+                    <TableView fx:id="theReportFindingsTable" prefHeight="1211.0" prefWidth="442.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+                      <columns>
+                        <TableColumn minWidth="150.0" prefWidth="250.0" text="Field" fx:id="theFieldColumn" />
+                        <TableColumn prefWidth="250.0" text="Value" fx:id="theValueColumn" />
+                      </columns>
+                    </TableView>
+                    <HBox id="HBox" alignment="CENTER" spacing="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                      <children>
+                        <Label text="Filter :" />
+                        <TextField id="filterField" fx:id="theFilterField" HBox.hgrow="ALWAYS" />
+                      </children>
+                    </HBox>
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane fx:id="x10" animated="false" text="Internal Notes">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <BorderPane prefHeight="2043.0" prefWidth="545.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <center>
+                        <ListView fx:id="theInternalNotesList" prefHeight="200.0" prefWidth="200.0">
+                          <BorderPane.margin>
+                            <Insets top="10.0" />
+                          </BorderPane.margin>
+                        </ListView>
+                      </center>
+                      <top>
+                        <GridPane>
+                          <children>
+                            <TextArea fx:id="theInternalNotes" prefHeight="68.0" prefWidth="545.0" wrapText="true" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="0">
+                              <GridPane.margin>
+                                <Insets bottom="8.0" />
+                              </GridPane.margin>
+                            </TextArea>
+                            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                              <children>
+                                <Button fx:id="theAddNoteButton" mnemonicParsing="false" onAction="#onAddInternalNote" styleClass="button-rich-blue" text="Add" />
+                              </children>
+                            </HBox>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="30.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                      </top>
+                    </BorderPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane fx:id="x11" animated="false" text="Attachments">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="background">
+                  <children>
+                    <BorderPane prefHeight="2043.0" prefWidth="545.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <bottom>
+                        <HBox alignment="CENTER" prefHeight="64.0" prefWidth="545.0" spacing="10.0">
+                          <children>
+                            <ProgressBar fx:id="theAttachmentProgress" prefWidth="319.0" progress="0.0" />
+                            <Button mnemonicParsing="false" onAction="#onAttach" styleClass="button-rich-blue" text="Attach" />
+                          </children>
+                        </HBox>
+                      </bottom>
+                      <center>
+                        <ListView fx:id="theAttachments" prefHeight="200.0" prefWidth="200.0" />
+                      </center>
+                    </BorderPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane id="x7" fx:id="theAdditionalFactFindingsPanel" animated="false" text="Primary or Secondary Findings">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="background">
+                  <children>
+                    <VBox prefHeight="2043.0" prefWidth="545.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <Label text="ERP Additional Findings" />
+                        <TextArea fx:id="theAdditionalFindings" editable="false" prefHeight="1107.0" prefWidth="545.0" wrapText="true" VBox.vgrow="ALWAYS" />
+                        <Label text="CMO Additional Findings" />
+                        <TextArea fx:id="theCMOAdditionalFindings" prefHeight="665.0" prefWidth="545.0" wrapText="true" VBox.vgrow="ALWAYS" />
+                      </children>
+                    </VBox>
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+          </panes>
+        </Accordion>
+      </right>
+      <top>
+        <ToolBar prefWidth="1265.0">
+          <items>
+            <Text fx:id="theStatusLabel" fill="#9f9f9f" strokeType="OUTSIDE" strokeWidth="0.0" text="PR - OPEN, CMO Review">
+              <font>
+                <Font name="Arial Bold" size="30.0" />
+              </font>
+            </Text>
+            <FlowPane alignment="CENTER_RIGHT" hgap="10.0" prefHeight="42.0" prefWidth="756.0">
+              <children>
+                <Button id="theAssociatedTicket" fx:id="theCorrespondingTicketButton" mnemonicParsing="false" onAction="#onOpenCorrespondingTicket" styleClass="button-rich-blue" text="Button" />
+                <Button disable="true" mnemonicParsing="false" onAction="#onView" styleClass="button-rich-blue" text="View Images" />
+              </children>
+            </FlowPane>
+          </items>
+          <BorderPane.margin>
+            <Insets left="30.0" fx:id="x1" />
+          </BorderPane.margin>
+        </ToolBar>
+      </top>
+    </BorderPane>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/main.css" />
+  </stylesheets>
+</AnchorPane>

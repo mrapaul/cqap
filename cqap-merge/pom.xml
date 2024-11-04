@@ -3,9 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.capstone</groupId>
         <artifactId>cqap</artifactId>
-        <version>SNAPSHOT</version>
+        <groupId>com.capstone</groupId>
+        <version>202411-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,28 +15,16 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cqap-datamodel</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cqap-common</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cqap-client</artifactId>
-            <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>3rdpary-dependencies</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>cqap.merge</groupId>
             <artifactId>hl7lib231</artifactId>
@@ -99,6 +87,7 @@
             <version>${fest-assert.version}</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -106,6 +95,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.3.1</version>
                 <configuration>
                     <repositoryLayout>flat</repositoryLayout>
                     <includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>

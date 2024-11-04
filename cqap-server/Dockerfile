@@ -1,14 +1,31 @@
-# Start with a base image containing Java runtime
-FROM openjdk:19-jdk-slim as build
+# Use an older Ubuntu version as the base image
+FROM ubuntu:14.04
 
-# The application's jar file
-ARG JAR_FILE=target/*.jar
+# Install Java 7
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository ppa:openjdk-r/ppa && \
+    apt-get update && \
+    apt-get install -y openjdk-7-jdk wget && \
+    apt-get clean;
 
-# Add the application's jar to the container
-ADD ${JAR_FILE} app.jar
+# Install Tomcat 7
+RUN wget https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tomcat-7.0.109.tar.gz && \
+    tar -xvzf apache-tomcat-7.0.109.tar.gz && \
+    mv apache-tomcat-7.0.109 /usr/local/tomcat
 
-# Make port 8080 available to the world outside this container
+# Set environment variables for Tomcat
+ENV CATALINA_HOME /usr/local/tomcat
+ENV PATH $CATALINA_HOME/bin:$PATH
+
+# The application's WAR file (generated from Maven build)
+ARG WAR_FILE=target/cqap-server-test.war
+
+# Copy the WAR file to the Tomcat webapps directory
+COPY ${WAR_FILE} $CATALINA_HOME/webapps/cqap-server.war
+
+# Expose the necessary port
 EXPOSE 8080
 
-# Run the jar file
-ENTRYPOINT ["java","-jar","/app.jar"]
+# Start Tomcat
+CMD ["catalina.sh", "run"]

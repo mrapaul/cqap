@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="866.0" prefWidth="1492.000199999995" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.capstone.fx.controllers.UserController">
+  <children>
+    <BorderPane prefHeight="597.0" prefWidth="881.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <ToolBar>
+          <items>
+            <HBox fx:id="theSpacer1" prefHeight="21.0" prefWidth="200.0" />
+            <HBox prefHeight="41.0" prefWidth="428.0" spacing="10.0">
+              <children>
+                <Button fx:id="theNewButton" mnemonicParsing="false" onAction="#onNew" styleClass="button-rich-blue" text="New" />
+                <Button fx:id="theSaveButton" mnemonicParsing="false" onAction="#onSave" styleClass="button-rich-blue" text="Save" />
+                <Button id="theDelete" fx:id="theDeleteButton" mnemonicParsing="false" onAction="#onDelete" styleClass="button-rich-blue" text="Delete" />
+                <Button fx:id="theCancelButton" mnemonicParsing="false" onAction="#onCancel" styleClass="button-rich-blue" text="Cancel" />
+              </children>
+            </HBox>
+          </items>
+          <BorderPane.margin>
+            <Insets fx:id="x3" />
+          </BorderPane.margin>
+        </ToolBar>
+      </bottom>
+      <center>
+        <SplitPane dividerPositions="0.31568228105906315" focusTraversable="true" prefHeight="160.0" prefWidth="200.0">
+          <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
+              <children>
+                <ListView id="thePersonList" fx:id="theUserList" prefHeight="550.0" prefWidth="261.0" styleClass="light-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+              </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
+              <children>
+                <BorderPane prefHeight="473.0" prefWidth="603.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <center>
+                    <GridPane>
+                      <children>
+                        <GridPane prefHeight="251.0" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="2">
+                          <children>
+                            <VBox prefHeight="25.0" prefWidth="1011.0" styleClass="light-background" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+                              <children>
+                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Details">
+                                  <font>
+                                    <Font name="Arial Bold" size="18.0" fx:id="x5" />
+                                  </font>
+                                  <VBox.margin>
+                                    <Insets bottom="2.0" left="30.0" top="2.0" />
+                                  </VBox.margin>
+                                </Text>
+                              </children>
+                              <GridPane.margin>
+                                <Insets right="10.0" fx:id="x6" />
+                              </GridPane.margin>
+                            </VBox>
+                            <TextField fx:id="theAddressField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="6" />
+                            <TextField fx:id="theAddress1Field" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="7" />
+                            <TextField fx:id="theCityField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="8" />
+                            <TextField fx:id="theStateField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="9" />
+                            <TextField fx:id="theZipcodeField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="10" />
+                            <TextField id="theCellphoneNumber" fx:id="theCellphoneNumberField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="12" />
+                            <TextField fx:id="thePhoneNumberField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="13" />
+                            <TextField fx:id="theFaxNumberField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="14" />
+                            <Label text="Address" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Address (cont)" GridPane.columnIndex="0" GridPane.rowIndex="7">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="City" GridPane.columnIndex="0" GridPane.rowIndex="8">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="State" GridPane.columnIndex="0" GridPane.rowIndex="9">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Zipcode" GridPane.columnIndex="0" GridPane.rowIndex="10">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Cell Phone Number" GridPane.columnIndex="0" GridPane.rowIndex="12">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Phone Number" GridPane.columnIndex="0" GridPane.rowIndex="13">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Fax Number" GridPane.columnIndex="0" GridPane.rowIndex="14">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="E-Mail" GridPane.columnIndex="0" GridPane.rowIndex="15">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <TextField fx:id="theEmailField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="15" />
+                            <TextField fx:id="thePositionField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="16" />
+                            <TextField fx:id="theNameField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x6" GridPane.rowIndex="1" />
+                            <Label text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Group" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Country" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Timezone" GridPane.columnIndex="0" GridPane.rowIndex="11">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Position" GridPane.columnIndex="0" GridPane.rowIndex="16">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Role" GridPane.columnIndex="0" GridPane.rowIndex="17">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <TextField fx:id="theUsernameField" prefWidth="737.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <GridPane.margin>
+                                <Insets right="10.0" fx:id="x6" />
+                              </GridPane.margin>
+                            </TextField>
+                            <Label text="Site" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="4" />
+                            <HBox id="HBox" alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="378.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="19">
+                              <children>
+                                <Label text="Professional Review :" />
+                                <CheckBox id="theRTRCReview" fx:id="theRTRCPR" mnemonicParsing="false" text="Real Time (Critical Tests)" textFill="RED" />
+                                <CheckBox id="theRTRT" fx:id="theRTRTPR" mnemonicParsing="false" text="Real Time (Targeted)" textFill="#ff3d00" />
+                                <CheckBox id="thrUR" fx:id="theURPR" mnemonicParsing="false" text="Urgent" textFill="#00a3ff" />
+                                <CheckBox id="theRoutine" fx:id="theRoutinePR" mnemonicParsing="false" text="Routine" />
+                                <CheckBox fx:id="theTargetedPR" mnemonicParsing="false" text="Targeted">
+                                  <textFill>
+                                    <Color blue="0.749" green="0.749" red="0.749" fx:id="x2" />
+                                  </textFill>
+                                </CheckBox>
+                              </children>
+                              <padding>
+                                <Insets right="20.0" fx:id="x4" />
+                              </padding>
+                            </HBox>
+                            <HBox id="HBox" alignment="CENTER_LEFT" padding="$x4" prefHeight="38.0" prefWidth="378.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="20">
+                              <children>
+                                <Label text="Technologist Review :" />
+                                <CheckBox id="theRoutineTRReview" fx:id="theRoutineTR" mnemonicParsing="false" text="Routine" />
+                                <CheckBox id="theTargetedTRReview" fx:id="theTargetedTR" mnemonicParsing="false" text="Targeted" textFill="$x2" />
+                              </children>
+                            </HBox>
+                            <Label text="Ticket Priorities" GridPane.columnIndex="0" GridPane.rowIndex="19" GridPane.rowSpan="2">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <Label text="Notification Preference" GridPane.columnIndex="0" GridPane.rowIndex="22">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="22">
+                              <children>
+                                <CheckBox fx:id="theAllPreferenceCheck" mnemonicParsing="false" text="All" />
+                                <CheckBox fx:id="theCategoryCheck" mnemonicParsing="false" text="Category 3-5" />
+                                <CheckBox fx:id="theRTCheck" mnemonicParsing="false" text="RTRC &amp; RTRT" />
+                                <CheckBox fx:id="theURCheck" mnemonicParsing="false" text="UR" />
+                                <CheckBox fx:id="thePRCheck" mnemonicParsing="false" text="Professional" />
+                                <CheckBox fx:id="theTRCheck" mnemonicParsing="false" text="Tech" />
+                                <CheckBox fx:id="theAFFSCheck" mnemonicParsing="false" text="AFFS" />
+                              </children>
+                            </HBox>
+                            <Label text="Completed Notification" GridPane.columnIndex="0" GridPane.rowIndex="21">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="21">
+                              <children>
+                                <RadioButton fx:id="theFaxNotification" mnemonicParsing="false" text="Fax">
+                                  <toggleGroup>
+                                    <ToggleGroup fx:id="theNotificationGroup" />
+                                  </toggleGroup>
+                                </RadioButton>
+                                <RadioButton fx:id="theEmailNotification" mnemonicParsing="false" text="Email" toggleGroup="$theNotificationGroup" />
+                                <RadioButton fx:id="theNoNotification" mnemonicParsing="false" selected="true" text="None" toggleGroup="$theNotificationGroup" />
+                              </children>
+                            </HBox>
+                            <ComboBox fx:id="theRoleField" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="17">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="Item 1" />
+                                  <String fx:value="Item 2" />
+                                  <String fx:value="Item 3" />
+                                </FXCollections>
+                              </items>
+                              <GridPane.margin>
+                                <Insets right="10.0" fx:id="x6" />
+                              </GridPane.margin>
+                            </ComboBox>
+                            <ComboBox fx:id="theCountryField" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="Item 1" />
+                                  <String fx:value="Item 2" />
+                                  <String fx:value="Item 3" />
+                                </FXCollections>
+                              </items>
+                              <GridPane.margin>
+                                <Insets right="10.0" fx:id="x6" />
+                              </GridPane.margin>
+                            </ComboBox>
+                            <ComboBox fx:id="theTimezoneField" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="Item 1" />
+                                  <String fx:value="Item 2" />
+                                  <String fx:value="Item 3" />
+                                </FXCollections>
+                              </items>
+                              <GridPane.margin>
+                                <Insets right="10.0" fx:id="x6" />
+                              </GridPane.margin>
+                            </ComboBox>
+                            <ComboBox fx:id="theGroupField" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="Item 1" />
+                                  <String fx:value="Item 2" />
+                                  <String fx:value="Item 3" />
+                                </FXCollections>
+                              </items>
+                              <GridPane.margin>
+                                <Insets right="10.0" fx:id="x6" />
+                              </GridPane.margin>
+                            </ComboBox>
+                            <ComboBox id="theSiteField" fx:id="theInstitutionField" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="Item 1" />
+                                  <String fx:value="Item 2" />
+                                  <String fx:value="Item 3" />
+                                </FXCollections>
+                              </items>
+                              <GridPane.margin>
+                                <Insets right="10.0" fx:id="x6" />
+                              </GridPane.margin>
+                            </ComboBox>
+                            <Label text="Alias" GridPane.columnIndex="0" GridPane.rowIndex="18">
+                              <GridPane.margin>
+                                <Insets left="30.0" fx:id="x1" />
+                              </GridPane.margin>
+                            </Label>
+                            <TextField fx:id="theAliasField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="18">
+                              <GridPane.margin>
+                                <Insets right="10.0" fx:id="x6" />
+                              </GridPane.margin>
+                            </TextField>
+                          </children>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="513.0" minWidth="10.0" prefWidth="221.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="811.0" minWidth="10.0" prefWidth="808.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                  </center>
+                </BorderPane>
+              </children>
+            </AnchorPane>
+          </items>
+        </SplitPane>
+      </center>
+      <top>
+        <ToolBar BorderPane.margin="$x3">
+          <items>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
+              <font>
+                <Font name="Arial" size="30.0" />
+              </font>
+            </Text>
+            <HBox fx:id="theSpacer" prefHeight="21.0" prefWidth="200.0" />
+            <Button fx:id="theHomeButton" mnemonicParsing="false" onAction="#onHome" styleClass="button-rich-blue" text="Home" />
+          </items>
+        </ToolBar>
+      </top>
+    </BorderPane>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/main.css" />
+  </stylesheets>
+</AnchorPane>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="844.0" prefWidth="1117.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.capstone.fx.controllers.CPTCodeController">
+  <children>
+    <BorderPane prefHeight="844.0" prefWidth="1117.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <ToolBar prefWidth="1473.0">
+          <items>
+            <HBox id="theSpacer1" prefHeight="21.0" prefWidth="200.0" />
+            <HBox prefHeight="41.0" prefWidth="428.0" spacing="10.0">
+              <children>
+                <Button id="theSaveButton" mnemonicParsing="false" onAction="#onSave" styleClass="button-rich-blue" text="Save" />
+                <Button id="theCancelButton" mnemonicParsing="false" onAction="#onCancel" styleClass="button-rich-blue" text="Cancel" />
+              </children>
+            </HBox>
+          </items>
+        </ToolBar>
+      </bottom>
+      <center>
+        <SplitPane dividerPositions="0.5006747638326585" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+          <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+              <children>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="368.0" prefWidth="1117.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                    <TableView id="theReportFindingsTable" fx:id="theCPTCodesTable" prefHeight="1211.0" prefWidth="442.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+                      <columns>
+                        <TableColumn maxWidth="5000.0" minWidth="75.0" prefWidth="131.0" text="Code" fx:id="theCPTCodeColumn" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="171.0" text="CPT Description" fx:id="theCPTDescriptionColumn" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="178.0" text="Study Description" fx:id="theStudyDescription" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="170.0" text="Primary Subspeciality" fx:id="thePrimarySubspecialityColumn" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="178.0" text="Secondary Subspeciality" fx:id="theSecondarySubspecialityColumn" />
+                        <TableColumn prefWidth="75.0" text="Tertiary Subspeciality" fx:id="theTertiarySubspecialityColumn" />
+                        <TableColumn prefWidth="75.0" text="Modality" fx:id="theModalityColumn" />
+                        <TableColumn prefWidth="75.0" text="CMS RVU" fx:id="theCMSRVUColumn" />
+                      </columns>
+                    </TableView>
+                    <HBox id="HBox" alignment="CENTER" spacing="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                      <children>
+                        <Label text="Filter :" />
+                        <TextField id="filterField" fx:id="theFilterField" HBox.hgrow="ALWAYS" />
+                      </children>
+                    </HBox>
+                  </children>
+                </AnchorPane>
+              </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
+              <children>
+                <GridPane layoutX="121.0" layoutY="139.0">
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+              </children>
+            </AnchorPane>
+          </items>
+        </SplitPane>
+      </center>
+      <top>
+        <ToolBar prefWidth="1473.0">
+          <items>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="CPT Codes">
+              <font>
+                <Font name="Arial" size="30.0" />
+              </font>
+            </Text>
+            <HBox id="theSpacer" prefHeight="21.0" prefWidth="200.0" />
+            <Button fx:id="theHomeButton" mnemonicParsing="false" onAction="#onHome" styleClass="button-rich-blue" text="Home" />
+          </items>
+        </ToolBar>
+      </top>
+    </BorderPane>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/main.css" />
+  </stylesheets>
+</AnchorPane>

@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.capstone</groupId>
         <artifactId>cqap</artifactId>
-        <version>SNAPSHOT</version>
+        <version>202411-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -112,6 +112,20 @@
                             <groupId>cqap.merge</groupId>
                             <artifactId>loci-tools</artifactId>
                             <version>1.0</version>
+                            <packaging>jar</packaging>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>lighthl7</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>${basedir}/src/main/resources/LightHl7Lib.jar</file>
+                            <groupId>org.nule</groupId>
+                            <artifactId>lightHl7Lib</artifactId>
+                            <version>0.43</version>
                             <packaging>jar</packaging>
                         </configuration>
                     </execution>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.000199999995" prefWidth="1146.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.capstone.fx.controllers.NewTicketController">
+  <children>
+    <BorderPane minHeight="200.0" minWidth="200.0" prefHeight="787.000199999995" prefWidth="1146.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <ToolBar minHeight="41.0" opacity="0.71" prefHeight="41.0" styleClass="rounded-tool-bar" BorderPane.alignment="CENTER_RIGHT">
+          <items>
+            <HBox fx:id="theSpacer" alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="200.0">
+              <children>
+                <CheckBox fx:id="theSubmittedVariance" mnemonicParsing="false" text="Submitted Variance" textFill="WHITE" />
+              </children>
+            </HBox>
+            <HBox fx:id="theTypeBox" alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="321.0" spacing="10.0">
+              <children>
+                <Label text="Review Type :" />
+                <CheckBox id="theProfessionalTypeChec" fx:id="theProfessionalType" mnemonicParsing="false" text="Professional" textFill="WHITE" />
+                <CheckBox fx:id="theTechType" mnemonicParsing="false" text="Tech" textFill="WHITE" />
+              </children>
+            </HBox>
+            <HBox id="HBox" fx:id="thePriorityBox" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="426.0" spacing="10.0">
+              <children>
+                <Label text="Priority :  " />
+                <RadioButton id="theIIRType" fx:id="theRTRCType" alignment="CENTER_RIGHT" mnemonicParsing="false" text="RTRC" textFill="RED">
+                  <toggleGroup>
+                    <ToggleGroup fx:id="theReviewType" />
+                  </toggleGroup>
+                </RadioButton>
+                <RadioButton id="theCMOType" fx:id="theRTRTType" mnemonicParsing="false" text="RTRT" textFill="#ff3d00" toggleGroup="$theReviewType" />
+                <RadioButton id="theTechType" fx:id="theURType" mnemonicParsing="false" text="UR" textFill="#00a3ff" toggleGroup="$theReviewType" />
+                <RadioButton id="theTechType" fx:id="theRRType" mnemonicParsing="false" text="RR" textFill="WHITE" toggleGroup="$theReviewType" />
+                <RadioButton id="theTechType" fx:id="theTRType" mnemonicParsing="false" text="TR" textFill="#bfbfbf" toggleGroup="$theReviewType" />
+              </children>
+              <padding>
+                <Insets left="20.0" right="20.0" />
+              </padding>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#onNewTicketSubmit" prefHeight="41.0" prefWidth="116.0" styleClass="button-metro" text="Submit" />
+          </items>
+          <BorderPane.margin>
+            <Insets bottom="5.0" left="10.0" right="10.0" />
+          </BorderPane.margin>
+        </ToolBar>
+      </bottom>
+      <center>
+        <TableView fx:id="theDicomStudyTable" prefHeight="427.0" prefWidth="1126.0">
+          <columns>
+            <TableColumn prefWidth="75.0" text="Import" fx:id="theImportColumn" />
+            <TableColumn prefWidth="75.0" text="Institution" fx:id="theInstitutionColumn" />
+            <TableColumn editable="false" prefWidth="110.0" text="Patient Name" fx:id="thePatientNameColumn" />
+            <TableColumn editable="false" minWidth="110.0" prefWidth="75.0" text="Patient ID" fx:id="thePatientIDColumn" />
+            <TableColumn editable="false" prefWidth="150.0" text="Accession Number" fx:id="theAccessionIDColumn" />
+            <TableColumn prefWidth="125.0" text="Study Date" fx:id="theStudyDateColumn" />
+            <TableColumn editable="false" prefWidth="200.0" text="Study Description" fx:id="theStudyDescriptionColumn" />
+            <TableColumn editable="false" prefWidth="75.0" text="Modality" fx:id="theModalityColumn" />
+            <TableColumn prefWidth="75.0" text="File Count" fx:id="theFileCountColumn" />
+            <TableColumn prefWidth="75.0" text="Tickets" fx:id="theTicketsColumn" />
+          </columns>
+          <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+          </BorderPane.margin>
+        </TableView>
+      </center>
+      <top>
+        <BorderPane prefHeight="300.0" prefWidth="1146.0">
+          <bottom>
+            <ToolBar minHeight="41.0" prefHeight="41.0" prefWidth="1146.0" styleClass="rounded-tool-bar">
+              <items>
+                <HBox fx:id="theProgressBox" alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="200.0">
+                  <children>
+                    <ProgressIndicator fx:id="theProgress" prefWidth="71.0" progress="0.0" visible="false">
+                      <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                      </HBox.margin>
+                    </ProgressIndicator>
+                    <Label fx:id="theResultCountLabel" />
+                  </children>
+                </HBox>
+                <HBox fx:id="theButtonBox" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                  <children>
+                    <Button fx:id="theSearchButton" minHeight="21.0" mnemonicParsing="false" onAction="#onImageSearch" prefHeight="41.0" prefWidth="116.0" styleClass="button-metro" text="Search" />
+                    <Button fx:id="theResetButton" minHeight="21.0" mnemonicParsing="false" onAction="#onImageSearchReset" prefHeight="41.0" prefWidth="116.0" styleClass="button-metro" text="Reset" />
+                    <Button mnemonicParsing="false" onAction="#onUpload" prefHeight="41.0" prefWidth="116.0" styleClass="button-metro" text="Upload" />
+                    <Button mnemonicParsing="false" onAction="#onView" prefHeight="41.0" prefWidth="116.0" styleClass="button-metro" text="View" />
+                  </children>
+                </HBox>
+              </items>
+              <BorderPane.margin>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+              </BorderPane.margin>
+            </ToolBar>
+          </bottom>
+          <center>
+            <GridPane alignment="CENTER" hgap="5.0" prefHeight="196.0" prefWidth="1126.0" styleClass="grid-pane" vgap="3.0">
+              <children>
+                <Label text="Group" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <GridPane.margin>
+                    <Insets left="10.0" fx:id="x1" />
+                  </GridPane.margin>
+                </Label>
+                <Label text="Institution" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="1" />
+                <Label text="Patient Last Name" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="2" />
+                <Label text="Patient First Name" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="3" />
+                <Label text="Patient MRN" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="4" />
+                <Label text="Modality" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="5" />
+                <TextField fx:id="theStudyDate" prefWidth="200.0" promptText="yyyymmdd" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x5" />
+                  </GridPane.margin>
+                </TextField>
+                <ComboBox fx:id="theGroup" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
+                <ComboBox fx:id="theInstitution" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
+                <TextField fx:id="thePatientLastName" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="thePatientFirstName" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="thePatientMRN" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <ComboBox fx:id="theModality" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                <Label text="Study Description" GridPane.columnIndex="2" GridPane.margin="$x1" GridPane.rowIndex="0" />
+                <TextField fx:id="theStudyDescription" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x2" />
+                  </GridPane.margin>
+                </TextField>
+                <Label text="Accession Number" GridPane.columnIndex="2" GridPane.margin="$x1" GridPane.rowIndex="1" />
+                <TextField fx:id="theAccessionNumber" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x2" />
+                  </GridPane.margin>
+                </TextField>
+                <Label text="Date of Study" GridPane.columnIndex="2" GridPane.margin="$x1" GridPane.rowIndex="2" />
+                <Label text="PIR" GridPane.columnIndex="2" GridPane.margin="$x1" GridPane.rowIndex="3" />
+                <ComboBox fx:id="theIIR" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x5" />
+                  </GridPane.margin>
+                </ComboBox>
+                <Label text="Site Technologist" GridPane.columnIndex="2" GridPane.margin="$x1" GridPane.rowIndex="4" />
+                <TextField fx:id="theSiteTechnologist" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                  <GridPane.margin>
+                    <Insets right="30.0" fx:id="x5" />
+                  </GridPane.margin>
+                </TextField>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="432.0" minWidth="10.0" prefWidth="201.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="812.0" minWidth="10.0" prefWidth="258.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="869.0" minWidth="10.0" prefWidth="207.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="869.0" minWidth="10.0" prefWidth="343.0" />
+              </columnConstraints>
+              <padding>
+                <Insets bottom="10.0" right="10.0" top="5.0" />
+              </padding>
+              <rowConstraints>
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="21.0" minHeight="0.0" prefHeight="18.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+              <BorderPane.margin>
+                <Insets bottom="1.0" left="10.0" right="10.0" />
+              </BorderPane.margin>
+            </GridPane>
+          </center>
+          <top>
+            <ToolBar minHeight="41.0" prefHeight="41.0" prefWidth="1024.0" styleClass="rounded-tool-bar">
+              <items>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="New Ticket">
+                  <font>
+                    <Font size="30.0" />
+                  </font>
+                </Text>
+                <HBox fx:id="theTopSpacer" prefHeight="16.0" prefWidth="551.0" spacing="100.0" />
+                <Button id="theHomeButton" mnemonicParsing="false" onAction="#onHome" prefHeight="41.0" prefWidth="116.0" styleClass="button-metro" text="Home" />
+              </items>
+              <BorderPane.margin>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+              </BorderPane.margin>
+            </ToolBar>
+          </top>
+        </BorderPane>
+      </top>
+    </BorderPane>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/main.css" />
+  </stylesheets>
+</AnchorPane>

@@ -1,14 +1,14 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class StatusOrderCount
 {
-    @NotNull private String user;
+    private String user;
     private int count;
 
     public StatusOrderCount()
@@ -17,7 +17,7 @@ public class StatusOrderCount
     }
 
     @JsonCreator
-    public StatusOrderCount(@NotNull String user,
+    public StatusOrderCount(String user,
                             int count)
     {
         super();
@@ -26,7 +26,7 @@ public class StatusOrderCount
         this.count = count;
     }
 
-    @NotNull
+    
     public String getUser()
     {
         return user;
@@ -36,7 +36,7 @@ public class StatusOrderCount
     {
         return count;
     }
-    public void setUser(@NotNull String user)
+    public void setUser(String user)
     {
         this.user = user;
     }
@@ -46,7 +46,7 @@ public class StatusOrderCount
         this.count = count;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "StatusOrderCount(" +
@@ -54,7 +54,7 @@ public class StatusOrderCount
             " count: " + getCount() + ")";
     }
 
-    @NotNull
+    
     public StatusOrderCountBuilder toBuilder()
     {
         return new StatusOrderCountBuilder(getUser()).setCount(getCount());

@@ -1,6 +1,6 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,9 +8,9 @@ import java.util.*;
 
 public class UserCodesBuilder
 {
-    @NotNull private Collection<String> codes;
+    private Collection<String> codes;
 
-    public UserCodesBuilder(@NotNull Collection<String> codes)
+    public UserCodesBuilder(Collection<String> codes)
     {
         super();
 
@@ -18,28 +18,28 @@ public class UserCodesBuilder
     }
 
 
-    @NotNull
-    public UserCodesBuilder setCodes(@NotNull Collection<String> codes)
+
+    public UserCodesBuilder setCodes(Collection<String> codes)
     {
         this.codes = codes;
 
         return self();
     }
 
-    @NotNull
+
     protected Collection<String> getCodes()
     {
         return codes;
     }
 
-    @NotNull
+
     public UserCodes build()
     {
         return new UserCodes(getCodes());
     }
 
 
-    @NotNull
+
     protected UserCodesBuilder self()
     {
         return this;

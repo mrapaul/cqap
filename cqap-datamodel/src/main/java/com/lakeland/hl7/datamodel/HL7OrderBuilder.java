@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,23 +8,23 @@ import com.lakeland.ris.datamodel.*;
 
 public class HL7OrderBuilder extends TimedMessageBuilder<HL7Order, HL7OrderBuilder>
 {
-    @NotNull private String id;
-    @NotNull private String orderId;
-    @NotNull private String messageId;
+    private String id;
+    private String orderId;
+    private String messageId;
     private boolean deleted;
-    @NotNull private OrderStatus status;
-    @NotNull private OrderPriority priority;
-    @Nullable private String assignedTo;
-    @Nullable private String dicomStudyId;
+    private OrderStatus status;
+    private OrderPriority priority;
+     private String assignedTo;
+     private String dicomStudyId;
     private boolean critical;
-    @Nullable private UrgentExamType urgentExamType;
+     private UrgentExamType urgentExamType;
 
-    public HL7OrderBuilder(@NotNull Date timestamp,
-                           @NotNull String id,
-                           @NotNull String orderId,
-                           @NotNull String messageId,
-                           @NotNull OrderStatus status,
-                           @NotNull OrderPriority priority)
+    public HL7OrderBuilder(Date timestamp,
+                           String id,
+                           String orderId,
+                           String messageId,
+                           OrderStatus status,
+                           OrderPriority priority)
     {
         super(timestamp);
 
@@ -36,40 +36,40 @@ public class HL7OrderBuilder extends TimedMessageBuilder<HL7Order, HL7OrderBuild
     }
 
 
-    @NotNull
+
     @Override
-    public HL7OrderBuilder setTimestamp(@NotNull Date timestamp)
+    public HL7OrderBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
-    public HL7OrderBuilder setId(@NotNull String id)
+
+    public HL7OrderBuilder setId(String id)
     {
         this.id = id;
 
         return self();
     }
 
-    @NotNull
-    public HL7OrderBuilder setOrderId(@NotNull String orderId)
+
+    public HL7OrderBuilder setOrderId(String orderId)
     {
         this.orderId = orderId;
 
         return self();
     }
 
-    @NotNull
-    public HL7OrderBuilder setMessageId(@NotNull String messageId)
+
+    public HL7OrderBuilder setMessageId(String messageId)
     {
         this.messageId = messageId;
 
         return self();
     }
 
-    @NotNull
+
     public HL7OrderBuilder setDeleted(boolean deleted)
     {
         this.deleted = deleted;
@@ -77,39 +77,39 @@ public class HL7OrderBuilder extends TimedMessageBuilder<HL7Order, HL7OrderBuild
         return self();
     }
 
-    @NotNull
-    public HL7OrderBuilder setStatus(@NotNull OrderStatus status)
+
+    public HL7OrderBuilder setStatus(OrderStatus status)
     {
         this.status = status;
 
         return self();
     }
 
-    @NotNull
-    public HL7OrderBuilder setPriority(@NotNull OrderPriority priority)
+
+    public HL7OrderBuilder setPriority(OrderPriority priority)
     {
         this.priority = priority;
 
         return self();
     }
 
-    @NotNull
-    public HL7OrderBuilder setAssignedTo(@Nullable String assignedTo)
+
+    public HL7OrderBuilder setAssignedTo( String assignedTo)
     {
         this.assignedTo = assignedTo;
 
         return self();
     }
 
-    @NotNull
-    public HL7OrderBuilder setDicomStudyId(@Nullable String dicomStudyId)
+
+    public HL7OrderBuilder setDicomStudyId( String dicomStudyId)
     {
         this.dicomStudyId = dicomStudyId;
 
         return self();
     }
 
-    @NotNull
+
     public HL7OrderBuilder setCritical(boolean critical)
     {
         this.critical = critical;
@@ -117,27 +117,27 @@ public class HL7OrderBuilder extends TimedMessageBuilder<HL7Order, HL7OrderBuild
         return self();
     }
 
-    @NotNull
-    public HL7OrderBuilder setUrgentExamType(@Nullable UrgentExamType urgentExamType)
+
+    public HL7OrderBuilder setUrgentExamType( UrgentExamType urgentExamType)
     {
         this.urgentExamType = urgentExamType;
 
         return self();
     }
 
-    @NotNull
+
     protected String getId()
     {
         return id;
     }
 
-    @NotNull
+
     protected String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+
     protected String getMessageId()
     {
         return messageId;
@@ -148,25 +148,25 @@ public class HL7OrderBuilder extends TimedMessageBuilder<HL7Order, HL7OrderBuild
         return deleted;
     }
 
-    @NotNull
+
     protected OrderStatus getStatus()
     {
         return status;
     }
 
-    @NotNull
+
     protected OrderPriority getPriority()
     {
         return priority;
     }
 
-    @Nullable
+    
     protected String getAssignedTo()
     {
         return assignedTo;
     }
 
-    @Nullable
+    
     protected String getDicomStudyId()
     {
         return dicomStudyId;
@@ -177,14 +177,14 @@ public class HL7OrderBuilder extends TimedMessageBuilder<HL7Order, HL7OrderBuild
         return critical;
     }
 
-    @Nullable
+    
     protected UrgentExamType getUrgentExamType()
     {
         return urgentExamType;
     }
 
     @Override
-    @NotNull
+
     public HL7Order build()
     {
         return new HL7Order(getTimestamp(),
@@ -202,7 +202,7 @@ public class HL7OrderBuilder extends TimedMessageBuilder<HL7Order, HL7OrderBuild
 
 
     @Override
-    @NotNull
+
     protected HL7OrderBuilder self()
     {
         return this;

@@ -1,7 +1,7 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
@@ -9,25 +9,25 @@ import com.lakeland.ris.datamodel.*;
 public class OrderReportData
 {
     private int id;
-    @NotNull private String patientName;
-    @Nullable private String patientId;
-    @Nullable private String accession;
-    @Nullable private String modality;
-    @Nullable private String bodyPart;
+    private String patientName;
+     private String patientId;
+     private String accession;
+     private String modality;
+     private String bodyPart;
     private int imageCount;
-    @Nullable private String priority;
-    @Nullable private Date studyTime;
-    @Nullable private Date arrivalTime;
-    @Nullable private Date readyTime;
-    @Nullable private Date assignedTime;
-    @Nullable private Date readTime;
-    @Nullable private Date finalTime;
-    @Nullable private String radiologist;
-    @Nullable private String description;
-    @Nullable private String status;
-    @Nullable private String site;
-    @Nullable private String cPTCode;
-    @Nullable private String cMSRVU;
+     private String priority;
+     private Date studyTime;
+     private Date arrivalTime;
+     private Date readyTime;
+     private Date assignedTime;
+     private Date readTime;
+     private Date finalTime;
+     private String radiologist;
+     private String description;
+     private String status;
+     private String site;
+     private String cPTCode;
+     private String cMSRVU;
     private boolean critical;
     private boolean addendum;
 
@@ -38,25 +38,25 @@ public class OrderReportData
 
     @JsonCreator
     public OrderReportData(int id,
-                           @NotNull String patientName,
-                           @Nullable String patientId,
-                           @Nullable String accession,
-                           @Nullable String modality,
-                           @Nullable String bodyPart,
+                           String patientName,
+                            String patientId,
+                            String accession,
+                            String modality,
+                            String bodyPart,
                            int imageCount,
-                           @Nullable String priority,
-                           @Nullable Date studyTime,
-                           @Nullable Date arrivalTime,
-                           @Nullable Date readyTime,
-                           @Nullable Date assignedTime,
-                           @Nullable Date readTime,
-                           @Nullable Date finalTime,
-                           @Nullable String radiologist,
-                           @Nullable String description,
-                           @Nullable String status,
-                           @Nullable String site,
-                           @Nullable String cPTCode,
-                           @Nullable String cMSRVU,
+                            String priority,
+                            Date studyTime,
+                            Date arrivalTime,
+                            Date readyTime,
+                            Date assignedTime,
+                            Date readTime,
+                            Date finalTime,
+                            String radiologist,
+                            String description,
+                            String status,
+                            String site,
+                            String cPTCode,
+                            String cMSRVU,
                            boolean critical,
                            boolean addendum)
     {
@@ -91,31 +91,31 @@ public class OrderReportData
         return id;
     }
 
-    @NotNull
+    
     public String getPatientName()
     {
         return patientName;
     }
 
-    @Nullable
+    
     public String getPatientId()
     {
         return patientId;
     }
 
-    @Nullable
+    
     public String getAccession()
     {
         return accession;
     }
 
-    @Nullable
+    
     public String getModality()
     {
         return modality;
     }
 
-    @Nullable
+    
     public String getBodyPart()
     {
         return bodyPart;
@@ -126,79 +126,79 @@ public class OrderReportData
         return imageCount;
     }
 
-    @Nullable
+    
     public String getPriority()
     {
         return priority;
     }
 
-    @Nullable
+    
     public Date getStudyTime()
     {
         return studyTime;
     }
 
-    @Nullable
+    
     public Date getArrivalTime()
     {
         return arrivalTime;
     }
 
-    @Nullable
+    
     public Date getReadyTime()
     {
         return readyTime;
     }
 
-    @Nullable
+    
     public Date getAssignedTime()
     {
         return assignedTime;
     }
 
-    @Nullable
+    
     public Date getReadTime()
     {
         return readTime;
     }
 
-    @Nullable
+    
     public Date getFinalTime()
     {
         return finalTime;
     }
 
-    @Nullable
+    
     public String getRadiologist()
     {
         return radiologist;
     }
 
-    @Nullable
+    
     public String getDescription()
     {
         return description;
     }
 
-    @Nullable
+    
     public String getStatus()
     {
         return status;
     }
 
-    @Nullable
+    
     public String getSite()
     {
         return site;
     }
 
-    @Nullable
+    
     public String getCPTCode()
     {
         return cPTCode;
     }
 
-    @Nullable
+    
     public String getCMSRVU()
     {
         return cMSRVU;
@@ -218,27 +218,27 @@ public class OrderReportData
         this.id = id;
     }
 
-    public void setPatientName(@NotNull String patientName)
+    public void setPatientName(String patientName)
     {
         this.patientName = patientName;
     }
 
-    public void setPatientId(@Nullable String patientId)
+    public void setPatientId( String patientId)
     {
         this.patientId = patientId;
     }
 
-    public void setAccession(@Nullable String accession)
+    public void setAccession( String accession)
     {
         this.accession = accession;
     }
 
-    public void setModality(@Nullable String modality)
+    public void setModality( String modality)
     {
         this.modality = modality;
     }
 
-    public void setBodyPart(@Nullable String bodyPart)
+    public void setBodyPart( String bodyPart)
     {
         this.bodyPart = bodyPart;
     }
@@ -248,67 +248,67 @@ public class OrderReportData
         this.imageCount = imageCount;
     }
 
-    public void setPriority(@Nullable String priority)
+    public void setPriority( String priority)
     {
         this.priority = priority;
     }
 
-    public void setStudyTime(@Nullable Date studyTime)
+    public void setStudyTime( Date studyTime)
     {
         this.studyTime = studyTime;
     }
 
-    public void setArrivalTime(@Nullable Date arrivalTime)
+    public void setArrivalTime( Date arrivalTime)
     {
         this.arrivalTime = arrivalTime;
     }
 
-    public void setReadyTime(@Nullable Date readyTime)
+    public void setReadyTime( Date readyTime)
     {
         this.readyTime = readyTime;
     }
 
-    public void setAssignedTime(@Nullable Date assignedTime)
+    public void setAssignedTime( Date assignedTime)
     {
         this.assignedTime = assignedTime;
     }
 
-    public void setReadTime(@Nullable Date readTime)
+    public void setReadTime( Date readTime)
     {
         this.readTime = readTime;
     }
 
-    public void setFinalTime(@Nullable Date finalTime)
+    public void setFinalTime( Date finalTime)
     {
         this.finalTime = finalTime;
     }
 
-    public void setRadiologist(@Nullable String radiologist)
+    public void setRadiologist( String radiologist)
     {
         this.radiologist = radiologist;
     }
 
-    public void setDescription(@Nullable String description)
+    public void setDescription( String description)
     {
         this.description = description;
     }
 
-    public void setStatus(@Nullable String status)
+    public void setStatus( String status)
     {
         this.status = status;
     }
 
-    public void setSite(@Nullable String site)
+    public void setSite( String site)
     {
         this.site = site;
     }
 
-    public void setCPTCode(@Nullable String cPTCode)
+    public void setCPTCode( String cPTCode)
     {
         this.cPTCode = cPTCode;
     }
 
-    public void setCMSRVU(@Nullable String cMSRVU)
+    public void setCMSRVU( String cMSRVU)
     {
         this.cMSRVU = cMSRVU;
     }
@@ -323,7 +323,7 @@ public class OrderReportData
         this.addendum = addendum;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "OrderReportData(" +
@@ -351,7 +351,7 @@ public class OrderReportData
             " addendum: " + isAddendum() + ")";
     }
 
-    @NotNull
+    
     public OrderReportDataBuilder toBuilder()
     {
         return new OrderReportDataBuilder(getPatientName()).setId(getId())

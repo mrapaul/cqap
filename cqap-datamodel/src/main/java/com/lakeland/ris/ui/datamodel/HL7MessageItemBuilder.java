@@ -1,6 +1,6 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,23 +8,23 @@ import com.lakeland.ris.datamodel.*;
 
 public class HL7MessageItemBuilder
 {
-    @NotNull private String id;
-    @NotNull private Date received;
-    @NotNull private String institution;
-    @NotNull private String patientID;
-    @NotNull private String patientName;
-    @NotNull private String accessionNumber;
-    @NotNull private String modality;
-    @NotNull private String studyDescription;
+    private String id;
+    private Date received;
+    private String institution;
+    private String patientID;
+    private String patientName;
+    private String accessionNumber;
+    private String modality;
+    private String studyDescription;
 
-    public HL7MessageItemBuilder(@NotNull String id,
-                                 @NotNull Date received,
-                                 @NotNull String institution,
-                                 @NotNull String patientID,
-                                 @NotNull String patientName,
-                                 @NotNull String accessionNumber,
-                                 @NotNull String modality,
-                                 @NotNull String studyDescription)
+    public HL7MessageItemBuilder(String id,
+                                 Date received,
+                                 String institution,
+                                 String patientID,
+                                 String patientName,
+                                 String accessionNumber,
+                                 String modality,
+                                 String studyDescription)
     {
         super();
 
@@ -39,119 +39,119 @@ public class HL7MessageItemBuilder
     }
 
 
-    @NotNull
-    public HL7MessageItemBuilder setId(@NotNull String id)
+    
+    public HL7MessageItemBuilder setId(String id)
     {
         this.id = id;
 
         return self();
     }
 
-    @NotNull
-    public HL7MessageItemBuilder setReceived(@NotNull Date received)
+    
+    public HL7MessageItemBuilder setReceived(Date received)
     {
         this.received = received;
 
         return self();
     }
 
-    @NotNull
-    public HL7MessageItemBuilder setInstitution(@NotNull String institution)
+    
+    public HL7MessageItemBuilder setInstitution(String institution)
     {
         this.institution = institution;
 
         return self();
     }
 
-    @NotNull
-    public HL7MessageItemBuilder setPatientID(@NotNull String patientID)
+    
+    public HL7MessageItemBuilder setPatientID(String patientID)
     {
         this.patientID = patientID;
 
         return self();
     }
 
-    @NotNull
-    public HL7MessageItemBuilder setPatientName(@NotNull String patientName)
+    
+    public HL7MessageItemBuilder setPatientName(String patientName)
     {
         this.patientName = patientName;
 
         return self();
     }
 
-    @NotNull
-    public HL7MessageItemBuilder setAccessionNumber(@NotNull String accessionNumber)
+    
+    public HL7MessageItemBuilder setAccessionNumber(String accessionNumber)
     {
         this.accessionNumber = accessionNumber;
 
         return self();
     }
 
-    @NotNull
-    public HL7MessageItemBuilder setModality(@NotNull String modality)
+    
+    public HL7MessageItemBuilder setModality(String modality)
     {
         this.modality = modality;
 
         return self();
     }
 
-    @NotNull
-    public HL7MessageItemBuilder setStudyDescription(@NotNull String studyDescription)
+    
+    public HL7MessageItemBuilder setStudyDescription(String studyDescription)
     {
         this.studyDescription = studyDescription;
 
         return self();
     }
 
-    @NotNull
+    
     protected String getId()
     {
         return id;
     }
 
-    @NotNull
+    
     protected Date getReceived()
     {
         return received;
     }
 
-    @NotNull
+    
     protected String getInstitution()
     {
         return institution;
     }
 
-    @NotNull
+    
     protected String getPatientID()
     {
         return patientID;
     }
 
-    @NotNull
+    
     protected String getPatientName()
     {
         return patientName;
     }
 
-    @NotNull
+    
     protected String getAccessionNumber()
     {
         return accessionNumber;
     }
 
-    @NotNull
+    
     protected String getModality()
     {
         return modality;
     }
 
-    @NotNull
+    
     protected String getStudyDescription()
     {
         return studyDescription;
     }
 
-    @NotNull
+    
     public HL7MessageItem build()
     {
         return new HL7MessageItem(getId(),
@@ -165,7 +165,7 @@ public class HL7MessageItemBuilder
     }
 
 
-    @NotNull
+    
     protected HL7MessageItemBuilder self()
     {
         return this;

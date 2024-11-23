@@ -2,15 +2,15 @@ package web;
 
 import com.peirs.datamodel.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.tepi.filtertable.*;
 
 public class InstitutionPresenter implements InstitutionView.InstitutionViewListener
 {
-    @NotNull private final InstitutionModel model;
-    @NotNull private final InstitutionView view;
+    private final InstitutionModel model;
+    private final InstitutionView view;
 
-    public InstitutionPresenter(@NotNull InstitutionModel model, @NotNull InstitutionView view)
+    public InstitutionPresenter(InstitutionModel model, InstitutionView view)
     {
         this.model = model;
         this.view = view;
@@ -26,17 +26,17 @@ public class InstitutionPresenter implements InstitutionView.InstitutionViewList
         model.refresh();
     }
 
-    @Override public void createOrUpdate(@NotNull Institution institution)
+    @Override public void createOrUpdate(Institution institution)
     {
         model.createOrUpdate(institution);
     }
 
-    @Override public void delete(@NotNull Institution institution)
+    @Override public void delete(Institution institution)
     {
         model.delete(institution);
     }
 
-    @Override public void countrySelected(@NotNull Country country)
+    @Override public void countrySelected(Country country)
     {
         model.countrySelected(country);
     }

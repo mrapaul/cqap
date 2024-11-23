@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
@@ -9,7 +9,7 @@ import com.lakeland.ris.datamodel.*;
 public class RadiologistSnapshotRequest extends TimedMessage implements HL7Visitable
 {
     public static final byte TYPE = 13;
-    @NotNull private String userId;
+    private String userId;
 
     public RadiologistSnapshotRequest()
     {
@@ -17,30 +17,30 @@ public class RadiologistSnapshotRequest extends TimedMessage implements HL7Visit
     }
 
     @JsonCreator
-    public RadiologistSnapshotRequest(@NotNull Date timestamp,
-                                      @NotNull String userId)
+    public RadiologistSnapshotRequest(Date timestamp,
+                                      String userId)
     {
         super(timestamp);
 
         this.userId = userId;
     }
 
-    @NotNull
+
     public String getUserId()
     {
         return userId;
     }
-    public void setUserId(@NotNull String userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+
     public String toString()
     {
         return "RadiologistSnapshotRequest(" +
@@ -48,7 +48,7 @@ public class RadiologistSnapshotRequest extends TimedMessage implements HL7Visit
             " userId: " + getUserId() + ")";
     }
 
-    @NotNull
+
     public RadiologistSnapshotRequestBuilder toBuilder()
     {
         return new RadiologistSnapshotRequestBuilder(getTimestamp(),

@@ -4,7 +4,7 @@ package web;
 import com.peirs.datamodel.ticket.*;
 import com.vaadin.shared.ui.label.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
@@ -14,13 +14,13 @@ import static web.ComponentFactory.*;
 
 public final class NotesView extends Panel
 {
-    @NotNull private final NotesListener listener;
-    @NotNull private final TextField note;
-    @NotNull private final Button addButton;
-    @NotNull private final Panel notesList;
-    @NotNull private final VerticalLayout notesContent;
+    private final NotesListener listener;
+    private final TextField note;
+    private final Button addButton;
+    private final Panel notesList;
+    private final VerticalLayout notesContent;
 
-    public NotesView(@NotNull NotesListener listener)
+    public NotesView(NotesListener listener)
     {
         this.listener = listener;
         note = createFormTextField("Enter Note");
@@ -73,7 +73,7 @@ public final class NotesView extends Panel
         });
     }
 
-    public void displayNotes(@NotNull List<InternalNote> notes)
+    public void displayNotes(List<InternalNote> notes)
     {
         Collections.sort(notes, new Comparator<InternalNote>()
         {

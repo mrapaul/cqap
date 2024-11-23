@@ -1,21 +1,21 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class OrderNoteBuilder
 {
-    @NotNull private Date timestamp;
-    @NotNull private String orderId;
-    @NotNull private String userId;
-    @NotNull private String note;
+    private Date timestamp;
+    private String orderId;
+    private String userId;
+    private String note;
 
-    public OrderNoteBuilder(@NotNull Date timestamp,
-                            @NotNull String orderId,
-                            @NotNull String userId,
-                            @NotNull String note)
+    public OrderNoteBuilder(Date timestamp,
+                            String orderId,
+                            String userId,
+                            String note)
     {
         super();
 
@@ -26,63 +26,63 @@ public class OrderNoteBuilder
     }
 
 
-    @NotNull
-    public OrderNoteBuilder setTimestamp(@NotNull Date timestamp)
+
+    public OrderNoteBuilder setTimestamp(Date timestamp)
     {
         this.timestamp = timestamp;
 
         return self();
     }
 
-    @NotNull
-    public OrderNoteBuilder setOrderId(@NotNull String orderId)
+
+    public OrderNoteBuilder setOrderId(String orderId)
     {
         this.orderId = orderId;
 
         return self();
     }
 
-    @NotNull
-    public OrderNoteBuilder setUserId(@NotNull String userId)
+
+    public OrderNoteBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
-    public OrderNoteBuilder setNote(@NotNull String note)
+
+    public OrderNoteBuilder setNote(String note)
     {
         this.note = note;
 
         return self();
     }
 
-    @NotNull
+
     protected Date getTimestamp()
     {
         return timestamp;
     }
 
-    @NotNull
+
     protected String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+
     protected String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+
     protected String getNote()
     {
         return note;
     }
 
-    @NotNull
+
     public OrderNote build()
     {
         return new OrderNote(getTimestamp(),
@@ -92,7 +92,7 @@ public class OrderNoteBuilder
     }
 
 
-    @NotNull
+
     protected OrderNoteBuilder self()
     {
         return this;

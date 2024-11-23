@@ -1,7 +1,7 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -9,7 +9,7 @@ import java.util.*;
 
 public class CPTCodePrimaryGroups
 {
-    @NotNull private Collection<CPTCodePrimaryGroup> groups;
+    private Collection<CPTCodePrimaryGroup> groups;
 
     public CPTCodePrimaryGroups()
     {
@@ -17,24 +17,24 @@ public class CPTCodePrimaryGroups
     }
 
     @JsonCreator
-    public CPTCodePrimaryGroups(@NotNull Collection<CPTCodePrimaryGroup> groups)
+    public CPTCodePrimaryGroups(Collection<CPTCodePrimaryGroup> groups)
     {
         super();
 
         this.groups = groups;
     }
 
-    @NotNull
+    
     public Collection<CPTCodePrimaryGroup> getGroups()
     {
         return groups;
     }
-    public void setGroups(@NotNull Collection<CPTCodePrimaryGroup> groups)
+    public void setGroups(Collection<CPTCodePrimaryGroup> groups)
     {
         this.groups = groups;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "CPTCodePrimaryGroups(" +
@@ -43,7 +43,7 @@ public class CPTCodePrimaryGroups
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -67,7 +67,7 @@ public class CPTCodePrimaryGroups
                             getGroups());
     }
 
-    @NotNull
+    
     public CPTCodePrimaryGroupsBuilder toBuilder()
     {
         return new CPTCodePrimaryGroupsBuilder(getGroups());

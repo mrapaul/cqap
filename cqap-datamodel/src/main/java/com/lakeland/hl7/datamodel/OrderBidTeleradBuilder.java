@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,9 +10,9 @@ public class OrderBidTeleradBuilder extends OrderActivityBuilder<OrderBidTelerad
 {
     private int orderCount;
 
-    public OrderBidTeleradBuilder(@NotNull Date timestamp,
-                                  @NotNull String orderId,
-                                  @NotNull String userId)
+    public OrderBidTeleradBuilder(Date timestamp,
+                                  String orderId,
+                                  String userId)
     {
         super(timestamp,
               orderId,
@@ -21,34 +21,34 @@ public class OrderBidTeleradBuilder extends OrderActivityBuilder<OrderBidTelerad
     }
 
 
-    @NotNull
+    
     @Override
-    public OrderBidTeleradBuilder setTimestamp(@NotNull Date timestamp)
+    public OrderBidTeleradBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
+    
     @Override
-    public OrderBidTeleradBuilder setOrderId(@NotNull String orderId)
+    public OrderBidTeleradBuilder setOrderId(String orderId)
     {
         super.setOrderId(orderId);
 
         return self();
     }
 
-    @NotNull
+    
     @Override
-    public OrderBidTeleradBuilder setUserId(@NotNull String userId)
+    public OrderBidTeleradBuilder setUserId(String userId)
     {
         super.setUserId(userId);
 
         return self();
     }
 
-    @NotNull
+    
     public OrderBidTeleradBuilder setOrderCount(int orderCount)
     {
         this.orderCount = orderCount;
@@ -62,7 +62,7 @@ public class OrderBidTeleradBuilder extends OrderActivityBuilder<OrderBidTelerad
     }
 
     @Override
-    @NotNull
+    
     public OrderBidTelerad build()
     {
         return new OrderBidTelerad(getTimestamp(),
@@ -73,7 +73,7 @@ public class OrderBidTeleradBuilder extends OrderActivityBuilder<OrderBidTelerad
 
 
     @Override
-    @NotNull
+    
     protected OrderBidTeleradBuilder self()
     {
         return this;

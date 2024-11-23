@@ -1,16 +1,16 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class UserSession
 {
-    @NotNull private String username;
-    @NotNull private String iP;
-    @NotNull private Date timestamp;
+    private String username;
+    private String iP;
+    private Date timestamp;
 
     public UserSession()
     {
@@ -18,9 +18,9 @@ public class UserSession
     }
 
     @JsonCreator
-    public UserSession(@NotNull String username,
-                       @NotNull String iP,
-                       @NotNull Date timestamp)
+    public UserSession(String username,
+                       String iP,
+                       Date timestamp)
     {
         super();
 
@@ -29,39 +29,39 @@ public class UserSession
         this.timestamp = timestamp;
     }
 
-    @NotNull
+
     public String getUsername()
     {
         return username;
     }
 
-    @NotNull
+
     public String getIP()
     {
         return iP;
     }
 
-    @NotNull
+
     public Date getTimestamp()
     {
         return timestamp;
     }
-    public void setUsername(@NotNull String username)
+    public void setUsername(String username)
     {
         this.username = username;
     }
 
-    public void setIP(@NotNull String iP)
+    public void setIP(String iP)
     {
         this.iP = iP;
     }
 
-    public void setTimestamp(@NotNull Date timestamp)
+    public void setTimestamp(Date timestamp)
     {
         this.timestamp = timestamp;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "UserSession(" +
@@ -70,7 +70,7 @@ public class UserSession
             " timestamp: " + getTimestamp() + ")";
     }
 
-    @NotNull
+
     public UserSessionBuilder toBuilder()
     {
         return new UserSessionBuilder(getUsername(),

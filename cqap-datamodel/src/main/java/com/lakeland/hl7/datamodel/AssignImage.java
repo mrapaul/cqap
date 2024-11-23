@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,9 +10,9 @@ import com.lakeland.ris.datamodel.*;
 public class AssignImage extends TimedMessage implements HL7Visitable
 {
     public static final byte TYPE = 28;
-    @NotNull private String userId;
-    @NotNull private String orderId;
-    @NotNull private String dicomStudyId;
+    private String userId;
+    private String orderId;
+    private String dicomStudyId;
 
     public AssignImage()
     {
@@ -20,10 +20,10 @@ public class AssignImage extends TimedMessage implements HL7Visitable
     }
 
     @JsonCreator
-    public AssignImage(@NotNull Date timestamp,
-                       @NotNull String userId,
-                       @NotNull String orderId,
-                       @NotNull String dicomStudyId)
+    public AssignImage(Date timestamp,
+                       String userId,
+                       String orderId,
+                       String dicomStudyId)
     {
         super(timestamp);
 
@@ -32,44 +32,44 @@ public class AssignImage extends TimedMessage implements HL7Visitable
         this.dicomStudyId = dicomStudyId;
     }
 
-    @NotNull
+
     public String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+
     public String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+
     public String getDicomStudyId()
     {
         return dicomStudyId;
     }
-    public void setUserId(@NotNull String userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }
 
-    public void setOrderId(@NotNull String orderId)
+    public void setOrderId(String orderId)
     {
         this.orderId = orderId;
     }
 
-    public void setDicomStudyId(@NotNull String dicomStudyId)
+    public void setDicomStudyId(String dicomStudyId)
     {
         this.dicomStudyId = dicomStudyId;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+
     public String toString()
     {
         return "AssignImage(" +
@@ -81,7 +81,7 @@ public class AssignImage extends TimedMessage implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -114,7 +114,7 @@ public class AssignImage extends TimedMessage implements HL7Visitable
                             getDicomStudyId());
     }
 
-    @NotNull
+
     public AssignImageBuilder toBuilder()
     {
         return new AssignImageBuilder(getTimestamp(),

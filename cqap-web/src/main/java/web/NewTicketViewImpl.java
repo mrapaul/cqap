@@ -11,7 +11,7 @@ import com.vaadin.navigator.*;
 import com.vaadin.server.*;
 import com.vaadin.shared.ui.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.joda.time.*;
 import org.tepi.filtertable.*;
 import org.vaadin.addon.borderlayout.*;
@@ -87,14 +87,14 @@ public class NewTicketViewImpl extends VerticalLayout implements NewTicketView
         externalImagesView.setListener(listener);
     }
 
-    @Override public void setContainers(@NotNull Container queryResults,
-                                        @NotNull Container groups,
-                                        @NotNull Container institutions,
-                                        @NotNull Container pirs,
-                                        @NotNull Container sts,
-                                        @NotNull Container pacsContainer,
-                                        @NotNull Container externalImagesContainer,
-                                        @NotNull Container internalImagesContainer)
+    @Override public void setContainers(Container queryResults,
+                                        Container groups,
+                                        Container institutions,
+                                        Container pirs,
+                                        Container sts,
+                                        Container pacsContainer,
+                                        Container externalImagesContainer,
+                                        Container internalImagesContainer)
     {
         groupField.setContainerDataSource(groups);
         institutionField.setContainerDataSource(institutions);
@@ -189,12 +189,12 @@ public class NewTicketViewImpl extends VerticalLayout implements NewTicketView
         return study.getPatientName() + "|" + study.getAccessionNumber();
     }
 
-    public boolean isAlreadyDisplayed(@NotNull TabSheet container, DicomStudy study)
+    public boolean isAlreadyDisplayed(TabSheet container, DicomStudy study)
     {
         return check(container, getCaption(study));
     }
 
-    private boolean check(@NotNull TabSheet container, @NotNull String caption)
+    private boolean check(TabSheet container, String caption)
     {
         int componentCount = container.getComponentCount();
         for (int i = 0; i < componentCount; i++)

@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,12 +8,12 @@ import com.lakeland.ris.datamodel.*;
 
 public class AdministrationSnapshotPartBuilder extends TimedMessageBuilder<AdministrationSnapshotPart, AdministrationSnapshotPartBuilder>
 {
-    @NotNull private String userId;
-    @NotNull private String order;
+    private String userId;
+    private String order;
 
-    public AdministrationSnapshotPartBuilder(@NotNull Date timestamp,
-                                             @NotNull String userId,
-                                             @NotNull String order)
+    public AdministrationSnapshotPartBuilder(Date timestamp,
+                                             String userId,
+                                             String order)
     {
         super(timestamp);
 
@@ -22,45 +22,45 @@ public class AdministrationSnapshotPartBuilder extends TimedMessageBuilder<Admin
     }
 
 
-    @NotNull
+    
     @Override
-    public AdministrationSnapshotPartBuilder setTimestamp(@NotNull Date timestamp)
+    public AdministrationSnapshotPartBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
-    public AdministrationSnapshotPartBuilder setUserId(@NotNull String userId)
+    
+    public AdministrationSnapshotPartBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
-    public AdministrationSnapshotPartBuilder setOrder(@NotNull String order)
+    
+    public AdministrationSnapshotPartBuilder setOrder(String order)
     {
         this.order = order;
 
         return self();
     }
 
-    @NotNull
+    
     protected String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     protected String getOrder()
     {
         return order;
     }
 
     @Override
-    @NotNull
+    
     public AdministrationSnapshotPart build()
     {
         return new AdministrationSnapshotPart(getTimestamp(),
@@ -70,7 +70,7 @@ public class AdministrationSnapshotPartBuilder extends TimedMessageBuilder<Admin
 
 
     @Override
-    @NotNull
+    
     protected AdministrationSnapshotPartBuilder self()
     {
         return this;

@@ -1,37 +1,17 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 
 public abstract class HL7HandlerAdapter implements HL7Handler
 {
     @Override
-    public void onHL7Message(@NotNull HL7Message aHL7Message)
+    public void onHL7Message(HL7Message aHL7Message)
     {
         // empty
     }
 
     @Override
-    public void onHL7Messages(@NotNull HL7Messages aHL7Messages)
-    {
-        // empty
-    }
-
-
-
-    @Override
-    public void onHL7Order(@NotNull HL7Order aHL7Order)
-    {
-        // empty
-    }
-
-    @Override
-    public void onHL7Orders(@NotNull HL7Orders aHL7Orders)
-    {
-        // empty
-    }
-
-    @Override
-    public void onNewOrder(@NotNull NewOrder aNewOrder)
+    public void onHL7Messages(HL7Messages aHL7Messages)
     {
         // empty
     }
@@ -39,151 +19,171 @@ public abstract class HL7HandlerAdapter implements HL7Handler
 
 
     @Override
-    public void onOrderBidLocation(@NotNull OrderBidLocation aOrderBidLocation)
+    public void onHL7Order(HL7Order aHL7Order)
     {
         // empty
     }
 
     @Override
-    public void onOrderBidTelerad(@NotNull OrderBidTelerad aOrderBidTelerad)
+    public void onHL7Orders(HL7Orders aHL7Orders)
     {
         // empty
     }
 
     @Override
-    public void onOrderBidConfirm(@NotNull OrderBidConfirm aOrderBidConfirm)
+    public void onNewOrder(NewOrder aNewOrder)
+    {
+        // empty
+    }
+
+
+
+    @Override
+    public void onOrderBidLocation(OrderBidLocation aOrderBidLocation)
     {
         // empty
     }
 
     @Override
-    public void onOrderBidRejected(@NotNull OrderBidRejected aOrderBidRejected)
+    public void onOrderBidTelerad(OrderBidTelerad aOrderBidTelerad)
     {
         // empty
     }
 
     @Override
-    public void onOrderStatusChange(@NotNull OrderStatusChange aOrderStatusChange)
+    public void onOrderBidConfirm(OrderBidConfirm aOrderBidConfirm)
     {
         // empty
     }
 
     @Override
-    public void onAdministrationSnapshotRequest(@NotNull AdministrationSnapshotRequest aAdministrationSnapshotRequest)
+    public void onOrderBidRejected(OrderBidRejected aOrderBidRejected)
     {
         // empty
     }
 
     @Override
-    public void onAdministrationSnapshotBegin(@NotNull AdministrationSnapshotBegin aAdministrationSnapshotBegin)
+    public void onOrderStatusChange(OrderStatusChange aOrderStatusChange)
     {
         // empty
     }
 
     @Override
-    public void onAdministrationSnapshotPart(@NotNull AdministrationSnapshotPart aAdministrationSnapshotPart)
+    public void onAdministrationSnapshotRequest(AdministrationSnapshotRequest aAdministrationSnapshotRequest)
     {
         // empty
     }
 
     @Override
-    public void onAdministrationSnapshotEnd(@NotNull AdministrationSnapshotEnd aAdministrationSnapshotEnd)
+    public void onAdministrationSnapshotBegin(AdministrationSnapshotBegin aAdministrationSnapshotBegin)
     {
         // empty
     }
 
     @Override
-    public void onAdministrationSnapshot(@NotNull AdministrationSnapshot aAdministrationSnapshot)
+    public void onAdministrationSnapshotPart(AdministrationSnapshotPart aAdministrationSnapshotPart)
     {
         // empty
     }
 
     @Override
-    public void onRadiologistSnapshotRequest(@NotNull RadiologistSnapshotRequest aRadiologistSnapshotRequest)
+    public void onAdministrationSnapshotEnd(AdministrationSnapshotEnd aAdministrationSnapshotEnd)
     {
         // empty
     }
 
     @Override
-    public void onRadiologistSnapshotBegin(@NotNull RadiologistSnapshotBegin aRadiologistSnapshotBegin)
+    public void onAdministrationSnapshot(AdministrationSnapshot aAdministrationSnapshot)
     {
         // empty
     }
 
     @Override
-    public void onRadiologistSnapshotPart(@NotNull RadiologistSnapshotPart aRadiologistSnapshotPart)
+    public void onRadiologistSnapshotRequest(RadiologistSnapshotRequest aRadiologistSnapshotRequest)
     {
         // empty
     }
 
     @Override
-    public void onRadiologistSnapshotEnd(@NotNull RadiologistSnapshotEnd aRadiologistSnapshotEnd)
+    public void onRadiologistSnapshotBegin(RadiologistSnapshotBegin aRadiologistSnapshotBegin)
     {
         // empty
     }
 
     @Override
-    public void onRadiologistSnapshot(@NotNull RadiologistSnapshot aRadiologistSnapshot)
+    public void onRadiologistSnapshotPart(RadiologistSnapshotPart aRadiologistSnapshotPart)
     {
         // empty
     }
 
     @Override
-    public void onHL7RawMessage(@NotNull HL7RawMessage aHL7RawMessage)
+    public void onRadiologistSnapshotEnd(RadiologistSnapshotEnd aRadiologistSnapshotEnd)
     {
         // empty
     }
 
     @Override
-    public void onManualAssignOrder(@NotNull ManualAssignOrder aManualAssignOrder)
+    public void onRadiologistSnapshot(RadiologistSnapshot aRadiologistSnapshot)
     {
         // empty
     }
 
     @Override
-    public void onPullOrders(@NotNull PullOrders aPullOrders)
+    public void onHL7RawMessage(HL7RawMessage aHL7RawMessage)
     {
         // empty
     }
 
     @Override
-    public void onDeleteOrders(@NotNull DeleteOrders aDeleteOrders)
+    public void onManualAssignOrder(ManualAssignOrder aManualAssignOrder)
     {
         // empty
     }
 
     @Override
-    public void onOrderUpdated(@NotNull OrderUpdated aOrderUpdated)
+    public void onPullOrders(PullOrders aPullOrders)
     {
         // empty
     }
 
     @Override
-    public void onOrderActivities(@NotNull OrderActivities aOrderActivities)
+    public void onDeleteOrders(DeleteOrders aDeleteOrders)
     {
         // empty
     }
 
     @Override
-    public void onNewOrders(@NotNull NewOrders aNewOrders)
+    public void onOrderUpdated(OrderUpdated aOrderUpdated)
     {
         // empty
     }
 
     @Override
-    public void onAssignImage(@NotNull AssignImage aAssignImage)
+    public void onOrderActivities(OrderActivities aOrderActivities)
     {
         // empty
     }
 
     @Override
-    public void onCreateDicomOrder(@NotNull CreateDicomOrder aCreateDicomOrder)
+    public void onNewOrders(NewOrders aNewOrders)
     {
         // empty
     }
 
     @Override
-    public void onUnknown(byte aMessageType, int aMessageLength, @NotNull byte[] aBytes)
+    public void onAssignImage(AssignImage aAssignImage)
+    {
+        // empty
+    }
+
+    @Override
+    public void onCreateDicomOrder(CreateDicomOrder aCreateDicomOrder)
+    {
+        // empty
+    }
+
+    @Override
+    public void onUnknown(byte aMessageType, int aMessageLength, byte[] aBytes)
     {
         // empty
     }

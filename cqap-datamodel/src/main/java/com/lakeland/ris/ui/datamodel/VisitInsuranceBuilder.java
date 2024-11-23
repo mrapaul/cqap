@@ -1,25 +1,25 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class VisitInsuranceBuilder
 {
-    @Nullable private String plan;
-    @Nullable private String policyNumber;
-    @Nullable private String groupNumber;
-    @Nullable private String authorizationNumber;
-    @Nullable private String effectiveDate;
-    @Nullable private String preCertificationNumber;
-    @Nullable private String address;
-    @Nullable private String city;
-    @Nullable private String state;
-    @Nullable private String zipcode;
-    @Nullable private String phone;
-    @Nullable private String fax;
-    @Nullable private String email;
+     private String plan;
+     private String policyNumber;
+     private String groupNumber;
+     private String authorizationNumber;
+     private String effectiveDate;
+     private String preCertificationNumber;
+     private String address;
+     private String city;
+     private String state;
+     private String zipcode;
+     private String phone;
+     private String fax;
+     private String email;
 
     public VisitInsuranceBuilder()
     {
@@ -28,189 +28,189 @@ public class VisitInsuranceBuilder
     }
 
 
-    @NotNull
-    public VisitInsuranceBuilder setPlan(@Nullable String plan)
+
+    public VisitInsuranceBuilder setPlan( String plan)
     {
         this.plan = plan;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setPolicyNumber(@Nullable String policyNumber)
+
+    public VisitInsuranceBuilder setPolicyNumber( String policyNumber)
     {
         this.policyNumber = policyNumber;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setGroupNumber(@Nullable String groupNumber)
+
+    public VisitInsuranceBuilder setGroupNumber( String groupNumber)
     {
         this.groupNumber = groupNumber;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setAuthorizationNumber(@Nullable String authorizationNumber)
+
+    public VisitInsuranceBuilder setAuthorizationNumber( String authorizationNumber)
     {
         this.authorizationNumber = authorizationNumber;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setEffectiveDate(@Nullable String effectiveDate)
+
+    public VisitInsuranceBuilder setEffectiveDate( String effectiveDate)
     {
         this.effectiveDate = effectiveDate;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setPreCertificationNumber(@Nullable String preCertificationNumber)
+
+    public VisitInsuranceBuilder setPreCertificationNumber( String preCertificationNumber)
     {
         this.preCertificationNumber = preCertificationNumber;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setAddress(@Nullable String address)
+
+    public VisitInsuranceBuilder setAddress( String address)
     {
         this.address = address;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setCity(@Nullable String city)
+
+    public VisitInsuranceBuilder setCity( String city)
     {
         this.city = city;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setState(@Nullable String state)
+
+    public VisitInsuranceBuilder setState( String state)
     {
         this.state = state;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setZipcode(@Nullable String zipcode)
+
+    public VisitInsuranceBuilder setZipcode( String zipcode)
     {
         this.zipcode = zipcode;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setPhone(@Nullable String phone)
+
+    public VisitInsuranceBuilder setPhone( String phone)
     {
         this.phone = phone;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setFax(@Nullable String fax)
+
+    public VisitInsuranceBuilder setFax( String fax)
     {
         this.fax = fax;
 
         return self();
     }
 
-    @NotNull
-    public VisitInsuranceBuilder setEmail(@Nullable String email)
+
+    public VisitInsuranceBuilder setEmail( String email)
     {
         this.email = email;
 
         return self();
     }
 
-    @Nullable
+    
     protected String getPlan()
     {
         return plan;
     }
 
-    @Nullable
+    
     protected String getPolicyNumber()
     {
         return policyNumber;
     }
 
-    @Nullable
+    
     protected String getGroupNumber()
     {
         return groupNumber;
     }
 
-    @Nullable
+    
     protected String getAuthorizationNumber()
     {
         return authorizationNumber;
     }
 
-    @Nullable
+    
     protected String getEffectiveDate()
     {
         return effectiveDate;
     }
 
-    @Nullable
+    
     protected String getPreCertificationNumber()
     {
         return preCertificationNumber;
     }
 
-    @Nullable
+    
     protected String getAddress()
     {
         return address;
     }
 
-    @Nullable
+    
     protected String getCity()
     {
         return city;
     }
 
-    @Nullable
+    
     protected String getState()
     {
         return state;
     }
 
-    @Nullable
+    
     protected String getZipcode()
     {
         return zipcode;
     }
 
-    @Nullable
+    
     protected String getPhone()
     {
         return phone;
     }
 
-    @Nullable
+    
     protected String getFax()
     {
         return fax;
     }
 
-    @Nullable
+    
     protected String getEmail()
     {
         return email;
     }
 
-    @NotNull
+
     public VisitInsurance build()
     {
         return new VisitInsurance(getPlan(),
@@ -229,7 +229,7 @@ public class VisitInsuranceBuilder
     }
 
 
-    @NotNull
+
     protected VisitInsuranceBuilder self()
     {
         return this;

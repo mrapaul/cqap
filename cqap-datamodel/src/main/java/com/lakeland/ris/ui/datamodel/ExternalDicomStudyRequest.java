@@ -2,14 +2,14 @@ package com.lakeland.ris.ui.datamodel;
 
 import com.peirs.datamodel.PACS;
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class ExternalDicomStudyRequest
 {
-    @NotNull private Date requestDate;
+    private Date requestDate;
     private PACS pacs;
 
     public ExternalDicomStudyRequest()
@@ -18,7 +18,7 @@ public class ExternalDicomStudyRequest
     }
 
     @JsonCreator
-    public ExternalDicomStudyRequest(@NotNull Date requestDate, PACS pacs)
+    public ExternalDicomStudyRequest(Date requestDate, PACS pacs)
     {
         super();
 
@@ -26,12 +26,12 @@ public class ExternalDicomStudyRequest
         this.pacs = pacs;
     }
 
-    @NotNull
+    
     public Date getRequestDate()
     {
         return requestDate;
     }
-    public void setRequestDate(@NotNull Date requestDate)
+    public void setRequestDate(Date requestDate)
     {
         this.requestDate = requestDate;
     }
@@ -44,14 +44,14 @@ public class ExternalDicomStudyRequest
         this.pacs = pacs;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "ExternalDicomStudyRequest(" +
             " requestDate: " + getRequestDate() + ")";
     }
 
-    @NotNull
+    
     public ExternalDicomStudyRequestBuilder toBuilder()
     {
         return new ExternalDicomStudyRequestBuilder(getRequestDate(), getPacs());

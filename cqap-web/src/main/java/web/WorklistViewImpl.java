@@ -10,21 +10,21 @@ import com.vaadin.event.*;
 import com.vaadin.navigator.*;
 import com.vaadin.server.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.tepi.filtertable.*;
 
 import java.util.*;
 
 public class WorklistViewImpl extends CssLayout implements WorklistView
 {
-    @NotNull private final User user;
-    @NotNull private final FilterTable searchResultsTable;
-    @NotNull private final Button refreshButton;
-    @NotNull private final TabSheet tabSheet;
-    @NotNull private final Label totalsLabel;
-    @Nullable private WorklistView.Listener listener;
+    private final User user;
+    private final FilterTable searchResultsTable;
+    private final Button refreshButton;
+    private final TabSheet tabSheet;
+    private final Label totalsLabel;
+     private WorklistView.Listener listener;
 
-    public WorklistViewImpl(@NotNull User user)
+    public WorklistViewImpl(User user)
     {
         this.user = user;
         searchResultsTable = new FilterTable();
@@ -107,12 +107,12 @@ public class WorklistViewImpl extends CssLayout implements WorklistView
         // empty
     }
 
-    @Override public void setListener(@NotNull WorklistView.Listener listener)
+    @Override public void setListener(WorklistView.Listener listener)
     {
         this.listener = listener;
     }
 
-    @Override public void setContainers(@NotNull Container queryResults)
+    @Override public void setContainers(Container queryResults)
     {
         searchResultsTable.setFilterBarVisible(true);
         searchResultsTable.setContainerDataSource(queryResults);
@@ -165,10 +165,10 @@ public class WorklistViewImpl extends CssLayout implements WorklistView
         });
     }
 
-    @Override public void displayTicket(@NotNull ProfessionalTicket ticket,
-                                        @NotNull Collection<DicomStudy> relatedExams,
-                                        @NotNull Container institutions,
-                                        @NotNull Collection<Attachment> attachments)
+    @Override public void displayTicket(ProfessionalTicket ticket,
+                                        Collection<DicomStudy> relatedExams,
+                                        Container institutions,
+                                        Collection<Attachment> attachments)
     {
         if (listener != null)
         {
@@ -185,7 +185,7 @@ public class WorklistViewImpl extends CssLayout implements WorklistView
         }
     }
 
-    public boolean isAlreadyDisplayed(@NotNull TabSheet container, String caption)
+    public boolean isAlreadyDisplayed(TabSheet container, String caption)
     {
         int componentCount = container.getComponentCount();
         for (int i = 0; i < componentCount; i++)

@@ -6,7 +6,7 @@ import com.vaadin.data.util.*;
 import com.vaadin.server.*;
 import com.vaadin.shared.ui.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.vaadin.maddon.layouts.*;
 
 import java.util.*;
@@ -102,7 +102,7 @@ public class EditExamView extends VerticalLayout
         tabsheet.removeComponent(this);
     }
 
-    public void setDetails(@NotNull DicomStudy study, @NotNull Collection<DicomStudy> relatedExams)
+    public void setDetails(DicomStudy study, Collection<DicomStudy> relatedExams)
     {
         this.study = study;
         studyDetailsView.setDetails(this.study, null);

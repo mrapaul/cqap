@@ -1,7 +1,5 @@
 package com.lakeland.ris.datamodel;
 
-import org.jetbrains.annotations.*;
-
 public enum Modality
 {
     CT((byte) 0, "CT/SR"),
@@ -29,7 +27,6 @@ public enum Modality
         return value;
     }
 
-    @NotNull
     public String getDescription()
     {
         return description;

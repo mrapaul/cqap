@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,13 +8,13 @@ import com.lakeland.ris.datamodel.*;
 
 public class OrderBidLocationBuilder extends OrderActivityBuilder<OrderBidLocation, OrderBidLocationBuilder>
 {
-    @NotNull private String location;
+    private String location;
     private int orderCount;
 
-    public OrderBidLocationBuilder(@NotNull Date timestamp,
-                                   @NotNull String orderId,
-                                   @NotNull String userId,
-                                   @NotNull String location)
+    public OrderBidLocationBuilder(Date timestamp,
+                                   String orderId,
+                                   String userId,
+                                   String location)
     {
         super(timestamp,
               orderId,
@@ -24,42 +24,42 @@ public class OrderBidLocationBuilder extends OrderActivityBuilder<OrderBidLocati
     }
 
 
-    @NotNull
+
     @Override
-    public OrderBidLocationBuilder setTimestamp(@NotNull Date timestamp)
+    public OrderBidLocationBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
+
     @Override
-    public OrderBidLocationBuilder setOrderId(@NotNull String orderId)
+    public OrderBidLocationBuilder setOrderId(String orderId)
     {
         super.setOrderId(orderId);
 
         return self();
     }
 
-    @NotNull
+
     @Override
-    public OrderBidLocationBuilder setUserId(@NotNull String userId)
+    public OrderBidLocationBuilder setUserId(String userId)
     {
         super.setUserId(userId);
 
         return self();
     }
 
-    @NotNull
-    public OrderBidLocationBuilder setLocation(@NotNull String location)
+
+    public OrderBidLocationBuilder setLocation(String location)
     {
         this.location = location;
 
         return self();
     }
 
-    @NotNull
+
     public OrderBidLocationBuilder setOrderCount(int orderCount)
     {
         this.orderCount = orderCount;
@@ -67,7 +67,7 @@ public class OrderBidLocationBuilder extends OrderActivityBuilder<OrderBidLocati
         return self();
     }
 
-    @NotNull
+
     protected String getLocation()
     {
         return location;
@@ -79,7 +79,7 @@ public class OrderBidLocationBuilder extends OrderActivityBuilder<OrderBidLocati
     }
 
     @Override
-    @NotNull
+
     public OrderBidLocation build()
     {
         return new OrderBidLocation(getTimestamp(),
@@ -91,7 +91,7 @@ public class OrderBidLocationBuilder extends OrderActivityBuilder<OrderBidLocati
 
 
     @Override
-    @NotNull
+
     protected OrderBidLocationBuilder self()
     {
         return this;

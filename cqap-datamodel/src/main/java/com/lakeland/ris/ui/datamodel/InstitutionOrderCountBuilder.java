@@ -1,16 +1,16 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class InstitutionOrderCountBuilder
 {
-    @NotNull private String institution;
+    private String institution;
     private int count;
 
-    public InstitutionOrderCountBuilder(@NotNull String institution)
+    public InstitutionOrderCountBuilder(String institution)
     {
         super();
 
@@ -18,15 +18,15 @@ public class InstitutionOrderCountBuilder
     }
 
 
-    @NotNull
-    public InstitutionOrderCountBuilder setInstitution(@NotNull String institution)
+    
+    public InstitutionOrderCountBuilder setInstitution(String institution)
     {
         this.institution = institution;
 
         return self();
     }
 
-    @NotNull
+    
     public InstitutionOrderCountBuilder setCount(int count)
     {
         this.count = count;
@@ -34,7 +34,7 @@ public class InstitutionOrderCountBuilder
         return self();
     }
 
-    @NotNull
+    
     protected String getInstitution()
     {
         return institution;
@@ -45,7 +45,7 @@ public class InstitutionOrderCountBuilder
         return count;
     }
 
-    @NotNull
+    
     public InstitutionOrderCount build()
     {
         return new InstitutionOrderCount(getInstitution(),
@@ -53,7 +53,7 @@ public class InstitutionOrderCountBuilder
     }
 
 
-    @NotNull
+    
     protected InstitutionOrderCountBuilder self()
     {
         return this;

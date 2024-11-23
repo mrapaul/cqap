@@ -5,7 +5,7 @@ import com.peirs.datamodel.dicom.*;
 import com.peirs.datamodel.ticket.*;
 import com.vaadin.data.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import java.io.*;
 import java.util.*;
@@ -14,10 +14,10 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class WorklistPresenter implements WorklistView.Listener
 {
-    @NotNull private final WorklistModel model;
-    @NotNull private final WorklistView view;
+    private final WorklistModel model;
+    private final WorklistView view;
 
-    public WorklistPresenter(@NotNull WorklistModel model, @NotNull WorklistView view)
+    public WorklistPresenter(WorklistModel model, WorklistView view)
     {
         this.model = model;
         this.view = view;
@@ -36,7 +36,7 @@ public class WorklistPresenter implements WorklistView.Listener
         model.reset();
     }
 
-    @Override public void ticketSelected(@NotNull TicketQueryResult queryResult)
+    @Override public void ticketSelected(TicketQueryResult queryResult)
     {
         ProfessionalTicket ticket = model.getTicket(queryResult);
         if (ticket != null)
@@ -45,7 +45,7 @@ public class WorklistPresenter implements WorklistView.Listener
         }
     }
 
-    private void displayTicket(@NotNull ProfessionalTicket ticket)
+    private void displayTicket(ProfessionalTicket ticket)
     {
         Collection<DicomStudy> relatedExams = model.getRelatedStudies(ticket.getStudy());
         Container institutions = model.getInstitutions();
@@ -53,27 +53,27 @@ public class WorklistPresenter implements WorklistView.Listener
         view.displayTicket(ticket, relatedExams, institutions, attachments);
     }
 
-    @Override public void saveTicket(@NotNull ProfessionalTicket ticket)
+    @Override public void saveTicket(ProfessionalTicket ticket)
     {
         model.saveTicket(ticket);
     }
 
-    @Override public void deleteTicket(@NotNull ProfessionalTicket ticket)
+    @Override public void deleteTicket(ProfessionalTicket ticket)
     {
         model.deleteTicket(ticket);
     }
 
-    @Override public String complete(@NotNull ProfessionalTicket ticket)
+    @Override public String complete(ProfessionalTicket ticket)
     {
         return model.complete(ticket);
     }
 
-    @Override public String pending(@NotNull ProfessionalTicket ticket)
+    @Override public String pending(ProfessionalTicket ticket)
     {
         return model.pending(ticket);
     }
 
-    @Override public String createPRReview(@NotNull ProfessionalTicket ticket)
+    @Override public String createPRReview(ProfessionalTicket ticket)
     {
         String error = model.completeTechReview(ticket);
         if (error == null)
@@ -97,29 +97,29 @@ public class WorklistPresenter implements WorklistView.Listener
         }
     }
 
-    @NotNull
-    @Override public Collection<Attachment> uploadFile(@NotNull ProfessionalTicket ticket, @NotNull File file)
+
+    @Override public Collection<Attachment> uploadFile(ProfessionalTicket ticket, File file)
     {
         model.uploadFile(ticket, file);
 
         return model.getAttachments(ticket);
     }
 
-    @NotNull
-    @Override public Collection<Attachment> deleteAttachment(@NotNull ProfessionalTicket ticket,
-                                                             @NotNull Attachment attachment)
+
+    @Override public Collection<Attachment> deleteAttachment(ProfessionalTicket ticket,
+                                                             Attachment attachment)
     {
         model.deleteAttachment(attachment);
 
         return model.getAttachments(ticket);
     }
 
-    @NotNull @Override public InputStream openAttachment(@NotNull Attachment attachment) throws IOException
+    @Override public InputStream openAttachment(Attachment attachment) throws IOException
     {
         return model.openAttachment(attachment);
     }
 
-    @Override public void openImages(@NotNull ProfessionalTicket ticket)
+    @Override public void openImages(ProfessionalTicket ticket)
     {
         try
         {
@@ -138,13 +138,13 @@ public class WorklistPresenter implements WorklistView.Listener
         }
     }
 
-    @Override public String uploadPatientReport(@NotNull DicomStudy study, @NotNull File report)
+    @Override public String uploadPatientReport(DicomStudy study, File report)
     {
         return model.uploadPatientReport(study, report);
     }
 
-    @Override public void resendReports(@NotNull ProfessionalTicket ticket,
-                                        @NotNull String addresses,
+    @Override public void resendReports(ProfessionalTicket ticket,
+                                        String addresses,
                                         boolean erpReport,
                                         boolean erpSiteCallReport,
                                         boolean cmoReport,

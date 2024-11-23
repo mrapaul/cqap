@@ -1,14 +1,14 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class DayOrderCount
 {
-    @NotNull private Date date;
+    private Date date;
     private int count;
     private int morningShift;
     private int afternoonShift;
@@ -20,7 +20,7 @@ public class DayOrderCount
     }
 
     @JsonCreator
-    public DayOrderCount(@NotNull Date date,
+    public DayOrderCount(Date date,
                          int count,
                          int morningShift,
                          int afternoonShift,
@@ -35,7 +35,7 @@ public class DayOrderCount
         this.eveningShift = eveningShift;
     }
 
-    @NotNull
+
     public Date getDate()
     {
         return date;
@@ -60,7 +60,7 @@ public class DayOrderCount
     {
         return eveningShift;
     }
-    public void setDate(@NotNull Date date)
+    public void setDate(Date date)
     {
         this.date = date;
     }
@@ -85,7 +85,7 @@ public class DayOrderCount
         this.eveningShift = eveningShift;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "DayOrderCount(" +
@@ -96,7 +96,7 @@ public class DayOrderCount
             " eveningShift: " + getEveningShift() + ")";
     }
 
-    @NotNull
+
     public DayOrderCountBuilder toBuilder()
     {
         return new DayOrderCountBuilder(getDate()).setCount(getCount())

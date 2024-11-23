@@ -4,7 +4,6 @@ import ch.lambdaj.function.convert.*;
 import com.lakeland.ris.ui.datamodel.*;
 import com.peirs.datamodel.PACS;
 import org.dcm4che2.data.*;
-import org.jetbrains.annotations.*;
 
 public class DicomObjectToExternalDicomStudyConverter implements Converter<DicomObject, ExternalDicomStudy>
 {
@@ -24,7 +23,6 @@ public class DicomObjectToExternalDicomStudyConverter implements Converter<Dicom
                 new PACS());
     }
 
-    @Nullable
     private String getValue(DicomObject object, int tag)
     {
         DicomElement dicomElement = object.get(tag);

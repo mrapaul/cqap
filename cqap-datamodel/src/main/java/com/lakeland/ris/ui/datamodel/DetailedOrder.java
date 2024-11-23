@@ -1,177 +1,177 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 import java.util.*;
 
 public class DetailedOrder
 {
-    @NotNull private String orderId;
-    @NotNull private OrderStatus status;
-    @NotNull private OrderPriority orderPriority;
-    @NotNull private String assignedTo;
-    @Nullable private String dicomStudyId;
-    @Nullable private String patientFirstName;
-    @Nullable private String patientMiddleName;
-    @Nullable private String patientLastName;
-    @Nullable private String patientId;
-    @Nullable private Date patientBirthDate;
-    @Nullable private String patientAge;
-    @Nullable private String patientSex;
-    @Nullable private String patientSuffix;
-    @Nullable private String alternatePatientId;
-    @Nullable private String patientAccountNumber;
-    @Nullable private String patientAddressee;
-    @Nullable private String patientAddressType;
-    @Nullable private String patientStreetAddress;
-    @Nullable private String patientStreetName;
-    @Nullable private String patientAddressBuildingNumber;
-    @Nullable private String patientAddressCity;
-    @Nullable private String patientAddressState;
-    @Nullable private String patientAddressCounty;
-    @Nullable private String patientAddressZipcode;
-    @Nullable private String patientAddressCountry;
-    @Nullable private String patientAliasLastName;
-    @Nullable private String patientAliasFirstName;
-    @Nullable private String patientAliasMiddleName;
-    @Nullable private String patientAlias;
-    @Nullable private String patientSSN;
-    @Nullable private String patientRace;
-    @Nullable private String patientCitizenship;
-    @Nullable private String maritalStatus;
-    @Nullable private String patientEmail;
-    @Nullable private String patientHomePhone;
-    @Nullable private String patientWorkPhone;
-    @Nullable private String patientFax;
-    @Nullable private String patientMobile;
-    @Nullable private String patientOtherPhone;
-    @Nullable private String patientNotificationPreference;
-    @Nullable private String patientEmployer;
-    @Nullable private String patientEmployerStatus;
-    @Nullable private String patientEmployerPhone;
-    @Nullable private String patientStudentStatus;
-    @Nullable private String patientSchool;
-    @Nullable private String patientNoticeOfPrivacy;
-    @Nullable private Date patientDateOfPrivacy;
-    @Nullable private Date patientDateOfDeath;
-    @Nullable private String patientCauseOfDeath;
-    @Nullable private String patientEmergencyContactName;
-    @Nullable private String patientEmergencyContactPhone;
-    @Nullable private String patientPreferredLanguage;
-    @Nullable private String patientSmokingStatus;
-    @Nullable private String patientEthnicity;
-    @Nullable private String patientBirthState;
-    @Nullable private String patientBirthCountry;
-    @Nullable private String patientBirthOrder;
-    @Nullable private String patientMothersLastName;
-    @Nullable private String patientMothersFirstName;
-    @Nullable private String patientMothersMiddleName;
-    @Nullable private String patientMothersMaidenName;
-    @Nullable private String institutionName;
-    @Nullable private String accessionNumber;
-    @Nullable private String cPTCode;
-    @Nullable private String cPTMnemonic;
-    @Nullable private String modality;
-    @Nullable private String studyDescription;
-    @Nullable private String pregnant;
-    @Nullable private String vipIndicator;
-    @Nullable private Date admitDate;
-    @Nullable private String admissionType;
-    @Nullable private String patientLocationBed;
-    @Nullable private String patientLocationBuilding;
-    @Nullable private String patientLocationFacility;
-    @Nullable private String patientLocationFloor;
-    @Nullable private String patientLocationDescription;
-    @Nullable private String patientLocationAssigningAuthority;
-    @Nullable private String patientLocationComprehensiveDescription;
-    @Nullable private String patientLocationStatus;
-    @Nullable private String patientLocationType;
-    @Nullable private String patientStation;
-    @Nullable private String patientClass;
-    @Nullable private String referringDoctorLastName;
-    @Nullable private String referringDoctorFirstName;
-    @Nullable private String referringDoctorDegree;
-    @Nullable private String referringDoctorFullName;
-    @Nullable private String orderingDoctorLastName;
-    @Nullable private String orderingDoctorFirstName;
-    @Nullable private String orderingDoctorDegree;
-    @Nullable private String orderingDoctorFullName;
-    @Nullable private String orderNumber;
-    @Nullable private String sendingFacility;
-    @Nullable private String techName;
-    @Nullable private String authorizationNumber;
-    @Nullable private String numberOfFilms;
-    @Nullable private String filmType;
-    @Nullable private Date effectiveDate;
-    @Nullable private String findings;
-    @Nullable private String approvalDate;
-    @Nullable private String deliveryDate;
-    @Nullable private String modifiers;
-    @Nullable private String diagnosisCode;
-    @Nullable private String reportId;
-    @Nullable private String hl7;
-    @Nullable private String coPayAmount;
-    @Nullable private String feeAmount;
-    @Nullable private String allowableAmount;
-    @Nullable private String visitNumber;
-    @Nullable private String deductibleAmount;
-    @Nullable private String loggedAmount;
-    @Nullable private String cardChequeNumber;
-    @Nullable private String externalVisitId;
-    @Nullable private String paymentMethod;
-    @Nullable private Date expiryDate;
-    @Nullable private String hospitalService;
-    @Nullable private String procedureStartDate;
-    @Nullable private String reasonForExam;
-    @Nullable private String priority;
-    @Nullable private String procedureCode;
-    @Nullable private String procedureCodeScheme;
-    @Nullable private String orderStatus;
-    @Nullable private String laterality;
-    @Nullable private String principalResultInterpreter;
-    @Nullable private String responsibleObserver;
-    @Nullable private String relevantClinicalInformation;
-    @Nullable private Collection<Physician> physicians;
-    @Nullable private String followUpCode;
-    @Nullable private String guarantorName;
-    @Nullable private String guarantorAddress;
-    @Nullable private String guarantorPhone;
-    @Nullable private Date guarantorDOB;
-    @Nullable private String serviceType;
-    @Nullable private Date dateOfService;
-    @Nullable private String transportType;
-    @Nullable private String inpatientLocation;
-    @Nullable private String room;
+    private String orderId;
+    private OrderStatus status;
+    private OrderPriority orderPriority;
+    private String assignedTo;
+     private String dicomStudyId;
+     private String patientFirstName;
+     private String patientMiddleName;
+     private String patientLastName;
+     private String patientId;
+     private Date patientBirthDate;
+     private String patientAge;
+     private String patientSex;
+     private String patientSuffix;
+     private String alternatePatientId;
+     private String patientAccountNumber;
+     private String patientAddressee;
+     private String patientAddressType;
+     private String patientStreetAddress;
+     private String patientStreetName;
+     private String patientAddressBuildingNumber;
+     private String patientAddressCity;
+     private String patientAddressState;
+     private String patientAddressCounty;
+     private String patientAddressZipcode;
+     private String patientAddressCountry;
+     private String patientAliasLastName;
+     private String patientAliasFirstName;
+     private String patientAliasMiddleName;
+     private String patientAlias;
+     private String patientSSN;
+     private String patientRace;
+     private String patientCitizenship;
+     private String maritalStatus;
+     private String patientEmail;
+     private String patientHomePhone;
+     private String patientWorkPhone;
+     private String patientFax;
+     private String patientMobile;
+     private String patientOtherPhone;
+     private String patientNotificationPreference;
+     private String patientEmployer;
+     private String patientEmployerStatus;
+     private String patientEmployerPhone;
+     private String patientStudentStatus;
+     private String patientSchool;
+     private String patientNoticeOfPrivacy;
+     private Date patientDateOfPrivacy;
+     private Date patientDateOfDeath;
+     private String patientCauseOfDeath;
+     private String patientEmergencyContactName;
+     private String patientEmergencyContactPhone;
+     private String patientPreferredLanguage;
+     private String patientSmokingStatus;
+     private String patientEthnicity;
+     private String patientBirthState;
+     private String patientBirthCountry;
+     private String patientBirthOrder;
+     private String patientMothersLastName;
+     private String patientMothersFirstName;
+     private String patientMothersMiddleName;
+     private String patientMothersMaidenName;
+     private String institutionName;
+     private String accessionNumber;
+     private String cPTCode;
+     private String cPTMnemonic;
+     private String modality;
+     private String studyDescription;
+     private String pregnant;
+     private String vipIndicator;
+     private Date admitDate;
+     private String admissionType;
+     private String patientLocationBed;
+     private String patientLocationBuilding;
+     private String patientLocationFacility;
+     private String patientLocationFloor;
+     private String patientLocationDescription;
+     private String patientLocationAssigningAuthority;
+     private String patientLocationComprehensiveDescription;
+     private String patientLocationStatus;
+     private String patientLocationType;
+     private String patientStation;
+     private String patientClass;
+     private String referringDoctorLastName;
+     private String referringDoctorFirstName;
+     private String referringDoctorDegree;
+     private String referringDoctorFullName;
+     private String orderingDoctorLastName;
+     private String orderingDoctorFirstName;
+     private String orderingDoctorDegree;
+     private String orderingDoctorFullName;
+     private String orderNumber;
+     private String sendingFacility;
+     private String techName;
+     private String authorizationNumber;
+     private String numberOfFilms;
+     private String filmType;
+     private Date effectiveDate;
+     private String findings;
+     private String approvalDate;
+     private String deliveryDate;
+     private String modifiers;
+     private String diagnosisCode;
+     private String reportId;
+     private String hl7;
+     private String coPayAmount;
+     private String feeAmount;
+     private String allowableAmount;
+     private String visitNumber;
+     private String deductibleAmount;
+     private String loggedAmount;
+     private String cardChequeNumber;
+     private String externalVisitId;
+     private String paymentMethod;
+     private Date expiryDate;
+     private String hospitalService;
+     private String procedureStartDate;
+     private String reasonForExam;
+     private String priority;
+     private String procedureCode;
+     private String procedureCodeScheme;
+     private String orderStatus;
+     private String laterality;
+     private String principalResultInterpreter;
+     private String responsibleObserver;
+     private String relevantClinicalInformation;
+     private Collection<Physician> physicians;
+     private String followUpCode;
+     private String guarantorName;
+     private String guarantorAddress;
+     private String guarantorPhone;
+     private Date guarantorDOB;
+     private String serviceType;
+     private Date dateOfService;
+     private String transportType;
+     private String inpatientLocation;
+     private String room;
     private boolean iV;
     private boolean o2;
     private boolean monitor;
-    @Nullable private Date dischargeDate;
-    @Nullable private String insuredName;
-    @Nullable private String relationship;
+     private Date dischargeDate;
+     private String insuredName;
+     private String relationship;
     private boolean releaseSigned;
-    @Nullable private String coPay;
-    @Nullable private String deductible;
-    @Nullable private Date dateSigned;
-    @Nullable private String coInsurance;
-    @Nullable private Collection<PatientInsurance> patientInsurances;
-    @Nullable private Collection<VisitInsurance> visitInsurances;
-    @Nullable private Collection<Allergy> allergies;
-    @Nullable private Collection<Referral> referrals;
-    @Nullable private Collection<Medication> medications;
-    @Nullable private OrderReport report;
-    @Nullable private String updatedBy;
-    @Nullable private Date updateTime;
-    @Nullable private String techNotes;
+     private String coPay;
+     private String deductible;
+     private Date dateSigned;
+     private String coInsurance;
+     private Collection<PatientInsurance> patientInsurances;
+     private Collection<VisitInsurance> visitInsurances;
+     private Collection<Allergy> allergies;
+     private Collection<Referral> referrals;
+     private Collection<Medication> medications;
+     private OrderReport report;
+     private String updatedBy;
+     private Date updateTime;
+     private String techNotes;
     private boolean critical;
-    @Nullable private String studyDate;
-    @Nullable private String studyTime;
-    @Nullable private String arrivalDate;
-    @Nullable private String arrivalTime;
-    @Nullable private String additionalAccessions;
-    @Nullable private UrgentExamType urgentExamType;
-    @Nullable private String readingRadiologist;
+     private String studyDate;
+     private String studyTime;
+     private String arrivalDate;
+     private String arrivalTime;
+     private String additionalAccessions;
+     private UrgentExamType urgentExamType;
+     private String readingRadiologist;
 
     public DetailedOrder()
     {
@@ -179,170 +179,170 @@ public class DetailedOrder
     }
 
     @JsonCreator
-    public DetailedOrder(@NotNull String orderId,
-                         @NotNull OrderStatus status,
-                         @NotNull OrderPriority orderPriority,
-                         @NotNull String assignedTo,
-                         @Nullable String dicomStudyId,
-                         @Nullable String patientFirstName,
-                         @Nullable String patientMiddleName,
-                         @Nullable String patientLastName,
-                         @Nullable String patientId,
-                         @Nullable Date patientBirthDate,
-                         @Nullable String patientAge,
-                         @Nullable String patientSex,
-                         @Nullable String patientSuffix,
-                         @Nullable String alternatePatientId,
-                         @Nullable String patientAccountNumber,
-                         @Nullable String patientAddressee,
-                         @Nullable String patientAddressType,
-                         @Nullable String patientStreetAddress,
-                         @Nullable String patientStreetName,
-                         @Nullable String patientAddressBuildingNumber,
-                         @Nullable String patientAddressCity,
-                         @Nullable String patientAddressState,
-                         @Nullable String patientAddressCounty,
-                         @Nullable String patientAddressZipcode,
-                         @Nullable String patientAddressCountry,
-                         @Nullable String patientAliasLastName,
-                         @Nullable String patientAliasFirstName,
-                         @Nullable String patientAliasMiddleName,
-                         @Nullable String patientAlias,
-                         @Nullable String patientSSN,
-                         @Nullable String patientRace,
-                         @Nullable String patientCitizenship,
-                         @Nullable String maritalStatus,
-                         @Nullable String patientEmail,
-                         @Nullable String patientHomePhone,
-                         @Nullable String patientWorkPhone,
-                         @Nullable String patientFax,
-                         @Nullable String patientMobile,
-                         @Nullable String patientOtherPhone,
-                         @Nullable String patientNotificationPreference,
-                         @Nullable String patientEmployer,
-                         @Nullable String patientEmployerStatus,
-                         @Nullable String patientEmployerPhone,
-                         @Nullable String patientStudentStatus,
-                         @Nullable String patientSchool,
-                         @Nullable String patientNoticeOfPrivacy,
-                         @Nullable Date patientDateOfPrivacy,
-                         @Nullable Date patientDateOfDeath,
-                         @Nullable String patientCauseOfDeath,
-                         @Nullable String patientEmergencyContactName,
-                         @Nullable String patientEmergencyContactPhone,
-                         @Nullable String patientPreferredLanguage,
-                         @Nullable String patientSmokingStatus,
-                         @Nullable String patientEthnicity,
-                         @Nullable String patientBirthState,
-                         @Nullable String patientBirthCountry,
-                         @Nullable String patientBirthOrder,
-                         @Nullable String patientMothersLastName,
-                         @Nullable String patientMothersFirstName,
-                         @Nullable String patientMothersMiddleName,
-                         @Nullable String patientMothersMaidenName,
-                         @Nullable String institutionName,
-                         @Nullable String accessionNumber,
-                         @Nullable String cPTCode,
-                         @Nullable String cPTMnemonic,
-                         @Nullable String modality,
-                         @Nullable String studyDescription,
-                         @Nullable String pregnant,
-                         @Nullable String vipIndicator,
-                         @Nullable Date admitDate,
-                         @Nullable String admissionType,
-                         @Nullable String patientLocationBed,
-                         @Nullable String patientLocationBuilding,
-                         @Nullable String patientLocationFacility,
-                         @Nullable String patientLocationFloor,
-                         @Nullable String patientLocationDescription,
-                         @Nullable String patientLocationAssigningAuthority,
-                         @Nullable String patientLocationComprehensiveDescription,
-                         @Nullable String patientLocationStatus,
-                         @Nullable String patientLocationType,
-                         @Nullable String patientStation,
-                         @Nullable String patientClass,
-                         @Nullable String referringDoctorLastName,
-                         @Nullable String referringDoctorFirstName,
-                         @Nullable String referringDoctorDegree,
-                         @Nullable String referringDoctorFullName,
-                         @Nullable String orderingDoctorLastName,
-                         @Nullable String orderingDoctorFirstName,
-                         @Nullable String orderingDoctorDegree,
-                         @Nullable String orderingDoctorFullName,
-                         @Nullable String orderNumber,
-                         @Nullable String sendingFacility,
-                         @Nullable String techName,
-                         @Nullable String authorizationNumber,
-                         @Nullable String numberOfFilms,
-                         @Nullable String filmType,
-                         @Nullable Date effectiveDate,
-                         @Nullable String findings,
-                         @Nullable String approvalDate,
-                         @Nullable String deliveryDate,
-                         @Nullable String modifiers,
-                         @Nullable String diagnosisCode,
-                         @Nullable String reportId,
-                         @Nullable String hl7,
-                         @Nullable String coPayAmount,
-                         @Nullable String feeAmount,
-                         @Nullable String allowableAmount,
-                         @Nullable String visitNumber,
-                         @Nullable String deductibleAmount,
-                         @Nullable String loggedAmount,
-                         @Nullable String cardChequeNumber,
-                         @Nullable String externalVisitId,
-                         @Nullable String paymentMethod,
-                         @Nullable Date expiryDate,
-                         @Nullable String hospitalService,
-                         @Nullable String procedureStartDate,
-                         @Nullable String reasonForExam,
-                         @Nullable String priority,
-                         @Nullable String procedureCode,
-                         @Nullable String procedureCodeScheme,
-                         @Nullable String orderStatus,
-                         @Nullable String laterality,
-                         @Nullable String principalResultInterpreter,
-                         @Nullable String responsibleObserver,
-                         @Nullable String relevantClinicalInformation,
-                         @Nullable Collection<Physician> physicians,
-                         @Nullable String followUpCode,
-                         @Nullable String guarantorName,
-                         @Nullable String guarantorAddress,
-                         @Nullable String guarantorPhone,
-                         @Nullable Date guarantorDOB,
-                         @Nullable String serviceType,
-                         @Nullable Date dateOfService,
-                         @Nullable String transportType,
-                         @Nullable String inpatientLocation,
-                         @Nullable String room,
+    public DetailedOrder(String orderId,
+                         OrderStatus status,
+                         OrderPriority orderPriority,
+                         String assignedTo,
+                          String dicomStudyId,
+                          String patientFirstName,
+                          String patientMiddleName,
+                          String patientLastName,
+                          String patientId,
+                          Date patientBirthDate,
+                          String patientAge,
+                          String patientSex,
+                          String patientSuffix,
+                          String alternatePatientId,
+                          String patientAccountNumber,
+                          String patientAddressee,
+                          String patientAddressType,
+                          String patientStreetAddress,
+                          String patientStreetName,
+                          String patientAddressBuildingNumber,
+                          String patientAddressCity,
+                          String patientAddressState,
+                          String patientAddressCounty,
+                          String patientAddressZipcode,
+                          String patientAddressCountry,
+                          String patientAliasLastName,
+                          String patientAliasFirstName,
+                          String patientAliasMiddleName,
+                          String patientAlias,
+                          String patientSSN,
+                          String patientRace,
+                          String patientCitizenship,
+                          String maritalStatus,
+                          String patientEmail,
+                          String patientHomePhone,
+                          String patientWorkPhone,
+                          String patientFax,
+                          String patientMobile,
+                          String patientOtherPhone,
+                          String patientNotificationPreference,
+                          String patientEmployer,
+                          String patientEmployerStatus,
+                          String patientEmployerPhone,
+                          String patientStudentStatus,
+                          String patientSchool,
+                          String patientNoticeOfPrivacy,
+                          Date patientDateOfPrivacy,
+                          Date patientDateOfDeath,
+                          String patientCauseOfDeath,
+                          String patientEmergencyContactName,
+                          String patientEmergencyContactPhone,
+                          String patientPreferredLanguage,
+                          String patientSmokingStatus,
+                          String patientEthnicity,
+                          String patientBirthState,
+                          String patientBirthCountry,
+                          String patientBirthOrder,
+                          String patientMothersLastName,
+                          String patientMothersFirstName,
+                          String patientMothersMiddleName,
+                          String patientMothersMaidenName,
+                          String institutionName,
+                          String accessionNumber,
+                          String cPTCode,
+                          String cPTMnemonic,
+                          String modality,
+                          String studyDescription,
+                          String pregnant,
+                          String vipIndicator,
+                          Date admitDate,
+                          String admissionType,
+                          String patientLocationBed,
+                          String patientLocationBuilding,
+                          String patientLocationFacility,
+                          String patientLocationFloor,
+                          String patientLocationDescription,
+                          String patientLocationAssigningAuthority,
+                          String patientLocationComprehensiveDescription,
+                          String patientLocationStatus,
+                          String patientLocationType,
+                          String patientStation,
+                          String patientClass,
+                          String referringDoctorLastName,
+                          String referringDoctorFirstName,
+                          String referringDoctorDegree,
+                          String referringDoctorFullName,
+                          String orderingDoctorLastName,
+                          String orderingDoctorFirstName,
+                          String orderingDoctorDegree,
+                          String orderingDoctorFullName,
+                          String orderNumber,
+                          String sendingFacility,
+                          String techName,
+                          String authorizationNumber,
+                          String numberOfFilms,
+                          String filmType,
+                          Date effectiveDate,
+                          String findings,
+                          String approvalDate,
+                          String deliveryDate,
+                          String modifiers,
+                          String diagnosisCode,
+                          String reportId,
+                          String hl7,
+                          String coPayAmount,
+                          String feeAmount,
+                          String allowableAmount,
+                          String visitNumber,
+                          String deductibleAmount,
+                          String loggedAmount,
+                          String cardChequeNumber,
+                          String externalVisitId,
+                          String paymentMethod,
+                          Date expiryDate,
+                          String hospitalService,
+                          String procedureStartDate,
+                          String reasonForExam,
+                          String priority,
+                          String procedureCode,
+                          String procedureCodeScheme,
+                          String orderStatus,
+                          String laterality,
+                          String principalResultInterpreter,
+                          String responsibleObserver,
+                          String relevantClinicalInformation,
+                          Collection<Physician> physicians,
+                          String followUpCode,
+                          String guarantorName,
+                          String guarantorAddress,
+                          String guarantorPhone,
+                          Date guarantorDOB,
+                          String serviceType,
+                          Date dateOfService,
+                          String transportType,
+                          String inpatientLocation,
+                          String room,
                          boolean iV,
                          boolean o2,
                          boolean monitor,
-                         @Nullable Date dischargeDate,
-                         @Nullable String insuredName,
-                         @Nullable String relationship,
+                          Date dischargeDate,
+                          String insuredName,
+                          String relationship,
                          boolean releaseSigned,
-                         @Nullable String coPay,
-                         @Nullable String deductible,
-                         @Nullable Date dateSigned,
-                         @Nullable String coInsurance,
-                         @Nullable Collection<PatientInsurance> patientInsurances,
-                         @Nullable Collection<VisitInsurance> visitInsurances,
-                         @Nullable Collection<Allergy> allergies,
-                         @Nullable Collection<Referral> referrals,
-                         @Nullable Collection<Medication> medications,
-                         @Nullable OrderReport report,
-                         @Nullable String updatedBy,
-                         @Nullable Date updateTime,
-                         @Nullable String techNotes,
+                          String coPay,
+                          String deductible,
+                          Date dateSigned,
+                          String coInsurance,
+                          Collection<PatientInsurance> patientInsurances,
+                          Collection<VisitInsurance> visitInsurances,
+                          Collection<Allergy> allergies,
+                          Collection<Referral> referrals,
+                          Collection<Medication> medications,
+                          OrderReport report,
+                          String updatedBy,
+                          Date updateTime,
+                          String techNotes,
                          boolean critical,
-                         @Nullable String studyDate,
-                         @Nullable String studyTime,
-                         @Nullable String arrivalDate,
-                         @Nullable String arrivalTime,
-                         @Nullable String additionalAccessions,
-                         @Nullable UrgentExamType urgentExamType,
-                         @Nullable String readingRadiologist)
+                          String studyDate,
+                          String studyTime,
+                          String arrivalDate,
+                          String arrivalTime,
+                          String additionalAccessions,
+                          UrgentExamType urgentExamType,
+                          String readingRadiologist)
     {
         super();
 
@@ -512,817 +512,817 @@ public class DetailedOrder
         this.readingRadiologist = readingRadiologist;
     }
 
-    @NotNull
+
     public String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+
     public OrderStatus getStatus()
     {
         return status;
     }
 
-    @NotNull
+
     public OrderPriority getOrderPriority()
     {
         return orderPriority;
     }
 
-    @NotNull
+
     public String getAssignedTo()
     {
         return assignedTo;
     }
 
-    @Nullable
+    
     public String getDicomStudyId()
     {
         return dicomStudyId;
     }
 
-    @Nullable
+    
     public String getPatientFirstName()
     {
         return patientFirstName;
     }
 
-    @Nullable
+    
     public String getPatientMiddleName()
     {
         return patientMiddleName;
     }
 
-    @Nullable
+    
     public String getPatientLastName()
     {
         return patientLastName;
     }
 
-    @Nullable
+    
     public String getPatientId()
     {
         return patientId;
     }
 
-    @Nullable
+    
     public Date getPatientBirthDate()
     {
         return patientBirthDate;
     }
 
-    @Nullable
+    
     public String getPatientAge()
     {
         return patientAge;
     }
 
-    @Nullable
+    
     public String getPatientSex()
     {
         return patientSex;
     }
 
-    @Nullable
+    
     public String getPatientSuffix()
     {
         return patientSuffix;
     }
 
-    @Nullable
+    
     public String getAlternatePatientId()
     {
         return alternatePatientId;
     }
 
-    @Nullable
+    
     public String getPatientAccountNumber()
     {
         return patientAccountNumber;
     }
 
-    @Nullable
+    
     public String getPatientAddressee()
     {
         return patientAddressee;
     }
 
-    @Nullable
+    
     public String getPatientAddressType()
     {
         return patientAddressType;
     }
 
-    @Nullable
+    
     public String getPatientStreetAddress()
     {
         return patientStreetAddress;
     }
 
-    @Nullable
+    
     public String getPatientStreetName()
     {
         return patientStreetName;
     }
 
-    @Nullable
+    
     public String getPatientAddressBuildingNumber()
     {
         return patientAddressBuildingNumber;
     }
 
-    @Nullable
+    
     public String getPatientAddressCity()
     {
         return patientAddressCity;
     }
 
-    @Nullable
+    
     public String getPatientAddressState()
     {
         return patientAddressState;
     }
 
-    @Nullable
+    
     public String getPatientAddressCounty()
     {
         return patientAddressCounty;
     }
 
-    @Nullable
+    
     public String getPatientAddressZipcode()
     {
         return patientAddressZipcode;
     }
 
-    @Nullable
+    
     public String getPatientAddressCountry()
     {
         return patientAddressCountry;
     }
 
-    @Nullable
+    
     public String getPatientAliasLastName()
     {
         return patientAliasLastName;
     }
 
-    @Nullable
+    
     public String getPatientAliasFirstName()
     {
         return patientAliasFirstName;
     }
 
-    @Nullable
+    
     public String getPatientAliasMiddleName()
     {
         return patientAliasMiddleName;
     }
 
-    @Nullable
+    
     public String getPatientAlias()
     {
         return patientAlias;
     }
 
-    @Nullable
+    
     public String getPatientSSN()
     {
         return patientSSN;
     }
 
-    @Nullable
+    
     public String getPatientRace()
     {
         return patientRace;
     }
 
-    @Nullable
+    
     public String getPatientCitizenship()
     {
         return patientCitizenship;
     }
 
-    @Nullable
+    
     public String getMaritalStatus()
     {
         return maritalStatus;
     }
 
-    @Nullable
+    
     public String getPatientEmail()
     {
         return patientEmail;
     }
 
-    @Nullable
+    
     public String getPatientHomePhone()
     {
         return patientHomePhone;
     }
 
-    @Nullable
+    
     public String getPatientWorkPhone()
     {
         return patientWorkPhone;
     }
 
-    @Nullable
+    
     public String getPatientFax()
     {
         return patientFax;
     }
 
-    @Nullable
+    
     public String getPatientMobile()
     {
         return patientMobile;
     }
 
-    @Nullable
+    
     public String getPatientOtherPhone()
     {
         return patientOtherPhone;
     }
 
-    @Nullable
+    
     public String getPatientNotificationPreference()
     {
         return patientNotificationPreference;
     }
 
-    @Nullable
+    
     public String getPatientEmployer()
     {
         return patientEmployer;
     }
 
-    @Nullable
+    
     public String getPatientEmployerStatus()
     {
         return patientEmployerStatus;
     }
 
-    @Nullable
+    
     public String getPatientEmployerPhone()
     {
         return patientEmployerPhone;
     }
 
-    @Nullable
+    
     public String getPatientStudentStatus()
     {
         return patientStudentStatus;
     }
 
-    @Nullable
+    
     public String getPatientSchool()
     {
         return patientSchool;
     }
 
-    @Nullable
+    
     public String getPatientNoticeOfPrivacy()
     {
         return patientNoticeOfPrivacy;
     }
 
-    @Nullable
+    
     public Date getPatientDateOfPrivacy()
     {
         return patientDateOfPrivacy;
     }
 
-    @Nullable
+    
     public Date getPatientDateOfDeath()
     {
         return patientDateOfDeath;
     }
 
-    @Nullable
+    
     public String getPatientCauseOfDeath()
     {
         return patientCauseOfDeath;
     }
 
-    @Nullable
+    
     public String getPatientEmergencyContactName()
     {
         return patientEmergencyContactName;
     }
 
-    @Nullable
+    
     public String getPatientEmergencyContactPhone()
     {
         return patientEmergencyContactPhone;
     }
 
-    @Nullable
+    
     public String getPatientPreferredLanguage()
     {
         return patientPreferredLanguage;
     }
 
-    @Nullable
+    
     public String getPatientSmokingStatus()
     {
         return patientSmokingStatus;
     }
 
-    @Nullable
+    
     public String getPatientEthnicity()
     {
         return patientEthnicity;
     }
 
-    @Nullable
+    
     public String getPatientBirthState()
     {
         return patientBirthState;
     }
 
-    @Nullable
+    
     public String getPatientBirthCountry()
     {
         return patientBirthCountry;
     }
 
-    @Nullable
+    
     public String getPatientBirthOrder()
     {
         return patientBirthOrder;
     }
 
-    @Nullable
+    
     public String getPatientMothersLastName()
     {
         return patientMothersLastName;
     }
 
-    @Nullable
+    
     public String getPatientMothersFirstName()
     {
         return patientMothersFirstName;
     }
 
-    @Nullable
+    
     public String getPatientMothersMiddleName()
     {
         return patientMothersMiddleName;
     }
 
-    @Nullable
+    
     public String getPatientMothersMaidenName()
     {
         return patientMothersMaidenName;
     }
 
-    @Nullable
+    
     public String getInstitutionName()
     {
         return institutionName;
     }
 
-    @Nullable
+    
     public String getAccessionNumber()
     {
         return accessionNumber;
     }
 
-    @Nullable
+    
     public String getCPTCode()
     {
         return cPTCode;
     }
 
-    @Nullable
+    
     public String getCPTMnemonic()
     {
         return cPTMnemonic;
     }
 
-    @Nullable
+    
     public String getModality()
     {
         return modality;
     }
 
-    @Nullable
+    
     public String getStudyDescription()
     {
         return studyDescription;
     }
 
-    @Nullable
+    
     public String getPregnant()
     {
         return pregnant;
     }
 
-    @Nullable
+    
     public String getVipIndicator()
     {
         return vipIndicator;
     }
 
-    @Nullable
+    
     public Date getAdmitDate()
     {
         return admitDate;
     }
 
-    @Nullable
+    
     public String getAdmissionType()
     {
         return admissionType;
     }
 
-    @Nullable
+    
     public String getPatientLocationBed()
     {
         return patientLocationBed;
     }
 
-    @Nullable
+    
     public String getPatientLocationBuilding()
     {
         return patientLocationBuilding;
     }
 
-    @Nullable
+    
     public String getPatientLocationFacility()
     {
         return patientLocationFacility;
     }
 
-    @Nullable
+    
     public String getPatientLocationFloor()
     {
         return patientLocationFloor;
     }
 
-    @Nullable
+    
     public String getPatientLocationDescription()
     {
         return patientLocationDescription;
     }
 
-    @Nullable
+    
     public String getPatientLocationAssigningAuthority()
     {
         return patientLocationAssigningAuthority;
     }
 
-    @Nullable
+    
     public String getPatientLocationComprehensiveDescription()
     {
         return patientLocationComprehensiveDescription;
     }
 
-    @Nullable
+    
     public String getPatientLocationStatus()
     {
         return patientLocationStatus;
     }
 
-    @Nullable
+    
     public String getPatientLocationType()
     {
         return patientLocationType;
     }
 
-    @Nullable
+    
     public String getPatientStation()
     {
         return patientStation;
     }
 
-    @Nullable
+    
     public String getPatientClass()
     {
         return patientClass;
     }
 
-    @Nullable
+    
     public String getReferringDoctorLastName()
     {
         return referringDoctorLastName;
     }
 
-    @Nullable
+    
     public String getReferringDoctorFirstName()
     {
         return referringDoctorFirstName;
     }
 
-    @Nullable
+    
     public String getReferringDoctorDegree()
     {
         return referringDoctorDegree;
     }
 
-    @Nullable
+    
     public String getReferringDoctorFullName()
     {
         return referringDoctorFullName;
     }
 
-    @Nullable
+    
     public String getOrderingDoctorLastName()
     {
         return orderingDoctorLastName;
     }
 
-    @Nullable
+    
     public String getOrderingDoctorFirstName()
     {
         return orderingDoctorFirstName;
     }
 
-    @Nullable
+    
     public String getOrderingDoctorDegree()
     {
         return orderingDoctorDegree;
     }
 
-    @Nullable
+    
     public String getOrderingDoctorFullName()
     {
         return orderingDoctorFullName;
     }
 
-    @Nullable
+    
     public String getOrderNumber()
     {
         return orderNumber;
     }
 
-    @Nullable
+    
     public String getSendingFacility()
     {
         return sendingFacility;
     }
 
-    @Nullable
+    
     public String getTechName()
     {
         return techName;
     }
 
-    @Nullable
+    
     public String getAuthorizationNumber()
     {
         return authorizationNumber;
     }
 
-    @Nullable
+    
     public String getNumberOfFilms()
     {
         return numberOfFilms;
     }
 
-    @Nullable
+    
     public String getFilmType()
     {
         return filmType;
     }
 
-    @Nullable
+    
     public Date getEffectiveDate()
     {
         return effectiveDate;
     }
 
-    @Nullable
+    
     public String getFindings()
     {
         return findings;
     }
 
-    @Nullable
+    
     public String getApprovalDate()
     {
         return approvalDate;
     }
 
-    @Nullable
+    
     public String getDeliveryDate()
     {
         return deliveryDate;
     }
 
-    @Nullable
+    
     public String getModifiers()
     {
         return modifiers;
     }
 
-    @Nullable
+    
     public String getDiagnosisCode()
     {
         return diagnosisCode;
     }
 
-    @Nullable
+    
     public String getReportId()
     {
         return reportId;
     }
 
-    @Nullable
+    
     public String getHl7()
     {
         return hl7;
     }
 
-    @Nullable
+    
     public String getCoPayAmount()
     {
         return coPayAmount;
     }
 
-    @Nullable
+    
     public String getFeeAmount()
     {
         return feeAmount;
     }
 
-    @Nullable
+    
     public String getAllowableAmount()
     {
         return allowableAmount;
     }
 
-    @Nullable
+    
     public String getVisitNumber()
     {
         return visitNumber;
     }
 
-    @Nullable
+    
     public String getDeductibleAmount()
     {
         return deductibleAmount;
     }
 
-    @Nullable
+    
     public String getLoggedAmount()
     {
         return loggedAmount;
     }
 
-    @Nullable
+    
     public String getCardChequeNumber()
     {
         return cardChequeNumber;
     }
 
-    @Nullable
+    
     public String getExternalVisitId()
     {
         return externalVisitId;
     }
 
-    @Nullable
+    
     public String getPaymentMethod()
     {
         return paymentMethod;
     }
 
-    @Nullable
+    
     public Date getExpiryDate()
     {
         return expiryDate;
     }
 
-    @Nullable
+    
     public String getHospitalService()
     {
         return hospitalService;
     }
 
-    @Nullable
+    
     public String getProcedureStartDate()
     {
         return procedureStartDate;
     }
 
-    @Nullable
+    
     public String getReasonForExam()
     {
         return reasonForExam;
     }
 
-    @Nullable
+    
     public String getPriority()
     {
         return priority;
     }
 
-    @Nullable
+    
     public String getProcedureCode()
     {
         return procedureCode;
     }
 
-    @Nullable
+    
     public String getProcedureCodeScheme()
     {
         return procedureCodeScheme;
     }
 
-    @Nullable
+    
     public String getOrderStatus()
     {
         return orderStatus;
     }
 
-    @Nullable
+    
     public String getLaterality()
     {
         return laterality;
     }
 
-    @Nullable
+    
     public String getPrincipalResultInterpreter()
     {
         return principalResultInterpreter;
     }
 
-    @Nullable
+    
     public String getResponsibleObserver()
     {
         return responsibleObserver;
     }
 
-    @Nullable
+    
     public String getRelevantClinicalInformation()
     {
         return relevantClinicalInformation;
     }
 
-    @Nullable
+    
     public Collection<Physician> getPhysicians()
     {
         return physicians;
     }
 
-    @Nullable
+    
     public String getFollowUpCode()
     {
         return followUpCode;
     }
 
-    @Nullable
+    
     public String getGuarantorName()
     {
         return guarantorName;
     }
 
-    @Nullable
+    
     public String getGuarantorAddress()
     {
         return guarantorAddress;
     }
 
-    @Nullable
+    
     public String getGuarantorPhone()
     {
         return guarantorPhone;
     }
 
-    @Nullable
+    
     public Date getGuarantorDOB()
     {
         return guarantorDOB;
     }
 
-    @Nullable
+    
     public String getServiceType()
     {
         return serviceType;
     }
 
-    @Nullable
+    
     public Date getDateOfService()
     {
         return dateOfService;
     }
 
-    @Nullable
+    
     public String getTransportType()
     {
         return transportType;
     }
 
-    @Nullable
+    
     public String getInpatientLocation()
     {
         return inpatientLocation;
     }
 
-    @Nullable
+    
     public String getRoom()
     {
         return room;
@@ -1343,19 +1343,19 @@ public class DetailedOrder
         return monitor;
     }
 
-    @Nullable
+    
     public Date getDischargeDate()
     {
         return dischargeDate;
     }
 
-    @Nullable
+    
     public String getInsuredName()
     {
         return insuredName;
     }
 
-    @Nullable
+    
     public String getRelationship()
     {
         return relationship;
@@ -1366,79 +1366,79 @@ public class DetailedOrder
         return releaseSigned;
     }
 
-    @Nullable
+    
     public String getCoPay()
     {
         return coPay;
     }
 
-    @Nullable
+    
     public String getDeductible()
     {
         return deductible;
     }
 
-    @Nullable
+    
     public Date getDateSigned()
     {
         return dateSigned;
     }
 
-    @Nullable
+    
     public String getCoInsurance()
     {
         return coInsurance;
     }
 
-    @Nullable
+    
     public Collection<PatientInsurance> getPatientInsurances()
     {
         return patientInsurances;
     }
 
-    @Nullable
+    
     public Collection<VisitInsurance> getVisitInsurances()
     {
         return visitInsurances;
     }
 
-    @Nullable
+    
     public Collection<Allergy> getAllergies()
     {
         return allergies;
     }
 
-    @Nullable
+    
     public Collection<Referral> getReferrals()
     {
         return referrals;
     }
 
-    @Nullable
+    
     public Collection<Medication> getMedications()
     {
         return medications;
     }
 
-    @Nullable
+    
     public OrderReport getReport()
     {
         return report;
     }
 
-    @Nullable
+    
     public String getUpdatedBy()
     {
         return updatedBy;
     }
 
-    @Nullable
+    
     public Date getUpdateTime()
     {
         return updateTime;
     }
 
-    @Nullable
+    
     public String getTechNotes()
     {
         return techNotes;
@@ -1449,723 +1449,723 @@ public class DetailedOrder
         return critical;
     }
 
-    @Nullable
+    
     public String getStudyDate()
     {
         return studyDate;
     }
 
-    @Nullable
+    
     public String getStudyTime()
     {
         return studyTime;
     }
 
-    @Nullable
+    
     public String getArrivalDate()
     {
         return arrivalDate;
     }
 
-    @Nullable
+    
     public String getArrivalTime()
     {
         return arrivalTime;
     }
 
-    @Nullable
+    
     public String getAdditionalAccessions()
     {
         return additionalAccessions;
     }
 
-    @Nullable
+    
     public UrgentExamType getUrgentExamType()
     {
         return urgentExamType;
     }
 
-    @Nullable
+    
     public String getReadingRadiologist()
     {
         return readingRadiologist;
     }
-    public void setOrderId(@NotNull String orderId)
+    public void setOrderId(String orderId)
     {
         this.orderId = orderId;
     }
 
-    public void setStatus(@NotNull OrderStatus status)
+    public void setStatus(OrderStatus status)
     {
         this.status = status;
     }
 
-    public void setOrderPriority(@NotNull OrderPriority orderPriority)
+    public void setOrderPriority(OrderPriority orderPriority)
     {
         this.orderPriority = orderPriority;
     }
 
-    public void setAssignedTo(@NotNull String assignedTo)
+    public void setAssignedTo(String assignedTo)
     {
         this.assignedTo = assignedTo;
     }
 
-    public void setDicomStudyId(@Nullable String dicomStudyId)
+    public void setDicomStudyId( String dicomStudyId)
     {
         this.dicomStudyId = dicomStudyId;
     }
 
-    public void setPatientFirstName(@Nullable String patientFirstName)
+    public void setPatientFirstName( String patientFirstName)
     {
         this.patientFirstName = patientFirstName;
     }
 
-    public void setPatientMiddleName(@Nullable String patientMiddleName)
+    public void setPatientMiddleName( String patientMiddleName)
     {
         this.patientMiddleName = patientMiddleName;
     }
 
-    public void setPatientLastName(@Nullable String patientLastName)
+    public void setPatientLastName( String patientLastName)
     {
         this.patientLastName = patientLastName;
     }
 
-    public void setPatientId(@Nullable String patientId)
+    public void setPatientId( String patientId)
     {
         this.patientId = patientId;
     }
 
-    public void setPatientBirthDate(@Nullable Date patientBirthDate)
+    public void setPatientBirthDate( Date patientBirthDate)
     {
         this.patientBirthDate = patientBirthDate;
     }
 
-    public void setPatientAge(@Nullable String patientAge)
+    public void setPatientAge( String patientAge)
     {
         this.patientAge = patientAge;
     }
 
-    public void setPatientSex(@Nullable String patientSex)
+    public void setPatientSex( String patientSex)
     {
         this.patientSex = patientSex;
     }
 
-    public void setPatientSuffix(@Nullable String patientSuffix)
+    public void setPatientSuffix( String patientSuffix)
     {
         this.patientSuffix = patientSuffix;
     }
 
-    public void setAlternatePatientId(@Nullable String alternatePatientId)
+    public void setAlternatePatientId( String alternatePatientId)
     {
         this.alternatePatientId = alternatePatientId;
     }
 
-    public void setPatientAccountNumber(@Nullable String patientAccountNumber)
+    public void setPatientAccountNumber( String patientAccountNumber)
     {
         this.patientAccountNumber = patientAccountNumber;
     }
 
-    public void setPatientAddressee(@Nullable String patientAddressee)
+    public void setPatientAddressee( String patientAddressee)
     {
         this.patientAddressee = patientAddressee;
     }
 
-    public void setPatientAddressType(@Nullable String patientAddressType)
+    public void setPatientAddressType( String patientAddressType)
     {
         this.patientAddressType = patientAddressType;
     }
 
-    public void setPatientStreetAddress(@Nullable String patientStreetAddress)
+    public void setPatientStreetAddress( String patientStreetAddress)
     {
         this.patientStreetAddress = patientStreetAddress;
     }
 
-    public void setPatientStreetName(@Nullable String patientStreetName)
+    public void setPatientStreetName( String patientStreetName)
     {
         this.patientStreetName = patientStreetName;
     }
 
-    public void setPatientAddressBuildingNumber(@Nullable String patientAddressBuildingNumber)
+    public void setPatientAddressBuildingNumber( String patientAddressBuildingNumber)
     {
         this.patientAddressBuildingNumber = patientAddressBuildingNumber;
     }
 
-    public void setPatientAddressCity(@Nullable String patientAddressCity)
+    public void setPatientAddressCity( String patientAddressCity)
     {
         this.patientAddressCity = patientAddressCity;
     }
 
-    public void setPatientAddressState(@Nullable String patientAddressState)
+    public void setPatientAddressState( String patientAddressState)
     {
         this.patientAddressState = patientAddressState;
     }
 
-    public void setPatientAddressCounty(@Nullable String patientAddressCounty)
+    public void setPatientAddressCounty( String patientAddressCounty)
     {
         this.patientAddressCounty = patientAddressCounty;
     }
 
-    public void setPatientAddressZipcode(@Nullable String patientAddressZipcode)
+    public void setPatientAddressZipcode( String patientAddressZipcode)
     {
         this.patientAddressZipcode = patientAddressZipcode;
     }
 
-    public void setPatientAddressCountry(@Nullable String patientAddressCountry)
+    public void setPatientAddressCountry( String patientAddressCountry)
     {
         this.patientAddressCountry = patientAddressCountry;
     }
 
-    public void setPatientAliasLastName(@Nullable String patientAliasLastName)
+    public void setPatientAliasLastName( String patientAliasLastName)
     {
         this.patientAliasLastName = patientAliasLastName;
     }
 
-    public void setPatientAliasFirstName(@Nullable String patientAliasFirstName)
+    public void setPatientAliasFirstName( String patientAliasFirstName)
     {
         this.patientAliasFirstName = patientAliasFirstName;
     }
 
-    public void setPatientAliasMiddleName(@Nullable String patientAliasMiddleName)
+    public void setPatientAliasMiddleName( String patientAliasMiddleName)
     {
         this.patientAliasMiddleName = patientAliasMiddleName;
     }
 
-    public void setPatientAlias(@Nullable String patientAlias)
+    public void setPatientAlias( String patientAlias)
     {
         this.patientAlias = patientAlias;
     }
 
-    public void setPatientSSN(@Nullable String patientSSN)
+    public void setPatientSSN( String patientSSN)
     {
         this.patientSSN = patientSSN;
     }
 
-    public void setPatientRace(@Nullable String patientRace)
+    public void setPatientRace( String patientRace)
     {
         this.patientRace = patientRace;
     }
 
-    public void setPatientCitizenship(@Nullable String patientCitizenship)
+    public void setPatientCitizenship( String patientCitizenship)
     {
         this.patientCitizenship = patientCitizenship;
     }
 
-    public void setMaritalStatus(@Nullable String maritalStatus)
+    public void setMaritalStatus( String maritalStatus)
     {
         this.maritalStatus = maritalStatus;
     }
 
-    public void setPatientEmail(@Nullable String patientEmail)
+    public void setPatientEmail( String patientEmail)
     {
         this.patientEmail = patientEmail;
     }
 
-    public void setPatientHomePhone(@Nullable String patientHomePhone)
+    public void setPatientHomePhone( String patientHomePhone)
     {
         this.patientHomePhone = patientHomePhone;
     }
 
-    public void setPatientWorkPhone(@Nullable String patientWorkPhone)
+    public void setPatientWorkPhone( String patientWorkPhone)
     {
         this.patientWorkPhone = patientWorkPhone;
     }
 
-    public void setPatientFax(@Nullable String patientFax)
+    public void setPatientFax( String patientFax)
     {
         this.patientFax = patientFax;
     }
 
-    public void setPatientMobile(@Nullable String patientMobile)
+    public void setPatientMobile( String patientMobile)
     {
         this.patientMobile = patientMobile;
     }
 
-    public void setPatientOtherPhone(@Nullable String patientOtherPhone)
+    public void setPatientOtherPhone( String patientOtherPhone)
     {
         this.patientOtherPhone = patientOtherPhone;
     }
 
-    public void setPatientNotificationPreference(@Nullable String patientNotificationPreference)
+    public void setPatientNotificationPreference( String patientNotificationPreference)
     {
         this.patientNotificationPreference = patientNotificationPreference;
     }
 
-    public void setPatientEmployer(@Nullable String patientEmployer)
+    public void setPatientEmployer( String patientEmployer)
     {
         this.patientEmployer = patientEmployer;
     }
 
-    public void setPatientEmployerStatus(@Nullable String patientEmployerStatus)
+    public void setPatientEmployerStatus( String patientEmployerStatus)
     {
         this.patientEmployerStatus = patientEmployerStatus;
     }
 
-    public void setPatientEmployerPhone(@Nullable String patientEmployerPhone)
+    public void setPatientEmployerPhone( String patientEmployerPhone)
     {
         this.patientEmployerPhone = patientEmployerPhone;
     }
 
-    public void setPatientStudentStatus(@Nullable String patientStudentStatus)
+    public void setPatientStudentStatus( String patientStudentStatus)
     {
         this.patientStudentStatus = patientStudentStatus;
     }
 
-    public void setPatientSchool(@Nullable String patientSchool)
+    public void setPatientSchool( String patientSchool)
     {
         this.patientSchool = patientSchool;
     }
 
-    public void setPatientNoticeOfPrivacy(@Nullable String patientNoticeOfPrivacy)
+    public void setPatientNoticeOfPrivacy( String patientNoticeOfPrivacy)
     {
         this.patientNoticeOfPrivacy = patientNoticeOfPrivacy;
     }
 
-    public void setPatientDateOfPrivacy(@Nullable Date patientDateOfPrivacy)
+    public void setPatientDateOfPrivacy( Date patientDateOfPrivacy)
     {
         this.patientDateOfPrivacy = patientDateOfPrivacy;
     }
 
-    public void setPatientDateOfDeath(@Nullable Date patientDateOfDeath)
+    public void setPatientDateOfDeath( Date patientDateOfDeath)
     {
         this.patientDateOfDeath = patientDateOfDeath;
     }
 
-    public void setPatientCauseOfDeath(@Nullable String patientCauseOfDeath)
+    public void setPatientCauseOfDeath( String patientCauseOfDeath)
     {
         this.patientCauseOfDeath = patientCauseOfDeath;
     }
 
-    public void setPatientEmergencyContactName(@Nullable String patientEmergencyContactName)
+    public void setPatientEmergencyContactName( String patientEmergencyContactName)
     {
         this.patientEmergencyContactName = patientEmergencyContactName;
     }
 
-    public void setPatientEmergencyContactPhone(@Nullable String patientEmergencyContactPhone)
+    public void setPatientEmergencyContactPhone( String patientEmergencyContactPhone)
     {
         this.patientEmergencyContactPhone = patientEmergencyContactPhone;
     }
 
-    public void setPatientPreferredLanguage(@Nullable String patientPreferredLanguage)
+    public void setPatientPreferredLanguage( String patientPreferredLanguage)
     {
         this.patientPreferredLanguage = patientPreferredLanguage;
     }
 
-    public void setPatientSmokingStatus(@Nullable String patientSmokingStatus)
+    public void setPatientSmokingStatus( String patientSmokingStatus)
     {
         this.patientSmokingStatus = patientSmokingStatus;
     }
 
-    public void setPatientEthnicity(@Nullable String patientEthnicity)
+    public void setPatientEthnicity( String patientEthnicity)
     {
         this.patientEthnicity = patientEthnicity;
     }
 
-    public void setPatientBirthState(@Nullable String patientBirthState)
+    public void setPatientBirthState( String patientBirthState)
     {
         this.patientBirthState = patientBirthState;
     }
 
-    public void setPatientBirthCountry(@Nullable String patientBirthCountry)
+    public void setPatientBirthCountry( String patientBirthCountry)
     {
         this.patientBirthCountry = patientBirthCountry;
     }
 
-    public void setPatientBirthOrder(@Nullable String patientBirthOrder)
+    public void setPatientBirthOrder( String patientBirthOrder)
     {
         this.patientBirthOrder = patientBirthOrder;
     }
 
-    public void setPatientMothersLastName(@Nullable String patientMothersLastName)
+    public void setPatientMothersLastName( String patientMothersLastName)
     {
         this.patientMothersLastName = patientMothersLastName;
     }
 
-    public void setPatientMothersFirstName(@Nullable String patientMothersFirstName)
+    public void setPatientMothersFirstName( String patientMothersFirstName)
     {
         this.patientMothersFirstName = patientMothersFirstName;
     }
 
-    public void setPatientMothersMiddleName(@Nullable String patientMothersMiddleName)
+    public void setPatientMothersMiddleName( String patientMothersMiddleName)
     {
         this.patientMothersMiddleName = patientMothersMiddleName;
     }
 
-    public void setPatientMothersMaidenName(@Nullable String patientMothersMaidenName)
+    public void setPatientMothersMaidenName( String patientMothersMaidenName)
     {
         this.patientMothersMaidenName = patientMothersMaidenName;
     }
 
-    public void setInstitutionName(@Nullable String institutionName)
+    public void setInstitutionName( String institutionName)
     {
         this.institutionName = institutionName;
     }
 
-    public void setAccessionNumber(@Nullable String accessionNumber)
+    public void setAccessionNumber( String accessionNumber)
     {
         this.accessionNumber = accessionNumber;
     }
 
-    public void setCPTCode(@Nullable String cPTCode)
+    public void setCPTCode( String cPTCode)
     {
         this.cPTCode = cPTCode;
     }
 
-    public void setCPTMnemonic(@Nullable String cPTMnemonic)
+    public void setCPTMnemonic( String cPTMnemonic)
     {
         this.cPTMnemonic = cPTMnemonic;
     }
 
-    public void setModality(@Nullable String modality)
+    public void setModality( String modality)
     {
         this.modality = modality;
     }
 
-    public void setStudyDescription(@Nullable String studyDescription)
+    public void setStudyDescription( String studyDescription)
     {
         this.studyDescription = studyDescription;
     }
 
-    public void setPregnant(@Nullable String pregnant)
+    public void setPregnant( String pregnant)
     {
         this.pregnant = pregnant;
     }
 
-    public void setVipIndicator(@Nullable String vipIndicator)
+    public void setVipIndicator( String vipIndicator)
     {
         this.vipIndicator = vipIndicator;
     }
 
-    public void setAdmitDate(@Nullable Date admitDate)
+    public void setAdmitDate( Date admitDate)
     {
         this.admitDate = admitDate;
     }
 
-    public void setAdmissionType(@Nullable String admissionType)
+    public void setAdmissionType( String admissionType)
     {
         this.admissionType = admissionType;
     }
 
-    public void setPatientLocationBed(@Nullable String patientLocationBed)
+    public void setPatientLocationBed( String patientLocationBed)
     {
         this.patientLocationBed = patientLocationBed;
     }
 
-    public void setPatientLocationBuilding(@Nullable String patientLocationBuilding)
+    public void setPatientLocationBuilding( String patientLocationBuilding)
     {
         this.patientLocationBuilding = patientLocationBuilding;
     }
 
-    public void setPatientLocationFacility(@Nullable String patientLocationFacility)
+    public void setPatientLocationFacility( String patientLocationFacility)
     {
         this.patientLocationFacility = patientLocationFacility;
     }
 
-    public void setPatientLocationFloor(@Nullable String patientLocationFloor)
+    public void setPatientLocationFloor( String patientLocationFloor)
     {
         this.patientLocationFloor = patientLocationFloor;
     }
 
-    public void setPatientLocationDescription(@Nullable String patientLocationDescription)
+    public void setPatientLocationDescription( String patientLocationDescription)
     {
         this.patientLocationDescription = patientLocationDescription;
     }
 
-    public void setPatientLocationAssigningAuthority(@Nullable String patientLocationAssigningAuthority)
+    public void setPatientLocationAssigningAuthority( String patientLocationAssigningAuthority)
     {
         this.patientLocationAssigningAuthority = patientLocationAssigningAuthority;
     }
 
-    public void setPatientLocationComprehensiveDescription(@Nullable String patientLocationComprehensiveDescription)
+    public void setPatientLocationComprehensiveDescription( String patientLocationComprehensiveDescription)
     {
         this.patientLocationComprehensiveDescription = patientLocationComprehensiveDescription;
     }
 
-    public void setPatientLocationStatus(@Nullable String patientLocationStatus)
+    public void setPatientLocationStatus( String patientLocationStatus)
     {
         this.patientLocationStatus = patientLocationStatus;
     }
 
-    public void setPatientLocationType(@Nullable String patientLocationType)
+    public void setPatientLocationType( String patientLocationType)
     {
         this.patientLocationType = patientLocationType;
     }
 
-    public void setPatientStation(@Nullable String patientStation)
+    public void setPatientStation( String patientStation)
     {
         this.patientStation = patientStation;
     }
 
-    public void setPatientClass(@Nullable String patientClass)
+    public void setPatientClass( String patientClass)
     {
         this.patientClass = patientClass;
     }
 
-    public void setReferringDoctorLastName(@Nullable String referringDoctorLastName)
+    public void setReferringDoctorLastName( String referringDoctorLastName)
     {
         this.referringDoctorLastName = referringDoctorLastName;
     }
 
-    public void setReferringDoctorFirstName(@Nullable String referringDoctorFirstName)
+    public void setReferringDoctorFirstName( String referringDoctorFirstName)
     {
         this.referringDoctorFirstName = referringDoctorFirstName;
     }
 
-    public void setReferringDoctorDegree(@Nullable String referringDoctorDegree)
+    public void setReferringDoctorDegree( String referringDoctorDegree)
     {
         this.referringDoctorDegree = referringDoctorDegree;
     }
 
-    public void setReferringDoctorFullName(@Nullable String referringDoctorFullName)
+    public void setReferringDoctorFullName( String referringDoctorFullName)
     {
         this.referringDoctorFullName = referringDoctorFullName;
     }
 
-    public void setOrderingDoctorLastName(@Nullable String orderingDoctorLastName)
+    public void setOrderingDoctorLastName( String orderingDoctorLastName)
     {
         this.orderingDoctorLastName = orderingDoctorLastName;
     }
 
-    public void setOrderingDoctorFirstName(@Nullable String orderingDoctorFirstName)
+    public void setOrderingDoctorFirstName( String orderingDoctorFirstName)
     {
         this.orderingDoctorFirstName = orderingDoctorFirstName;
     }
 
-    public void setOrderingDoctorDegree(@Nullable String orderingDoctorDegree)
+    public void setOrderingDoctorDegree( String orderingDoctorDegree)
     {
         this.orderingDoctorDegree = orderingDoctorDegree;
     }
 
-    public void setOrderingDoctorFullName(@Nullable String orderingDoctorFullName)
+    public void setOrderingDoctorFullName( String orderingDoctorFullName)
     {
         this.orderingDoctorFullName = orderingDoctorFullName;
     }
 
-    public void setOrderNumber(@Nullable String orderNumber)
+    public void setOrderNumber( String orderNumber)
     {
         this.orderNumber = orderNumber;
     }
 
-    public void setSendingFacility(@Nullable String sendingFacility)
+    public void setSendingFacility( String sendingFacility)
     {
         this.sendingFacility = sendingFacility;
     }
 
-    public void setTechName(@Nullable String techName)
+    public void setTechName( String techName)
     {
         this.techName = techName;
     }
 
-    public void setAuthorizationNumber(@Nullable String authorizationNumber)
+    public void setAuthorizationNumber( String authorizationNumber)
     {
         this.authorizationNumber = authorizationNumber;
     }
 
-    public void setNumberOfFilms(@Nullable String numberOfFilms)
+    public void setNumberOfFilms( String numberOfFilms)
     {
         this.numberOfFilms = numberOfFilms;
     }
 
-    public void setFilmType(@Nullable String filmType)
+    public void setFilmType( String filmType)
     {
         this.filmType = filmType;
     }
 
-    public void setEffectiveDate(@Nullable Date effectiveDate)
+    public void setEffectiveDate( Date effectiveDate)
     {
         this.effectiveDate = effectiveDate;
     }
 
-    public void setFindings(@Nullable String findings)
+    public void setFindings( String findings)
     {
         this.findings = findings;
     }
 
-    public void setApprovalDate(@Nullable String approvalDate)
+    public void setApprovalDate( String approvalDate)
     {
         this.approvalDate = approvalDate;
     }
 
-    public void setDeliveryDate(@Nullable String deliveryDate)
+    public void setDeliveryDate( String deliveryDate)
     {
         this.deliveryDate = deliveryDate;
     }
 
-    public void setModifiers(@Nullable String modifiers)
+    public void setModifiers( String modifiers)
     {
         this.modifiers = modifiers;
     }
 
-    public void setDiagnosisCode(@Nullable String diagnosisCode)
+    public void setDiagnosisCode( String diagnosisCode)
     {
         this.diagnosisCode = diagnosisCode;
     }
 
-    public void setReportId(@Nullable String reportId)
+    public void setReportId( String reportId)
     {
         this.reportId = reportId;
     }
 
-    public void setHl7(@Nullable String hl7)
+    public void setHl7( String hl7)
     {
         this.hl7 = hl7;
     }
 
-    public void setCoPayAmount(@Nullable String coPayAmount)
+    public void setCoPayAmount( String coPayAmount)
     {
         this.coPayAmount = coPayAmount;
     }
 
-    public void setFeeAmount(@Nullable String feeAmount)
+    public void setFeeAmount( String feeAmount)
     {
         this.feeAmount = feeAmount;
     }
 
-    public void setAllowableAmount(@Nullable String allowableAmount)
+    public void setAllowableAmount( String allowableAmount)
     {
         this.allowableAmount = allowableAmount;
     }
 
-    public void setVisitNumber(@Nullable String visitNumber)
+    public void setVisitNumber( String visitNumber)
     {
         this.visitNumber = visitNumber;
     }
 
-    public void setDeductibleAmount(@Nullable String deductibleAmount)
+    public void setDeductibleAmount( String deductibleAmount)
     {
         this.deductibleAmount = deductibleAmount;
     }
 
-    public void setLoggedAmount(@Nullable String loggedAmount)
+    public void setLoggedAmount( String loggedAmount)
     {
         this.loggedAmount = loggedAmount;
     }
 
-    public void setCardChequeNumber(@Nullable String cardChequeNumber)
+    public void setCardChequeNumber( String cardChequeNumber)
     {
         this.cardChequeNumber = cardChequeNumber;
     }
 
-    public void setExternalVisitId(@Nullable String externalVisitId)
+    public void setExternalVisitId( String externalVisitId)
     {
         this.externalVisitId = externalVisitId;
     }
 
-    public void setPaymentMethod(@Nullable String paymentMethod)
+    public void setPaymentMethod( String paymentMethod)
     {
         this.paymentMethod = paymentMethod;
     }
 
-    public void setExpiryDate(@Nullable Date expiryDate)
+    public void setExpiryDate( Date expiryDate)
     {
         this.expiryDate = expiryDate;
     }
 
-    public void setHospitalService(@Nullable String hospitalService)
+    public void setHospitalService( String hospitalService)
     {
         this.hospitalService = hospitalService;
     }
 
-    public void setProcedureStartDate(@Nullable String procedureStartDate)
+    public void setProcedureStartDate( String procedureStartDate)
     {
         this.procedureStartDate = procedureStartDate;
     }
 
-    public void setReasonForExam(@Nullable String reasonForExam)
+    public void setReasonForExam( String reasonForExam)
     {
         this.reasonForExam = reasonForExam;
     }
 
-    public void setPriority(@Nullable String priority)
+    public void setPriority( String priority)
     {
         this.priority = priority;
     }
 
-    public void setProcedureCode(@Nullable String procedureCode)
+    public void setProcedureCode( String procedureCode)
     {
         this.procedureCode = procedureCode;
     }
 
-    public void setProcedureCodeScheme(@Nullable String procedureCodeScheme)
+    public void setProcedureCodeScheme( String procedureCodeScheme)
     {
         this.procedureCodeScheme = procedureCodeScheme;
     }
 
-    public void setOrderStatus(@Nullable String orderStatus)
+    public void setOrderStatus( String orderStatus)
     {
         this.orderStatus = orderStatus;
     }
 
-    public void setLaterality(@Nullable String laterality)
+    public void setLaterality( String laterality)
     {
         this.laterality = laterality;
     }
 
-    public void setPrincipalResultInterpreter(@Nullable String principalResultInterpreter)
+    public void setPrincipalResultInterpreter( String principalResultInterpreter)
     {
         this.principalResultInterpreter = principalResultInterpreter;
     }
 
-    public void setResponsibleObserver(@Nullable String responsibleObserver)
+    public void setResponsibleObserver( String responsibleObserver)
     {
         this.responsibleObserver = responsibleObserver;
     }
 
-    public void setRelevantClinicalInformation(@Nullable String relevantClinicalInformation)
+    public void setRelevantClinicalInformation( String relevantClinicalInformation)
     {
         this.relevantClinicalInformation = relevantClinicalInformation;
     }
 
-    public void setPhysicians(@Nullable Collection<Physician> physicians)
+    public void setPhysicians( Collection<Physician> physicians)
     {
         this.physicians = physicians;
     }
 
-    public void setFollowUpCode(@Nullable String followUpCode)
+    public void setFollowUpCode( String followUpCode)
     {
         this.followUpCode = followUpCode;
     }
 
-    public void setGuarantorName(@Nullable String guarantorName)
+    public void setGuarantorName( String guarantorName)
     {
         this.guarantorName = guarantorName;
     }
 
-    public void setGuarantorAddress(@Nullable String guarantorAddress)
+    public void setGuarantorAddress( String guarantorAddress)
     {
         this.guarantorAddress = guarantorAddress;
     }
 
-    public void setGuarantorPhone(@Nullable String guarantorPhone)
+    public void setGuarantorPhone( String guarantorPhone)
     {
         this.guarantorPhone = guarantorPhone;
     }
 
-    public void setGuarantorDOB(@Nullable Date guarantorDOB)
+    public void setGuarantorDOB( Date guarantorDOB)
     {
         this.guarantorDOB = guarantorDOB;
     }
 
-    public void setServiceType(@Nullable String serviceType)
+    public void setServiceType( String serviceType)
     {
         this.serviceType = serviceType;
     }
 
-    public void setDateOfService(@Nullable Date dateOfService)
+    public void setDateOfService( Date dateOfService)
     {
         this.dateOfService = dateOfService;
     }
 
-    public void setTransportType(@Nullable String transportType)
+    public void setTransportType( String transportType)
     {
         this.transportType = transportType;
     }
 
-    public void setInpatientLocation(@Nullable String inpatientLocation)
+    public void setInpatientLocation( String inpatientLocation)
     {
         this.inpatientLocation = inpatientLocation;
     }
 
-    public void setRoom(@Nullable String room)
+    public void setRoom( String room)
     {
         this.room = room;
     }
@@ -2185,17 +2185,17 @@ public class DetailedOrder
         this.monitor = monitor;
     }
 
-    public void setDischargeDate(@Nullable Date dischargeDate)
+    public void setDischargeDate( Date dischargeDate)
     {
         this.dischargeDate = dischargeDate;
     }
 
-    public void setInsuredName(@Nullable String insuredName)
+    public void setInsuredName( String insuredName)
     {
         this.insuredName = insuredName;
     }
 
-    public void setRelationship(@Nullable String relationship)
+    public void setRelationship( String relationship)
     {
         this.relationship = relationship;
     }
@@ -2205,67 +2205,67 @@ public class DetailedOrder
         this.releaseSigned = releaseSigned;
     }
 
-    public void setCoPay(@Nullable String coPay)
+    public void setCoPay( String coPay)
     {
         this.coPay = coPay;
     }
 
-    public void setDeductible(@Nullable String deductible)
+    public void setDeductible( String deductible)
     {
         this.deductible = deductible;
     }
 
-    public void setDateSigned(@Nullable Date dateSigned)
+    public void setDateSigned( Date dateSigned)
     {
         this.dateSigned = dateSigned;
     }
 
-    public void setCoInsurance(@Nullable String coInsurance)
+    public void setCoInsurance( String coInsurance)
     {
         this.coInsurance = coInsurance;
     }
 
-    public void setPatientInsurances(@Nullable Collection<PatientInsurance> patientInsurances)
+    public void setPatientInsurances( Collection<PatientInsurance> patientInsurances)
     {
         this.patientInsurances = patientInsurances;
     }
 
-    public void setVisitInsurances(@Nullable Collection<VisitInsurance> visitInsurances)
+    public void setVisitInsurances( Collection<VisitInsurance> visitInsurances)
     {
         this.visitInsurances = visitInsurances;
     }
 
-    public void setAllergies(@Nullable Collection<Allergy> allergies)
+    public void setAllergies( Collection<Allergy> allergies)
     {
         this.allergies = allergies;
     }
 
-    public void setReferrals(@Nullable Collection<Referral> referrals)
+    public void setReferrals( Collection<Referral> referrals)
     {
         this.referrals = referrals;
     }
 
-    public void setMedications(@Nullable Collection<Medication> medications)
+    public void setMedications( Collection<Medication> medications)
     {
         this.medications = medications;
     }
 
-    public void setReport(@Nullable OrderReport report)
+    public void setReport( OrderReport report)
     {
         this.report = report;
     }
 
-    public void setUpdatedBy(@Nullable String updatedBy)
+    public void setUpdatedBy( String updatedBy)
     {
         this.updatedBy = updatedBy;
     }
 
-    public void setUpdateTime(@Nullable Date updateTime)
+    public void setUpdateTime( Date updateTime)
     {
         this.updateTime = updateTime;
     }
 
-    public void setTechNotes(@Nullable String techNotes)
+    public void setTechNotes( String techNotes)
     {
         this.techNotes = techNotes;
     }
@@ -2275,42 +2275,42 @@ public class DetailedOrder
         this.critical = critical;
     }
 
-    public void setStudyDate(@Nullable String studyDate)
+    public void setStudyDate( String studyDate)
     {
         this.studyDate = studyDate;
     }
 
-    public void setStudyTime(@Nullable String studyTime)
+    public void setStudyTime( String studyTime)
     {
         this.studyTime = studyTime;
     }
 
-    public void setArrivalDate(@Nullable String arrivalDate)
+    public void setArrivalDate( String arrivalDate)
     {
         this.arrivalDate = arrivalDate;
     }
 
-    public void setArrivalTime(@Nullable String arrivalTime)
+    public void setArrivalTime( String arrivalTime)
     {
         this.arrivalTime = arrivalTime;
     }
 
-    public void setAdditionalAccessions(@Nullable String additionalAccessions)
+    public void setAdditionalAccessions( String additionalAccessions)
     {
         this.additionalAccessions = additionalAccessions;
     }
 
-    public void setUrgentExamType(@Nullable UrgentExamType urgentExamType)
+    public void setUrgentExamType( UrgentExamType urgentExamType)
     {
         this.urgentExamType = urgentExamType;
     }
 
-    public void setReadingRadiologist(@Nullable String readingRadiologist)
+    public void setReadingRadiologist( String readingRadiologist)
     {
         this.readingRadiologist = readingRadiologist;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "DetailedOrder(" +
@@ -2480,7 +2480,7 @@ public class DetailedOrder
             " readingRadiologist: " + getReadingRadiologist() + ")";
     }
 
-    @NotNull
+
     public DetailedOrderBuilder toBuilder()
     {
         return new DetailedOrderBuilder(getOrderId(),

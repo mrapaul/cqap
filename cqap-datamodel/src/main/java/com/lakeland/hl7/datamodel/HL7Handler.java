@@ -1,70 +1,70 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 
 public interface HL7Handler
 {
-    void onHL7Message(@NotNull HL7Message aHL7Message);
+    void onHL7Message(HL7Message aHL7Message);
 
-    void onHL7Messages(@NotNull HL7Messages aHL7Messages);
-
-
-
-    void onHL7Order(@NotNull HL7Order aHL7Order);
-
-    void onHL7Orders(@NotNull HL7Orders aHL7Orders);
-
-    void onNewOrder(@NotNull NewOrder aNewOrder);
+    void onHL7Messages(HL7Messages aHL7Messages);
 
 
 
-    void onOrderBidLocation(@NotNull OrderBidLocation aOrderBidLocation);
+    void onHL7Order(HL7Order aHL7Order);
 
-    void onOrderBidTelerad(@NotNull OrderBidTelerad aOrderBidTelerad);
+    void onHL7Orders(HL7Orders aHL7Orders);
 
-    void onOrderBidConfirm(@NotNull OrderBidConfirm aOrderBidConfirm);
+    void onNewOrder(NewOrder aNewOrder);
 
-    void onOrderBidRejected(@NotNull OrderBidRejected aOrderBidRejected);
 
-    void onOrderStatusChange(@NotNull OrderStatusChange aOrderStatusChange);
 
-    void onAdministrationSnapshotRequest(@NotNull AdministrationSnapshotRequest aAdministrationSnapshotRequest);
+    void onOrderBidLocation(OrderBidLocation aOrderBidLocation);
 
-    void onAdministrationSnapshotBegin(@NotNull AdministrationSnapshotBegin aAdministrationSnapshotBegin);
+    void onOrderBidTelerad(OrderBidTelerad aOrderBidTelerad);
 
-    void onAdministrationSnapshotPart(@NotNull AdministrationSnapshotPart aAdministrationSnapshotPart);
+    void onOrderBidConfirm(OrderBidConfirm aOrderBidConfirm);
 
-    void onAdministrationSnapshotEnd(@NotNull AdministrationSnapshotEnd aAdministrationSnapshotEnd);
+    void onOrderBidRejected(OrderBidRejected aOrderBidRejected);
 
-    void onAdministrationSnapshot(@NotNull AdministrationSnapshot aAdministrationSnapshot);
+    void onOrderStatusChange(OrderStatusChange aOrderStatusChange);
 
-    void onRadiologistSnapshotRequest(@NotNull RadiologistSnapshotRequest aRadiologistSnapshotRequest);
+    void onAdministrationSnapshotRequest(AdministrationSnapshotRequest aAdministrationSnapshotRequest);
 
-    void onRadiologistSnapshotBegin(@NotNull RadiologistSnapshotBegin aRadiologistSnapshotBegin);
+    void onAdministrationSnapshotBegin(AdministrationSnapshotBegin aAdministrationSnapshotBegin);
 
-    void onRadiologistSnapshotPart(@NotNull RadiologistSnapshotPart aRadiologistSnapshotPart);
+    void onAdministrationSnapshotPart(AdministrationSnapshotPart aAdministrationSnapshotPart);
 
-    void onRadiologistSnapshotEnd(@NotNull RadiologistSnapshotEnd aRadiologistSnapshotEnd);
+    void onAdministrationSnapshotEnd(AdministrationSnapshotEnd aAdministrationSnapshotEnd);
 
-    void onRadiologistSnapshot(@NotNull RadiologistSnapshot aRadiologistSnapshot);
+    void onAdministrationSnapshot(AdministrationSnapshot aAdministrationSnapshot);
 
-    void onHL7RawMessage(@NotNull HL7RawMessage aHL7RawMessage);
+    void onRadiologistSnapshotRequest(RadiologistSnapshotRequest aRadiologistSnapshotRequest);
 
-    void onManualAssignOrder(@NotNull ManualAssignOrder aManualAssignOrder);
+    void onRadiologistSnapshotBegin(RadiologistSnapshotBegin aRadiologistSnapshotBegin);
 
-    void onPullOrders(@NotNull PullOrders aPullOrders);
+    void onRadiologistSnapshotPart(RadiologistSnapshotPart aRadiologistSnapshotPart);
 
-    void onDeleteOrders(@NotNull DeleteOrders aDeleteOrders);
+    void onRadiologistSnapshotEnd(RadiologistSnapshotEnd aRadiologistSnapshotEnd);
 
-    void onOrderUpdated(@NotNull OrderUpdated aOrderUpdated);
+    void onRadiologistSnapshot(RadiologistSnapshot aRadiologistSnapshot);
 
-    void onOrderActivities(@NotNull OrderActivities aOrderActivities);
+    void onHL7RawMessage(HL7RawMessage aHL7RawMessage);
 
-    void onNewOrders(@NotNull NewOrders aNewOrders);
+    void onManualAssignOrder(ManualAssignOrder aManualAssignOrder);
 
-    void onAssignImage(@NotNull AssignImage aAssignImage);
+    void onPullOrders(PullOrders aPullOrders);
 
-    void onCreateDicomOrder(@NotNull CreateDicomOrder aCreateDicomOrder);
+    void onDeleteOrders(DeleteOrders aDeleteOrders);
 
-    void onUnknown(byte aMessageType, int aMessageLength, @NotNull byte[] aBytes);
+    void onOrderUpdated(OrderUpdated aOrderUpdated);
+
+    void onOrderActivities(OrderActivities aOrderActivities);
+
+    void onNewOrders(NewOrders aNewOrders);
+
+    void onAssignImage(AssignImage aAssignImage);
+
+    void onCreateDicomOrder(CreateDicomOrder aCreateDicomOrder);
+
+    void onUnknown(byte aMessageType, int aMessageLength, byte[] aBytes);
 }

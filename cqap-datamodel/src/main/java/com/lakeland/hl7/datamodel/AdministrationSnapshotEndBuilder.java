@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,10 +8,10 @@ import com.lakeland.ris.datamodel.*;
 
 public class AdministrationSnapshotEndBuilder extends TimedMessageBuilder<AdministrationSnapshotEnd, AdministrationSnapshotEndBuilder>
 {
-    @NotNull private String userId;
+    private String userId;
 
-    public AdministrationSnapshotEndBuilder(@NotNull Date timestamp,
-                                            @NotNull String userId)
+    public AdministrationSnapshotEndBuilder(Date timestamp,
+                                            String userId)
     {
         super(timestamp);
 
@@ -19,31 +19,31 @@ public class AdministrationSnapshotEndBuilder extends TimedMessageBuilder<Admini
     }
 
 
-    @NotNull
+
     @Override
-    public AdministrationSnapshotEndBuilder setTimestamp(@NotNull Date timestamp)
+    public AdministrationSnapshotEndBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
-    public AdministrationSnapshotEndBuilder setUserId(@NotNull String userId)
+
+    public AdministrationSnapshotEndBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
+
     protected String getUserId()
     {
         return userId;
     }
 
     @Override
-    @NotNull
+
     public AdministrationSnapshotEnd build()
     {
         return new AdministrationSnapshotEnd(getTimestamp(),
@@ -52,7 +52,7 @@ public class AdministrationSnapshotEndBuilder extends TimedMessageBuilder<Admini
 
 
     @Override
-    @NotNull
+
     protected AdministrationSnapshotEndBuilder self()
     {
         return this;

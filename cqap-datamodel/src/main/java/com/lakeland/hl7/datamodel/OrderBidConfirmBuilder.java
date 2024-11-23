@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -9,9 +9,9 @@ import com.lakeland.ris.datamodel.*;
 public class OrderBidConfirmBuilder extends OrderActivityBuilder<OrderBidConfirm, OrderBidConfirmBuilder>
 {
 
-    public OrderBidConfirmBuilder(@NotNull Date timestamp,
-                                  @NotNull String orderId,
-                                  @NotNull String userId)
+    public OrderBidConfirmBuilder(Date timestamp,
+                                  String orderId,
+                                  String userId)
     {
         super(timestamp,
               orderId,
@@ -20,27 +20,27 @@ public class OrderBidConfirmBuilder extends OrderActivityBuilder<OrderBidConfirm
     }
 
 
-    @NotNull
+    
     @Override
-    public OrderBidConfirmBuilder setTimestamp(@NotNull Date timestamp)
+    public OrderBidConfirmBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
+    
     @Override
-    public OrderBidConfirmBuilder setOrderId(@NotNull String orderId)
+    public OrderBidConfirmBuilder setOrderId(String orderId)
     {
         super.setOrderId(orderId);
 
         return self();
     }
 
-    @NotNull
+    
     @Override
-    public OrderBidConfirmBuilder setUserId(@NotNull String userId)
+    public OrderBidConfirmBuilder setUserId(String userId)
     {
         super.setUserId(userId);
 
@@ -50,7 +50,7 @@ public class OrderBidConfirmBuilder extends OrderActivityBuilder<OrderBidConfirm
 
 
     @Override
-    @NotNull
+    
     public OrderBidConfirm build()
     {
         return new OrderBidConfirm(getTimestamp(),
@@ -60,7 +60,7 @@ public class OrderBidConfirmBuilder extends OrderActivityBuilder<OrderBidConfirm
 
 
     @Override
-    @NotNull
+    
     protected OrderBidConfirmBuilder self()
     {
         return this;

@@ -20,18 +20,21 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>tomcat-maven-plugin</artifactId>
-                <version>1.1</version>
                 <configuration>
-                    <url>http://192.168.10.57:18880/manager/html</url>
-                    <server>cqap-test</server>
-                    <path>/${build.finalName}</path>
-                    <warFile>${project.build.directory}/${build.finalName}.war</warFile>
+                    <mainClass>com.capstone.server.controller.Server</mainClass> <!-- Replace with your actual main class -->
                 </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.mojo</groupId>-->
+<!--                <artifactId>tomcat-maven-plugin</artifactId>-->
+<!--                <version>1.1</version>-->
+<!--                <configuration>-->
+<!--                    <url>http://localhost:8000/manager/html</url>-->
+<!--                    <server>cqap-test</server>-->
+<!--                    <path>/${build.finalName}</path>-->
+<!--                    <warFile>${project.build.directory}/${build.finalName}.war</warFile>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
@@ -62,14 +65,9 @@
             <artifactId>spring-data-mongodb</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>${org.springframework.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
         </dependency>
-
-
         <dependency>
             <groupId>dcm4che</groupId>
             <artifactId>dcm4che-net</artifactId>

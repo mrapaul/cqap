@@ -1,16 +1,16 @@
 package web.event;
 
 import com.peirs.datamodel.attachments.*;
-import org.jetbrains.annotations.*;
+
 
 import java.io.*;
 
 public interface AttachmentListener
 {
 
-    void uploadAttachment(@NotNull File file);
+    void uploadAttachment(File file);
 
-    @NotNull InputStream openAttachment(@NotNull Attachment attachment) throws IOException;
+    InputStream openAttachment(Attachment attachment) throws IOException;
 
-    void deleteAttachment(@NotNull Attachment attachment);
+    void deleteAttachment(Attachment attachment);
 }

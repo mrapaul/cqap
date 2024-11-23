@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,7 +10,7 @@ import com.lakeland.ris.datamodel.*;
 public class NewOrder extends TimedMessage implements HL7Visitable
 {
     public static final byte TYPE = 5;
-    @NotNull private String orderId;
+    private String orderId;
 
     public NewOrder()
     {
@@ -18,30 +18,30 @@ public class NewOrder extends TimedMessage implements HL7Visitable
     }
 
     @JsonCreator
-    public NewOrder(@NotNull Date timestamp,
-                    @NotNull String orderId)
+    public NewOrder(Date timestamp,
+                    String orderId)
     {
         super(timestamp);
 
         this.orderId = orderId;
     }
 
-    @NotNull
+    
     public String getOrderId()
     {
         return orderId;
     }
-    public void setOrderId(@NotNull String orderId)
+    public void setOrderId(String orderId)
     {
         this.orderId = orderId;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "NewOrder(" +
@@ -51,7 +51,7 @@ public class NewOrder extends TimedMessage implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -80,7 +80,7 @@ public class NewOrder extends TimedMessage implements HL7Visitable
                             getOrderId());
     }
 
-    @NotNull
+    
     public NewOrderBuilder toBuilder()
     {
         return new NewOrderBuilder(getTimestamp(),

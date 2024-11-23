@@ -9,7 +9,7 @@ import ca.uhn.hl7v2.model.v26.message.*;
 import ca.uhn.hl7v2.model.v26.segment.*;
 import com.lakeland.hl7.datamodel.*;
 import com.lakeland.ris.ui.datamodel.*;
-import org.jetbrains.annotations.*;
+
 import org.slf4j.*;
 
 import java.util.*;
@@ -18,7 +18,7 @@ public class HL7Parser
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(HL7Parser.class);
 
-    public void parse(@NotNull Message message, @NotNull HL7ParserHandler handler) throws HL7Exception
+    public void parse(Message message, HL7ParserHandler handler) throws HL7Exception
     {
         MSH msh = (MSH) message.get("MSH");
         MSG messageType = msh.getMessageType();
@@ -226,7 +226,7 @@ public class HL7Parser
         order.setInstitutionName(facilityNamespaceID);
     }
 
-    private void parseOBR(@NotNull OBR obr, @NotNull DisplayOrder order)
+    private void parseOBR(OBR obr, DisplayOrder order)
     {
         String accessionNumber = obr.getFillerOrderNumber().getEntityIdentifier().getValue();
         if (accessionNumber == null)

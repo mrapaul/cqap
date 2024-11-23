@@ -1,16 +1,16 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class ReportMacro
 {
-    @Nullable private String macroId;
-    @NotNull private String name;
-    @NotNull private String macro;
+     private String macroId;
+    private String name;
+    private String macro;
 
     public ReportMacro()
     {
@@ -18,9 +18,9 @@ public class ReportMacro
     }
 
     @JsonCreator
-    public ReportMacro(@Nullable String macroId,
-                       @NotNull String name,
-                       @NotNull String macro)
+    public ReportMacro( String macroId,
+                       String name,
+                       String macro)
     {
         super();
 
@@ -29,39 +29,39 @@ public class ReportMacro
         this.macro = macro;
     }
 
-    @Nullable
+    
     public String getMacroId()
     {
         return macroId;
     }
 
-    @NotNull
+    
     public String getName()
     {
         return name;
     }
 
-    @NotNull
+    
     public String getMacro()
     {
         return macro;
     }
-    public void setMacroId(@Nullable String macroId)
+    public void setMacroId( String macroId)
     {
         this.macroId = macroId;
     }
 
-    public void setName(@NotNull String name)
+    public void setName(String name)
     {
         this.name = name;
     }
 
-    public void setMacro(@NotNull String macro)
+    public void setMacro(String macro)
     {
         this.macro = macro;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "ReportMacro(" +
@@ -70,7 +70,7 @@ public class ReportMacro
             " macro: " + getMacro() + ")";
     }
 
-    @NotNull
+    
     public ReportMacroBuilder toBuilder()
     {
         return new ReportMacroBuilder(getName(),

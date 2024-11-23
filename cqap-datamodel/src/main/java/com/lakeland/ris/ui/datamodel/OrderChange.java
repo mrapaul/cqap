@@ -1,16 +1,16 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class OrderChange
 {
-    @NotNull private Date timestamp;
-    @NotNull private String userId;
-    @NotNull private OrderStatus status;
+    private Date timestamp;
+    private String userId;
+    private OrderStatus status;
 
     public OrderChange()
     {
@@ -18,9 +18,9 @@ public class OrderChange
     }
 
     @JsonCreator
-    public OrderChange(@NotNull Date timestamp,
-                       @NotNull String userId,
-                       @NotNull OrderStatus status)
+    public OrderChange(Date timestamp,
+                       String userId,
+                       OrderStatus status)
     {
         super();
 
@@ -29,39 +29,39 @@ public class OrderChange
         this.status = status;
     }
 
-    @NotNull
+    
     public Date getTimestamp()
     {
         return timestamp;
     }
 
-    @NotNull
+    
     public String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     public OrderStatus getStatus()
     {
         return status;
     }
-    public void setTimestamp(@NotNull Date timestamp)
+    public void setTimestamp(Date timestamp)
     {
         this.timestamp = timestamp;
     }
 
-    public void setUserId(@NotNull String userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }
 
-    public void setStatus(@NotNull OrderStatus status)
+    public void setStatus(OrderStatus status)
     {
         this.status = status;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "OrderChange(" +
@@ -70,7 +70,7 @@ public class OrderChange
             " status: " + getStatus() + ")";
     }
 
-    @NotNull
+    
     public OrderChangeBuilder toBuilder()
     {
         return new OrderChangeBuilder(getTimestamp(),

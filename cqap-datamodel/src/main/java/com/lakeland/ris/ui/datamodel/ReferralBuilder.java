@@ -1,17 +1,17 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class ReferralBuilder
 {
-    @Nullable private Date effectiveDate;
-    @Nullable private String status;
-    @Nullable private String referredBy;
-    @Nullable private String referredTo;
-    @Nullable private String reason;
+     private Date effectiveDate;
+     private String status;
+     private String referredBy;
+     private String referredTo;
+     private String reason;
 
     public ReferralBuilder()
     {
@@ -20,77 +20,77 @@ public class ReferralBuilder
     }
 
 
-    @NotNull
-    public ReferralBuilder setEffectiveDate(@Nullable Date effectiveDate)
+
+    public ReferralBuilder setEffectiveDate( Date effectiveDate)
     {
         this.effectiveDate = effectiveDate;
 
         return self();
     }
 
-    @NotNull
-    public ReferralBuilder setStatus(@Nullable String status)
+
+    public ReferralBuilder setStatus( String status)
     {
         this.status = status;
 
         return self();
     }
 
-    @NotNull
-    public ReferralBuilder setReferredBy(@Nullable String referredBy)
+
+    public ReferralBuilder setReferredBy( String referredBy)
     {
         this.referredBy = referredBy;
 
         return self();
     }
 
-    @NotNull
-    public ReferralBuilder setReferredTo(@Nullable String referredTo)
+
+    public ReferralBuilder setReferredTo( String referredTo)
     {
         this.referredTo = referredTo;
 
         return self();
     }
 
-    @NotNull
-    public ReferralBuilder setReason(@Nullable String reason)
+
+    public ReferralBuilder setReason( String reason)
     {
         this.reason = reason;
 
         return self();
     }
 
-    @Nullable
+    
     protected Date getEffectiveDate()
     {
         return effectiveDate;
     }
 
-    @Nullable
+    
     protected String getStatus()
     {
         return status;
     }
 
-    @Nullable
+    
     protected String getReferredBy()
     {
         return referredBy;
     }
 
-    @Nullable
+    
     protected String getReferredTo()
     {
         return referredTo;
     }
 
-    @Nullable
+    
     protected String getReason()
     {
         return reason;
     }
 
-    @NotNull
+
     public Referral build()
     {
         return new Referral(getEffectiveDate(),
@@ -101,7 +101,7 @@ public class ReferralBuilder
     }
 
 
-    @NotNull
+
     protected ReferralBuilder self()
     {
         return this;

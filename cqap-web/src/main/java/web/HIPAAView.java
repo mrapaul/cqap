@@ -4,7 +4,7 @@ import com.cqap.client.*;
 import com.peirs.datamodel.*;
 import com.vaadin.server.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.vaadin.maddon.layouts.*;
 import web.event.*;
 
@@ -20,12 +20,12 @@ public class HIPAAView extends Window
             "•\tAttempting to access a secured application without proper authorization.\n\n" +
             "Violations of this policy will results in the loss of access rights to the Fortis Qualitas LLC System in accordance with Hospital procedures and/or federal or state law.  I shall maintain the confidentiality of Confidential Patient Information, and in doing so shall comply with all applicable state and federal laws and regulations, including without limitation, the privacy provisions under Health Insurance Portability and Accountability Act of 1996 (“HIPAA”) and the policies and procedures of each participating Healthcare Facility where I am assigned.  My agreement to maintain the confidentiality of Confidential Patient Information shall survive the conclusion of any assignment at the participating Healthcare Facility and with Fortis Qualitas LLC.\n";
 
-    @NotNull private final User user;
-    @NotNull private final TextArea agreementField;
-    @NotNull private final Button approveButton;
-    @NotNull private final Button disapproveButton;
+    private final User user;
+    private final TextArea agreementField;
+    private final Button approveButton;
+    private final Button disapproveButton;
 
-    public HIPAAView(@NotNull User user)
+    public HIPAAView(User user)
     {
         this.user = user;
         agreementField = createFormTextArea("");

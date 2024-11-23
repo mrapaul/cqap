@@ -1,16 +1,16 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class UserOrderCountBuilder
 {
-    @NotNull private String user;
+    private String user;
     private int count;
 
-    public UserOrderCountBuilder(@NotNull String user)
+    public UserOrderCountBuilder(String user)
     {
         super();
 
@@ -18,15 +18,15 @@ public class UserOrderCountBuilder
     }
 
 
-    @NotNull
-    public UserOrderCountBuilder setUser(@NotNull String user)
+    
+    public UserOrderCountBuilder setUser(String user)
     {
         this.user = user;
 
         return self();
     }
 
-    @NotNull
+    
     public UserOrderCountBuilder setCount(int count)
     {
         this.count = count;
@@ -34,7 +34,7 @@ public class UserOrderCountBuilder
         return self();
     }
 
-    @NotNull
+    
     protected String getUser()
     {
         return user;
@@ -45,7 +45,7 @@ public class UserOrderCountBuilder
         return count;
     }
 
-    @NotNull
+    
     public UserOrderCount build()
     {
         return new UserOrderCount(getUser(),
@@ -53,7 +53,7 @@ public class UserOrderCountBuilder
     }
 
 
-    @NotNull
+    
     protected UserOrderCountBuilder self()
     {
         return this;

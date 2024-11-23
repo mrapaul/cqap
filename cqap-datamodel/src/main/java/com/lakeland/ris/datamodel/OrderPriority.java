@@ -1,6 +1,5 @@
 package com.lakeland.ris.datamodel;
 
-import org.jetbrains.annotations.*;
 
 public enum OrderPriority
 {
@@ -34,7 +33,6 @@ public enum OrderPriority
         return rank;
     }
 
-    @NotNull
     public String getDescription()
     {
         return description;

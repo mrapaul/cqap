@@ -1,28 +1,28 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class Medication
 {
-    @Nullable private String drugName;
-    @Nullable private String genericName;
-    @Nullable private String orderingPhysician;
-    @Nullable private String pharmacy;
-    @Nullable private String status;
-    @Nullable private Date lastRefillDate;
-    @Nullable private String daysSupply;
-    @Nullable private String refills;
-    @Nullable private String quantity;
-    @Nullable private String qualifier;
-    @Nullable private String substitution;
-    @Nullable private String pharmacyNotes;
-    @Nullable private String directions;
-    @Nullable private Date orderDate;
-    @Nullable private Date reconcileDate;
+     private String drugName;
+     private String genericName;
+     private String orderingPhysician;
+     private String pharmacy;
+     private String status;
+     private Date lastRefillDate;
+     private String daysSupply;
+     private String refills;
+     private String quantity;
+     private String qualifier;
+     private String substitution;
+     private String pharmacyNotes;
+     private String directions;
+     private Date orderDate;
+     private Date reconcileDate;
 
     public Medication()
     {
@@ -30,21 +30,21 @@ public class Medication
     }
 
     @JsonCreator
-    public Medication(@Nullable String drugName,
-                      @Nullable String genericName,
-                      @Nullable String orderingPhysician,
-                      @Nullable String pharmacy,
-                      @Nullable String status,
-                      @Nullable Date lastRefillDate,
-                      @Nullable String daysSupply,
-                      @Nullable String refills,
-                      @Nullable String quantity,
-                      @Nullable String qualifier,
-                      @Nullable String substitution,
-                      @Nullable String pharmacyNotes,
-                      @Nullable String directions,
-                      @Nullable Date orderDate,
-                      @Nullable Date reconcileDate)
+    public Medication( String drugName,
+                       String genericName,
+                       String orderingPhysician,
+                       String pharmacy,
+                       String status,
+                       Date lastRefillDate,
+                       String daysSupply,
+                       String refills,
+                       String quantity,
+                       String qualifier,
+                       String substitution,
+                       String pharmacyNotes,
+                       String directions,
+                       Date orderDate,
+                       Date reconcileDate)
     {
         super();
 
@@ -65,171 +65,171 @@ public class Medication
         this.reconcileDate = reconcileDate;
     }
 
-    @Nullable
+    
     public String getDrugName()
     {
         return drugName;
     }
 
-    @Nullable
+    
     public String getGenericName()
     {
         return genericName;
     }
 
-    @Nullable
+    
     public String getOrderingPhysician()
     {
         return orderingPhysician;
     }
 
-    @Nullable
+    
     public String getPharmacy()
     {
         return pharmacy;
     }
 
-    @Nullable
+    
     public String getStatus()
     {
         return status;
     }
 
-    @Nullable
+    
     public Date getLastRefillDate()
     {
         return lastRefillDate;
     }
 
-    @Nullable
+    
     public String getDaysSupply()
     {
         return daysSupply;
     }
 
-    @Nullable
+    
     public String getRefills()
     {
         return refills;
     }
 
-    @Nullable
+    
     public String getQuantity()
     {
         return quantity;
     }
 
-    @Nullable
+    
     public String getQualifier()
     {
         return qualifier;
     }
 
-    @Nullable
+    
     public String getSubstitution()
     {
         return substitution;
     }
 
-    @Nullable
+    
     public String getPharmacyNotes()
     {
         return pharmacyNotes;
     }
 
-    @Nullable
+    
     public String getDirections()
     {
         return directions;
     }
 
-    @Nullable
+    
     public Date getOrderDate()
     {
         return orderDate;
     }
 
-    @Nullable
+    
     public Date getReconcileDate()
     {
         return reconcileDate;
     }
-    public void setDrugName(@Nullable String drugName)
+    public void setDrugName( String drugName)
     {
         this.drugName = drugName;
     }
 
-    public void setGenericName(@Nullable String genericName)
+    public void setGenericName( String genericName)
     {
         this.genericName = genericName;
     }
 
-    public void setOrderingPhysician(@Nullable String orderingPhysician)
+    public void setOrderingPhysician( String orderingPhysician)
     {
         this.orderingPhysician = orderingPhysician;
     }
 
-    public void setPharmacy(@Nullable String pharmacy)
+    public void setPharmacy( String pharmacy)
     {
         this.pharmacy = pharmacy;
     }
 
-    public void setStatus(@Nullable String status)
+    public void setStatus( String status)
     {
         this.status = status;
     }
 
-    public void setLastRefillDate(@Nullable Date lastRefillDate)
+    public void setLastRefillDate( Date lastRefillDate)
     {
         this.lastRefillDate = lastRefillDate;
     }
 
-    public void setDaysSupply(@Nullable String daysSupply)
+    public void setDaysSupply( String daysSupply)
     {
         this.daysSupply = daysSupply;
     }
 
-    public void setRefills(@Nullable String refills)
+    public void setRefills( String refills)
     {
         this.refills = refills;
     }
 
-    public void setQuantity(@Nullable String quantity)
+    public void setQuantity( String quantity)
     {
         this.quantity = quantity;
     }
 
-    public void setQualifier(@Nullable String qualifier)
+    public void setQualifier( String qualifier)
     {
         this.qualifier = qualifier;
     }
 
-    public void setSubstitution(@Nullable String substitution)
+    public void setSubstitution( String substitution)
     {
         this.substitution = substitution;
     }
 
-    public void setPharmacyNotes(@Nullable String pharmacyNotes)
+    public void setPharmacyNotes( String pharmacyNotes)
     {
         this.pharmacyNotes = pharmacyNotes;
     }
 
-    public void setDirections(@Nullable String directions)
+    public void setDirections( String directions)
     {
         this.directions = directions;
     }
 
-    public void setOrderDate(@Nullable Date orderDate)
+    public void setOrderDate( Date orderDate)
     {
         this.orderDate = orderDate;
     }
 
-    public void setReconcileDate(@Nullable Date reconcileDate)
+    public void setReconcileDate( Date reconcileDate)
     {
         this.reconcileDate = reconcileDate;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "Medication(" +
@@ -250,7 +250,7 @@ public class Medication
             " reconcileDate: " + getReconcileDate() + ")";
     }
 
-    @NotNull
+
     public MedicationBuilder toBuilder()
     {
         return new MedicationBuilder().setDrugName(getDrugName())

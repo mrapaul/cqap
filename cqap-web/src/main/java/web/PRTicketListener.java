@@ -2,38 +2,38 @@ package web;
 
 import com.peirs.datamodel.attachments.*;
 import com.peirs.datamodel.ticket.*;
-import org.jetbrains.annotations.*;
+
 
 import java.io.*;
 import java.util.*;
 
 public interface PRTicketListener extends ExamReportAttachListener
 {
-    void saveTicket(@NotNull ProfessionalTicket ticket);
+    void saveTicket(ProfessionalTicket ticket);
 
-    void deleteTicket(@NotNull ProfessionalTicket ticket);
+    void deleteTicket(ProfessionalTicket ticket);
 
-    String complete(@NotNull ProfessionalTicket ticket);
+    String complete(ProfessionalTicket ticket);
 
-    String pending(@NotNull ProfessionalTicket ticket);
+    String pending(ProfessionalTicket ticket);
 
-    String createPRReview(@NotNull ProfessionalTicket ticket);
+    String createPRReview(ProfessionalTicket ticket);
 
-    @NotNull
-    Collection<Attachment> uploadFile(@NotNull ProfessionalTicket ticket, @NotNull File file);
+    
+    Collection<Attachment> uploadFile(ProfessionalTicket ticket, File file);
 
-    @NotNull
-    InputStream openAttachment(@NotNull Attachment attachment) throws IOException;
+    
+    InputStream openAttachment(Attachment attachment) throws IOException;
 
     void openTicket(String caption);
 
-    @NotNull
-    Collection<Attachment> deleteAttachment(@NotNull ProfessionalTicket ticket, @NotNull Attachment attachment);
+    
+    Collection<Attachment> deleteAttachment(ProfessionalTicket ticket, Attachment attachment);
 
-    void openImages(@NotNull ProfessionalTicket ticket);
+    void openImages(ProfessionalTicket ticket);
 
-    void resendReports(@NotNull ProfessionalTicket ticket,
-                       @NotNull String addresses,
+    void resendReports(ProfessionalTicket ticket,
+                       String addresses,
                        boolean erpReport,
                        boolean erpSiteCallReport,
                        boolean cmoReport,

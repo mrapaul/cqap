@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,12 +8,12 @@ import com.lakeland.ris.datamodel.*;
 
 public class RadiologistSnapshotPartBuilder extends TimedMessageBuilder<RadiologistSnapshotPart, RadiologistSnapshotPartBuilder>
 {
-    @NotNull private String userId;
-    @NotNull private String order;
+    private String userId;
+    private String order;
 
-    public RadiologistSnapshotPartBuilder(@NotNull Date timestamp,
-                                          @NotNull String userId,
-                                          @NotNull String order)
+    public RadiologistSnapshotPartBuilder(Date timestamp,
+                                          String userId,
+                                          String order)
     {
         super(timestamp);
 
@@ -22,45 +22,45 @@ public class RadiologistSnapshotPartBuilder extends TimedMessageBuilder<Radiolog
     }
 
 
-    @NotNull
+
     @Override
-    public RadiologistSnapshotPartBuilder setTimestamp(@NotNull Date timestamp)
+    public RadiologistSnapshotPartBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
-    public RadiologistSnapshotPartBuilder setUserId(@NotNull String userId)
+
+    public RadiologistSnapshotPartBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
-    public RadiologistSnapshotPartBuilder setOrder(@NotNull String order)
+
+    public RadiologistSnapshotPartBuilder setOrder(String order)
     {
         this.order = order;
 
         return self();
     }
 
-    @NotNull
+
     protected String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+
     protected String getOrder()
     {
         return order;
     }
 
     @Override
-    @NotNull
+
     public RadiologistSnapshotPart build()
     {
         return new RadiologistSnapshotPart(getTimestamp(),
@@ -70,7 +70,7 @@ public class RadiologistSnapshotPartBuilder extends TimedMessageBuilder<Radiolog
 
 
     @Override
-    @NotNull
+
     protected RadiologistSnapshotPartBuilder self()
     {
         return this;

@@ -5,7 +5,7 @@ import com.peirs.datamodel.dicom.*;
 import com.vaadin.data.*;
 import com.vaadin.data.util.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.vaadin.easyuploads.*;
 
 import java.io.*;
@@ -15,13 +15,13 @@ import java.nio.file.*;
 public class ExamReportView extends VerticalLayout
 {
     private static final int TWO_MB_FILE_LIMIT = 2 * 1000 * 1024;
-    @NotNull private final User user;
-    @NotNull private final TextArea reportArea;
-    @NotNull private final UploadField uploadField;
-    @Nullable private ExamReportAttachListener listener;
-    @Nullable private DicomStudy study;
+    private final User user;
+    private final TextArea reportArea;
+    private final UploadField uploadField;
+     private ExamReportAttachListener listener;
+     private DicomStudy study;
 
-    public ExamReportView(@NotNull User user)
+    public ExamReportView(User user)
     {
         this.user = user;
         reportArea = new TextArea();
@@ -67,7 +67,7 @@ public class ExamReportView extends VerticalLayout
         initLayout();
     }
 
-    private void onFileUpload(@Nullable File file)
+    private void onFileUpload( File file)
     {
         if (file != null)
         {
@@ -122,7 +122,7 @@ public class ExamReportView extends VerticalLayout
         }
     }
 
-    public void setDetails(@NotNull DicomStudy study, boolean editable)
+    public void setDetails(DicomStudy study, boolean editable)
     {
         this.study = study;
         reportArea.setPropertyDataSource(new MethodProperty(this.study, "patientReport"));
@@ -131,7 +131,7 @@ public class ExamReportView extends VerticalLayout
         reportArea.setReadOnly(!editable);
     }
 
-    public void setListener(@NotNull ExamReportAttachListener listener)
+    public void setListener(ExamReportAttachListener listener)
     {
         this.listener = listener;
     }

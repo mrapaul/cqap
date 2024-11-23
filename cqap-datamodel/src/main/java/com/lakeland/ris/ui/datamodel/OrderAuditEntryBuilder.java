@@ -1,26 +1,26 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class OrderAuditEntryBuilder
 {
-    @NotNull private String id;
-    @NotNull private Date date;
-    @NotNull private String userId;
-    @NotNull private String orderId;
-    @NotNull private String field;
-    @Nullable private Object oldValue;
-    @NotNull private Object newValue;
+    private String id;
+    private Date date;
+    private String userId;
+    private String orderId;
+    private String field;
+     private Object oldValue;
+    private Object newValue;
 
-    public OrderAuditEntryBuilder(@NotNull String id,
-                                  @NotNull Date date,
-                                  @NotNull String userId,
-                                  @NotNull String orderId,
-                                  @NotNull String field,
-                                  @NotNull Object newValue)
+    public OrderAuditEntryBuilder(String id,
+                                  Date date,
+                                  String userId,
+                                  String orderId,
+                                  String field,
+                                  Object newValue)
     {
         super();
 
@@ -33,105 +33,105 @@ public class OrderAuditEntryBuilder
     }
 
 
-    @NotNull
-    public OrderAuditEntryBuilder setId(@NotNull String id)
+
+    public OrderAuditEntryBuilder setId(String id)
     {
         this.id = id;
 
         return self();
     }
 
-    @NotNull
-    public OrderAuditEntryBuilder setDate(@NotNull Date date)
+
+    public OrderAuditEntryBuilder setDate(Date date)
     {
         this.date = date;
 
         return self();
     }
 
-    @NotNull
-    public OrderAuditEntryBuilder setUserId(@NotNull String userId)
+
+    public OrderAuditEntryBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
-    public OrderAuditEntryBuilder setOrderId(@NotNull String orderId)
+
+    public OrderAuditEntryBuilder setOrderId(String orderId)
     {
         this.orderId = orderId;
 
         return self();
     }
 
-    @NotNull
-    public OrderAuditEntryBuilder setField(@NotNull String field)
+
+    public OrderAuditEntryBuilder setField(String field)
     {
         this.field = field;
 
         return self();
     }
 
-    @NotNull
-    public OrderAuditEntryBuilder setOldValue(@Nullable Object oldValue)
+
+    public OrderAuditEntryBuilder setOldValue( Object oldValue)
     {
         this.oldValue = oldValue;
 
         return self();
     }
 
-    @NotNull
-    public OrderAuditEntryBuilder setNewValue(@NotNull Object newValue)
+
+    public OrderAuditEntryBuilder setNewValue(Object newValue)
     {
         this.newValue = newValue;
 
         return self();
     }
 
-    @NotNull
+
     protected String getId()
     {
         return id;
     }
 
-    @NotNull
+
     protected Date getDate()
     {
         return date;
     }
 
-    @NotNull
+
     protected String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+
     protected String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+
     protected String getField()
     {
         return field;
     }
 
-    @Nullable
+    
     protected Object getOldValue()
     {
         return oldValue;
     }
 
-    @NotNull
+
     protected Object getNewValue()
     {
         return newValue;
     }
 
-    @NotNull
+
     public OrderAuditEntry build()
     {
         return new OrderAuditEntry(getId(),
@@ -144,7 +144,7 @@ public class OrderAuditEntryBuilder
     }
 
 
-    @NotNull
+
     protected OrderAuditEntryBuilder self()
     {
         return this;

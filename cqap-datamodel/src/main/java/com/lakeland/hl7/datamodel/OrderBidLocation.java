@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,7 +10,7 @@ import com.lakeland.ris.datamodel.*;
 public class OrderBidLocation extends OrderActivity implements HL7Visitable
 {
     public static final byte TYPE = 7;
-    @NotNull private String location;
+    private String location;
     private int orderCount;
 
     public OrderBidLocation()
@@ -19,10 +19,10 @@ public class OrderBidLocation extends OrderActivity implements HL7Visitable
     }
 
     @JsonCreator
-    public OrderBidLocation(@NotNull Date timestamp,
-                            @NotNull String orderId,
-                            @NotNull String userId,
-                            @NotNull String location,
+    public OrderBidLocation(Date timestamp,
+                            String orderId,
+                            String userId,
+                            String location,
                             int orderCount)
     {
         super(timestamp,
@@ -33,7 +33,7 @@ public class OrderBidLocation extends OrderActivity implements HL7Visitable
         this.orderCount = orderCount;
     }
 
-    @NotNull
+
     public String getLocation()
     {
         return location;
@@ -43,7 +43,7 @@ public class OrderBidLocation extends OrderActivity implements HL7Visitable
     {
         return orderCount;
     }
-    public void setLocation(@NotNull String location)
+    public void setLocation(String location)
     {
         this.location = location;
     }
@@ -53,12 +53,12 @@ public class OrderBidLocation extends OrderActivity implements HL7Visitable
         this.orderCount = orderCount;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+
     public String toString()
     {
         return "OrderBidLocation(" +
@@ -69,7 +69,7 @@ public class OrderBidLocation extends OrderActivity implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -100,7 +100,7 @@ public class OrderBidLocation extends OrderActivity implements HL7Visitable
                             getOrderCount());
     }
 
-    @NotNull
+
     public OrderBidLocationBuilder toBuilder()
     {
         return new OrderBidLocationBuilder(getTimestamp(),

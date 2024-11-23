@@ -1,18 +1,18 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class Referral
 {
-    @Nullable private Date effectiveDate;
-    @Nullable private String status;
-    @Nullable private String referredBy;
-    @Nullable private String referredTo;
-    @Nullable private String reason;
+     private Date effectiveDate;
+     private String status;
+     private String referredBy;
+     private String referredTo;
+     private String reason;
 
     public Referral()
     {
@@ -20,11 +20,11 @@ public class Referral
     }
 
     @JsonCreator
-    public Referral(@Nullable Date effectiveDate,
-                    @Nullable String status,
-                    @Nullable String referredBy,
-                    @Nullable String referredTo,
-                    @Nullable String reason)
+    public Referral( Date effectiveDate,
+                     String status,
+                     String referredBy,
+                     String referredTo,
+                     String reason)
     {
         super();
 
@@ -35,61 +35,61 @@ public class Referral
         this.reason = reason;
     }
 
-    @Nullable
+    
     public Date getEffectiveDate()
     {
         return effectiveDate;
     }
 
-    @Nullable
+    
     public String getStatus()
     {
         return status;
     }
 
-    @Nullable
+    
     public String getReferredBy()
     {
         return referredBy;
     }
 
-    @Nullable
+    
     public String getReferredTo()
     {
         return referredTo;
     }
 
-    @Nullable
+    
     public String getReason()
     {
         return reason;
     }
-    public void setEffectiveDate(@Nullable Date effectiveDate)
+    public void setEffectiveDate( Date effectiveDate)
     {
         this.effectiveDate = effectiveDate;
     }
 
-    public void setStatus(@Nullable String status)
+    public void setStatus( String status)
     {
         this.status = status;
     }
 
-    public void setReferredBy(@Nullable String referredBy)
+    public void setReferredBy( String referredBy)
     {
         this.referredBy = referredBy;
     }
 
-    public void setReferredTo(@Nullable String referredTo)
+    public void setReferredTo( String referredTo)
     {
         this.referredTo = referredTo;
     }
 
-    public void setReason(@Nullable String reason)
+    public void setReason( String reason)
     {
         this.reason = reason;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "Referral(" +
@@ -100,7 +100,7 @@ public class Referral
             " reason: " + getReason() + ")";
     }
 
-    @NotNull
+
     public ReferralBuilder toBuilder()
     {
         return new ReferralBuilder().setEffectiveDate(getEffectiveDate())

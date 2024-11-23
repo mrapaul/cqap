@@ -4,13 +4,13 @@ import ca.uhn.hl7v2.*;
 import ca.uhn.hl7v2.model.v26.datatype.*;
 import ca.uhn.hl7v2.model.v26.segment.*;
 import com.lakeland.ris.ui.datamodel.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
 public class PIDParser implements MessageParser<PID>
 {
-    @Override public void convert(@NotNull PID pid, @NotNull DetailedOrderBuilder detailedOrderBuilder) throws HL7Exception
+    @Override public void convert(PID pid, DetailedOrderBuilder detailedOrderBuilder) throws HL7Exception
     {
         XPN[] patientName = pid.getPatientName();
         CX[] cx = pid.getPatientIdentifierList();

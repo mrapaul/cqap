@@ -1,25 +1,25 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class PatientInsurance
 {
-    @Nullable private String plan;
-    @Nullable private String carrier;
-    @Nullable private String policyNumber;
-    @Nullable private Date effectiveDate;
-    @Nullable private String groupNumber;
-    @Nullable private String address;
-    @Nullable private String city;
-    @Nullable private String state;
-    @Nullable private String zipcode;
-    @Nullable private String phone;
-    @Nullable private String fax;
-    @Nullable private String email;
+     private String plan;
+     private String carrier;
+     private String policyNumber;
+     private Date effectiveDate;
+     private String groupNumber;
+     private String address;
+     private String city;
+     private String state;
+     private String zipcode;
+     private String phone;
+     private String fax;
+     private String email;
 
     public PatientInsurance()
     {
@@ -27,18 +27,18 @@ public class PatientInsurance
     }
 
     @JsonCreator
-    public PatientInsurance(@Nullable String plan,
-                            @Nullable String carrier,
-                            @Nullable String policyNumber,
-                            @Nullable Date effectiveDate,
-                            @Nullable String groupNumber,
-                            @Nullable String address,
-                            @Nullable String city,
-                            @Nullable String state,
-                            @Nullable String zipcode,
-                            @Nullable String phone,
-                            @Nullable String fax,
-                            @Nullable String email)
+    public PatientInsurance( String plan,
+                             String carrier,
+                             String policyNumber,
+                             Date effectiveDate,
+                             String groupNumber,
+                             String address,
+                             String city,
+                             String state,
+                             String zipcode,
+                             String phone,
+                             String fax,
+                             String email)
     {
         super();
 
@@ -56,138 +56,138 @@ public class PatientInsurance
         this.email = email;
     }
 
-    @Nullable
+    
     public String getPlan()
     {
         return plan;
     }
 
-    @Nullable
+    
     public String getCarrier()
     {
         return carrier;
     }
 
-    @Nullable
+    
     public String getPolicyNumber()
     {
         return policyNumber;
     }
 
-    @Nullable
+    
     public Date getEffectiveDate()
     {
         return effectiveDate;
     }
 
-    @Nullable
+    
     public String getGroupNumber()
     {
         return groupNumber;
     }
 
-    @Nullable
+    
     public String getAddress()
     {
         return address;
     }
 
-    @Nullable
+    
     public String getCity()
     {
         return city;
     }
 
-    @Nullable
+    
     public String getState()
     {
         return state;
     }
 
-    @Nullable
+    
     public String getZipcode()
     {
         return zipcode;
     }
 
-    @Nullable
+    
     public String getPhone()
     {
         return phone;
     }
 
-    @Nullable
+    
     public String getFax()
     {
         return fax;
     }
 
-    @Nullable
+    
     public String getEmail()
     {
         return email;
     }
-    public void setPlan(@Nullable String plan)
+    public void setPlan( String plan)
     {
         this.plan = plan;
     }
 
-    public void setCarrier(@Nullable String carrier)
+    public void setCarrier( String carrier)
     {
         this.carrier = carrier;
     }
 
-    public void setPolicyNumber(@Nullable String policyNumber)
+    public void setPolicyNumber( String policyNumber)
     {
         this.policyNumber = policyNumber;
     }
 
-    public void setEffectiveDate(@Nullable Date effectiveDate)
+    public void setEffectiveDate( Date effectiveDate)
     {
         this.effectiveDate = effectiveDate;
     }
 
-    public void setGroupNumber(@Nullable String groupNumber)
+    public void setGroupNumber( String groupNumber)
     {
         this.groupNumber = groupNumber;
     }
 
-    public void setAddress(@Nullable String address)
+    public void setAddress( String address)
     {
         this.address = address;
     }
 
-    public void setCity(@Nullable String city)
+    public void setCity( String city)
     {
         this.city = city;
     }
 
-    public void setState(@Nullable String state)
+    public void setState( String state)
     {
         this.state = state;
     }
 
-    public void setZipcode(@Nullable String zipcode)
+    public void setZipcode( String zipcode)
     {
         this.zipcode = zipcode;
     }
 
-    public void setPhone(@Nullable String phone)
+    public void setPhone( String phone)
     {
         this.phone = phone;
     }
 
-    public void setFax(@Nullable String fax)
+    public void setFax( String fax)
     {
         this.fax = fax;
     }
 
-    public void setEmail(@Nullable String email)
+    public void setEmail( String email)
     {
         this.email = email;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "PatientInsurance(" +
@@ -205,7 +205,7 @@ public class PatientInsurance
             " email: " + getEmail() + ")";
     }
 
-    @NotNull
+
     public PatientInsuranceBuilder toBuilder()
     {
         return new PatientInsuranceBuilder().setPlan(getPlan())

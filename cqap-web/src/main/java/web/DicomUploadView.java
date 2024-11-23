@@ -1,7 +1,7 @@
 package web;
 
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.vaadin.easyuploads.*;
 
 import java.io.*;
@@ -11,7 +11,7 @@ public class DicomUploadView extends Window
     private final MultiFileUpload uploadField;
     private final Button closeButton;
 
-    public DicomUploadView(@NotNull final NewTicketView.Listener listener)
+    public DicomUploadView(final NewTicketView.Listener listener)
     {
         uploadField = new MultiFileUpload()
         {

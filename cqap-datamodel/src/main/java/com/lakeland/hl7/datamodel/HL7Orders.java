@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,7 +10,7 @@ import java.util.*;
 public class HL7Orders implements HL7Visitable
 {
     public static final byte TYPE = 4;
-    @NotNull private Collection<HL7Order> orders;
+    private Collection<HL7Order> orders;
 
     public HL7Orders()
     {
@@ -18,29 +18,29 @@ public class HL7Orders implements HL7Visitable
     }
 
     @JsonCreator
-    public HL7Orders(@NotNull Collection<HL7Order> orders)
+    public HL7Orders(Collection<HL7Order> orders)
     {
         super();
 
         this.orders = orders;
     }
 
-    @NotNull
+    
     public Collection<HL7Order> getOrders()
     {
         return orders;
     }
-    public void setOrders(@NotNull Collection<HL7Order> orders)
+    public void setOrders(Collection<HL7Order> orders)
     {
         this.orders = orders;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "HL7Orders(" +
@@ -49,7 +49,7 @@ public class HL7Orders implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -73,7 +73,7 @@ public class HL7Orders implements HL7Visitable
                             getOrders());
     }
 
-    @NotNull
+    
     public HL7OrdersBuilder toBuilder()
     {
         return new HL7OrdersBuilder(getOrders());

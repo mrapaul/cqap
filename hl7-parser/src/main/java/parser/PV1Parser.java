@@ -4,13 +4,12 @@ import ca.uhn.hl7v2.model.*;
 import ca.uhn.hl7v2.model.v26.datatype.*;
 import ca.uhn.hl7v2.model.v26.segment.*;
 import com.lakeland.ris.ui.datamodel.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
 
 public class PV1Parser implements MessageParser<PV1>
 {
-    @Override public void convert(@NotNull PV1 pv1, @NotNull DetailedOrderBuilder detailedOrderBuilder) throws DataTypeException
+    @Override public void convert(PV1 pv1, DetailedOrderBuilder detailedOrderBuilder) throws DataTypeException
     {
         for (IS is : pv1.getPv115_AmbulatoryStatus())
         {

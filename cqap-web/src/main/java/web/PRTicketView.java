@@ -10,7 +10,7 @@ import com.vaadin.data.util.*;
 import com.vaadin.server.*;
 import com.vaadin.shared.ui.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.vaadin.maddon.layouts.*;
 import web.event.*;
 
@@ -19,36 +19,36 @@ import java.util.*;
 
 public class PRTicketView extends VerticalLayout implements NotesListener, AttachmentListener
 {
-    @NotNull private final User user;
-    @NotNull private final TabSheet tabsheet;
-    @NotNull private final PRTicketListener listener;
-    @NotNull private final ProfessionalTicket ticket;
-    @NotNull private final StudyDetailsView studyDetailsView;
-    @NotNull private final DicomTagsView dicomTagsView;
-    @NotNull private final ExamReportView examReportView;
-    @NotNull private final RelatedExamsView relatedExamsView;
-    @NotNull private final NotesView notesView;
-    @NotNull private final AttachmentsView attachmentsView;
-    @NotNull private final ComboBox statusField;
-    @NotNull private final ComboBox priorityField;
-    @NotNull private final Button saveButton;
-    @NotNull private final Button closeButton;
-    @NotNull private final Button pendingButton;
-    @NotNull private final Button completeButton;
-    @NotNull private final Button createPRReview;
-    @NotNull private final Button deleteButton;
-    @NotNull private final Component reviewLayout;
-    @NotNull private final Button correspondingTicket;
-    @NotNull private final Button viewImagesButton;
-    @NotNull private final Button resendReportButton;
+    private final User user;
+    private final TabSheet tabsheet;
+    private final PRTicketListener listener;
+    private final ProfessionalTicket ticket;
+    private final StudyDetailsView studyDetailsView;
+    private final DicomTagsView dicomTagsView;
+    private final ExamReportView examReportView;
+    private final RelatedExamsView relatedExamsView;
+    private final NotesView notesView;
+    private final AttachmentsView attachmentsView;
+    private final ComboBox statusField;
+    private final ComboBox priorityField;
+    private final Button saveButton;
+    private final Button closeButton;
+    private final Button pendingButton;
+    private final Button completeButton;
+    private final Button createPRReview;
+    private final Button deleteButton;
+    private final Component reviewLayout;
+    private final Button correspondingTicket;
+    private final Button viewImagesButton;
+    private final Button resendReportButton;
 
-    public PRTicketView(@NotNull User user,
-                        @NotNull TabSheet tabsheet,
-                        @Nullable Container institutions,
-                        @NotNull PRTicketListener listener,
-                        @NotNull ProfessionalTicket ticket,
-                        @NotNull Collection<DicomStudy> relatedExams,
-                        @NotNull Collection<com.peirs.datamodel.attachments.Attachment> attachments)
+    public PRTicketView(User user,
+                        TabSheet tabsheet,
+                         Container institutions,
+                        PRTicketListener listener,
+                        ProfessionalTicket ticket,
+                        Collection<DicomStudy> relatedExams,
+                        Collection<com.peirs.datamodel.attachments.Attachment> attachments)
     {
         this.user = user;
         this.tabsheet = tabsheet;
@@ -328,7 +328,7 @@ public class PRTicketView extends VerticalLayout implements NotesListener, Attac
         });
     }
 
-    private void checkForErrors(@Nullable String result)
+    private void checkForErrors( String result)
     {
         if (result != null)
         {
@@ -345,8 +345,8 @@ public class PRTicketView extends VerticalLayout implements NotesListener, Attac
         checkForErrors(listener.pending(ticket));
     }
 
-    private void displayTicket(@NotNull Collection<DicomStudy> relatedExams,
-                               @NotNull Collection<com.peirs.datamodel.attachments.Attachment> attachments)
+    private void displayTicket(Collection<DicomStudy> relatedExams,
+                               Collection<com.peirs.datamodel.attachments.Attachment> attachments)
     {
         statusField.setPropertyDataSource(new MethodProperty(ticket, "status"));
         priorityField.setPropertyDataSource(new MethodProperty(ticket, "priority"));
@@ -364,23 +364,23 @@ public class PRTicketView extends VerticalLayout implements NotesListener, Attac
         tabsheet.removeComponent(this);
     }
 
-    @Override public void addNote(@NotNull String note)
+    @Override public void addNote(String note)
     {
         ticket.addNote(new InternalNote(note, new Date(), user));
         notesView.displayNotes(ticket.getNotes());
     }
 
-    @Override public void uploadAttachment(@NotNull File file)
+    @Override public void uploadAttachment(File file)
     {
         attachmentsView.displayAttachments(listener.uploadFile(ticket, file));
     }
 
-    @Override public void deleteAttachment(@NotNull Attachment attachment)
+    @Override public void deleteAttachment(Attachment attachment)
     {
         attachmentsView.displayAttachments(listener.deleteAttachment(ticket, attachment));
     }
 
-    @NotNull @Override public InputStream openAttachment(@NotNull com.peirs.datamodel.attachments.Attachment attachment) throws IOException
+    @Override public InputStream openAttachment(com.peirs.datamodel.attachments.Attachment attachment) throws IOException
     {
         return listener.openAttachment(attachment);
     }

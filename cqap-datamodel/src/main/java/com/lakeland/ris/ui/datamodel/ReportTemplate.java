@@ -1,30 +1,30 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class ReportTemplate
 {
-    @NotNull private String id;
-    @NotNull private String cPTCode;
-    @Nullable private String lakelandDescription;
-    @Nullable private String cPTDescription;
-    @Nullable private String triggerPhrase;
-    @Nullable private String template1;
-    @Nullable private String template2;
-    @Nullable private String template3;
-    @Nullable private String imagingModality;
-    @Nullable private String comments;
-    @Nullable private String region;
-    @Nullable private String modifiers;
-    @Nullable private YesNo iVBased;
-    @Nullable private String radiologistLocation;
-    @Nullable private String cMORadiologistLocation;
-    @Nullable private String subspecialtyPrimary;
-    @Nullable private String subspecialtySecondary;
+    private String id;
+    private String cPTCode;
+     private String lakelandDescription;
+     private String cPTDescription;
+     private String triggerPhrase;
+     private String template1;
+     private String template2;
+     private String template3;
+     private String imagingModality;
+     private String comments;
+     private String region;
+     private String modifiers;
+     private YesNo iVBased;
+     private String radiologistLocation;
+     private String cMORadiologistLocation;
+     private String subspecialtyPrimary;
+     private String subspecialtySecondary;
 
     public ReportTemplate()
     {
@@ -32,23 +32,23 @@ public class ReportTemplate
     }
 
     @JsonCreator
-    public ReportTemplate(@NotNull String id,
-                          @NotNull String cPTCode,
-                          @Nullable String lakelandDescription,
-                          @Nullable String cPTDescription,
-                          @Nullable String triggerPhrase,
-                          @Nullable String template1,
-                          @Nullable String template2,
-                          @Nullable String template3,
-                          @Nullable String imagingModality,
-                          @Nullable String comments,
-                          @Nullable String region,
-                          @Nullable String modifiers,
-                          @Nullable YesNo iVBased,
-                          @Nullable String radiologistLocation,
-                          @Nullable String cMORadiologistLocation,
-                          @Nullable String subspecialtyPrimary,
-                          @Nullable String subspecialtySecondary)
+    public ReportTemplate(String id,
+                          String cPTCode,
+                           String lakelandDescription,
+                           String cPTDescription,
+                           String triggerPhrase,
+                           String template1,
+                           String template2,
+                           String template3,
+                           String imagingModality,
+                           String comments,
+                           String region,
+                           String modifiers,
+                           YesNo iVBased,
+                           String radiologistLocation,
+                           String cMORadiologistLocation,
+                           String subspecialtyPrimary,
+                           String subspecialtySecondary)
     {
         super();
 
@@ -71,193 +71,193 @@ public class ReportTemplate
         this.subspecialtySecondary = subspecialtySecondary;
     }
 
-    @NotNull
+
     public String getId()
     {
         return id;
     }
 
-    @NotNull
+
     public String getCPTCode()
     {
         return cPTCode;
     }
 
-    @Nullable
+    
     public String getLakelandDescription()
     {
         return lakelandDescription;
     }
 
-    @Nullable
+    
     public String getCPTDescription()
     {
         return cPTDescription;
     }
 
-    @Nullable
+    
     public String getTriggerPhrase()
     {
         return triggerPhrase;
     }
 
-    @Nullable
+    
     public String getTemplate1()
     {
         return template1;
     }
 
-    @Nullable
+    
     public String getTemplate2()
     {
         return template2;
     }
 
-    @Nullable
+    
     public String getTemplate3()
     {
         return template3;
     }
 
-    @Nullable
+    
     public String getImagingModality()
     {
         return imagingModality;
     }
 
-    @Nullable
+    
     public String getComments()
     {
         return comments;
     }
 
-    @Nullable
+    
     public String getRegion()
     {
         return region;
     }
 
-    @Nullable
+    
     public String getModifiers()
     {
         return modifiers;
     }
 
-    @Nullable
+    
     public YesNo getIVBased()
     {
         return iVBased;
     }
 
-    @Nullable
+    
     public String getRadiologistLocation()
     {
         return radiologistLocation;
     }
 
-    @Nullable
+    
     public String getCMORadiologistLocation()
     {
         return cMORadiologistLocation;
     }
 
-    @Nullable
+    
     public String getSubspecialtyPrimary()
     {
         return subspecialtyPrimary;
     }
 
-    @Nullable
+    
     public String getSubspecialtySecondary()
     {
         return subspecialtySecondary;
     }
-    public void setId(@NotNull String id)
+    public void setId(String id)
     {
         this.id = id;
     }
 
-    public void setCPTCode(@NotNull String cPTCode)
+    public void setCPTCode(String cPTCode)
     {
         this.cPTCode = cPTCode;
     }
 
-    public void setLakelandDescription(@Nullable String lakelandDescription)
+    public void setLakelandDescription( String lakelandDescription)
     {
         this.lakelandDescription = lakelandDescription;
     }
 
-    public void setCPTDescription(@Nullable String cPTDescription)
+    public void setCPTDescription( String cPTDescription)
     {
         this.cPTDescription = cPTDescription;
     }
 
-    public void setTriggerPhrase(@Nullable String triggerPhrase)
+    public void setTriggerPhrase( String triggerPhrase)
     {
         this.triggerPhrase = triggerPhrase;
     }
 
-    public void setTemplate1(@Nullable String template1)
+    public void setTemplate1( String template1)
     {
         this.template1 = template1;
     }
 
-    public void setTemplate2(@Nullable String template2)
+    public void setTemplate2( String template2)
     {
         this.template2 = template2;
     }
 
-    public void setTemplate3(@Nullable String template3)
+    public void setTemplate3( String template3)
     {
         this.template3 = template3;
     }
 
-    public void setImagingModality(@Nullable String imagingModality)
+    public void setImagingModality( String imagingModality)
     {
         this.imagingModality = imagingModality;
     }
 
-    public void setComments(@Nullable String comments)
+    public void setComments( String comments)
     {
         this.comments = comments;
     }
 
-    public void setRegion(@Nullable String region)
+    public void setRegion( String region)
     {
         this.region = region;
     }
 
-    public void setModifiers(@Nullable String modifiers)
+    public void setModifiers( String modifiers)
     {
         this.modifiers = modifiers;
     }
 
-    public void setIVBased(@Nullable YesNo iVBased)
+    public void setIVBased( YesNo iVBased)
     {
         this.iVBased = iVBased;
     }
 
-    public void setRadiologistLocation(@Nullable String radiologistLocation)
+    public void setRadiologistLocation( String radiologistLocation)
     {
         this.radiologistLocation = radiologistLocation;
     }
 
-    public void setCMORadiologistLocation(@Nullable String cMORadiologistLocation)
+    public void setCMORadiologistLocation( String cMORadiologistLocation)
     {
         this.cMORadiologistLocation = cMORadiologistLocation;
     }
 
-    public void setSubspecialtyPrimary(@Nullable String subspecialtyPrimary)
+    public void setSubspecialtyPrimary( String subspecialtyPrimary)
     {
         this.subspecialtyPrimary = subspecialtyPrimary;
     }
 
-    public void setSubspecialtySecondary(@Nullable String subspecialtySecondary)
+    public void setSubspecialtySecondary( String subspecialtySecondary)
     {
         this.subspecialtySecondary = subspecialtySecondary;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "ReportTemplate(" +
@@ -280,7 +280,7 @@ public class ReportTemplate
             " subspecialtySecondary: " + getSubspecialtySecondary() + ")";
     }
 
-    @NotNull
+
     public ReportTemplateBuilder toBuilder()
     {
         return new ReportTemplateBuilder(getId(),

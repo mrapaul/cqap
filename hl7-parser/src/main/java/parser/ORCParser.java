@@ -4,11 +4,11 @@ import ca.uhn.hl7v2.*;
 import ca.uhn.hl7v2.model.v26.datatype.*;
 import ca.uhn.hl7v2.model.v26.segment.*;
 import com.lakeland.ris.ui.datamodel.*;
-import org.jetbrains.annotations.*;
+
 
 public class ORCParser implements MessageParser<ORC>
 {
-    @Override public void convert(@NotNull ORC orc, @NotNull DetailedOrderBuilder detailedOrderBuilder) throws HL7Exception
+    @Override public void convert(ORC orc, DetailedOrderBuilder detailedOrderBuilder) throws HL7Exception
     {
         EI placerOrderNumber = orc.getPlacerOrderNumber();
         EI fillerOrderNumber = orc.getFillerOrderNumber();

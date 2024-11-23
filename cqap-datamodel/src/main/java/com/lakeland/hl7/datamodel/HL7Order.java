@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,16 +10,16 @@ import com.lakeland.ris.datamodel.*;
 public class HL7Order extends TimedMessage implements HL7Visitable
 {
     public static final byte TYPE = 3;
-    @NotNull private String id;
-    @NotNull private String orderId;
-    @NotNull private String messageId;
+    private String id;
+    private String orderId;
+    private String messageId;
     private boolean deleted;
-    @NotNull private OrderStatus status;
-    @NotNull private OrderPriority priority;
-    @Nullable private String assignedTo;
-    @Nullable private String dicomStudyId;
+    private OrderStatus status;
+    private OrderPriority priority;
+     private String assignedTo;
+     private String dicomStudyId;
     private boolean critical;
-    @Nullable private UrgentExamType urgentExamType;
+     private UrgentExamType urgentExamType;
 
     public HL7Order()
     {
@@ -27,17 +27,17 @@ public class HL7Order extends TimedMessage implements HL7Visitable
     }
 
     @JsonCreator
-    public HL7Order(@NotNull Date timestamp,
-                    @NotNull String id,
-                    @NotNull String orderId,
-                    @NotNull String messageId,
+    public HL7Order(Date timestamp,
+                    String id,
+                    String orderId,
+                    String messageId,
                     boolean deleted,
-                    @NotNull OrderStatus status,
-                    @NotNull OrderPriority priority,
-                    @Nullable String assignedTo,
-                    @Nullable String dicomStudyId,
+                    OrderStatus status,
+                    OrderPriority priority,
+                     String assignedTo,
+                     String dicomStudyId,
                     boolean critical,
-                    @Nullable UrgentExamType urgentExamType)
+                     UrgentExamType urgentExamType)
     {
         super(timestamp);
 
@@ -53,19 +53,19 @@ public class HL7Order extends TimedMessage implements HL7Visitable
         this.urgentExamType = urgentExamType;
     }
 
-    @NotNull
+    
     public String getId()
     {
         return id;
     }
 
-    @NotNull
+    
     public String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+    
     public String getMessageId()
     {
         return messageId;
@@ -76,25 +76,25 @@ public class HL7Order extends TimedMessage implements HL7Visitable
         return deleted;
     }
 
-    @NotNull
+    
     public OrderStatus getStatus()
     {
         return status;
     }
 
-    @NotNull
+    
     public OrderPriority getPriority()
     {
         return priority;
     }
 
-    @Nullable
+    
     public String getAssignedTo()
     {
         return assignedTo;
     }
 
-    @Nullable
+    
     public String getDicomStudyId()
     {
         return dicomStudyId;
@@ -105,22 +105,22 @@ public class HL7Order extends TimedMessage implements HL7Visitable
         return critical;
     }
 
-    @Nullable
+    
     public UrgentExamType getUrgentExamType()
     {
         return urgentExamType;
     }
-    public void setId(@NotNull String id)
+    public void setId(String id)
     {
         this.id = id;
     }
 
-    public void setOrderId(@NotNull String orderId)
+    public void setOrderId(String orderId)
     {
         this.orderId = orderId;
     }
 
-    public void setMessageId(@NotNull String messageId)
+    public void setMessageId(String messageId)
     {
         this.messageId = messageId;
     }
@@ -130,22 +130,22 @@ public class HL7Order extends TimedMessage implements HL7Visitable
         this.deleted = deleted;
     }
 
-    public void setStatus(@NotNull OrderStatus status)
+    public void setStatus(OrderStatus status)
     {
         this.status = status;
     }
 
-    public void setPriority(@NotNull OrderPriority priority)
+    public void setPriority(OrderPriority priority)
     {
         this.priority = priority;
     }
 
-    public void setAssignedTo(@Nullable String assignedTo)
+    public void setAssignedTo( String assignedTo)
     {
         this.assignedTo = assignedTo;
     }
 
-    public void setDicomStudyId(@Nullable String dicomStudyId)
+    public void setDicomStudyId( String dicomStudyId)
     {
         this.dicomStudyId = dicomStudyId;
     }
@@ -155,17 +155,17 @@ public class HL7Order extends TimedMessage implements HL7Visitable
         this.critical = critical;
     }
 
-    public void setUrgentExamType(@Nullable UrgentExamType urgentExamType)
+    public void setUrgentExamType( UrgentExamType urgentExamType)
     {
         this.urgentExamType = urgentExamType;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "HL7Order(" +
@@ -184,7 +184,7 @@ public class HL7Order extends TimedMessage implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -231,7 +231,7 @@ public class HL7Order extends TimedMessage implements HL7Visitable
                             getUrgentExamType());
     }
 
-    @NotNull
+    
     public HL7OrderBuilder toBuilder()
     {
         return new HL7OrderBuilder(getTimestamp(),

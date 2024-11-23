@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,8 +10,8 @@ import java.util.*;
 public class RadiologistSnapshot extends TimedMessage implements HL7Visitable
 {
     public static final byte TYPE = 32;
-    @NotNull private String userId;
-    @NotNull private Collection<HL7Order> orders;
+    private String userId;
+    private Collection<HL7Order> orders;
 
     public RadiologistSnapshot()
     {
@@ -19,9 +19,9 @@ public class RadiologistSnapshot extends TimedMessage implements HL7Visitable
     }
 
     @JsonCreator
-    public RadiologistSnapshot(@NotNull Date timestamp,
-                               @NotNull String userId,
-                               @NotNull Collection<HL7Order> orders)
+    public RadiologistSnapshot(Date timestamp,
+                               String userId,
+                               Collection<HL7Order> orders)
     {
         super(timestamp);
 
@@ -29,33 +29,33 @@ public class RadiologistSnapshot extends TimedMessage implements HL7Visitable
         this.orders = orders;
     }
 
-    @NotNull
+    
     public String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     public Collection<HL7Order> getOrders()
     {
         return orders;
     }
-    public void setUserId(@NotNull String userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }
 
-    public void setOrders(@NotNull Collection<HL7Order> orders)
+    public void setOrders(Collection<HL7Order> orders)
     {
         this.orders = orders;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "RadiologistSnapshot(" +
@@ -66,7 +66,7 @@ public class RadiologistSnapshot extends TimedMessage implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -97,7 +97,7 @@ public class RadiologistSnapshot extends TimedMessage implements HL7Visitable
                             getOrders());
     }
 
-    @NotNull
+    
     public RadiologistSnapshotBuilder toBuilder()
     {
         return new RadiologistSnapshotBuilder(getTimestamp(),

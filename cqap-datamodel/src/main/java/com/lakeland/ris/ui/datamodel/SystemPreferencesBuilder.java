@@ -1,15 +1,15 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class SystemPreferencesBuilder
 {
-    @Nullable private String id;
+     private String id;
     private boolean notifyNewOrders;
-    @Nullable private String notificationAddress;
+     private String notificationAddress;
 
     public SystemPreferencesBuilder()
     {
@@ -18,15 +18,15 @@ public class SystemPreferencesBuilder
     }
 
 
-    @NotNull
-    public SystemPreferencesBuilder setId(@Nullable String id)
+    
+    public SystemPreferencesBuilder setId( String id)
     {
         this.id = id;
 
         return self();
     }
 
-    @NotNull
+    
     public SystemPreferencesBuilder setNotifyNewOrders(boolean notifyNewOrders)
     {
         this.notifyNewOrders = notifyNewOrders;
@@ -34,15 +34,15 @@ public class SystemPreferencesBuilder
         return self();
     }
 
-    @NotNull
-    public SystemPreferencesBuilder setNotificationAddress(@Nullable String notificationAddress)
+    
+    public SystemPreferencesBuilder setNotificationAddress( String notificationAddress)
     {
         this.notificationAddress = notificationAddress;
 
         return self();
     }
 
-    @Nullable
+    
     protected String getId()
     {
         return id;
@@ -53,13 +53,13 @@ public class SystemPreferencesBuilder
         return notifyNewOrders;
     }
 
-    @Nullable
+    
     protected String getNotificationAddress()
     {
         return notificationAddress;
     }
 
-    @NotNull
+    
     public SystemPreferences build()
     {
         return new SystemPreferences(getId(),
@@ -68,7 +68,7 @@ public class SystemPreferencesBuilder
     }
 
 
-    @NotNull
+    
     protected SystemPreferencesBuilder self()
     {
         return this;

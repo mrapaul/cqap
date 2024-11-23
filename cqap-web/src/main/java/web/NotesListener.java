@@ -1,8 +1,8 @@
 package web;
 
-import org.jetbrains.annotations.*;
+
 
 public interface NotesListener
 {
-    void addNote(@NotNull String note);
+    void addNote(String note);
 }

@@ -1,7 +1,5 @@
 package com.lakeland.ris.datamodel;
 
-import org.jetbrains.annotations.*;
-
 public enum UrgentExamType
 {
     STROKE_PROTOCOL((byte) 0),

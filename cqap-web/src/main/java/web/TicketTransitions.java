@@ -3,7 +3,7 @@ package web;
 import com.cqap.client.*;
 import com.peirs.datamodel.*;
 import com.peirs.datamodel.ticket.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
@@ -11,9 +11,9 @@ import static org.apache.commons.lang3.StringUtils.*;
 
 public class TicketTransitions
 {
-    public static String complete(@NotNull ClientRestService clientService,
-                                  @NotNull ProfessionalTicket ticket,
-                                  @NotNull User user)
+    public static String complete(ClientRestService clientService,
+                                  ProfessionalTicket ticket,
+                                  User user)
     {
         TicketStatus status = ticket.getStatus();
         switch (status)
@@ -252,7 +252,7 @@ public class TicketTransitions
         return false;
     }
 
-    private static boolean checkSiteCallFields(@Nullable SiteCallReport siteCallReport, @NotNull User user)
+    private static boolean checkSiteCallFields( SiteCallReport siteCallReport, User user)
     {
         if (siteCallReport != null)
         {

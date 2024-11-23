@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,20 +8,20 @@ import com.lakeland.ris.datamodel.*;
 
 public class CreateDicomOrderBuilder extends TimedMessageBuilder<CreateDicomOrder, CreateDicomOrderBuilder>
 {
-    @NotNull private String userId;
-    @NotNull private String dicomStudyId;
-    @NotNull private String patientHistory;
-    @NotNull private String referringPhysician;
-    @NotNull private OrderPriority priority;
-    @Nullable private String assignedTo;
-    @Nullable private String techNote;
+    private String userId;
+    private String dicomStudyId;
+    private String patientHistory;
+    private String referringPhysician;
+    private OrderPriority priority;
+     private String assignedTo;
+     private String techNote;
 
-    public CreateDicomOrderBuilder(@NotNull Date timestamp,
-                                   @NotNull String userId,
-                                   @NotNull String dicomStudyId,
-                                   @NotNull String patientHistory,
-                                   @NotNull String referringPhysician,
-                                   @NotNull OrderPriority priority)
+    public CreateDicomOrderBuilder(Date timestamp,
+                                   String userId,
+                                   String dicomStudyId,
+                                   String patientHistory,
+                                   String referringPhysician,
+                                   OrderPriority priority)
     {
         super(timestamp);
 
@@ -33,115 +33,115 @@ public class CreateDicomOrderBuilder extends TimedMessageBuilder<CreateDicomOrde
     }
 
 
-    @NotNull
+    
     @Override
-    public CreateDicomOrderBuilder setTimestamp(@NotNull Date timestamp)
+    public CreateDicomOrderBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
-    public CreateDicomOrderBuilder setUserId(@NotNull String userId)
+    
+    public CreateDicomOrderBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
-    public CreateDicomOrderBuilder setDicomStudyId(@NotNull String dicomStudyId)
+    
+    public CreateDicomOrderBuilder setDicomStudyId(String dicomStudyId)
     {
         this.dicomStudyId = dicomStudyId;
 
         return self();
     }
 
-    @NotNull
-    public CreateDicomOrderBuilder setPatientHistory(@NotNull String patientHistory)
+    
+    public CreateDicomOrderBuilder setPatientHistory(String patientHistory)
     {
         this.patientHistory = patientHistory;
 
         return self();
     }
 
-    @NotNull
-    public CreateDicomOrderBuilder setReferringPhysician(@NotNull String referringPhysician)
+    
+    public CreateDicomOrderBuilder setReferringPhysician(String referringPhysician)
     {
         this.referringPhysician = referringPhysician;
 
         return self();
     }
 
-    @NotNull
-    public CreateDicomOrderBuilder setPriority(@NotNull OrderPriority priority)
+    
+    public CreateDicomOrderBuilder setPriority(OrderPriority priority)
     {
         this.priority = priority;
 
         return self();
     }
 
-    @NotNull
-    public CreateDicomOrderBuilder setAssignedTo(@Nullable String assignedTo)
+    
+    public CreateDicomOrderBuilder setAssignedTo( String assignedTo)
     {
         this.assignedTo = assignedTo;
 
         return self();
     }
 
-    @NotNull
-    public CreateDicomOrderBuilder setTechNote(@Nullable String techNote)
+    
+    public CreateDicomOrderBuilder setTechNote( String techNote)
     {
         this.techNote = techNote;
 
         return self();
     }
 
-    @NotNull
+    
     protected String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     protected String getDicomStudyId()
     {
         return dicomStudyId;
     }
 
-    @NotNull
+    
     protected String getPatientHistory()
     {
         return patientHistory;
     }
 
-    @NotNull
+    
     protected String getReferringPhysician()
     {
         return referringPhysician;
     }
 
-    @NotNull
+    
     protected OrderPriority getPriority()
     {
         return priority;
     }
 
-    @Nullable
+    
     protected String getAssignedTo()
     {
         return assignedTo;
     }
 
-    @Nullable
+    
     protected String getTechNote()
     {
         return techNote;
     }
 
     @Override
-    @NotNull
+    
     public CreateDicomOrder build()
     {
         return new CreateDicomOrder(getTimestamp(),
@@ -156,7 +156,7 @@ public class CreateDicomOrderBuilder extends TimedMessageBuilder<CreateDicomOrde
 
 
     @Override
-    @NotNull
+    
     protected CreateDicomOrderBuilder self()
     {
         return this;

@@ -5,13 +5,13 @@ import ca.uhn.hl7v2.model.v26.datatype.*;
 import ca.uhn.hl7v2.model.v26.segment.*;
 import com.google.common.collect.*;
 import com.lakeland.ris.ui.datamodel.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
 public class AL1Parser implements MessageParser<List<AL1>>
 {
-    @Override public void convert(@NotNull List<AL1> al1s, @NotNull DetailedOrderBuilder orderBuilder)
+    @Override public void convert(List<AL1> al1s, DetailedOrderBuilder orderBuilder)
     {
         List<Allergy> allergies = Lists.newArrayList();
         for (AL1 al1 : al1s)

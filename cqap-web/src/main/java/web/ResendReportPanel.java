@@ -2,23 +2,23 @@ package web;
 
 import com.peirs.datamodel.ticket.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import static web.ComponentFactory.*;
 
 class ResendReportPanel extends Window
 {
-    @NotNull private final PRTicketView ticketListener;
-    @NotNull private final TextField addressField;
-    @NotNull private final CheckBox erpReportField;
-    @NotNull private final CheckBox erpSiteCallReportField;
-    @NotNull private final CheckBox cmoReportField;
-    @NotNull private final CheckBox cmoSiteCallReportField;
-    @NotNull private final CheckBox techReportField;
-    @NotNull private final Button okButton;
-    @NotNull private final Button cancelButton;
+    private final PRTicketView ticketListener;
+    private final TextField addressField;
+    private final CheckBox erpReportField;
+    private final CheckBox erpSiteCallReportField;
+    private final CheckBox cmoReportField;
+    private final CheckBox cmoSiteCallReportField;
+    private final CheckBox techReportField;
+    private final Button okButton;
+    private final Button cancelButton;
 
-    ResendReportPanel(@NotNull ProfessionalTicket ticket, @NotNull PRTicketView ticketListener)
+    ResendReportPanel(ProfessionalTicket ticket, PRTicketView ticketListener)
     {
         this.ticketListener = ticketListener;
         addressField = createFormTextField("");

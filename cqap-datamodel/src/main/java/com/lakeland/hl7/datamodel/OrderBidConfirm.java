@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -17,9 +17,9 @@ public class OrderBidConfirm extends OrderActivity implements HL7Visitable
     }
 
     @JsonCreator
-    public OrderBidConfirm(@NotNull Date timestamp,
-                           @NotNull String orderId,
-                           @NotNull String userId)
+    public OrderBidConfirm(Date timestamp,
+                           String orderId,
+                           String userId)
     {
         super(timestamp,
               orderId,
@@ -28,12 +28,12 @@ public class OrderBidConfirm extends OrderActivity implements HL7Visitable
     }
 
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "OrderBidConfirm(" +
@@ -42,7 +42,7 @@ public class OrderBidConfirm extends OrderActivity implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -64,7 +64,7 @@ public class OrderBidConfirm extends OrderActivity implements HL7Visitable
     );
     }
 
-    @NotNull
+    
     public OrderBidConfirmBuilder toBuilder()
     {
         return new OrderBidConfirmBuilder(getTimestamp(),

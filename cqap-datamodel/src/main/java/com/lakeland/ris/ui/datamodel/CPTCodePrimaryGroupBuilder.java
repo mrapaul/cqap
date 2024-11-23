@@ -1,6 +1,6 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,11 +8,11 @@ import java.util.*;
 
 public class CPTCodePrimaryGroupBuilder
 {
-    @NotNull private String subspecialtyPrimary;
-    @NotNull private Collection<CPTCodeSecondaryGroup> secondaryGroups;
+    private String subspecialtyPrimary;
+    private Collection<CPTCodeSecondaryGroup> secondaryGroups;
 
-    public CPTCodePrimaryGroupBuilder(@NotNull String subspecialtyPrimary,
-                                      @NotNull Collection<CPTCodeSecondaryGroup> secondaryGroups)
+    public CPTCodePrimaryGroupBuilder(String subspecialtyPrimary,
+                                      Collection<CPTCodeSecondaryGroup> secondaryGroups)
     {
         super();
 
@@ -21,35 +21,35 @@ public class CPTCodePrimaryGroupBuilder
     }
 
 
-    @NotNull
-    public CPTCodePrimaryGroupBuilder setSubspecialtyPrimary(@NotNull String subspecialtyPrimary)
+
+    public CPTCodePrimaryGroupBuilder setSubspecialtyPrimary(String subspecialtyPrimary)
     {
         this.subspecialtyPrimary = subspecialtyPrimary;
 
         return self();
     }
 
-    @NotNull
-    public CPTCodePrimaryGroupBuilder setSecondaryGroups(@NotNull Collection<CPTCodeSecondaryGroup> secondaryGroups)
+
+    public CPTCodePrimaryGroupBuilder setSecondaryGroups(Collection<CPTCodeSecondaryGroup> secondaryGroups)
     {
         this.secondaryGroups = secondaryGroups;
 
         return self();
     }
 
-    @NotNull
+
     protected String getSubspecialtyPrimary()
     {
         return subspecialtyPrimary;
     }
 
-    @NotNull
+
     protected Collection<CPTCodeSecondaryGroup> getSecondaryGroups()
     {
         return secondaryGroups;
     }
 
-    @NotNull
+
     public CPTCodePrimaryGroup build()
     {
         return new CPTCodePrimaryGroup(getSubspecialtyPrimary(),
@@ -57,7 +57,7 @@ public class CPTCodePrimaryGroupBuilder
     }
 
 
-    @NotNull
+
     protected CPTCodePrimaryGroupBuilder self()
     {
         return this;

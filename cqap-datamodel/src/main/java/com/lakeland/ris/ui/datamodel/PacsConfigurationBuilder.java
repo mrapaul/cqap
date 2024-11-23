@@ -1,18 +1,18 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class PacsConfigurationBuilder
 {
-    @NotNull private String host;
+    private String host;
     private int port;
-    @NotNull private String aETitle;
+    private String aETitle;
 
-    public PacsConfigurationBuilder(@NotNull String host,
-                                    @NotNull String aETitle)
+    public PacsConfigurationBuilder(String host,
+                                    String aETitle)
     {
         super();
 
@@ -21,15 +21,15 @@ public class PacsConfigurationBuilder
     }
 
 
-    @NotNull
-    public PacsConfigurationBuilder setHost(@NotNull String host)
+    
+    public PacsConfigurationBuilder setHost(String host)
     {
         this.host = host;
 
         return self();
     }
 
-    @NotNull
+    
     public PacsConfigurationBuilder setPort(int port)
     {
         this.port = port;
@@ -37,15 +37,15 @@ public class PacsConfigurationBuilder
         return self();
     }
 
-    @NotNull
-    public PacsConfigurationBuilder setAETitle(@NotNull String aETitle)
+    
+    public PacsConfigurationBuilder setAETitle(String aETitle)
     {
         this.aETitle = aETitle;
 
         return self();
     }
 
-    @NotNull
+    
     protected String getHost()
     {
         return host;
@@ -56,13 +56,13 @@ public class PacsConfigurationBuilder
         return port;
     }
 
-    @NotNull
+    
     protected String getAETitle()
     {
         return aETitle;
     }
 
-    @NotNull
+    
     public PacsConfiguration build()
     {
         return new PacsConfiguration(getHost(),
@@ -71,7 +71,7 @@ public class PacsConfigurationBuilder
     }
 
 
-    @NotNull
+    
     protected PacsConfigurationBuilder self()
     {
         return this;

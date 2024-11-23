@@ -1,16 +1,16 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class TagCountBuilder
 {
-    @NotNull private String tag;
+    private String tag;
     private int count;
 
-    public TagCountBuilder(@NotNull String tag)
+    public TagCountBuilder(String tag)
     {
         super();
 
@@ -18,15 +18,15 @@ public class TagCountBuilder
     }
 
 
-    @NotNull
-    public TagCountBuilder setTag(@NotNull String tag)
+
+    public TagCountBuilder setTag(String tag)
     {
         this.tag = tag;
 
         return self();
     }
 
-    @NotNull
+
     public TagCountBuilder setCount(int count)
     {
         this.count = count;
@@ -34,7 +34,7 @@ public class TagCountBuilder
         return self();
     }
 
-    @NotNull
+
     protected String getTag()
     {
         return tag;
@@ -45,7 +45,7 @@ public class TagCountBuilder
         return count;
     }
 
-    @NotNull
+
     public TagCount build()
     {
         return new TagCount(getTag(),
@@ -53,7 +53,7 @@ public class TagCountBuilder
     }
 
 
-    @NotNull
+
     protected TagCountBuilder self()
     {
         return this;

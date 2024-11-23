@@ -5,7 +5,7 @@ import com.peirs.datamodel.dicom.*;
 import com.peirs.datamodel.ticket.*;
 import com.vaadin.data.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import java.io.*;
 import java.util.*;
@@ -48,51 +48,51 @@ public class ArchivePresenter implements ArchiveView.Listener
         view.displayTicket(ticket, relatedExams, institutions, attachments);
     }
 
-    @Override public void saveTicket(@NotNull ProfessionalTicket ticket)
+    @Override public void saveTicket(ProfessionalTicket ticket)
     {
         model.saveTicket(ticket);
     }
 
-    @Override public void deleteTicket(@NotNull ProfessionalTicket ticket)
+    @Override public void deleteTicket(ProfessionalTicket ticket)
     {
         model.deleteTicket(ticket);
     }
 
-    @NotNull
-    @Override public Collection<Attachment> uploadFile(@NotNull ProfessionalTicket ticket, @NotNull File file)
+    
+    @Override public Collection<Attachment> uploadFile(ProfessionalTicket ticket, File file)
     {
         model.uploadFile(ticket, file);
 
         return model.getAttachments(ticket);
     }
 
-    @NotNull @Override public InputStream openAttachment(@NotNull Attachment attachment) throws IOException
+    @Override public InputStream openAttachment(Attachment attachment) throws IOException
     {
         return model.openAttachment(attachment);
     }
 
-    @NotNull
-    @Override public Collection<Attachment> deleteAttachment(@NotNull ProfessionalTicket ticket,
-                                                             @NotNull Attachment attachment)
+    
+    @Override public Collection<Attachment> deleteAttachment(ProfessionalTicket ticket,
+                                                             Attachment attachment)
     {
         model.deleteAttachment(attachment);
 
         return model.getAttachments(ticket);
     }
 
-    @Override public String complete(@NotNull ProfessionalTicket ticket)
+    @Override public String complete(ProfessionalTicket ticket)
     {
         // empty
         return null;
     }
 
-    @Override public String pending(@NotNull ProfessionalTicket ticket)
+    @Override public String pending(ProfessionalTicket ticket)
     {
         // empty
         return null;
     }
 
-    @Override public String createPRReview(@NotNull ProfessionalTicket ticket)
+    @Override public String createPRReview(ProfessionalTicket ticket)
     {
         // empty
         return null;
@@ -107,7 +107,7 @@ public class ArchivePresenter implements ArchiveView.Listener
         }
     }
 
-    @Override public void openImages(@NotNull ProfessionalTicket ticket)
+    @Override public void openImages(ProfessionalTicket ticket)
     {
         try
         {
@@ -126,13 +126,13 @@ public class ArchivePresenter implements ArchiveView.Listener
         }
     }
 
-    @Override public String uploadPatientReport(@NotNull DicomStudy study, @NotNull File report)
+    @Override public String uploadPatientReport(DicomStudy study, File report)
     {
         return null;
     }
 
-    @Override public void resendReports(@NotNull ProfessionalTicket ticket,
-                                        @NotNull String addresses,
+    @Override public void resendReports(ProfessionalTicket ticket,
+                                        String addresses,
                                         boolean erpReport,
                                         boolean erpSiteCallReport,
                                         boolean cmoReport,

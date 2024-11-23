@@ -1,18 +1,18 @@
 package web;
 
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import static web.ComponentFactory.*;
 
 class PendingNotePanel extends Window
 {
-    @NotNull private final PRTicketView ticketListener;
-    @NotNull private final TextField noteField;
-    @NotNull private final Button okButton;
-    @NotNull private final Button cancelButton;
+    private final PRTicketView ticketListener;
+    private final TextField noteField;
+    private final Button okButton;
+    private final Button cancelButton;
 
-    PendingNotePanel(@NotNull PRTicketView ticketListener)
+    PendingNotePanel(PRTicketView ticketListener)
     {
         this.ticketListener = ticketListener;
         noteField = createFormTextField("");

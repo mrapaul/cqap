@@ -1,6 +1,6 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,11 +8,11 @@ import java.util.*;
 
 public class CPTCodeSecondaryGroupBuilder
 {
-    @NotNull private String subspecialtySecondary;
-    @NotNull private Collection<String> codes;
+    private String subspecialtySecondary;
+    private Collection<String> codes;
 
-    public CPTCodeSecondaryGroupBuilder(@NotNull String subspecialtySecondary,
-                                        @NotNull Collection<String> codes)
+    public CPTCodeSecondaryGroupBuilder(String subspecialtySecondary,
+                                        Collection<String> codes)
     {
         super();
 
@@ -21,35 +21,35 @@ public class CPTCodeSecondaryGroupBuilder
     }
 
 
-    @NotNull
-    public CPTCodeSecondaryGroupBuilder setSubspecialtySecondary(@NotNull String subspecialtySecondary)
+    
+    public CPTCodeSecondaryGroupBuilder setSubspecialtySecondary(String subspecialtySecondary)
     {
         this.subspecialtySecondary = subspecialtySecondary;
 
         return self();
     }
 
-    @NotNull
-    public CPTCodeSecondaryGroupBuilder setCodes(@NotNull Collection<String> codes)
+    
+    public CPTCodeSecondaryGroupBuilder setCodes(Collection<String> codes)
     {
         this.codes = codes;
 
         return self();
     }
 
-    @NotNull
+    
     protected String getSubspecialtySecondary()
     {
         return subspecialtySecondary;
     }
 
-    @NotNull
+    
     protected Collection<String> getCodes()
     {
         return codes;
     }
 
-    @NotNull
+    
     public CPTCodeSecondaryGroup build()
     {
         return new CPTCodeSecondaryGroup(getSubspecialtySecondary(),
@@ -57,7 +57,7 @@ public class CPTCodeSecondaryGroupBuilder
     }
 
 
-    @NotNull
+    
     protected CPTCodeSecondaryGroupBuilder self()
     {
         return this;

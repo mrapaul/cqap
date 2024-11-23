@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,7 +10,7 @@ import com.lakeland.ris.datamodel.*;
 public class RadiologistSnapshotBegin extends TimedMessage implements HL7Visitable
 {
     public static final byte TYPE = 30;
-    @NotNull private String userId;
+    private String userId;
 
     public RadiologistSnapshotBegin()
     {
@@ -18,30 +18,30 @@ public class RadiologistSnapshotBegin extends TimedMessage implements HL7Visitab
     }
 
     @JsonCreator
-    public RadiologistSnapshotBegin(@NotNull Date timestamp,
-                                    @NotNull String userId)
+    public RadiologistSnapshotBegin(Date timestamp,
+                                    String userId)
     {
         super(timestamp);
 
         this.userId = userId;
     }
 
-    @NotNull
+
     public String getUserId()
     {
         return userId;
     }
-    public void setUserId(@NotNull String userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+
     public String toString()
     {
         return "RadiologistSnapshotBegin(" +
@@ -51,7 +51,7 @@ public class RadiologistSnapshotBegin extends TimedMessage implements HL7Visitab
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -80,7 +80,7 @@ public class RadiologistSnapshotBegin extends TimedMessage implements HL7Visitab
                             getUserId());
     }
 
-    @NotNull
+
     public RadiologistSnapshotBeginBuilder toBuilder()
     {
         return new RadiologistSnapshotBeginBuilder(getTimestamp(),

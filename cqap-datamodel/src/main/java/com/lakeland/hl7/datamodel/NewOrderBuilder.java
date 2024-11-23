@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,10 +8,10 @@ import com.lakeland.ris.datamodel.*;
 
 public class NewOrderBuilder extends TimedMessageBuilder<NewOrder, NewOrderBuilder>
 {
-    @NotNull private String orderId;
+    private String orderId;
 
-    public NewOrderBuilder(@NotNull Date timestamp,
-                           @NotNull String orderId)
+    public NewOrderBuilder(Date timestamp,
+                           String orderId)
     {
         super(timestamp);
 
@@ -19,31 +19,31 @@ public class NewOrderBuilder extends TimedMessageBuilder<NewOrder, NewOrderBuild
     }
 
 
-    @NotNull
+    
     @Override
-    public NewOrderBuilder setTimestamp(@NotNull Date timestamp)
+    public NewOrderBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
-    public NewOrderBuilder setOrderId(@NotNull String orderId)
+    
+    public NewOrderBuilder setOrderId(String orderId)
     {
         this.orderId = orderId;
 
         return self();
     }
 
-    @NotNull
+    
     protected String getOrderId()
     {
         return orderId;
     }
 
     @Override
-    @NotNull
+    
     public NewOrder build()
     {
         return new NewOrder(getTimestamp(),
@@ -52,7 +52,7 @@ public class NewOrderBuilder extends TimedMessageBuilder<NewOrder, NewOrderBuild
 
 
     @Override
-    @NotNull
+    
     protected NewOrderBuilder self()
     {
         return this;

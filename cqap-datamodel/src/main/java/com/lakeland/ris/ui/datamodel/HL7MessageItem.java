@@ -1,7 +1,7 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -9,14 +9,14 @@ import com.lakeland.ris.datamodel.*;
 
 public class HL7MessageItem
 {
-    @NotNull private String id;
-    @NotNull private Date received;
-    @NotNull private String institution;
-    @NotNull private String patientID;
-    @NotNull private String patientName;
-    @NotNull private String accessionNumber;
-    @NotNull private String modality;
-    @NotNull private String studyDescription;
+    private String id;
+    private Date received;
+    private String institution;
+    private String patientID;
+    private String patientName;
+    private String accessionNumber;
+    private String modality;
+    private String studyDescription;
 
     public HL7MessageItem()
     {
@@ -24,14 +24,14 @@ public class HL7MessageItem
     }
 
     @JsonCreator
-    public HL7MessageItem(@NotNull String id,
-                          @NotNull Date received,
-                          @NotNull String institution,
-                          @NotNull String patientID,
-                          @NotNull String patientName,
-                          @NotNull String accessionNumber,
-                          @NotNull String modality,
-                          @NotNull String studyDescription)
+    public HL7MessageItem(String id,
+                          Date received,
+                          String institution,
+                          String patientID,
+                          String patientName,
+                          String accessionNumber,
+                          String modality,
+                          String studyDescription)
     {
         super();
 
@@ -45,94 +45,94 @@ public class HL7MessageItem
         this.studyDescription = studyDescription;
     }
 
-    @NotNull
+
     public String getId()
     {
         return id;
     }
 
-    @NotNull
+
     public Date getReceived()
     {
         return received;
     }
 
-    @NotNull
+
     public String getInstitution()
     {
         return institution;
     }
 
-    @NotNull
+
     public String getPatientID()
     {
         return patientID;
     }
 
-    @NotNull
+
     public String getPatientName()
     {
         return patientName;
     }
 
-    @NotNull
+
     public String getAccessionNumber()
     {
         return accessionNumber;
     }
 
-    @NotNull
+
     public String getModality()
     {
         return modality;
     }
 
-    @NotNull
+
     public String getStudyDescription()
     {
         return studyDescription;
     }
-    public void setId(@NotNull String id)
+    public void setId(String id)
     {
         this.id = id;
     }
 
-    public void setReceived(@NotNull Date received)
+    public void setReceived(Date received)
     {
         this.received = received;
     }
 
-    public void setInstitution(@NotNull String institution)
+    public void setInstitution(String institution)
     {
         this.institution = institution;
     }
 
-    public void setPatientID(@NotNull String patientID)
+    public void setPatientID(String patientID)
     {
         this.patientID = patientID;
     }
 
-    public void setPatientName(@NotNull String patientName)
+    public void setPatientName(String patientName)
     {
         this.patientName = patientName;
     }
 
-    public void setAccessionNumber(@NotNull String accessionNumber)
+    public void setAccessionNumber(String accessionNumber)
     {
         this.accessionNumber = accessionNumber;
     }
 
-    public void setModality(@NotNull String modality)
+    public void setModality(String modality)
     {
         this.modality = modality;
     }
 
-    public void setStudyDescription(@NotNull String studyDescription)
+    public void setStudyDescription(String studyDescription)
     {
         this.studyDescription = studyDescription;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "HL7MessageItem(" +
@@ -148,7 +148,7 @@ public class HL7MessageItem
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -186,7 +186,7 @@ public class HL7MessageItem
                             getStudyDescription());
     }
 
-    @NotNull
+
     public HL7MessageItemBuilder toBuilder()
     {
         return new HL7MessageItemBuilder(getId(),

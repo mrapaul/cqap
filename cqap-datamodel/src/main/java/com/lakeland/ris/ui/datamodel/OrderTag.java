@@ -1,17 +1,17 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class OrderTag
 {
-    @NotNull private Date timestamp;
-    @NotNull private String orderId;
-    @NotNull private String userId;
-    @NotNull private String tag;
+    private Date timestamp;
+    private String orderId;
+    private String userId;
+    private String tag;
     private boolean userPrivate;
 
     public OrderTag()
@@ -20,10 +20,10 @@ public class OrderTag
     }
 
     @JsonCreator
-    public OrderTag(@NotNull Date timestamp,
-                    @NotNull String orderId,
-                    @NotNull String userId,
-                    @NotNull String tag,
+    public OrderTag(Date timestamp,
+                    String orderId,
+                    String userId,
+                    String tag,
                     boolean userPrivate)
     {
         super();
@@ -35,25 +35,25 @@ public class OrderTag
         this.userPrivate = userPrivate;
     }
 
-    @NotNull
+    
     public Date getTimestamp()
     {
         return timestamp;
     }
 
-    @NotNull
+    
     public String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+    
     public String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     public String getTag()
     {
         return tag;
@@ -63,22 +63,22 @@ public class OrderTag
     {
         return userPrivate;
     }
-    public void setTimestamp(@NotNull Date timestamp)
+    public void setTimestamp(Date timestamp)
     {
         this.timestamp = timestamp;
     }
 
-    public void setOrderId(@NotNull String orderId)
+    public void setOrderId(String orderId)
     {
         this.orderId = orderId;
     }
 
-    public void setUserId(@NotNull String userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }
 
-    public void setTag(@NotNull String tag)
+    public void setTag(String tag)
     {
         this.tag = tag;
     }
@@ -88,7 +88,7 @@ public class OrderTag
         this.userPrivate = userPrivate;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "OrderTag(" +
@@ -99,7 +99,7 @@ public class OrderTag
             " userPrivate: " + isUserPrivate() + ")";
     }
 
-    @NotNull
+    
     public OrderTagBuilder toBuilder()
     {
         return new OrderTagBuilder(getTimestamp(),

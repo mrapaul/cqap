@@ -4,7 +4,7 @@ import com.lakeland.ris.ui.datamodel.*;
 import com.peirs.datamodel.*;
 import com.peirs.datamodel.dicom.*;
 import com.peirs.datamodel.ticket.*;
-import org.jetbrains.annotations.*;
+
 
 import java.io.*;
 import java.util.*;
@@ -65,7 +65,7 @@ public class NewTicketPresenter implements NewTicketView.Listener
         return model.uploadFile(file);
     }
 
-    @Override public String uploadPatientReport(@NotNull DicomStudy study, @NotNull File report)
+    @Override public String uploadPatientReport(DicomStudy study, File report)
     {
         return model.uploadPatientReport(study, report);
     }
@@ -99,12 +99,12 @@ public class NewTicketPresenter implements NewTicketView.Listener
         model.newPACSSelected();
     }
 
-    @Override public void savePACS(@NotNull PACS pacs)
+    @Override public void savePACS(PACS pacs)
     {
         model.savePACS(pacs);
     }
 
-    @Override public void deletePACS(@NotNull PACS pacs)
+    @Override public void deletePACS(PACS pacs)
     {
         model.deletePACS(pacs);
     }

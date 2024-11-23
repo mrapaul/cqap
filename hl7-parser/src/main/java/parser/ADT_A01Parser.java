@@ -6,18 +6,18 @@ import ca.uhn.hl7v2.model.v26.group.*;
 import ca.uhn.hl7v2.model.v26.message.*;
 import ca.uhn.hl7v2.model.v26.segment.*;
 import com.lakeland.ris.ui.datamodel.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
 public class ADT_A01Parser implements MessageParser<ADT_A01>
 {
-    @NotNull private final MSHParser mshParser;
-    @NotNull private final OBXParser obxParser;
-    @NotNull private final AL1Parser al1Parser;
-    @NotNull private final GT1Parser gt1Parser;
-    @NotNull private DetailedOrderBuilder detailedOrderBuilder;
-    @NotNull private final DG1Parser dg1Parser;
+    private final MSHParser mshParser;
+    private final OBXParser obxParser;
+    private final AL1Parser al1Parser;
+    private final GT1Parser gt1Parser;
+    private DetailedOrderBuilder detailedOrderBuilder;
+    private final DG1Parser dg1Parser;
 
     public ADT_A01Parser()
     {
@@ -28,8 +28,8 @@ public class ADT_A01Parser implements MessageParser<ADT_A01>
         dg1Parser = new DG1Parser();
     }
 
-    @Override public void convert(@NotNull ADT_A01 adt,
-                                  @NotNull DetailedOrderBuilder orderBuilder) throws HL7Exception
+    @Override public void convert(ADT_A01 adt,
+                                  DetailedOrderBuilder orderBuilder) throws HL7Exception
     {
         detailedOrderBuilder = orderBuilder;
         String[] names = adt.getNames();

@@ -7,7 +7,7 @@ import com.vaadin.data.*;
 import com.vaadin.data.util.*;
 import com.vaadin.ui.*;
 import org.dcm4che2.data.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
@@ -48,7 +48,7 @@ public class StudyDetailsView extends CssLayout
     private final TextField physicianSequenceID;
     private final TextField primaryInterpretingRadiologist;
 
-    public StudyDetailsView(@NotNull User user, @Nullable Container institutionContainer)
+    public StudyDetailsView(User user,  Container institutionContainer)
     {
         this.user = user;
         institution = createFormComboBoxField("Institution");
@@ -160,7 +160,7 @@ public class StudyDetailsView extends CssLayout
         addComponent(fullWidthHorizontalLayout(ticketDetailsPanel, patientDetailsPanel, studyDetailsPanel, pirPanel));
     }
 
-    public void setDetails(@NotNull final DicomStudy study, @Nullable ProfessionalTicket ticket)
+    public void setDetails(final DicomStudy study,  ProfessionalTicket ticket)
     {
         if (study.getStudyInstitution() != null)
         {
@@ -243,7 +243,7 @@ public class StudyDetailsView extends CssLayout
         });
     }
 
-    private void setFieldPermissions(@NotNull final DicomStudy study, @Nullable ProfessionalTicket ticket)
+    private void setFieldPermissions(final DicomStudy study,  ProfessionalTicket ticket)
     {
         timeZone.setReadOnly(true);
         patientDOB.setReadOnly(true);

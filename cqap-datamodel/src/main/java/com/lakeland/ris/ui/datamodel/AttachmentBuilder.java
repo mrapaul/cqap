@@ -1,21 +1,21 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class AttachmentBuilder
 {
-    @NotNull private String id;
-    @NotNull private String orderId;
-    @NotNull private String fileName;
-    @NotNull private Date uploadDate;
+    private String id;
+    private String orderId;
+    private String fileName;
+    private Date uploadDate;
 
-    public AttachmentBuilder(@NotNull String id,
-                             @NotNull String orderId,
-                             @NotNull String fileName,
-                             @NotNull Date uploadDate)
+    public AttachmentBuilder(String id,
+                             String orderId,
+                             String fileName,
+                             Date uploadDate)
     {
         super();
 
@@ -26,63 +26,63 @@ public class AttachmentBuilder
     }
 
 
-    @NotNull
-    public AttachmentBuilder setId(@NotNull String id)
+
+    public AttachmentBuilder setId(String id)
     {
         this.id = id;
 
         return self();
     }
 
-    @NotNull
-    public AttachmentBuilder setOrderId(@NotNull String orderId)
+
+    public AttachmentBuilder setOrderId(String orderId)
     {
         this.orderId = orderId;
 
         return self();
     }
 
-    @NotNull
-    public AttachmentBuilder setFileName(@NotNull String fileName)
+
+    public AttachmentBuilder setFileName(String fileName)
     {
         this.fileName = fileName;
 
         return self();
     }
 
-    @NotNull
-    public AttachmentBuilder setUploadDate(@NotNull Date uploadDate)
+
+    public AttachmentBuilder setUploadDate(Date uploadDate)
     {
         this.uploadDate = uploadDate;
 
         return self();
     }
 
-    @NotNull
+
     protected String getId()
     {
         return id;
     }
 
-    @NotNull
+
     protected String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+
     protected String getFileName()
     {
         return fileName;
     }
 
-    @NotNull
+
     protected Date getUploadDate()
     {
         return uploadDate;
     }
 
-    @NotNull
+
     public Attachment build()
     {
         return new Attachment(getId(),
@@ -92,7 +92,7 @@ public class AttachmentBuilder
     }
 
 
-    @NotNull
+
     protected AttachmentBuilder self()
     {
         return this;

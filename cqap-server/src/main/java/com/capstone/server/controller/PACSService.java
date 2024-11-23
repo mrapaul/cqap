@@ -5,7 +5,6 @@ import com.lakeland.ris.ui.datamodel.*;
 import com.peirs.datamodel.*;
 import com.peirs.datamodel.dicom.*;
 import org.dcm4che2.data.*;
-import org.jetbrains.annotations.*;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -37,8 +36,7 @@ public class PACSService
         repository.delete(pacs);
     }
 
-    @NotNull
-    public ExternalDicomStudies queryExternalStudies(@NotNull ExternalDicomStudyRequest request)
+    public ExternalDicomStudies queryExternalStudies(ExternalDicomStudyRequest request)
     {
         List<ExternalDicomStudy> studies = Lists.newArrayList();
         PACS pacs = request.getPacs();
@@ -61,7 +59,7 @@ public class PACSService
         return new ExternalDicomStudies(studies);
     }
 
-    public DicomStudies importExternal(PACS pacs, @NotNull ExternalDicomStudy externalDicomStudy)
+    public DicomStudies importExternal(PACS pacs, ExternalDicomStudy externalDicomStudy)
     {
         List<DicomStudy> studies = Lists.newArrayList();
         try

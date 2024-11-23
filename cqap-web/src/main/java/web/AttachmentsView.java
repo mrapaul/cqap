@@ -6,7 +6,7 @@ import com.vaadin.data.util.*;
 import com.vaadin.server.*;
 import com.vaadin.ui.*;
 import org.apache.commons.io.*;
-import org.jetbrains.annotations.*;
+
 import org.slf4j.*;
 import org.vaadin.easyuploads.*;
 import web.event.*;
@@ -18,14 +18,14 @@ public final class AttachmentsView extends Panel
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(AttachmentsView.class);
     private static final int TWO_MB_FILE_LIMIT = 2 * 1000 * 1024;
-    @NotNull private final AttachmentListener listener;
-    @NotNull private final Table table;
-    @NotNull private final Button download;
-    @NotNull private final Button delete;
-    @NotNull private final BeanContainer<String, Attachment> container;
-    @NotNull private final UploadField uploadField;
+    private final AttachmentListener listener;
+    private final Table table;
+    private final Button download;
+    private final Button delete;
+    private final BeanContainer<String, Attachment> container;
+    private final UploadField uploadField;
 
-    public AttachmentsView(@NotNull AttachmentListener listener)
+    public AttachmentsView(AttachmentListener listener)
     {
         this.listener = listener;
         table = new Table();
@@ -77,7 +77,7 @@ public final class AttachmentsView extends Panel
     }
 
 
-    private void onFileUpload(@NotNull File file)
+    private void onFileUpload(File file)
     {
         LOGGER.info("Uploading attachment " + file);
 

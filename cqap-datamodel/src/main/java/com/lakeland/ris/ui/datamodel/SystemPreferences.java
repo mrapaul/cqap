@@ -1,16 +1,16 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class SystemPreferences
 {
-    @Nullable private String id;
+     private String id;
     private boolean notifyNewOrders;
-    @Nullable private String notificationAddress;
+     private String notificationAddress;
 
     public SystemPreferences()
     {
@@ -18,9 +18,9 @@ public class SystemPreferences
     }
 
     @JsonCreator
-    public SystemPreferences(@Nullable String id,
+    public SystemPreferences( String id,
                              boolean notifyNewOrders,
-                             @Nullable String notificationAddress)
+                              String notificationAddress)
     {
         super();
 
@@ -29,7 +29,7 @@ public class SystemPreferences
         this.notificationAddress = notificationAddress;
     }
 
-    @Nullable
+    
     public String getId()
     {
         return id;
@@ -40,12 +40,12 @@ public class SystemPreferences
         return notifyNewOrders;
     }
 
-    @Nullable
+    
     public String getNotificationAddress()
     {
         return notificationAddress;
     }
-    public void setId(@Nullable String id)
+    public void setId( String id)
     {
         this.id = id;
     }
@@ -55,12 +55,12 @@ public class SystemPreferences
         this.notifyNewOrders = notifyNewOrders;
     }
 
-    public void setNotificationAddress(@Nullable String notificationAddress)
+    public void setNotificationAddress( String notificationAddress)
     {
         this.notificationAddress = notificationAddress;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "SystemPreferences(" +
@@ -69,7 +69,7 @@ public class SystemPreferences
             " notificationAddress: " + getNotificationAddress() + ")";
     }
 
-    @NotNull
+
     public SystemPreferencesBuilder toBuilder()
     {
         return new SystemPreferencesBuilder().setId(getId())

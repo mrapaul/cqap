@@ -1,14 +1,14 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class ModalityOrderCount
 {
-    @NotNull private String modality;
+    private String modality;
     private int count;
 
     public ModalityOrderCount()
@@ -17,7 +17,7 @@ public class ModalityOrderCount
     }
 
     @JsonCreator
-    public ModalityOrderCount(@NotNull String modality,
+    public ModalityOrderCount(String modality,
                               int count)
     {
         super();
@@ -26,7 +26,7 @@ public class ModalityOrderCount
         this.count = count;
     }
 
-    @NotNull
+
     public String getModality()
     {
         return modality;
@@ -36,7 +36,7 @@ public class ModalityOrderCount
     {
         return count;
     }
-    public void setModality(@NotNull String modality)
+    public void setModality(String modality)
     {
         this.modality = modality;
     }
@@ -46,7 +46,7 @@ public class ModalityOrderCount
         this.count = count;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "ModalityOrderCount(" +
@@ -54,7 +54,7 @@ public class ModalityOrderCount
             " count: " + getCount() + ")";
     }
 
-    @NotNull
+
     public ModalityOrderCountBuilder toBuilder()
     {
         return new ModalityOrderCountBuilder(getModality()).setCount(getCount());

@@ -6,7 +6,7 @@ import com.vaadin.data.*;
 import com.vaadin.data.util.*;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
@@ -17,13 +17,13 @@ public class PIRReviewView extends VerticalLayout
     private static final String AGREE = "Agree";
     private static final String MINOR_DISAGREE = "Minor Disagree";
     private static final String MAJOR_DISAGREE = "Major Disagree";
-    @NotNull private final User user;
+    private final User user;
     private final OptionGroup agreeField;
     private final TextArea disagreeCommentsField;
-    @NotNull private final TextField reporterField;
-    @NotNull private final DateField reportTimeField;
+    private final TextField reporterField;
+    private final DateField reportTimeField;
 
-    public PIRReviewView(@NotNull User user)
+    public PIRReviewView(User user)
     {
         this.user = user;
         agreeField = new OptionGroup("Decision of ERP Review", Arrays.asList(AGREE, MINOR_DISAGREE, MAJOR_DISAGREE));
@@ -52,7 +52,7 @@ public class PIRReviewView extends VerticalLayout
         addComponent(layout2);
     }
 
-    public void displayReport(@NotNull final ProfessionalTicket ticket, boolean editable)
+    public void displayReport(final ProfessionalTicket ticket, boolean editable)
     {
         if (ticket.getIIRReport() == null)
         {

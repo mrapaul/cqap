@@ -6,15 +6,15 @@ import ca.uhn.hl7v2.model.v26.group.*;
 import ca.uhn.hl7v2.model.v26.message.*;
 import ca.uhn.hl7v2.model.v26.segment.*;
 import com.lakeland.ris.ui.datamodel.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
 public class OMGParser implements MessageParser<OMG_O19>
 {
-    @NotNull private final MSHParser mshParser;
-    @NotNull private final OBXParser obxParser;
-    @NotNull private DetailedOrderBuilder detailedOrderBuilder;
+    private final MSHParser mshParser;
+    private final OBXParser obxParser;
+    private DetailedOrderBuilder detailedOrderBuilder;
 
     public OMGParser()
     {
@@ -22,8 +22,8 @@ public class OMGParser implements MessageParser<OMG_O19>
         obxParser = new OBXParser();
     }
 
-    @Override public void convert(@NotNull OMG_O19 orm,
-                                  @NotNull DetailedOrderBuilder orderBuilder) throws HL7Exception
+    @Override public void convert(OMG_O19 orm,
+                                  DetailedOrderBuilder orderBuilder) throws HL7Exception
     {
         detailedOrderBuilder = orderBuilder;
         String[] names = orm.getNames();

@@ -1,6 +1,6 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 import com.peirs.datamodel.dicom.*;
@@ -8,23 +8,23 @@ import java.util.*;
 
 public class OrderWrapperBuilder
 {
-    @NotNull private DetailedOrder order;
-    @NotNull private Collection<OrderNote> notes;
-    @NotNull private Collection<OrderTag> tags;
-    @NotNull private Collection<OrderAuditEntry> auditEntries;
-    @NotNull private Collection<Attachment> attachments;
-    @NotNull private Collection<DicomStudy> relatedOrders;
-    @NotNull private Collection<OrderChange> changes;
-    @NotNull private Collection<DetailedOrder> priors;
+    private DetailedOrder order;
+    private Collection<OrderNote> notes;
+    private Collection<OrderTag> tags;
+    private Collection<OrderAuditEntry> auditEntries;
+    private Collection<Attachment> attachments;
+    private Collection<DicomStudy> relatedOrders;
+    private Collection<OrderChange> changes;
+    private Collection<DetailedOrder> priors;
 
-    public OrderWrapperBuilder(@NotNull DetailedOrder order,
-                               @NotNull Collection<OrderNote> notes,
-                               @NotNull Collection<OrderTag> tags,
-                               @NotNull Collection<OrderAuditEntry> auditEntries,
-                               @NotNull Collection<Attachment> attachments,
-                               @NotNull Collection<DicomStudy> relatedOrders,
-                               @NotNull Collection<OrderChange> changes,
-                               @NotNull Collection<DetailedOrder> priors)
+    public OrderWrapperBuilder(DetailedOrder order,
+                               Collection<OrderNote> notes,
+                               Collection<OrderTag> tags,
+                               Collection<OrderAuditEntry> auditEntries,
+                               Collection<Attachment> attachments,
+                               Collection<DicomStudy> relatedOrders,
+                               Collection<OrderChange> changes,
+                               Collection<DetailedOrder> priors)
     {
         super();
 
@@ -39,119 +39,119 @@ public class OrderWrapperBuilder
     }
 
 
-    @NotNull
-    public OrderWrapperBuilder setOrder(@NotNull DetailedOrder order)
+    
+    public OrderWrapperBuilder setOrder(DetailedOrder order)
     {
         this.order = order;
 
         return self();
     }
 
-    @NotNull
-    public OrderWrapperBuilder setNotes(@NotNull Collection<OrderNote> notes)
+    
+    public OrderWrapperBuilder setNotes(Collection<OrderNote> notes)
     {
         this.notes = notes;
 
         return self();
     }
 
-    @NotNull
-    public OrderWrapperBuilder setTags(@NotNull Collection<OrderTag> tags)
+    
+    public OrderWrapperBuilder setTags(Collection<OrderTag> tags)
     {
         this.tags = tags;
 
         return self();
     }
 
-    @NotNull
-    public OrderWrapperBuilder setAuditEntries(@NotNull Collection<OrderAuditEntry> auditEntries)
+    
+    public OrderWrapperBuilder setAuditEntries(Collection<OrderAuditEntry> auditEntries)
     {
         this.auditEntries = auditEntries;
 
         return self();
     }
 
-    @NotNull
-    public OrderWrapperBuilder setAttachments(@NotNull Collection<Attachment> attachments)
+    
+    public OrderWrapperBuilder setAttachments(Collection<Attachment> attachments)
     {
         this.attachments = attachments;
 
         return self();
     }
 
-    @NotNull
-    public OrderWrapperBuilder setRelatedOrders(@NotNull Collection<DicomStudy> relatedOrders)
+    
+    public OrderWrapperBuilder setRelatedOrders(Collection<DicomStudy> relatedOrders)
     {
         this.relatedOrders = relatedOrders;
 
         return self();
     }
 
-    @NotNull
-    public OrderWrapperBuilder setChanges(@NotNull Collection<OrderChange> changes)
+    
+    public OrderWrapperBuilder setChanges(Collection<OrderChange> changes)
     {
         this.changes = changes;
 
         return self();
     }
 
-    @NotNull
-    public OrderWrapperBuilder setPriors(@NotNull Collection<DetailedOrder> priors)
+    
+    public OrderWrapperBuilder setPriors(Collection<DetailedOrder> priors)
     {
         this.priors = priors;
 
         return self();
     }
 
-    @NotNull
+    
     protected DetailedOrder getOrder()
     {
         return order;
     }
 
-    @NotNull
+    
     protected Collection<OrderNote> getNotes()
     {
         return notes;
     }
 
-    @NotNull
+    
     protected Collection<OrderTag> getTags()
     {
         return tags;
     }
 
-    @NotNull
+    
     protected Collection<OrderAuditEntry> getAuditEntries()
     {
         return auditEntries;
     }
 
-    @NotNull
+    
     protected Collection<Attachment> getAttachments()
     {
         return attachments;
     }
 
-    @NotNull
+    
     protected Collection<DicomStudy> getRelatedOrders()
     {
         return relatedOrders;
     }
 
-    @NotNull
+    
     protected Collection<OrderChange> getChanges()
     {
         return changes;
     }
 
-    @NotNull
+    
     protected Collection<DetailedOrder> getPriors()
     {
         return priors;
     }
 
-    @NotNull
+    
     public OrderWrapper build()
     {
         return new OrderWrapper(getOrder(),
@@ -165,7 +165,7 @@ public class OrderWrapperBuilder
     }
 
 
-    @NotNull
+    
     protected OrderWrapperBuilder self()
     {
         return this;

@@ -1,7 +1,6 @@
 package com.capstone.server.controller;
 
 import com.peirs.datamodel.dicom.*;
-import org.jetbrains.annotations.*;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -10,20 +9,19 @@ import org.springframework.stereotype.*;
 public class DicomViewerService
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(DicomViewerService.class);
-    @NotNull private final DicomStudyService dicomService;
-    @NotNull private final DicomViewer dicomViewer;
+    private final DicomStudyService dicomService;
+    private final DicomViewer dicomViewer;
 
     @Autowired
-    public DicomViewerService(@NotNull @Qualifier("DicomStudyService") DicomStudyService dicomService,
-                              @NotNull @Qualifier("DicomViewer") DicomViewer dicomViewer)
+    public DicomViewerService(@Qualifier("DicomStudyService") DicomStudyService dicomService,
+                              @Qualifier("DicomViewer") DicomViewer dicomViewer)
     {
         this.dicomService = dicomService;
         this.dicomViewer = dicomViewer;
     }
 
-    @Nullable
-    public String getLaunchURL(@NotNull String id,
-                               @NotNull String username) throws Exception
+    public String getLaunchURL(String id,
+                               String username) throws Exception
     {
         try
         {

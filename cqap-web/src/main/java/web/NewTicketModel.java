@@ -13,7 +13,7 @@ import com.vaadin.data.*;
 import com.vaadin.data.util.*;
 import com.vaadin.data.util.filter.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import java.io.*;
 import java.util.*;
@@ -22,23 +22,23 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class NewTicketModel
 {
-    @NotNull private final ClientRestService clientService;
-    @NotNull private final User user;
-    @NotNull private final EntityCache cache;
-    @NotNull private final UI ui;
-    @NotNull private final BeanContainer<String, DicomStudyQueryResult> results;
-    @NotNull private final BeanContainer<String, Group> groups;
-    @NotNull private final BeanContainer<String, Institution> institutions;
-    @NotNull private final BeanContainer<String, ExternalDicomStudy> externalImages;
-    @NotNull private final BeanContainer<String, DicomStudyQueryResult> internalImages;
-    @NotNull private final PACSContainer pacsContainer;
-    @NotNull private final IndexedContainer pirs;
-    @NotNull private final IndexedContainer sts;
+    private final ClientRestService clientService;
+    private final User user;
+    private final EntityCache cache;
+    private final UI ui;
+    private final BeanContainer<String, DicomStudyQueryResult> results;
+    private final BeanContainer<String, Group> groups;
+    private final BeanContainer<String, Institution> institutions;
+    private final BeanContainer<String, ExternalDicomStudy> externalImages;
+    private final BeanContainer<String, DicomStudyQueryResult> internalImages;
+    private final PACSContainer pacsContainer;
+    private final IndexedContainer pirs;
+    private final IndexedContainer sts;
 
-    public NewTicketModel(@NotNull ClientRestService clientService,
-                          @NotNull User user,
-                          @NotNull EntityCache cache,
-                          @NotNull UI ui)
+    public NewTicketModel(ClientRestService clientService,
+                          User user,
+                          EntityCache cache,
+                          UI ui)
     {
         this.clientService = clientService;
         this.user = user;
@@ -172,54 +172,54 @@ public class NewTicketModel
         return study;
     }
 
-    @NotNull
+    
     public Container getResultsContainer()
     {
         return results;
     }
 
-    @NotNull
+    
     public Container getGroups()
     {
         return groups;
     }
 
-    @NotNull
+    
     public Container getInstitutions()
     {
         return institutions;
     }
 
-    @NotNull
+    
     public Container getPirs()
     {
         return pirs;
     }
 
-    @NotNull
+    
     public Container getSts()
     {
         return sts;
     }
 
-    @NotNull
+    
     public Container getExternalImagesContainer()
     {
         return externalImages;
     }
 
-    @NotNull
+    
     public Container getPACSContainer()
     {
         return pacsContainer;
     }
 
-    @NotNull public Container getInternalImagesContainer()
+    public Container getInternalImagesContainer()
     {
         return internalImages;
     }
 
-    public String uploadFile(@NotNull File file)
+    public String uploadFile(File file)
     {
         Collection<DicomImage> images = Lists.newArrayList();
         StringBuilder myReportBuilder = new StringBuilder("Upload report : ").append("\n\n");
@@ -287,9 +287,9 @@ public class NewTicketModel
         return myReportBuilder.toString();
     }
 
-    private void updateExistingStudy(@NotNull ClientRestService clientRestService,
-                                     @NotNull DicomStudy aStudy,
-                                     @NotNull List<DicomStudy> aStudies)
+    private void updateExistingStudy(ClientRestService clientRestService,
+                                     DicomStudy aStudy,
+                                     List<DicomStudy> aStudies)
     {
         for (DicomStudy myStudy : aStudies)
         {
@@ -308,12 +308,12 @@ public class NewTicketModel
         }
     }
 
-    private Sets.SetView<DicomTag> getUniqueTags(@NotNull DicomStudy aExistingStudy, @NotNull DicomStudy myStudy)
+    private Sets.SetView<DicomTag> getUniqueTags(DicomStudy aExistingStudy, DicomStudy myStudy)
     {
         return Sets.symmetricDifference(Sets.newHashSet(aExistingStudy.getTags()), Sets.newHashSet(myStudy.getTags()));
     }
 
-    private List<DicomStudy> toStudies(@NotNull Collection<DicomImage> aImages)
+    private List<DicomStudy> toStudies(Collection<DicomImage> aImages)
     {
         List<DicomStudy> myStudies = Lists.newArrayList();
         Multimap<String, DicomImage> myImages = HashMultimap.create();
@@ -337,7 +337,7 @@ public class NewTicketModel
         return myStudies;
     }
 
-    public String uploadPatientReport(@NotNull DicomStudy study, @NotNull File report)
+    public String uploadPatientReport(DicomStudy study, File report)
     {
         String reportText = clientService.addDicomStudyPatientReport(study, report);
 
@@ -350,12 +350,12 @@ public class NewTicketModel
         return reportText;
     }
 
-    public Collection<DicomStudy> getRelatedStudies(@NotNull DicomStudy study)
+    public Collection<DicomStudy> getRelatedStudies(DicomStudy study)
     {
         return clientService.findRelatedExams(study);
     }
 
-    public void saveStudy(@NotNull DicomStudy study)
+    public void saveStudy(DicomStudy study)
     {
         DicomStudy updateDicomStudy = clientService.createOrUpdateDicomStudy(study);
         DicomStudyQuery query = new DicomStudyQueryBuilder().setStudyInstanceUID(updateDicomStudy.getStudyInstanceUID())
@@ -370,7 +370,7 @@ public class NewTicketModel
         });
     }
 
-    public void refreshExternalImages(@NotNull PACS pacs, @NotNull Date studyDate)
+    public void refreshExternalImages(PACS pacs, Date studyDate)
     {
         final
         Collection<ExternalDicomStudy>
@@ -389,7 +389,7 @@ public class NewTicketModel
         });
     }
 
-    public void searchForInternalStudies(@NotNull ExternalDicomStudy externalDicomStudy)
+    public void searchForInternalStudies(ExternalDicomStudy externalDicomStudy)
     {
         final List<DicomStudyQueryResult> studies = Lists.newArrayList();
         DicomStudyQuery query = new DicomStudyQueryBuilder().setAccessionNumber(externalDicomStudy.getAccessionNumber())
@@ -406,7 +406,7 @@ public class NewTicketModel
         });
     }
 
-    public List<DicomStudy> importImage(@NotNull PACS pacs, @Nullable ExternalDicomStudy externalDicomStudy)
+    public List<DicomStudy> importImage(PACS pacs,  ExternalDicomStudy externalDicomStudy)
     {
         return clientService.importImage(pacs, externalDicomStudy);
     }

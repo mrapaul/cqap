@@ -1,42 +1,42 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class DisplayOrder
 {
-    @NotNull private String orderId;
-    @NotNull private String messageId;
-    @NotNull private OrderStatus status;
-    @NotNull private OrderPriority priority;
-    @Nullable private String assignedTo;
-    @NotNull private Date created;
-    @Nullable private Date updated;
-    @Nullable private String firstName;
-    @Nullable private String middleName;
-    @Nullable private String lastName;
-    @Nullable private String patientId;
-    @Nullable private String birthDate;
-    @Nullable private String sex;
-    @Nullable private String alternatePatientId;
-    @Nullable private String institutionName;
-    @Nullable private String accessionNumber;
-    @Nullable private String cPTCode;
-    @Nullable private String cPTMnemonic;
-    @Nullable private String modality;
-    @Nullable private String studyDescription;
-    @Nullable private String dicomStudyId;
+    private String orderId;
+    private String messageId;
+    private OrderStatus status;
+    private OrderPriority priority;
+     private String assignedTo;
+    private Date created;
+     private Date updated;
+     private String firstName;
+     private String middleName;
+     private String lastName;
+     private String patientId;
+     private String birthDate;
+     private String sex;
+     private String alternatePatientId;
+     private String institutionName;
+     private String accessionNumber;
+     private String cPTCode;
+     private String cPTMnemonic;
+     private String modality;
+     private String studyDescription;
+     private String dicomStudyId;
     private int imageCount;
     private long timeElapsed;
     private boolean critical;
-    @Nullable private String studyDate;
-    @Nullable private String studyTime;
-    @Nullable private String arrivalDate;
-    @Nullable private String arrivalTime;
-    @Nullable private String readingRadiologist;
+     private String studyDate;
+     private String studyTime;
+     private String arrivalDate;
+     private String arrivalTime;
+     private String readingRadiologist;
 
     public DisplayOrder()
     {
@@ -44,35 +44,35 @@ public class DisplayOrder
     }
 
     @JsonCreator
-    public DisplayOrder(@NotNull String orderId,
-                        @NotNull String messageId,
-                        @NotNull OrderStatus status,
-                        @NotNull OrderPriority priority,
-                        @Nullable String assignedTo,
-                        @NotNull Date created,
-                        @Nullable Date updated,
-                        @Nullable String firstName,
-                        @Nullable String middleName,
-                        @Nullable String lastName,
-                        @Nullable String patientId,
-                        @Nullable String birthDate,
-                        @Nullable String sex,
-                        @Nullable String alternatePatientId,
-                        @Nullable String institutionName,
-                        @Nullable String accessionNumber,
-                        @Nullable String cPTCode,
-                        @Nullable String cPTMnemonic,
-                        @Nullable String modality,
-                        @Nullable String studyDescription,
-                        @Nullable String dicomStudyId,
+    public DisplayOrder(String orderId,
+                        String messageId,
+                        OrderStatus status,
+                        OrderPriority priority,
+                         String assignedTo,
+                        Date created,
+                         Date updated,
+                         String firstName,
+                         String middleName,
+                         String lastName,
+                         String patientId,
+                         String birthDate,
+                         String sex,
+                         String alternatePatientId,
+                         String institutionName,
+                         String accessionNumber,
+                         String cPTCode,
+                         String cPTMnemonic,
+                         String modality,
+                         String studyDescription,
+                         String dicomStudyId,
                         int imageCount,
                         long timeElapsed,
                         boolean critical,
-                        @Nullable String studyDate,
-                        @Nullable String studyTime,
-                        @Nullable String arrivalDate,
-                        @Nullable String arrivalTime,
-                        @Nullable String readingRadiologist)
+                         String studyDate,
+                         String studyTime,
+                         String arrivalDate,
+                         String arrivalTime,
+                         String readingRadiologist)
     {
         super();
 
@@ -107,127 +107,127 @@ public class DisplayOrder
         this.readingRadiologist = readingRadiologist;
     }
 
-    @NotNull
+    
     public String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+    
     public String getMessageId()
     {
         return messageId;
     }
 
-    @NotNull
+    
     public OrderStatus getStatus()
     {
         return status;
     }
 
-    @NotNull
+    
     public OrderPriority getPriority()
     {
         return priority;
     }
 
-    @Nullable
+    
     public String getAssignedTo()
     {
         return assignedTo;
     }
 
-    @NotNull
+    
     public Date getCreated()
     {
         return created;
     }
 
-    @Nullable
+    
     public Date getUpdated()
     {
         return updated;
     }
 
-    @Nullable
+    
     public String getFirstName()
     {
         return firstName;
     }
 
-    @Nullable
+    
     public String getMiddleName()
     {
         return middleName;
     }
 
-    @Nullable
+    
     public String getLastName()
     {
         return lastName;
     }
 
-    @Nullable
+    
     public String getPatientId()
     {
         return patientId;
     }
 
-    @Nullable
+    
     public String getBirthDate()
     {
         return birthDate;
     }
 
-    @Nullable
+    
     public String getSex()
     {
         return sex;
     }
 
-    @Nullable
+    
     public String getAlternatePatientId()
     {
         return alternatePatientId;
     }
 
-    @Nullable
+    
     public String getInstitutionName()
     {
         return institutionName;
     }
 
-    @Nullable
+    
     public String getAccessionNumber()
     {
         return accessionNumber;
     }
 
-    @Nullable
+    
     public String getCPTCode()
     {
         return cPTCode;
     }
 
-    @Nullable
+    
     public String getCPTMnemonic()
     {
         return cPTMnemonic;
     }
 
-    @Nullable
+    
     public String getModality()
     {
         return modality;
     }
 
-    @Nullable
+    
     public String getStudyDescription()
     {
         return studyDescription;
     }
 
-    @Nullable
+    
     public String getDicomStudyId()
     {
         return dicomStudyId;
@@ -248,136 +248,136 @@ public class DisplayOrder
         return critical;
     }
 
-    @Nullable
+    
     public String getStudyDate()
     {
         return studyDate;
     }
 
-    @Nullable
+    
     public String getStudyTime()
     {
         return studyTime;
     }
 
-    @Nullable
+    
     public String getArrivalDate()
     {
         return arrivalDate;
     }
 
-    @Nullable
+    
     public String getArrivalTime()
     {
         return arrivalTime;
     }
 
-    @Nullable
+    
     public String getReadingRadiologist()
     {
         return readingRadiologist;
     }
-    public void setOrderId(@NotNull String orderId)
+    public void setOrderId(String orderId)
     {
         this.orderId = orderId;
     }
 
-    public void setMessageId(@NotNull String messageId)
+    public void setMessageId(String messageId)
     {
         this.messageId = messageId;
     }
 
-    public void setStatus(@NotNull OrderStatus status)
+    public void setStatus(OrderStatus status)
     {
         this.status = status;
     }
 
-    public void setPriority(@NotNull OrderPriority priority)
+    public void setPriority(OrderPriority priority)
     {
         this.priority = priority;
     }
 
-    public void setAssignedTo(@Nullable String assignedTo)
+    public void setAssignedTo( String assignedTo)
     {
         this.assignedTo = assignedTo;
     }
 
-    public void setCreated(@NotNull Date created)
+    public void setCreated(Date created)
     {
         this.created = created;
     }
 
-    public void setUpdated(@Nullable Date updated)
+    public void setUpdated( Date updated)
     {
         this.updated = updated;
     }
 
-    public void setFirstName(@Nullable String firstName)
+    public void setFirstName( String firstName)
     {
         this.firstName = firstName;
     }
 
-    public void setMiddleName(@Nullable String middleName)
+    public void setMiddleName( String middleName)
     {
         this.middleName = middleName;
     }
 
-    public void setLastName(@Nullable String lastName)
+    public void setLastName( String lastName)
     {
         this.lastName = lastName;
     }
 
-    public void setPatientId(@Nullable String patientId)
+    public void setPatientId( String patientId)
     {
         this.patientId = patientId;
     }
 
-    public void setBirthDate(@Nullable String birthDate)
+    public void setBirthDate( String birthDate)
     {
         this.birthDate = birthDate;
     }
 
-    public void setSex(@Nullable String sex)
+    public void setSex( String sex)
     {
         this.sex = sex;
     }
 
-    public void setAlternatePatientId(@Nullable String alternatePatientId)
+    public void setAlternatePatientId( String alternatePatientId)
     {
         this.alternatePatientId = alternatePatientId;
     }
 
-    public void setInstitutionName(@Nullable String institutionName)
+    public void setInstitutionName( String institutionName)
     {
         this.institutionName = institutionName;
     }
 
-    public void setAccessionNumber(@Nullable String accessionNumber)
+    public void setAccessionNumber( String accessionNumber)
     {
         this.accessionNumber = accessionNumber;
     }
 
-    public void setCPTCode(@Nullable String cPTCode)
+    public void setCPTCode( String cPTCode)
     {
         this.cPTCode = cPTCode;
     }
 
-    public void setCPTMnemonic(@Nullable String cPTMnemonic)
+    public void setCPTMnemonic( String cPTMnemonic)
     {
         this.cPTMnemonic = cPTMnemonic;
     }
 
-    public void setModality(@Nullable String modality)
+    public void setModality( String modality)
     {
         this.modality = modality;
     }
 
-    public void setStudyDescription(@Nullable String studyDescription)
+    public void setStudyDescription( String studyDescription)
     {
         this.studyDescription = studyDescription;
     }
 
-    public void setDicomStudyId(@Nullable String dicomStudyId)
+    public void setDicomStudyId( String dicomStudyId)
     {
         this.dicomStudyId = dicomStudyId;
     }
@@ -397,32 +397,32 @@ public class DisplayOrder
         this.critical = critical;
     }
 
-    public void setStudyDate(@Nullable String studyDate)
+    public void setStudyDate( String studyDate)
     {
         this.studyDate = studyDate;
     }
 
-    public void setStudyTime(@Nullable String studyTime)
+    public void setStudyTime( String studyTime)
     {
         this.studyTime = studyTime;
     }
 
-    public void setArrivalDate(@Nullable String arrivalDate)
+    public void setArrivalDate( String arrivalDate)
     {
         this.arrivalDate = arrivalDate;
     }
 
-    public void setArrivalTime(@Nullable String arrivalTime)
+    public void setArrivalTime( String arrivalTime)
     {
         this.arrivalTime = arrivalTime;
     }
 
-    public void setReadingRadiologist(@Nullable String readingRadiologist)
+    public void setReadingRadiologist( String readingRadiologist)
     {
         this.readingRadiologist = readingRadiologist;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "DisplayOrder(" +
@@ -457,7 +457,7 @@ public class DisplayOrder
             " readingRadiologist: " + getReadingRadiologist() + ")";
     }
 
-    @NotNull
+    
     public DisplayOrderBuilder toBuilder()
     {
         return new DisplayOrderBuilder(getOrderId(),

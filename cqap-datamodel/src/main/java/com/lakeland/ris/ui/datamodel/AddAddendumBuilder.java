@@ -1,21 +1,21 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class AddAddendumBuilder
 {
-    @NotNull private String orderId;
-    @NotNull private Date timestamp;
-    @NotNull private String userId;
-    @NotNull private String addendum;
+    private String orderId;
+    private Date timestamp;
+    private String userId;
+    private String addendum;
 
-    public AddAddendumBuilder(@NotNull String orderId,
-                              @NotNull Date timestamp,
-                              @NotNull String userId,
-                              @NotNull String addendum)
+    public AddAddendumBuilder(String orderId,
+                              Date timestamp,
+                              String userId,
+                              String addendum)
     {
         super();
 
@@ -26,63 +26,63 @@ public class AddAddendumBuilder
     }
 
 
-    @NotNull
-    public AddAddendumBuilder setOrderId(@NotNull String orderId)
+    
+    public AddAddendumBuilder setOrderId(String orderId)
     {
         this.orderId = orderId;
 
         return self();
     }
 
-    @NotNull
-    public AddAddendumBuilder setTimestamp(@NotNull Date timestamp)
+    
+    public AddAddendumBuilder setTimestamp(Date timestamp)
     {
         this.timestamp = timestamp;
 
         return self();
     }
 
-    @NotNull
-    public AddAddendumBuilder setUserId(@NotNull String userId)
+    
+    public AddAddendumBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
-    public AddAddendumBuilder setAddendum(@NotNull String addendum)
+    
+    public AddAddendumBuilder setAddendum(String addendum)
     {
         this.addendum = addendum;
 
         return self();
     }
 
-    @NotNull
+    
     protected String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+    
     protected Date getTimestamp()
     {
         return timestamp;
     }
 
-    @NotNull
+    
     protected String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     protected String getAddendum()
     {
         return addendum;
     }
 
-    @NotNull
+    
     public AddAddendum build()
     {
         return new AddAddendum(getOrderId(),
@@ -92,7 +92,7 @@ public class AddAddendumBuilder
     }
 
 
-    @NotNull
+    
     protected AddAddendumBuilder self()
     {
         return this;

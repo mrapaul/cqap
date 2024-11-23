@@ -1,22 +1,22 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class OrderTagBuilder
 {
-    @NotNull private Date timestamp;
-    @NotNull private String orderId;
-    @NotNull private String userId;
-    @NotNull private String tag;
+    private Date timestamp;
+    private String orderId;
+    private String userId;
+    private String tag;
     private boolean userPrivate;
 
-    public OrderTagBuilder(@NotNull Date timestamp,
-                           @NotNull String orderId,
-                           @NotNull String userId,
-                           @NotNull String tag)
+    public OrderTagBuilder(Date timestamp,
+                           String orderId,
+                           String userId,
+                           String tag)
     {
         super();
 
@@ -27,39 +27,39 @@ public class OrderTagBuilder
     }
 
 
-    @NotNull
-    public OrderTagBuilder setTimestamp(@NotNull Date timestamp)
+    
+    public OrderTagBuilder setTimestamp(Date timestamp)
     {
         this.timestamp = timestamp;
 
         return self();
     }
 
-    @NotNull
-    public OrderTagBuilder setOrderId(@NotNull String orderId)
+    
+    public OrderTagBuilder setOrderId(String orderId)
     {
         this.orderId = orderId;
 
         return self();
     }
 
-    @NotNull
-    public OrderTagBuilder setUserId(@NotNull String userId)
+    
+    public OrderTagBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
-    public OrderTagBuilder setTag(@NotNull String tag)
+    
+    public OrderTagBuilder setTag(String tag)
     {
         this.tag = tag;
 
         return self();
     }
 
-    @NotNull
+    
     public OrderTagBuilder setUserPrivate(boolean userPrivate)
     {
         this.userPrivate = userPrivate;
@@ -67,25 +67,25 @@ public class OrderTagBuilder
         return self();
     }
 
-    @NotNull
+    
     protected Date getTimestamp()
     {
         return timestamp;
     }
 
-    @NotNull
+    
     protected String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+    
     protected String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     protected String getTag()
     {
         return tag;
@@ -96,7 +96,7 @@ public class OrderTagBuilder
         return userPrivate;
     }
 
-    @NotNull
+    
     public OrderTag build()
     {
         return new OrderTag(getTimestamp(),
@@ -107,7 +107,7 @@ public class OrderTagBuilder
     }
 
 
-    @NotNull
+    
     protected OrderTagBuilder self()
     {
         return this;

@@ -1,6 +1,6 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
@@ -8,29 +8,29 @@ import com.lakeland.ris.datamodel.*;
 public class OrderReportDataBuilder
 {
     private int id;
-    @NotNull private String patientName;
-    @Nullable private String patientId;
-    @Nullable private String accession;
-    @Nullable private String modality;
-    @Nullable private String bodyPart;
+    private String patientName;
+     private String patientId;
+     private String accession;
+     private String modality;
+     private String bodyPart;
     private int imageCount;
-    @Nullable private String priority;
-    @Nullable private Date studyTime;
-    @Nullable private Date arrivalTime;
-    @Nullable private Date readyTime;
-    @Nullable private Date assignedTime;
-    @Nullable private Date readTime;
-    @Nullable private Date finalTime;
-    @Nullable private String radiologist;
-    @Nullable private String description;
-    @Nullable private String status;
-    @Nullable private String site;
-    @Nullable private String cPTCode;
-    @Nullable private String cMSRVU;
+     private String priority;
+     private Date studyTime;
+     private Date arrivalTime;
+     private Date readyTime;
+     private Date assignedTime;
+     private Date readTime;
+     private Date finalTime;
+     private String radiologist;
+     private String description;
+     private String status;
+     private String site;
+     private String cPTCode;
+     private String cMSRVU;
     private boolean critical;
     private boolean addendum;
 
-    public OrderReportDataBuilder(@NotNull String patientName)
+    public OrderReportDataBuilder(String patientName)
     {
         super();
 
@@ -38,7 +38,7 @@ public class OrderReportDataBuilder
     }
 
 
-    @NotNull
+    
     public OrderReportDataBuilder setId(int id)
     {
         this.id = id;
@@ -46,47 +46,47 @@ public class OrderReportDataBuilder
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setPatientName(@NotNull String patientName)
+    
+    public OrderReportDataBuilder setPatientName(String patientName)
     {
         this.patientName = patientName;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setPatientId(@Nullable String patientId)
+    
+    public OrderReportDataBuilder setPatientId( String patientId)
     {
         this.patientId = patientId;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setAccession(@Nullable String accession)
+    
+    public OrderReportDataBuilder setAccession( String accession)
     {
         this.accession = accession;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setModality(@Nullable String modality)
+    
+    public OrderReportDataBuilder setModality( String modality)
     {
         this.modality = modality;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setBodyPart(@Nullable String bodyPart)
+    
+    public OrderReportDataBuilder setBodyPart( String bodyPart)
     {
         this.bodyPart = bodyPart;
 
         return self();
     }
 
-    @NotNull
+    
     public OrderReportDataBuilder setImageCount(int imageCount)
     {
         this.imageCount = imageCount;
@@ -94,111 +94,111 @@ public class OrderReportDataBuilder
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setPriority(@Nullable String priority)
+    
+    public OrderReportDataBuilder setPriority( String priority)
     {
         this.priority = priority;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setStudyTime(@Nullable Date studyTime)
+    
+    public OrderReportDataBuilder setStudyTime( Date studyTime)
     {
         this.studyTime = studyTime;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setArrivalTime(@Nullable Date arrivalTime)
+    
+    public OrderReportDataBuilder setArrivalTime( Date arrivalTime)
     {
         this.arrivalTime = arrivalTime;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setReadyTime(@Nullable Date readyTime)
+    
+    public OrderReportDataBuilder setReadyTime( Date readyTime)
     {
         this.readyTime = readyTime;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setAssignedTime(@Nullable Date assignedTime)
+    
+    public OrderReportDataBuilder setAssignedTime( Date assignedTime)
     {
         this.assignedTime = assignedTime;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setReadTime(@Nullable Date readTime)
+    
+    public OrderReportDataBuilder setReadTime( Date readTime)
     {
         this.readTime = readTime;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setFinalTime(@Nullable Date finalTime)
+    
+    public OrderReportDataBuilder setFinalTime( Date finalTime)
     {
         this.finalTime = finalTime;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setRadiologist(@Nullable String radiologist)
+    
+    public OrderReportDataBuilder setRadiologist( String radiologist)
     {
         this.radiologist = radiologist;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setDescription(@Nullable String description)
+    
+    public OrderReportDataBuilder setDescription( String description)
     {
         this.description = description;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setStatus(@Nullable String status)
+    
+    public OrderReportDataBuilder setStatus( String status)
     {
         this.status = status;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setSite(@Nullable String site)
+    
+    public OrderReportDataBuilder setSite( String site)
     {
         this.site = site;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setCPTCode(@Nullable String cPTCode)
+    
+    public OrderReportDataBuilder setCPTCode( String cPTCode)
     {
         this.cPTCode = cPTCode;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportDataBuilder setCMSRVU(@Nullable String cMSRVU)
+    
+    public OrderReportDataBuilder setCMSRVU( String cMSRVU)
     {
         this.cMSRVU = cMSRVU;
 
         return self();
     }
 
-    @NotNull
+    
     public OrderReportDataBuilder setCritical(boolean critical)
     {
         this.critical = critical;
@@ -206,7 +206,7 @@ public class OrderReportDataBuilder
         return self();
     }
 
-    @NotNull
+    
     public OrderReportDataBuilder setAddendum(boolean addendum)
     {
         this.addendum = addendum;
@@ -219,31 +219,31 @@ public class OrderReportDataBuilder
         return id;
     }
 
-    @NotNull
+    
     protected String getPatientName()
     {
         return patientName;
     }
 
-    @Nullable
+    
     protected String getPatientId()
     {
         return patientId;
     }
 
-    @Nullable
+    
     protected String getAccession()
     {
         return accession;
     }
 
-    @Nullable
+    
     protected String getModality()
     {
         return modality;
     }
 
-    @Nullable
+    
     protected String getBodyPart()
     {
         return bodyPart;
@@ -254,79 +254,79 @@ public class OrderReportDataBuilder
         return imageCount;
     }
 
-    @Nullable
+    
     protected String getPriority()
     {
         return priority;
     }
 
-    @Nullable
+    
     protected Date getStudyTime()
     {
         return studyTime;
     }
 
-    @Nullable
+    
     protected Date getArrivalTime()
     {
         return arrivalTime;
     }
 
-    @Nullable
+    
     protected Date getReadyTime()
     {
         return readyTime;
     }
 
-    @Nullable
+    
     protected Date getAssignedTime()
     {
         return assignedTime;
     }
 
-    @Nullable
+    
     protected Date getReadTime()
     {
         return readTime;
     }
 
-    @Nullable
+    
     protected Date getFinalTime()
     {
         return finalTime;
     }
 
-    @Nullable
+    
     protected String getRadiologist()
     {
         return radiologist;
     }
 
-    @Nullable
+    
     protected String getDescription()
     {
         return description;
     }
 
-    @Nullable
+    
     protected String getStatus()
     {
         return status;
     }
 
-    @Nullable
+    
     protected String getSite()
     {
         return site;
     }
 
-    @Nullable
+    
     protected String getCPTCode()
     {
         return cPTCode;
     }
 
-    @Nullable
+    
     protected String getCMSRVU()
     {
         return cMSRVU;
@@ -342,7 +342,7 @@ public class OrderReportDataBuilder
         return addendum;
     }
 
-    @NotNull
+    
     public OrderReportData build()
     {
         return new OrderReportData(getId(),
@@ -370,7 +370,7 @@ public class OrderReportDataBuilder
     }
 
 
-    @NotNull
+    
     protected OrderReportDataBuilder self()
     {
         return this;

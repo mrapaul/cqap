@@ -12,7 +12,7 @@ import com.vaadin.navigator.*;
 import com.vaadin.server.*;
 import com.vaadin.shared.ui.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.joda.time.*;
 import org.tepi.filtertable.*;
 
@@ -26,34 +26,34 @@ public class ArchiveViewImpl extends CssLayout implements ArchiveView
 {
     private static final DateFormat STUDY_DATE_FORMAT = new SimpleDateFormat("yyyyMMdd");
     private static final DateFormat SUBMITTED_DATE_FORMAT = new SimpleDateFormat("MMM dd yyyy");
-    @NotNull private final User user;
-    @NotNull private final TextField ticketIdField;
-    @NotNull private final ComboBox reviewTypeField;
-    @NotNull private final ComboBox priorityField;
-    @NotNull private final ComboBox statusField;
-    @NotNull private final TextField patientLastNameField;
-    @NotNull private final TextField patientFirstNameField;
-    @NotNull private final TextField patientMRNField;
-    @NotNull private final ComboBox groupField;
-    @NotNull private final ComboBox institutionField;
-    @NotNull private final ComboBox pirField;
-    @NotNull private final ComboBox modalityField;
-    @NotNull private final TextField studyDescriptionField;
-    @NotNull private final TextField accessionField;
-    @NotNull private final TextField cptCodeField;
-    @NotNull private final DateField studyDateField;
-    @NotNull private final DateField submittedFromField;
-    @NotNull private final DateField submittedToField;
-    @NotNull private final TextField submittedByField;
-    @NotNull private final TextField erpField;
-    @NotNull private final ComboBox confirmedCategoryField;
-    @NotNull private final Button searchButton;
-    @NotNull private final Button resetButton;
-    @NotNull private final FilterTable searchResultsTable;
-    @NotNull private final TabSheet tabSheet;
+    private final User user;
+    private final TextField ticketIdField;
+    private final ComboBox reviewTypeField;
+    private final ComboBox priorityField;
+    private final ComboBox statusField;
+    private final TextField patientLastNameField;
+    private final TextField patientFirstNameField;
+    private final TextField patientMRNField;
+    private final ComboBox groupField;
+    private final ComboBox institutionField;
+    private final ComboBox pirField;
+    private final ComboBox modalityField;
+    private final TextField studyDescriptionField;
+    private final TextField accessionField;
+    private final TextField cptCodeField;
+    private final DateField studyDateField;
+    private final DateField submittedFromField;
+    private final DateField submittedToField;
+    private final TextField submittedByField;
+    private final TextField erpField;
+    private final ComboBox confirmedCategoryField;
+    private final Button searchButton;
+    private final Button resetButton;
+    private final FilterTable searchResultsTable;
+    private final TabSheet tabSheet;
     private ArchiveView.Listener listener;
 
-    public ArchiveViewImpl(@NotNull User user)
+    public ArchiveViewImpl(User user)
     {
         this.user = user;
         ticketIdField = createFormTextField("Ticket Id");
@@ -402,10 +402,10 @@ public class ArchiveViewImpl extends CssLayout implements ArchiveView
         erpField.setValue(null);
     }
 
-    @Override public void displayTicket(@NotNull ProfessionalTicket ticket,
-                                        @NotNull Collection<DicomStudy> relatedExams,
-                                        @NotNull Container institutions,
-                                        @NotNull Collection<Attachment> attachments)
+    @Override public void displayTicket(ProfessionalTicket ticket,
+                                        Collection<DicomStudy> relatedExams,
+                                        Container institutions,
+                                        Collection<Attachment> attachments)
     {
         if (listener != null)
         {
@@ -422,7 +422,7 @@ public class ArchiveViewImpl extends CssLayout implements ArchiveView
         }
     }
 
-    public boolean isAlreadyDisplayed(@NotNull TabSheet container, String caption)
+    public boolean isAlreadyDisplayed(TabSheet container, String caption)
     {
         int componentCount = container.getComponentCount();
         for (int i = 0; i < componentCount; i++)

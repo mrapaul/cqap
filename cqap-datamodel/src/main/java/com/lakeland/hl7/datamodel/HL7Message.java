@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -11,12 +11,12 @@ import java.util.Date;
 public class HL7Message implements HL7Visitable
 {
     public static final byte TYPE = 1;
-    @Nullable private String id;
-    @Nullable private String viewId;
-    @NotNull private Date received;
-    @NotNull private String type;
-    @NotNull private String version;
-    @NotNull private String rawMessage;
+     private String id;
+     private String viewId;
+    private Date received;
+    private String type;
+    private String version;
+    private String rawMessage;
 
     public HL7Message()
     {
@@ -24,12 +24,12 @@ public class HL7Message implements HL7Visitable
     }
 
     @JsonCreator
-    public HL7Message(@Nullable String id,
-                      @Nullable String viewId,
-                      @NotNull Date received,
-                      @NotNull String type,
-                      @NotNull String version,
-                      @NotNull String rawMessage)
+    public HL7Message( String id,
+                       String viewId,
+                      Date received,
+                      String type,
+                      String version,
+                      String rawMessage)
     {
         super();
 
@@ -41,77 +41,77 @@ public class HL7Message implements HL7Visitable
         this.rawMessage = rawMessage;
     }
 
-    @Nullable
+    
     public String getId()
     {
         return id;
     }
 
-    @Nullable
+    
     public String getViewId()
     {
         return viewId;
     }
 
-    @NotNull
+
     public Date getReceived()
     {
         return received;
     }
 
-    @NotNull
+
     public String getType()
     {
         return type;
     }
 
-    @NotNull
+
     public String getVersion()
     {
         return version;
     }
 
-    @NotNull
+
     public String getRawMessage()
     {
         return rawMessage;
     }
-    public void setId(@Nullable String id)
+    public void setId( String id)
     {
         this.id = id;
     }
 
-    public void setViewId(@Nullable String viewId)
+    public void setViewId( String viewId)
     {
         this.viewId = viewId;
     }
 
-    public void setReceived(@NotNull Date received)
+    public void setReceived(Date received)
     {
         this.received = received;
     }
 
-    public void setType(@NotNull String type)
+    public void setType(String type)
     {
         this.type = type;
     }
 
-    public void setVersion(@NotNull String version)
+    public void setVersion(String version)
     {
         this.version = version;
     }
 
-    public void setRawMessage(@NotNull String rawMessage)
+    public void setRawMessage(String rawMessage)
     {
         this.rawMessage = rawMessage;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+
     public String toString()
     {
         return "HL7Message(" +
@@ -125,7 +125,7 @@ public class HL7Message implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -159,7 +159,7 @@ public class HL7Message implements HL7Visitable
                             getRawMessage());
     }
 
-    @NotNull
+
     public HL7MessageBuilder toBuilder()
     {
         return new HL7MessageBuilder(getReceived(),

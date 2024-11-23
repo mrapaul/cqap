@@ -6,7 +6,7 @@ import com.peirs.datamodel.dicom.*;
 import com.peirs.datamodel.ticket.*;
 import com.vaadin.data.*;
 import com.vaadin.navigator.*;
-import org.jetbrains.annotations.*;
+
 
 import java.io.*;
 import java.util.*;
@@ -15,14 +15,14 @@ public interface NewTicketView extends View
 {
     void setListener(Listener listener);
 
-    void setContainers(@NotNull Container queryResults,
-                       @NotNull Container groups,
-                       @NotNull Container institutions,
-                       @NotNull Container pirs,
-                       @NotNull Container sts,
-                       @NotNull Container pacsContainer,
-                       @NotNull Container externalImagesContainer,
-                       @NotNull Container internalImagesContainer);
+    void setContainers(Container queryResults,
+                       Container groups,
+                       Container institutions,
+                       Container pirs,
+                       Container sts,
+                       Container pacsContainer,
+                       Container externalImagesContainer,
+                       Container internalImagesContainer);
 
     void displayCreateResult(String result);
 
@@ -56,9 +56,9 @@ public interface NewTicketView extends View
 
         void newPACSSelected();
 
-        void savePACS(@NotNull PACS pacs);
+        void savePACS(PACS pacs);
 
-        void deletePACS(@NotNull PACS pacs);
+        void deletePACS(PACS pacs);
 
         void addPACS();
 

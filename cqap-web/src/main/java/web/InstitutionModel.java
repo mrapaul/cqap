@@ -5,7 +5,7 @@ import com.peirs.datamodel.*;
 import com.vaadin.data.*;
 import com.vaadin.data.util.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
@@ -16,13 +16,13 @@ import static ch.lambdaj.Lambda.sort;
 public class InstitutionModel
 {
     private static final String FNAME = "name";
-    @NotNull private final ClientRestService risRestApi;
-    @NotNull private final InstitutionContainer institutionContainer;
-    @NotNull private final IndexedContainer userContainer;
-    @NotNull private final BeanContainer<String, Country> countriesContainer;
-    @NotNull private final IndexedContainer timezonesContainer;
+    private final ClientRestService risRestApi;
+    private final InstitutionContainer institutionContainer;
+    private final IndexedContainer userContainer;
+    private final BeanContainer<String, Country> countriesContainer;
+    private final IndexedContainer timezonesContainer;
 
-    public InstitutionModel(@NotNull ClientRestService risRestApi)
+    public InstitutionModel(ClientRestService risRestApi)
     {
         this.risRestApi = risRestApi;
 
@@ -89,22 +89,22 @@ public class InstitutionModel
         });
     }
 
-    @NotNull public InstitutionContainer getInstitutionContainer()
+    public InstitutionContainer getInstitutionContainer()
     {
         return institutionContainer;
     }
 
-    @NotNull public IndexedContainer getUserContainer()
+    public IndexedContainer getUserContainer()
     {
         return userContainer;
     }
 
-    @NotNull public Container getCountriesContainer()
+    public Container getCountriesContainer()
     {
         return countriesContainer;
     }
 
-    @NotNull public Container getTimezonesContainer()
+    public Container getTimezonesContainer()
     {
         return timezonesContainer;
     }

@@ -11,7 +11,7 @@ import com.peirs.datamodel.ticket.*;
 import com.vaadin.data.*;
 import com.vaadin.data.util.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import java.io.*;
 import java.util.*;
@@ -20,18 +20,18 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class WorklistModel
 {
-    @NotNull private final User user;
-    @NotNull private final ClientRestService clientService;
-    @NotNull private final EntityCache cache;
-    @NotNull private final UI ui;
-    @NotNull private final BeanContainer<String, TicketQueryResult> results;
-    @NotNull private final BeanContainer<String, Institution> institutions;
-    @NotNull private final Converter<ProfessionalTicket, TicketQueryResult> ticketToQueryResultConverter;
+    private final User user;
+    private final ClientRestService clientService;
+    private final EntityCache cache;
+    private final UI ui;
+    private final BeanContainer<String, TicketQueryResult> results;
+    private final BeanContainer<String, Institution> institutions;
+    private final Converter<ProfessionalTicket, TicketQueryResult> ticketToQueryResultConverter;
 
-    public WorklistModel(@NotNull User user,
-                         @NotNull ClientRestService clientService,
-                         @NotNull EntityCache cache,
-                         @NotNull UI ui)
+    public WorklistModel(User user,
+                         ClientRestService clientService,
+                         EntityCache cache,
+                         UI ui)
     {
         this.user = user;
         this.clientService = clientService;
@@ -223,7 +223,7 @@ public class WorklistModel
         clientService.deleteTicketAttachment(attachment);
     }
 
-    public String uploadPatientReport(@NotNull DicomStudy study, @NotNull File report)
+    public String uploadPatientReport(DicomStudy study, File report)
     {
         String reportText = clientService.addDicomStudyPatientReport(study, report);
 

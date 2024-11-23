@@ -1,19 +1,19 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class Allergy
 {
-    @Nullable private String name;
-    @Nullable private String type;
-    @Nullable private String description;
-    @Nullable private String severity;
-    @Nullable private String reaction;
-    @Nullable private String identificationDate;
+     private String name;
+     private String type;
+     private String description;
+     private String severity;
+     private String reaction;
+     private String identificationDate;
 
     public Allergy()
     {
@@ -21,12 +21,12 @@ public class Allergy
     }
 
     @JsonCreator
-    public Allergy(@Nullable String name,
-                   @Nullable String type,
-                   @Nullable String description,
-                   @Nullable String severity,
-                   @Nullable String reaction,
-                   @Nullable String identificationDate)
+    public Allergy( String name,
+                    String type,
+                    String description,
+                    String severity,
+                    String reaction,
+                    String identificationDate)
     {
         super();
 
@@ -38,72 +38,72 @@ public class Allergy
         this.identificationDate = identificationDate;
     }
 
-    @Nullable
+    
     public String getName()
     {
         return name;
     }
 
-    @Nullable
+    
     public String getType()
     {
         return type;
     }
 
-    @Nullable
+    
     public String getDescription()
     {
         return description;
     }
 
-    @Nullable
+    
     public String getSeverity()
     {
         return severity;
     }
 
-    @Nullable
+    
     public String getReaction()
     {
         return reaction;
     }
 
-    @Nullable
+    
     public String getIdentificationDate()
     {
         return identificationDate;
     }
-    public void setName(@Nullable String name)
+    public void setName( String name)
     {
         this.name = name;
     }
 
-    public void setType(@Nullable String type)
+    public void setType( String type)
     {
         this.type = type;
     }
 
-    public void setDescription(@Nullable String description)
+    public void setDescription( String description)
     {
         this.description = description;
     }
 
-    public void setSeverity(@Nullable String severity)
+    public void setSeverity( String severity)
     {
         this.severity = severity;
     }
 
-    public void setReaction(@Nullable String reaction)
+    public void setReaction( String reaction)
     {
         this.reaction = reaction;
     }
 
-    public void setIdentificationDate(@Nullable String identificationDate)
+    public void setIdentificationDate( String identificationDate)
     {
         this.identificationDate = identificationDate;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "Allergy(" +
@@ -115,7 +115,7 @@ public class Allergy
             " identificationDate: " + getIdentificationDate() + ")";
     }
 
-    @NotNull
+    
     public AllergyBuilder toBuilder()
     {
         return new AllergyBuilder().setName(getName())

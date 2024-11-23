@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,13 +10,13 @@ import com.lakeland.ris.datamodel.*;
 public class CreateDicomOrder extends TimedMessage implements HL7Visitable
 {
     public static final byte TYPE = 33;
-    @NotNull private String userId;
-    @NotNull private String dicomStudyId;
-    @NotNull private String patientHistory;
-    @NotNull private String referringPhysician;
-    @NotNull private OrderPriority priority;
-    @Nullable private String assignedTo;
-    @Nullable private String techNote;
+    private String userId;
+    private String dicomStudyId;
+    private String patientHistory;
+    private String referringPhysician;
+    private OrderPriority priority;
+     private String assignedTo;
+     private String techNote;
 
     public CreateDicomOrder()
     {
@@ -24,14 +24,14 @@ public class CreateDicomOrder extends TimedMessage implements HL7Visitable
     }
 
     @JsonCreator
-    public CreateDicomOrder(@NotNull Date timestamp,
-                            @NotNull String userId,
-                            @NotNull String dicomStudyId,
-                            @NotNull String patientHistory,
-                            @NotNull String referringPhysician,
-                            @NotNull OrderPriority priority,
-                            @Nullable String assignedTo,
-                            @Nullable String techNote)
+    public CreateDicomOrder(Date timestamp,
+                            String userId,
+                            String dicomStudyId,
+                            String patientHistory,
+                            String referringPhysician,
+                            OrderPriority priority,
+                             String assignedTo,
+                             String techNote)
     {
         super(timestamp);
 
@@ -44,88 +44,88 @@ public class CreateDicomOrder extends TimedMessage implements HL7Visitable
         this.techNote = techNote;
     }
 
-    @NotNull
+
     public String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+
     public String getDicomStudyId()
     {
         return dicomStudyId;
     }
 
-    @NotNull
+
     public String getPatientHistory()
     {
         return patientHistory;
     }
 
-    @NotNull
+
     public String getReferringPhysician()
     {
         return referringPhysician;
     }
 
-    @NotNull
+
     public OrderPriority getPriority()
     {
         return priority;
     }
 
-    @Nullable
+    
     public String getAssignedTo()
     {
         return assignedTo;
     }
 
-    @Nullable
+    
     public String getTechNote()
     {
         return techNote;
     }
-    public void setUserId(@NotNull String userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }
 
-    public void setDicomStudyId(@NotNull String dicomStudyId)
+    public void setDicomStudyId(String dicomStudyId)
     {
         this.dicomStudyId = dicomStudyId;
     }
 
-    public void setPatientHistory(@NotNull String patientHistory)
+    public void setPatientHistory(String patientHistory)
     {
         this.patientHistory = patientHistory;
     }
 
-    public void setReferringPhysician(@NotNull String referringPhysician)
+    public void setReferringPhysician(String referringPhysician)
     {
         this.referringPhysician = referringPhysician;
     }
 
-    public void setPriority(@NotNull OrderPriority priority)
+    public void setPriority(OrderPriority priority)
     {
         this.priority = priority;
     }
 
-    public void setAssignedTo(@Nullable String assignedTo)
+    public void setAssignedTo( String assignedTo)
     {
         this.assignedTo = assignedTo;
     }
 
-    public void setTechNote(@Nullable String techNote)
+    public void setTechNote( String techNote)
     {
         this.techNote = techNote;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+
     public String toString()
     {
         return "CreateDicomOrder(" +
@@ -141,7 +141,7 @@ public class CreateDicomOrder extends TimedMessage implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -182,7 +182,7 @@ public class CreateDicomOrder extends TimedMessage implements HL7Visitable
                             getTechNote());
     }
 
-    @NotNull
+
     public CreateDicomOrderBuilder toBuilder()
     {
         return new CreateDicomOrderBuilder(getTimestamp(),

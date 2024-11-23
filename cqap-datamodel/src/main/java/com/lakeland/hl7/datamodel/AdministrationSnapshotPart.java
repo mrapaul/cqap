@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,8 +10,8 @@ import com.lakeland.ris.datamodel.*;
 public class AdministrationSnapshotPart extends TimedMessage implements HL7Visitable
 {
     public static final byte TYPE = 13;
-    @NotNull private String userId;
-    @NotNull private String order;
+    private String userId;
+    private String order;
 
     public AdministrationSnapshotPart()
     {
@@ -19,9 +19,9 @@ public class AdministrationSnapshotPart extends TimedMessage implements HL7Visit
     }
 
     @JsonCreator
-    public AdministrationSnapshotPart(@NotNull Date timestamp,
-                                      @NotNull String userId,
-                                      @NotNull String order)
+    public AdministrationSnapshotPart(Date timestamp,
+                                      String userId,
+                                      String order)
     {
         super(timestamp);
 
@@ -29,33 +29,33 @@ public class AdministrationSnapshotPart extends TimedMessage implements HL7Visit
         this.order = order;
     }
 
-    @NotNull
+    
     public String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     public String getOrder()
     {
         return order;
     }
-    public void setUserId(@NotNull String userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }
 
-    public void setOrder(@NotNull String order)
+    public void setOrder(String order)
     {
         this.order = order;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "AdministrationSnapshotPart(" +
@@ -66,7 +66,7 @@ public class AdministrationSnapshotPart extends TimedMessage implements HL7Visit
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -97,7 +97,7 @@ public class AdministrationSnapshotPart extends TimedMessage implements HL7Visit
                             getOrder());
     }
 
-    @NotNull
+    
     public AdministrationSnapshotPartBuilder toBuilder()
     {
         return new AdministrationSnapshotPartBuilder(getTimestamp(),

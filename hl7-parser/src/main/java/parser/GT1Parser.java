@@ -4,14 +4,14 @@ import ca.uhn.hl7v2.*;
 import ca.uhn.hl7v2.model.v26.datatype.*;
 import ca.uhn.hl7v2.model.v26.segment.*;
 import com.lakeland.ris.ui.datamodel.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
 public class GT1Parser implements MessageParser<List<GT1>>
 {
-    @Override public void convert(@NotNull List<GT1> gt1s,
-                                  @NotNull DetailedOrderBuilder orderBuilder) throws HL7Exception
+    @Override public void convert(List<GT1> gt1s,
+                                  DetailedOrderBuilder orderBuilder) throws HL7Exception
     {
         String guarantorName = "";
         String guarantorAddress = "";

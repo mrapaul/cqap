@@ -1,7 +1,7 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -9,7 +9,7 @@ import java.util.*;
 
 public class ReportTemplates
 {
-    @NotNull private Collection<ReportTemplate> templates;
+    private Collection<ReportTemplate> templates;
 
     public ReportTemplates()
     {
@@ -17,24 +17,24 @@ public class ReportTemplates
     }
 
     @JsonCreator
-    public ReportTemplates(@NotNull Collection<ReportTemplate> templates)
+    public ReportTemplates(Collection<ReportTemplate> templates)
     {
         super();
 
         this.templates = templates;
     }
 
-    @NotNull
+
     public Collection<ReportTemplate> getTemplates()
     {
         return templates;
     }
-    public void setTemplates(@NotNull Collection<ReportTemplate> templates)
+    public void setTemplates(Collection<ReportTemplate> templates)
     {
         this.templates = templates;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "ReportTemplates(" +
@@ -43,7 +43,7 @@ public class ReportTemplates
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -67,7 +67,7 @@ public class ReportTemplates
                             getTemplates());
     }
 
-    @NotNull
+
     public ReportTemplatesBuilder toBuilder()
     {
         return new ReportTemplatesBuilder(getTemplates());

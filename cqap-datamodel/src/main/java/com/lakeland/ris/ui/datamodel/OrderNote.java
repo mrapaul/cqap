@@ -1,17 +1,17 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class OrderNote
 {
-    @NotNull private Date timestamp;
-    @NotNull private String orderId;
-    @NotNull private String userId;
-    @NotNull private String note;
+    private Date timestamp;
+    private String orderId;
+    private String userId;
+    private String note;
 
     public OrderNote()
     {
@@ -19,10 +19,10 @@ public class OrderNote
     }
 
     @JsonCreator
-    public OrderNote(@NotNull Date timestamp,
-                     @NotNull String orderId,
-                     @NotNull String userId,
-                     @NotNull String note)
+    public OrderNote(Date timestamp,
+                     String orderId,
+                     String userId,
+                     String note)
     {
         super();
 
@@ -32,50 +32,50 @@ public class OrderNote
         this.note = note;
     }
 
-    @NotNull
+    
     public Date getTimestamp()
     {
         return timestamp;
     }
 
-    @NotNull
+    
     public String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+    
     public String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     public String getNote()
     {
         return note;
     }
-    public void setTimestamp(@NotNull Date timestamp)
+    public void setTimestamp(Date timestamp)
     {
         this.timestamp = timestamp;
     }
 
-    public void setOrderId(@NotNull String orderId)
+    public void setOrderId(String orderId)
     {
         this.orderId = orderId;
     }
 
-    public void setUserId(@NotNull String userId)
+    public void setUserId(String userId)
     {
         this.userId = userId;
     }
 
-    public void setNote(@NotNull String note)
+    public void setNote(String note)
     {
         this.note = note;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "OrderNote(" +
@@ -85,7 +85,7 @@ public class OrderNote
             " note: " + getNote() + ")";
     }
 
-    @NotNull
+    
     public OrderNoteBuilder toBuilder()
     {
         return new OrderNoteBuilder(getTimestamp(),

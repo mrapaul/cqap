@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,14 +8,14 @@ import java.util.*;
 
 public class ManualAssignOrderBuilder extends OrderActivityBuilder<ManualAssignOrder, ManualAssignOrderBuilder>
 {
-    @NotNull private Collection<String> orders;
-    @NotNull private String assignUserId;
+    private Collection<String> orders;
+    private String assignUserId;
 
-    public ManualAssignOrderBuilder(@NotNull Date timestamp,
-                                    @NotNull String orderId,
-                                    @NotNull String userId,
-                                    @NotNull Collection<String> orders,
-                                    @NotNull String assignUserId)
+    public ManualAssignOrderBuilder(Date timestamp,
+                                    String orderId,
+                                    String userId,
+                                    Collection<String> orders,
+                                    String assignUserId)
     {
         super(timestamp,
               orderId,
@@ -26,63 +26,63 @@ public class ManualAssignOrderBuilder extends OrderActivityBuilder<ManualAssignO
     }
 
 
-    @NotNull
+
     @Override
-    public ManualAssignOrderBuilder setTimestamp(@NotNull Date timestamp)
+    public ManualAssignOrderBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
+
     @Override
-    public ManualAssignOrderBuilder setOrderId(@NotNull String orderId)
+    public ManualAssignOrderBuilder setOrderId(String orderId)
     {
         super.setOrderId(orderId);
 
         return self();
     }
 
-    @NotNull
+
     @Override
-    public ManualAssignOrderBuilder setUserId(@NotNull String userId)
+    public ManualAssignOrderBuilder setUserId(String userId)
     {
         super.setUserId(userId);
 
         return self();
     }
 
-    @NotNull
-    public ManualAssignOrderBuilder setOrders(@NotNull Collection<String> orders)
+
+    public ManualAssignOrderBuilder setOrders(Collection<String> orders)
     {
         this.orders = orders;
 
         return self();
     }
 
-    @NotNull
-    public ManualAssignOrderBuilder setAssignUserId(@NotNull String assignUserId)
+
+    public ManualAssignOrderBuilder setAssignUserId(String assignUserId)
     {
         this.assignUserId = assignUserId;
 
         return self();
     }
 
-    @NotNull
+
     protected Collection<String> getOrders()
     {
         return orders;
     }
 
-    @NotNull
+
     protected String getAssignUserId()
     {
         return assignUserId;
     }
 
     @Override
-    @NotNull
+
     public ManualAssignOrder build()
     {
         return new ManualAssignOrder(getTimestamp(),
@@ -94,7 +94,7 @@ public class ManualAssignOrderBuilder extends OrderActivityBuilder<ManualAssignO
 
 
     @Override
-    @NotNull
+
     protected ManualAssignOrderBuilder self()
     {
         return this;

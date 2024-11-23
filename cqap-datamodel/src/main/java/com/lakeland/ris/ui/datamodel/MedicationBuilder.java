@@ -1,27 +1,27 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class MedicationBuilder
 {
-    @Nullable private String drugName;
-    @Nullable private String genericName;
-    @Nullable private String orderingPhysician;
-    @Nullable private String pharmacy;
-    @Nullable private String status;
-    @Nullable private Date lastRefillDate;
-    @Nullable private String daysSupply;
-    @Nullable private String refills;
-    @Nullable private String quantity;
-    @Nullable private String qualifier;
-    @Nullable private String substitution;
-    @Nullable private String pharmacyNotes;
-    @Nullable private String directions;
-    @Nullable private Date orderDate;
-    @Nullable private Date reconcileDate;
+     private String drugName;
+     private String genericName;
+     private String orderingPhysician;
+     private String pharmacy;
+     private String status;
+     private Date lastRefillDate;
+     private String daysSupply;
+     private String refills;
+     private String quantity;
+     private String qualifier;
+     private String substitution;
+     private String pharmacyNotes;
+     private String directions;
+     private Date orderDate;
+     private Date reconcileDate;
 
     public MedicationBuilder()
     {
@@ -30,217 +30,217 @@ public class MedicationBuilder
     }
 
 
-    @NotNull
-    public MedicationBuilder setDrugName(@Nullable String drugName)
+    
+    public MedicationBuilder setDrugName( String drugName)
     {
         this.drugName = drugName;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setGenericName(@Nullable String genericName)
+    
+    public MedicationBuilder setGenericName( String genericName)
     {
         this.genericName = genericName;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setOrderingPhysician(@Nullable String orderingPhysician)
+    
+    public MedicationBuilder setOrderingPhysician( String orderingPhysician)
     {
         this.orderingPhysician = orderingPhysician;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setPharmacy(@Nullable String pharmacy)
+    
+    public MedicationBuilder setPharmacy( String pharmacy)
     {
         this.pharmacy = pharmacy;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setStatus(@Nullable String status)
+    
+    public MedicationBuilder setStatus( String status)
     {
         this.status = status;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setLastRefillDate(@Nullable Date lastRefillDate)
+    
+    public MedicationBuilder setLastRefillDate( Date lastRefillDate)
     {
         this.lastRefillDate = lastRefillDate;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setDaysSupply(@Nullable String daysSupply)
+    
+    public MedicationBuilder setDaysSupply( String daysSupply)
     {
         this.daysSupply = daysSupply;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setRefills(@Nullable String refills)
+    
+    public MedicationBuilder setRefills( String refills)
     {
         this.refills = refills;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setQuantity(@Nullable String quantity)
+    
+    public MedicationBuilder setQuantity( String quantity)
     {
         this.quantity = quantity;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setQualifier(@Nullable String qualifier)
+    
+    public MedicationBuilder setQualifier( String qualifier)
     {
         this.qualifier = qualifier;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setSubstitution(@Nullable String substitution)
+    
+    public MedicationBuilder setSubstitution( String substitution)
     {
         this.substitution = substitution;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setPharmacyNotes(@Nullable String pharmacyNotes)
+    
+    public MedicationBuilder setPharmacyNotes( String pharmacyNotes)
     {
         this.pharmacyNotes = pharmacyNotes;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setDirections(@Nullable String directions)
+    
+    public MedicationBuilder setDirections( String directions)
     {
         this.directions = directions;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setOrderDate(@Nullable Date orderDate)
+    
+    public MedicationBuilder setOrderDate( Date orderDate)
     {
         this.orderDate = orderDate;
 
         return self();
     }
 
-    @NotNull
-    public MedicationBuilder setReconcileDate(@Nullable Date reconcileDate)
+    
+    public MedicationBuilder setReconcileDate( Date reconcileDate)
     {
         this.reconcileDate = reconcileDate;
 
         return self();
     }
 
-    @Nullable
+    
     protected String getDrugName()
     {
         return drugName;
     }
 
-    @Nullable
+    
     protected String getGenericName()
     {
         return genericName;
     }
 
-    @Nullable
+    
     protected String getOrderingPhysician()
     {
         return orderingPhysician;
     }
 
-    @Nullable
+    
     protected String getPharmacy()
     {
         return pharmacy;
     }
 
-    @Nullable
+    
     protected String getStatus()
     {
         return status;
     }
 
-    @Nullable
+    
     protected Date getLastRefillDate()
     {
         return lastRefillDate;
     }
 
-    @Nullable
+    
     protected String getDaysSupply()
     {
         return daysSupply;
     }
 
-    @Nullable
+    
     protected String getRefills()
     {
         return refills;
     }
 
-    @Nullable
+    
     protected String getQuantity()
     {
         return quantity;
     }
 
-    @Nullable
+    
     protected String getQualifier()
     {
         return qualifier;
     }
 
-    @Nullable
+    
     protected String getSubstitution()
     {
         return substitution;
     }
 
-    @Nullable
+    
     protected String getPharmacyNotes()
     {
         return pharmacyNotes;
     }
 
-    @Nullable
+    
     protected String getDirections()
     {
         return directions;
     }
 
-    @Nullable
+    
     protected Date getOrderDate()
     {
         return orderDate;
     }
 
-    @Nullable
+    
     protected Date getReconcileDate()
     {
         return reconcileDate;
     }
 
-    @NotNull
+    
     public Medication build()
     {
         return new Medication(getDrugName(),
@@ -261,7 +261,7 @@ public class MedicationBuilder
     }
 
 
-    @NotNull
+    
     protected MedicationBuilder self()
     {
         return this;

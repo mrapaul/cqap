@@ -9,16 +9,15 @@ import ca.uhn.hl7v2.model.v26.segment.*;
 import com.lakeland.ris.datamodel.*;
 import com.lakeland.ris.ui.datamodel.*;
 import com.peirs.datamodel.hl7.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
 
 public class ORU_R01Parser
 {
-    @NotNull private final MSHParser mshParser;
-    @NotNull private final OBRParser obrParser;
-    @NotNull private final PIDParser pidParser;
-    @NotNull private final PV1Parser pv1Parser;
+    private final MSHParser mshParser;
+    private final OBRParser obrParser;
+    private final PIDParser pidParser;
+    private final PV1Parser pv1Parser;
     private DetailedOrderBuilder detailedOrderBuilder;
     private HL7 hl7;
 

@@ -10,26 +10,26 @@ import com.peirs.datamodel.ticket.*;
 import com.vaadin.data.*;
 import com.vaadin.data.util.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import java.io.*;
 import java.util.*;
 
 public class ArchiveModel
 {
-    @NotNull private final User user;
-    @NotNull private final ClientRestService clientService;
-    @NotNull private final UI ui;
-    @NotNull private final BeanContainer<String, TicketQueryResult> results;
-    @NotNull private final BeanContainer<String, Group> groups;
-    @NotNull private final BeanContainer<String, Institution> institutions;
-    @NotNull private final IndexedContainer pirs;
-    @NotNull private final Converter<ProfessionalTicket, TicketQueryResult> ticketToQueryResultConverter;
+    private final User user;
+    private final ClientRestService clientService;
+    private final UI ui;
+    private final BeanContainer<String, TicketQueryResult> results;
+    private final BeanContainer<String, Group> groups;
+    private final BeanContainer<String, Institution> institutions;
+    private final IndexedContainer pirs;
+    private final Converter<ProfessionalTicket, TicketQueryResult> ticketToQueryResultConverter;
 
-    public ArchiveModel(@NotNull User user,
-                        @NotNull ClientRestService clientService,
-                        @NotNull EntityCache cache,
-                        @NotNull UI ui)
+    public ArchiveModel(User user,
+                        ClientRestService clientService,
+                        EntityCache cache,
+                        UI ui)
     {
         this.user = user;
         this.clientService = clientService;

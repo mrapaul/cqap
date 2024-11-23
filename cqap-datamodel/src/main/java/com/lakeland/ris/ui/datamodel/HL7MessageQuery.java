@@ -1,7 +1,7 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -9,27 +9,27 @@ import java.util.*;
 
 public class HL7MessageQuery
 {
-    @Nullable private String orderNumber;
-    @Nullable private Date createdStartDate;
-    @Nullable private Date createdEndDate;
-    @Nullable private Date updatedStartDate;
-    @Nullable private Date updatedEndDate;
-    @Nullable private String firstName;
-    @Nullable private String lastName;
-    @Nullable private String mRN;
-    @Nullable private String accession;
-    @Nullable private String modality;
-    @Nullable private String studyDescription;
-    @Nullable private String cPTCode;
-    @Nullable private Collection<String> institutions;
+     private String orderNumber;
+     private Date createdStartDate;
+     private Date createdEndDate;
+     private Date updatedStartDate;
+     private Date updatedEndDate;
+     private String firstName;
+     private String lastName;
+     private String mRN;
+     private String accession;
+     private String modality;
+     private String studyDescription;
+     private String cPTCode;
+     private Collection<String> institutions;
     private boolean exactSearch;
-    @Nullable private Collection<OrderStatus> statuses;
-    @Nullable private Collection<OrderPriority> priorities;
-    @Nullable private String dOB;
+     private Collection<OrderStatus> statuses;
+     private Collection<OrderPriority> priorities;
+     private String dOB;
     private boolean critical;
-    @Nullable private Collection<String> reporters;
-    @Nullable private Date reportStartDate;
-    @Nullable private Date reportEndDate;
+     private Collection<String> reporters;
+     private Date reportStartDate;
+     private Date reportEndDate;
 
     public HL7MessageQuery()
     {
@@ -37,27 +37,27 @@ public class HL7MessageQuery
     }
 
     @JsonCreator
-    public HL7MessageQuery(@Nullable String orderNumber,
-                           @Nullable Date createdStartDate,
-                           @Nullable Date createdEndDate,
-                           @Nullable Date updatedStartDate,
-                           @Nullable Date updatedEndDate,
-                           @Nullable String firstName,
-                           @Nullable String lastName,
-                           @Nullable String mRN,
-                           @Nullable String accession,
-                           @Nullable String modality,
-                           @Nullable String studyDescription,
-                           @Nullable String cPTCode,
-                           @Nullable Collection<String> institutions,
+    public HL7MessageQuery( String orderNumber,
+                            Date createdStartDate,
+                            Date createdEndDate,
+                            Date updatedStartDate,
+                            Date updatedEndDate,
+                            String firstName,
+                            String lastName,
+                            String mRN,
+                            String accession,
+                            String modality,
+                            String studyDescription,
+                            String cPTCode,
+                            Collection<String> institutions,
                            boolean exactSearch,
-                           @Nullable Collection<OrderStatus> statuses,
-                           @Nullable Collection<OrderPriority> priorities,
-                           @Nullable String dOB,
+                            Collection<OrderStatus> statuses,
+                            Collection<OrderPriority> priorities,
+                            String dOB,
                            boolean critical,
-                           @Nullable Collection<String> reporters,
-                           @Nullable Date reportStartDate,
-                           @Nullable Date reportEndDate)
+                            Collection<String> reporters,
+                            Date reportStartDate,
+                            Date reportEndDate)
     {
         super();
 
@@ -84,79 +84,79 @@ public class HL7MessageQuery
         this.reportEndDate = reportEndDate;
     }
 
-    @Nullable
+    
     public String getOrderNumber()
     {
         return orderNumber;
     }
 
-    @Nullable
+    
     public Date getCreatedStartDate()
     {
         return createdStartDate;
     }
 
-    @Nullable
+    
     public Date getCreatedEndDate()
     {
         return createdEndDate;
     }
 
-    @Nullable
+    
     public Date getUpdatedStartDate()
     {
         return updatedStartDate;
     }
 
-    @Nullable
+    
     public Date getUpdatedEndDate()
     {
         return updatedEndDate;
     }
 
-    @Nullable
+    
     public String getFirstName()
     {
         return firstName;
     }
 
-    @Nullable
+    
     public String getLastName()
     {
         return lastName;
     }
 
-    @Nullable
+    
     public String getMRN()
     {
         return mRN;
     }
 
-    @Nullable
+    
     public String getAccession()
     {
         return accession;
     }
 
-    @Nullable
+    
     public String getModality()
     {
         return modality;
     }
 
-    @Nullable
+    
     public String getStudyDescription()
     {
         return studyDescription;
     }
 
-    @Nullable
+    
     public String getCPTCode()
     {
         return cPTCode;
     }
 
-    @Nullable
+    
     public Collection<String> getInstitutions()
     {
         return institutions;
@@ -167,19 +167,19 @@ public class HL7MessageQuery
         return exactSearch;
     }
 
-    @Nullable
+    
     public Collection<OrderStatus> getStatuses()
     {
         return statuses;
     }
 
-    @Nullable
+    
     public Collection<OrderPriority> getPriorities()
     {
         return priorities;
     }
 
-    @Nullable
+    
     public String getDOB()
     {
         return dOB;
@@ -190,84 +190,84 @@ public class HL7MessageQuery
         return critical;
     }
 
-    @Nullable
+    
     public Collection<String> getReporters()
     {
         return reporters;
     }
 
-    @Nullable
+    
     public Date getReportStartDate()
     {
         return reportStartDate;
     }
 
-    @Nullable
+    
     public Date getReportEndDate()
     {
         return reportEndDate;
     }
-    public void setOrderNumber(@Nullable String orderNumber)
+    public void setOrderNumber( String orderNumber)
     {
         this.orderNumber = orderNumber;
     }
 
-    public void setCreatedStartDate(@Nullable Date createdStartDate)
+    public void setCreatedStartDate( Date createdStartDate)
     {
         this.createdStartDate = createdStartDate;
     }
 
-    public void setCreatedEndDate(@Nullable Date createdEndDate)
+    public void setCreatedEndDate( Date createdEndDate)
     {
         this.createdEndDate = createdEndDate;
     }
 
-    public void setUpdatedStartDate(@Nullable Date updatedStartDate)
+    public void setUpdatedStartDate( Date updatedStartDate)
     {
         this.updatedStartDate = updatedStartDate;
     }
 
-    public void setUpdatedEndDate(@Nullable Date updatedEndDate)
+    public void setUpdatedEndDate( Date updatedEndDate)
     {
         this.updatedEndDate = updatedEndDate;
     }
 
-    public void setFirstName(@Nullable String firstName)
+    public void setFirstName( String firstName)
     {
         this.firstName = firstName;
     }
 
-    public void setLastName(@Nullable String lastName)
+    public void setLastName( String lastName)
     {
         this.lastName = lastName;
     }
 
-    public void setMRN(@Nullable String mRN)
+    public void setMRN( String mRN)
     {
         this.mRN = mRN;
     }
 
-    public void setAccession(@Nullable String accession)
+    public void setAccession( String accession)
     {
         this.accession = accession;
     }
 
-    public void setModality(@Nullable String modality)
+    public void setModality( String modality)
     {
         this.modality = modality;
     }
 
-    public void setStudyDescription(@Nullable String studyDescription)
+    public void setStudyDescription( String studyDescription)
     {
         this.studyDescription = studyDescription;
     }
 
-    public void setCPTCode(@Nullable String cPTCode)
+    public void setCPTCode( String cPTCode)
     {
         this.cPTCode = cPTCode;
     }
 
-    public void setInstitutions(@Nullable Collection<String> institutions)
+    public void setInstitutions( Collection<String> institutions)
     {
         this.institutions = institutions;
     }
@@ -277,17 +277,17 @@ public class HL7MessageQuery
         this.exactSearch = exactSearch;
     }
 
-    public void setStatuses(@Nullable Collection<OrderStatus> statuses)
+    public void setStatuses( Collection<OrderStatus> statuses)
     {
         this.statuses = statuses;
     }
 
-    public void setPriorities(@Nullable Collection<OrderPriority> priorities)
+    public void setPriorities( Collection<OrderPriority> priorities)
     {
         this.priorities = priorities;
     }
 
-    public void setDOB(@Nullable String dOB)
+    public void setDOB( String dOB)
     {
         this.dOB = dOB;
     }
@@ -297,22 +297,22 @@ public class HL7MessageQuery
         this.critical = critical;
     }
 
-    public void setReporters(@Nullable Collection<String> reporters)
+    public void setReporters( Collection<String> reporters)
     {
         this.reporters = reporters;
     }
 
-    public void setReportStartDate(@Nullable Date reportStartDate)
+    public void setReportStartDate( Date reportStartDate)
     {
         this.reportStartDate = reportStartDate;
     }
 
-    public void setReportEndDate(@Nullable Date reportEndDate)
+    public void setReportEndDate( Date reportEndDate)
     {
         this.reportEndDate = reportEndDate;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "HL7MessageQuery(" +
@@ -341,7 +341,7 @@ public class HL7MessageQuery
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -405,7 +405,7 @@ public class HL7MessageQuery
                             getReportEndDate());
     }
 
-    @NotNull
+    
     public HL7MessageQueryBuilder toBuilder()
     {
         return new HL7MessageQueryBuilder().setOrderNumber(getOrderNumber())

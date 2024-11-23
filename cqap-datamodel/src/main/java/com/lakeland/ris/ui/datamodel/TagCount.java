@@ -1,14 +1,14 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class TagCount
 {
-    @NotNull private String tag;
+    private String tag;
     private int count;
 
     public TagCount()
@@ -17,7 +17,7 @@ public class TagCount
     }
 
     @JsonCreator
-    public TagCount(@NotNull String tag,
+    public TagCount(String tag,
                     int count)
     {
         super();
@@ -26,7 +26,7 @@ public class TagCount
         this.count = count;
     }
 
-    @NotNull
+
     public String getTag()
     {
         return tag;
@@ -36,7 +36,7 @@ public class TagCount
     {
         return count;
     }
-    public void setTag(@NotNull String tag)
+    public void setTag(String tag)
     {
         this.tag = tag;
     }
@@ -46,7 +46,7 @@ public class TagCount
         this.count = count;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "TagCount(" +
@@ -54,7 +54,7 @@ public class TagCount
             " count: " + getCount() + ")";
     }
 
-    @NotNull
+
     public TagCountBuilder toBuilder()
     {
         return new TagCountBuilder(getTag()).setCount(getCount());

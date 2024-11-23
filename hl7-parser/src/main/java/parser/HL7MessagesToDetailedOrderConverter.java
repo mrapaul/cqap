@@ -4,7 +4,7 @@ import ca.uhn.hl7v2.*;
 import ca.uhn.hl7v2.model.*;
 import ca.uhn.hl7v2.model.v26.message.*;
 import com.lakeland.ris.ui.datamodel.*;
-import org.jetbrains.annotations.*;
+
 import org.slf4j.*;
 
 import java.util.*;
@@ -12,9 +12,9 @@ import java.util.*;
 public class HL7MessagesToDetailedOrderConverter
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(HL7MessagesToDetailedOrderConverter.class);
-    @NotNull private final ORMParser ormParser;
-    @NotNull private final OMGParser omgParser;
-    @NotNull private final ADT_A01Parser adtA01Parser;
+    private final ORMParser ormParser;
+    private final OMGParser omgParser;
+    private final ADT_A01Parser adtA01Parser;
 
     public HL7MessagesToDetailedOrderConverter()
     {

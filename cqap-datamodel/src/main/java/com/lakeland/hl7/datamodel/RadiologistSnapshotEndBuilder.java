@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,10 +8,10 @@ import com.lakeland.ris.datamodel.*;
 
 public class RadiologistSnapshotEndBuilder extends TimedMessageBuilder<RadiologistSnapshotEnd, RadiologistSnapshotEndBuilder>
 {
-    @NotNull private String userId;
+    private String userId;
 
-    public RadiologistSnapshotEndBuilder(@NotNull Date timestamp,
-                                         @NotNull String userId)
+    public RadiologistSnapshotEndBuilder(Date timestamp,
+                                         String userId)
     {
         super(timestamp);
 
@@ -19,31 +19,31 @@ public class RadiologistSnapshotEndBuilder extends TimedMessageBuilder<Radiologi
     }
 
 
-    @NotNull
+
     @Override
-    public RadiologistSnapshotEndBuilder setTimestamp(@NotNull Date timestamp)
+    public RadiologistSnapshotEndBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
-    public RadiologistSnapshotEndBuilder setUserId(@NotNull String userId)
+
+    public RadiologistSnapshotEndBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
+
     protected String getUserId()
     {
         return userId;
     }
 
     @Override
-    @NotNull
+
     public RadiologistSnapshotEnd build()
     {
         return new RadiologistSnapshotEnd(getTimestamp(),
@@ -52,7 +52,7 @@ public class RadiologistSnapshotEndBuilder extends TimedMessageBuilder<Radiologi
 
 
     @Override
-    @NotNull
+
     protected RadiologistSnapshotEndBuilder self()
     {
         return this;

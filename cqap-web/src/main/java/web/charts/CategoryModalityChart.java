@@ -6,7 +6,7 @@ import com.vaadin.addon.charts.*;
 import com.vaadin.addon.charts.model.*;
 import com.vaadin.addon.charts.model.style.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import web.*;
 
 import java.util.*;
@@ -75,7 +75,7 @@ public class CategoryModalityChart
         return chart;
     }
 
-    public static Component getChart(@NotNull ClientRestService clientRestService)
+    public static Component getChart(ClientRestService clientRestService)
     {
         Component ret = createChart(clientRestService);
         ret.setSizeFull();

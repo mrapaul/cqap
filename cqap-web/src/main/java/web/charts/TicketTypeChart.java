@@ -5,13 +5,13 @@ import com.vaadin.addon.charts.*;
 import com.vaadin.addon.charts.model.*;
 import com.vaadin.addon.charts.model.style.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 @SuppressWarnings("serial")
 public class TicketTypeChart
 {
 
-    private static Chart createChart(@NotNull ClientRestService clientRestService)
+    private static Chart createChart(ClientRestService clientRestService)
     {
         Long prTicketCount = clientRestService.getPRTicketCount();
         Long trTicketCount = clientRestService.getTRTicketCount();
@@ -53,7 +53,7 @@ public class TicketTypeChart
         return chart;
     }
 
-    public static Component getChart(@NotNull ClientRestService clientRestService)
+    public static Component getChart(ClientRestService clientRestService)
     {
         Component ret = createChart(clientRestService);
         ret.setSizeFull();

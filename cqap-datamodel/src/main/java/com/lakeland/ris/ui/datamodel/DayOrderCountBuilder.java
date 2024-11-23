@@ -1,19 +1,19 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class DayOrderCountBuilder
 {
-    @NotNull private Date date;
+    private Date date;
     private int count;
     private int morningShift;
     private int afternoonShift;
     private int eveningShift;
 
-    public DayOrderCountBuilder(@NotNull Date date)
+    public DayOrderCountBuilder(Date date)
     {
         super();
 
@@ -21,15 +21,15 @@ public class DayOrderCountBuilder
     }
 
 
-    @NotNull
-    public DayOrderCountBuilder setDate(@NotNull Date date)
+    
+    public DayOrderCountBuilder setDate(Date date)
     {
         this.date = date;
 
         return self();
     }
 
-    @NotNull
+    
     public DayOrderCountBuilder setCount(int count)
     {
         this.count = count;
@@ -37,7 +37,7 @@ public class DayOrderCountBuilder
         return self();
     }
 
-    @NotNull
+    
     public DayOrderCountBuilder setMorningShift(int morningShift)
     {
         this.morningShift = morningShift;
@@ -45,7 +45,7 @@ public class DayOrderCountBuilder
         return self();
     }
 
-    @NotNull
+    
     public DayOrderCountBuilder setAfternoonShift(int afternoonShift)
     {
         this.afternoonShift = afternoonShift;
@@ -53,7 +53,7 @@ public class DayOrderCountBuilder
         return self();
     }
 
-    @NotNull
+    
     public DayOrderCountBuilder setEveningShift(int eveningShift)
     {
         this.eveningShift = eveningShift;
@@ -61,7 +61,7 @@ public class DayOrderCountBuilder
         return self();
     }
 
-    @NotNull
+    
     protected Date getDate()
     {
         return date;
@@ -87,7 +87,7 @@ public class DayOrderCountBuilder
         return eveningShift;
     }
 
-    @NotNull
+    
     public DayOrderCount build()
     {
         return new DayOrderCount(getDate(),
@@ -98,7 +98,7 @@ public class DayOrderCountBuilder
     }
 
 
-    @NotNull
+    
     protected DayOrderCountBuilder self()
     {
         return this;

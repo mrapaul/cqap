@@ -9,7 +9,7 @@ import com.vaadin.event.*;
 import com.vaadin.server.*;
 import com.vaadin.shared.ui.label.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.slf4j.*;
 import org.vaadin.maddon.layouts.*;
 
@@ -21,24 +21,24 @@ import static web.ComponentFactory.*;
 public final class ExternalImagesView extends VerticalLayout
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(ExternalImagesView.class);
-    @NotNull private final Table pacsTable;
-    @NotNull private final Button addPacsButton;
-    @NotNull private final Button savePacsButton;
-    @NotNull private final Button deletePacsButton;
-    @NotNull private final Button refreshPacsButton;
-    @NotNull private final TextField pacsHostField;
-    @NotNull private final TextField pacsPortField;
-    @NotNull private final TextField pacsAETField;
-    @NotNull private final TextField pacsDescriptionField;
-    @NotNull private final Table externalImagesTable;
-    @NotNull private final Table internalImagesTable;
-    @NotNull private final DateField studyDateField;
-    @NotNull private final Button searchButton;
-    @NotNull private final Button clearButton;
-    @NotNull private final Button importStudyButton;
-    @NotNull private final Label imageDetailsLabel;
-    @NotNull private final TextField filterField;
-    @Nullable private NewTicketView.Listener listener;
+    private final Table pacsTable;
+    private final Button addPacsButton;
+    private final Button savePacsButton;
+    private final Button deletePacsButton;
+    private final Button refreshPacsButton;
+    private final TextField pacsHostField;
+    private final TextField pacsPortField;
+    private final TextField pacsAETField;
+    private final TextField pacsDescriptionField;
+    private final Table externalImagesTable;
+    private final Table internalImagesTable;
+    private final DateField studyDateField;
+    private final Button searchButton;
+    private final Button clearButton;
+    private final Button importStudyButton;
+    private final Label imageDetailsLabel;
+    private final TextField filterField;
+     private NewTicketView.Listener listener;
     private FormLayout pacsEditor;
 
     public ExternalImagesView()
@@ -366,9 +366,9 @@ public final class ExternalImagesView extends VerticalLayout
         });
     }
 
-    public void setContainers(@NotNull Container pacsContainer,
-                              @NotNull Container externalImagesContainer,
-                              @NotNull Container internalImagesContainer)
+    public void setContainers(Container pacsContainer,
+                              Container externalImagesContainer,
+                              Container internalImagesContainer)
     {
         pacsTable.setContainerDataSource(pacsContainer);
         externalImagesTable.setContainerDataSource(externalImagesContainer);
@@ -563,7 +563,7 @@ public final class ExternalImagesView extends VerticalLayout
         imageDetailsLabel.setValue(builder.toString());
     }
 
-    public void setListener(@Nullable NewTicketView.Listener listener)
+    public void setListener( NewTicketView.Listener listener)
     {
         this.listener = listener;
 

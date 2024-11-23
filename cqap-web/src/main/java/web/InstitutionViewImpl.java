@@ -6,7 +6,7 @@ import com.vaadin.data.util.*;
 import com.vaadin.navigator.*;
 import com.vaadin.server.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.tepi.filtertable.*;
 import org.vaadin.maddon.layouts.*;
 
@@ -15,29 +15,29 @@ import static web.ComponentFactory.*;
 public class InstitutionViewImpl extends VerticalLayout implements InstitutionView
 {
     private static final String FNAME = "name";
-    @NotNull private final FilterTable table;
-    @NotNull private final Button addButton;
-    @NotNull private final Button removeButton;
-    @NotNull private final Button saveButton;
-    @NotNull private final VerticalLayout editorLayout;
-    @NotNull private final TextField nameField;
-    @NotNull private final TextField aliasField;
-    @NotNull private final TextField codeField;
-    @NotNull private final TextField websiteField;
-    @NotNull private final TextField notesField;
-    @NotNull private final TextField addressField;
-    @NotNull private final TextField address1Field;
-    @NotNull private final TextField cityField;
-    @NotNull private final TextField stateField;
-    @NotNull private final TextField zipcodeField;
-    @NotNull private final ComboBox countryField;
-    @NotNull private final ComboBox timezoneField;
-    @NotNull private final TextField phoneField;
-    @NotNull private final TextField faxField;
-    @NotNull private final TextField emailAddressField;
-    @NotNull private final TextField contactField;
-    @NotNull private final OptionGroup radiologists;
-    @Nullable private InstitutionViewListener listener;
+    private final FilterTable table;
+    private final Button addButton;
+    private final Button removeButton;
+    private final Button saveButton;
+    private final VerticalLayout editorLayout;
+    private final TextField nameField;
+    private final TextField aliasField;
+    private final TextField codeField;
+    private final TextField websiteField;
+    private final TextField notesField;
+    private final TextField addressField;
+    private final TextField address1Field;
+    private final TextField cityField;
+    private final TextField stateField;
+    private final TextField zipcodeField;
+    private final ComboBox countryField;
+    private final ComboBox timezoneField;
+    private final TextField phoneField;
+    private final TextField faxField;
+    private final TextField emailAddressField;
+    private final TextField contactField;
+    private final OptionGroup radiologists;
+     private InstitutionViewListener listener;
 
     public InstitutionViewImpl()
     {
@@ -69,15 +69,15 @@ public class InstitutionViewImpl extends VerticalLayout implements InstitutionVi
         initAddRemoveButtons();
     }
 
-    @Override public void setListener(@NotNull InstitutionViewListener listener)
+    @Override public void setListener(InstitutionViewListener listener)
     {
         this.listener = listener;
     }
 
-    @Override public void setContainers(@NotNull Container institutionContainer,
-                                        @NotNull Container userContainer,
-                                        @NotNull Container countriesContainer,
-                                        @NotNull Container timezonesContainer)
+    @Override public void setContainers(Container institutionContainer,
+                                        Container userContainer,
+                                        Container countriesContainer,
+                                        Container timezonesContainer)
     {
         radiologists.removeAllItems();
         table.setContainerDataSource(institutionContainer);
@@ -184,7 +184,7 @@ public class InstitutionViewImpl extends VerticalLayout implements InstitutionVi
         editorLayout.addComponent(radiologistsPanel);
     }
 
-    private void setDataSources(@NotNull Institution institution)
+    private void setDataSources(Institution institution)
     {
 
         if (institution.getAddress() == null)
@@ -328,7 +328,7 @@ public class InstitutionViewImpl extends VerticalLayout implements InstitutionVi
         });
     }
 
-    @Override public void editNewInstitution(@NotNull String newItemId)
+    @Override public void editNewInstitution(String newItemId)
     {
         table.select(newItemId);
         BeanItem<Institution> item = (BeanItem<Institution>) table.getItem(newItemId);

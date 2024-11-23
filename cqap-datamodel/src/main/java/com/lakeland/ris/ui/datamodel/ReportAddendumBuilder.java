@@ -1,19 +1,19 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class ReportAddendumBuilder
 {
-    @NotNull private Date timestamp;
-    @NotNull private String userId;
-    @NotNull private String addendum;
+    private Date timestamp;
+    private String userId;
+    private String addendum;
 
-    public ReportAddendumBuilder(@NotNull Date timestamp,
-                                 @NotNull String userId,
-                                 @NotNull String addendum)
+    public ReportAddendumBuilder(Date timestamp,
+                                 String userId,
+                                 String addendum)
     {
         super();
 
@@ -23,49 +23,49 @@ public class ReportAddendumBuilder
     }
 
 
-    @NotNull
-    public ReportAddendumBuilder setTimestamp(@NotNull Date timestamp)
+    
+    public ReportAddendumBuilder setTimestamp(Date timestamp)
     {
         this.timestamp = timestamp;
 
         return self();
     }
 
-    @NotNull
-    public ReportAddendumBuilder setUserId(@NotNull String userId)
+    
+    public ReportAddendumBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
-    public ReportAddendumBuilder setAddendum(@NotNull String addendum)
+    
+    public ReportAddendumBuilder setAddendum(String addendum)
     {
         this.addendum = addendum;
 
         return self();
     }
 
-    @NotNull
+    
     protected Date getTimestamp()
     {
         return timestamp;
     }
 
-    @NotNull
+    
     protected String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     protected String getAddendum()
     {
         return addendum;
     }
 
-    @NotNull
+    
     public ReportAddendum build()
     {
         return new ReportAddendum(getTimestamp(),
@@ -74,7 +74,7 @@ public class ReportAddendumBuilder
     }
 
 
-    @NotNull
+    
     protected ReportAddendumBuilder self()
     {
         return this;

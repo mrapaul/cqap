@@ -7,8 +7,7 @@ import org.dcm4che2.data.DicomObject;
 import org.dcm4che2.data.Tag;
 import org.dcm4che2.net.ConfigurationException;
 import org.dcm4che2.tool.dcmqr.DcmQR;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -24,14 +23,14 @@ import java.util.List;
 @Component("Dcm4cheeStudyFinder")
 public class Dcm4cheeStudyFinder
 {
-    @NotNull private final DateFormat dateFormat;
+    private final DateFormat dateFormat;
 
     public Dcm4cheeStudyFinder()
     {
         dateFormat = new SimpleDateFormat("yyyyMMdd");
     }
 
-    public List<DicomObject> query(@NotNull PACS pacs, @Nullable Date studyDate) throws InterruptedException, IOException,
+    public List<DicomObject> query(PACS pacs, Date studyDate) throws InterruptedException, IOException,
     ConfigurationException
     {
         DcmQR basicQuery = new DcmQR("BasicQuery");
@@ -83,8 +82,7 @@ public class Dcm4cheeStudyFinder
         return results;
     }
 
-    @Nullable
-    public List<DicomObject> detailedQuery(@NotNull PACS pacs, @NotNull String accession) throws IOException, InterruptedException, ConfigurationException
+    public List<DicomObject> detailedQuery(PACS pacs, String accession) throws IOException, InterruptedException, ConfigurationException
     {
         DcmQR detailedQuery = new DcmQR("DetailedQuery");
         configurePACS(detailedQuery, pacs);

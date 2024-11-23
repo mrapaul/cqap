@@ -7,7 +7,7 @@ import com.vaadin.data.util.*;
 import com.vaadin.navigator.*;
 import com.vaadin.server.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.tepi.filtertable.*;
 import org.vaadin.maddon.layouts.*;
 
@@ -20,35 +20,35 @@ import static web.ComponentFactory.*;
 public class UserViewImpl extends VerticalLayout implements UserView
 {
     private static final String FNAME = "name";
-    @NotNull private final FilterTable table;
-    @NotNull private final Button addButton;
-    @NotNull private final Button removeButton;
-    @NotNull private final Button saveButton;
-    @NotNull private final Button resetPasswordButton;
-    @NotNull private final VerticalLayout editorLayout;
-    @NotNull private final TextField nameField;
-    @NotNull private final TextField usernameField;
-    @NotNull private final TextField aliasField;
-    @NotNull private final TextField positionField;
-    @NotNull private final ComboBox roleField;
-    @NotNull private final OptionGroup institutionField;
-    @NotNull private final TextField addressField;
-    @NotNull private final TextField address1Field;
-    @NotNull private final TextField cityField;
-    @NotNull private final TextField stateField;
-    @NotNull private final TextField zipcodeField;
-    @NotNull private final ComboBox countryField;
-    @NotNull private final ComboBox timezoneField;
-    @NotNull private final TextField phoneField;
-    @NotNull private final TextField faxField;
-    @NotNull private final TextField cellPhoneField;
-    @NotNull private final TextField emailAddressField;
-    @NotNull private final TextField osirixHostField;
-    @NotNull private final TextField osirixPortField;
-    @NotNull private final TextField osirixServerField;
-    @NotNull private final OptionGroup secondaryCPTCodes;
-    @NotNull private final OptionGroup primaryCPTCodes;
-    @Nullable private UserViewListener listener;
+    private final FilterTable table;
+    private final Button addButton;
+    private final Button removeButton;
+    private final Button saveButton;
+    private final Button resetPasswordButton;
+    private final VerticalLayout editorLayout;
+    private final TextField nameField;
+    private final TextField usernameField;
+    private final TextField aliasField;
+    private final TextField positionField;
+    private final ComboBox roleField;
+    private final OptionGroup institutionField;
+    private final TextField addressField;
+    private final TextField address1Field;
+    private final TextField cityField;
+    private final TextField stateField;
+    private final TextField zipcodeField;
+    private final ComboBox countryField;
+    private final ComboBox timezoneField;
+    private final TextField phoneField;
+    private final TextField faxField;
+    private final TextField cellPhoneField;
+    private final TextField emailAddressField;
+    private final TextField osirixHostField;
+    private final TextField osirixPortField;
+    private final TextField osirixServerField;
+    private final OptionGroup secondaryCPTCodes;
+    private final OptionGroup primaryCPTCodes;
+     private UserViewListener listener;
 
     public UserViewImpl()
     {
@@ -131,12 +131,12 @@ public class UserViewImpl extends VerticalLayout implements UserView
         }
     }
 
-    @Override public void setContainers(@NotNull Container userContainer,
-                                        @NotNull Container institutionContainer,
-                                        @NotNull Container primaryCPTCodesContainer,
-                                        @NotNull Container secondaryCPTCodesContainer,
-                                        @NotNull Container countriesContainer,
-                                        @NotNull Container timezonesContainer)
+    @Override public void setContainers(Container userContainer,
+                                        Container institutionContainer,
+                                        Container primaryCPTCodesContainer,
+                                        Container secondaryCPTCodesContainer,
+                                        Container countriesContainer,
+                                        Container timezonesContainer)
     {
         initContactList(userContainer);
         institutionField.setContainerDataSource(institutionContainer);
@@ -146,7 +146,7 @@ public class UserViewImpl extends VerticalLayout implements UserView
         secondaryCPTCodes.setContainerDataSource(secondaryCPTCodesContainer);
     }
 
-    @Override public void setListener(@NotNull UserViewListener listener)
+    @Override public void setListener(UserViewListener listener)
     {
         this.listener = listener;
     }
@@ -206,7 +206,7 @@ public class UserViewImpl extends VerticalLayout implements UserView
                 .withMargin(true));
     }
 
-    private void setDataSources(@NotNull final User user)
+    private void setDataSources(final User user)
     {
         if (user.getCPTPrimarySpecialities() == null)
         {
@@ -372,7 +372,7 @@ public class UserViewImpl extends VerticalLayout implements UserView
         });
     }
 
-    private void initContactList(@NotNull Container userContainer)
+    private void initContactList(Container userContainer)
     {
         table.setSizeFull();
         table.setFilterBarVisible(true);
@@ -398,7 +398,7 @@ public class UserViewImpl extends VerticalLayout implements UserView
         });
     }
 
-    @Override public void editNewUser(@NotNull String newItemId)
+    @Override public void editNewUser(String newItemId)
     {
         table.select(newItemId);
         BeanItem<User> item = (BeanItem<User>) table.getItem(newItemId);

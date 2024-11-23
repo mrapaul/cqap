@@ -1,15 +1,15 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 import java.util.*;
 
 public class InstitutionDayOrderCount
 {
-    @NotNull private String institution;
-    @NotNull private Collection<DayOrderCount> counts;
+    private String institution;
+    private Collection<DayOrderCount> counts;
 
     public InstitutionDayOrderCount()
     {
@@ -17,8 +17,8 @@ public class InstitutionDayOrderCount
     }
 
     @JsonCreator
-    public InstitutionDayOrderCount(@NotNull String institution,
-                                    @NotNull Collection<DayOrderCount> counts)
+    public InstitutionDayOrderCount(String institution,
+                                    Collection<DayOrderCount> counts)
     {
         super();
 
@@ -26,28 +26,28 @@ public class InstitutionDayOrderCount
         this.counts = counts;
     }
 
-    @NotNull
+
     public String getInstitution()
     {
         return institution;
     }
 
-    @NotNull
+
     public Collection<DayOrderCount> getCounts()
     {
         return counts;
     }
-    public void setInstitution(@NotNull String institution)
+    public void setInstitution(String institution)
     {
         this.institution = institution;
     }
 
-    public void setCounts(@NotNull Collection<DayOrderCount> counts)
+    public void setCounts(Collection<DayOrderCount> counts)
     {
         this.counts = counts;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "InstitutionDayOrderCount(" +
@@ -55,7 +55,7 @@ public class InstitutionDayOrderCount
             " counts: " + getCounts() + ")";
     }
 
-    @NotNull
+
     public InstitutionDayOrderCountBuilder toBuilder()
     {
         return new InstitutionDayOrderCountBuilder(getInstitution(),

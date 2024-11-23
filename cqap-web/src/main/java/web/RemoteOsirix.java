@@ -3,7 +3,7 @@ package web;
 import com.peirs.datamodel.*;
 import org.apache.xmlrpc.*;
 import org.apache.xmlrpc.client.*;
-import org.jetbrains.annotations.*;
+
 
 import java.net.*;
 import java.util.*;
@@ -13,10 +13,10 @@ public class RemoteOsirix
     private static final String HOST = "127.0.0.1";
     private static final int PORT = 11111;
     private static final String SERVER = "DCM4CHEE";
-    @NotNull private final OsirixConfiguration configuration;
-    @NotNull private final XmlRpcClient client;
+    private final OsirixConfiguration configuration;
+    private final XmlRpcClient client;
 
-    public RemoteOsirix(@NotNull OsirixConfiguration configuration) throws MalformedURLException
+    public RemoteOsirix(OsirixConfiguration configuration) throws MalformedURLException
     {
         this.configuration = configuration;
         XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
@@ -44,8 +44,8 @@ public class RemoteOsirix
         return "http://" + getOsiriXHost(configuration) + ":" + getOsiriXPort(configuration);
     }
 
-    @NotNull
-    public String downloadImages(@NotNull String accessionNumber) throws XmlRpcException
+    
+    public String downloadImages(String accessionNumber) throws XmlRpcException
     {
         ArrayList<Object> params = new ArrayList<>();
         Hashtable<String, Object> methodData = new Hashtable<>();
@@ -56,8 +56,8 @@ public class RemoteOsirix
         return (String) result.get("error");
     }
 
-    @NotNull
-    public String openImageWithStudyInstanceUID(@NotNull String studyInstanceUID) throws XmlRpcException
+    
+    public String openImageWithStudyInstanceUID(String studyInstanceUID) throws XmlRpcException
     {
         ArrayList<Object> params = new ArrayList<>();
         Hashtable<String, Object> methodData = new Hashtable<>();
@@ -67,8 +67,8 @@ public class RemoteOsirix
         return (String) result.get("error");
     }
 
-    @NotNull
-    public String openImageWithAccession(@NotNull String accessionNumber) throws XmlRpcException
+    
+    public String openImageWithAccession(String accessionNumber) throws XmlRpcException
     {
         ArrayList<Object> params = new ArrayList<>();
         Hashtable<String, Object> methodData = new Hashtable<>();
@@ -78,8 +78,8 @@ public class RemoteOsirix
         return (String) result.get("error");
     }
 
-    @NotNull
-    public String openImageWithPatientID(@NotNull String patientID) throws XmlRpcException
+    
+    public String openImageWithPatientID(String patientID) throws XmlRpcException
     {
         ArrayList<Object> params = new ArrayList<>();
         Hashtable<String, Object> methodData = new Hashtable<>();
@@ -89,7 +89,7 @@ public class RemoteOsirix
         return (String) result.get("error");
     }
 
-    @NotNull
+    
     public String closeWindows() throws XmlRpcException
     {
         Map result = (Map) client.execute("CloseAllWindows", new ArrayList());

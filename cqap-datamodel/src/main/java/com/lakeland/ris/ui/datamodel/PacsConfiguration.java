@@ -1,16 +1,16 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class PacsConfiguration
 {
-    @NotNull private String host;
+    private String host;
     private int port;
-    @NotNull private String aETitle;
+    private String aETitle;
 
     public PacsConfiguration()
     {
@@ -18,9 +18,9 @@ public class PacsConfiguration
     }
 
     @JsonCreator
-    public PacsConfiguration(@NotNull String host,
+    public PacsConfiguration(String host,
                              int port,
-                             @NotNull String aETitle)
+                             String aETitle)
     {
         super();
 
@@ -29,7 +29,7 @@ public class PacsConfiguration
         this.aETitle = aETitle;
     }
 
-    @NotNull
+    
     public String getHost()
     {
         return host;
@@ -40,12 +40,12 @@ public class PacsConfiguration
         return port;
     }
 
-    @NotNull
+    
     public String getAETitle()
     {
         return aETitle;
     }
-    public void setHost(@NotNull String host)
+    public void setHost(String host)
     {
         this.host = host;
     }
@@ -55,12 +55,12 @@ public class PacsConfiguration
         this.port = port;
     }
 
-    public void setAETitle(@NotNull String aETitle)
+    public void setAETitle(String aETitle)
     {
         this.aETitle = aETitle;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "PacsConfiguration(" +
@@ -69,7 +69,7 @@ public class PacsConfiguration
             " aETitle: " + getAETitle() + ")";
     }
 
-    @NotNull
+    
     public PacsConfigurationBuilder toBuilder()
     {
         return new PacsConfigurationBuilder(getHost(),

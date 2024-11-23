@@ -7,7 +7,6 @@ import ca.uhn.hl7v2.parser.*;
 import ch.lambdaj.function.convert.*;
 import com.mongodb.*;
 import com.mongodb.util.JSON;
-import org.jetbrains.annotations.*;
 import org.json.*;
 import org.slf4j.*;
 
@@ -16,17 +15,16 @@ import java.util.*;
 public class MessageToConverter implements Converter<String, Message>
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageToConverter.class);
-    @NotNull private final PipeParser pipeParser;
-    @NotNull private final XMLParser xmlParser;
+    private final PipeParser pipeParser;
+    private final XMLParser xmlParser;
 
-    public MessageToConverter(@NotNull PipeParser pipeParser, @NotNull XMLParser xmlParser)
+    public MessageToConverter(PipeParser pipeParser, XMLParser xmlParser)
     {
         this.pipeParser = pipeParser;
         this.xmlParser = xmlParser;
     }
 
-    @Nullable
-    @Override public Message convert(@NotNull String message)
+    @Override public Message convert(String message)
     {
         try
         {

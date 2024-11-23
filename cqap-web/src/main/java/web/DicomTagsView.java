@@ -3,13 +3,13 @@ package web;
 import com.peirs.datamodel.dicom.*;
 import com.vaadin.data.util.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.tepi.filtertable.*;
 
 public class DicomTagsView extends VerticalLayout
 {
-    @NotNull private final FilterTable tagsTable;
-    @NotNull private final BeanContainer<String, DicomTag> tagsContainer;
+    private final FilterTable tagsTable;
+    private final BeanContainer<String, DicomTag> tagsContainer;
 
     public DicomTagsView()
     {
@@ -33,7 +33,7 @@ public class DicomTagsView extends VerticalLayout
         setExpandRatio(tagsTable, 1f);
     }
 
-    public void setDetails(@NotNull DicomStudy study)
+    public void setDetails(DicomStudy study)
     {
         tagsContainer.removeAllContainerFilters();
         tagsContainer.removeAllItems();

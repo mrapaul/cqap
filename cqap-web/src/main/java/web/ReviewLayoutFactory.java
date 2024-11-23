@@ -3,11 +3,11 @@ package web;
 import com.peirs.datamodel.*;
 import com.peirs.datamodel.ticket.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 public final class ReviewLayoutFactory
 {
-    public static Component getLayout(@NotNull ProfessionalTicket ticket, @NotNull User user)
+    public static Component getLayout(ProfessionalTicket ticket, User user)
     {
         Component view = new CssLayout();
         TicketStatus status = ticket.getStatus();

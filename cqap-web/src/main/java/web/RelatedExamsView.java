@@ -4,18 +4,18 @@ import com.peirs.datamodel.dicom.*;
 import com.vaadin.data.util.*;
 import com.vaadin.shared.ui.label.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import java.text.*;
 import java.util.*;
 
 public final class RelatedExamsView extends Panel
 {
-    @NotNull private final BeanContainer<String, DicomStudy> orderContainer;
-    @NotNull private final Table table;
-    @NotNull private final DateFormat studyDateFormat;
-    @NotNull private final DateFormat studyDateDisplayFormat;
-//    @Nullable private DetailedOrderView.DetailedOrderListener listener;
+    private final BeanContainer<String, DicomStudy> orderContainer;
+    private final Table table;
+    private final DateFormat studyDateFormat;
+    private final DateFormat studyDateDisplayFormat;
+//     private DetailedOrderView.DetailedOrderListener listener;
 
     public RelatedExamsView()
     {
@@ -46,7 +46,7 @@ public final class RelatedExamsView extends Panel
         setContent(layout);
     }
 
-    public void display(@NotNull Collection<DicomStudy> relatedOrders)
+    public void display(Collection<DicomStudy> relatedOrders)
     {
         orderContainer.removeAllContainerFilters();
         orderContainer.removeAllItems();
@@ -97,13 +97,13 @@ public final class RelatedExamsView extends Panel
         return date;
     }
 
-    @Nullable
+    
 //    public DetailedOrderView.DetailedOrderListener getListener()
 //    {
 //        return listener;
 //    }
 //
-//    public void setListener(@NotNull DetailedOrderView.DetailedOrderListener listener)
+//    public void setListener(DetailedOrderView.DetailedOrderListener listener)
 //    {
 //        this.listener = listener;
 //    }

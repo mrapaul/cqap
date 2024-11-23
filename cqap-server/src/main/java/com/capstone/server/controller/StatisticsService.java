@@ -1,29 +1,25 @@
 package com.capstone.server.controller;
 
-import com.google.common.collect.*;
-import com.mongodb.*;
-import com.peirs.datamodel.*;
-import com.peirs.datamodel.ticket.*;
-import org.jetbrains.annotations.*;
-import org.joda.time.*;
-import org.slf4j.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.data.mongodb.core.*;
-import org.springframework.data.mongodb.core.query.*;
-import org.springframework.stereotype.*;
-
-import java.util.*;
+import com.peirs.datamodel.ticket.ProfessionalTicket;
+import com.peirs.datamodel.ticket.TicketType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Component;
 
 @Component("StatisticsService")
 public class StatisticsService
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(StatisticsService.class);
-    @NotNull private final ProfessionalTicketService professionalTicketService;
-    @NotNull private final MongoTemplate mongoTemplate;
+    private final ProfessionalTicketService professionalTicketService;
+    private final MongoTemplate mongoTemplate;
 
     @Autowired
-    public StatisticsService(@NotNull ProfessionalTicketService professionalTicketService,
-                             @NotNull MongoTemplate mongoTemplate)
+    public StatisticsService(ProfessionalTicketService professionalTicketService,
+                             MongoTemplate mongoTemplate)
     {
         this.professionalTicketService = professionalTicketService;
         this.mongoTemplate = mongoTemplate;

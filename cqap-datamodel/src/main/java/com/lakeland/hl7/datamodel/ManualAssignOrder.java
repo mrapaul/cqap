@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,8 +10,8 @@ import java.util.*;
 public class ManualAssignOrder extends OrderActivity implements HL7Visitable
 {
     public static final byte TYPE = 16;
-    @NotNull private Collection<String> orders;
-    @NotNull private String assignUserId;
+    private Collection<String> orders;
+    private String assignUserId;
 
     public ManualAssignOrder()
     {
@@ -19,11 +19,11 @@ public class ManualAssignOrder extends OrderActivity implements HL7Visitable
     }
 
     @JsonCreator
-    public ManualAssignOrder(@NotNull Date timestamp,
-                             @NotNull String orderId,
-                             @NotNull String userId,
-                             @NotNull Collection<String> orders,
-                             @NotNull String assignUserId)
+    public ManualAssignOrder(Date timestamp,
+                             String orderId,
+                             String userId,
+                             Collection<String> orders,
+                             String assignUserId)
     {
         super(timestamp,
               orderId,
@@ -33,33 +33,33 @@ public class ManualAssignOrder extends OrderActivity implements HL7Visitable
         this.assignUserId = assignUserId;
     }
 
-    @NotNull
+
     public Collection<String> getOrders()
     {
         return orders;
     }
 
-    @NotNull
+
     public String getAssignUserId()
     {
         return assignUserId;
     }
-    public void setOrders(@NotNull Collection<String> orders)
+    public void setOrders(Collection<String> orders)
     {
         this.orders = orders;
     }
 
-    public void setAssignUserId(@NotNull String assignUserId)
+    public void setAssignUserId(String assignUserId)
     {
         this.assignUserId = assignUserId;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+
     public String toString()
     {
         return "ManualAssignOrder(" +
@@ -70,7 +70,7 @@ public class ManualAssignOrder extends OrderActivity implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -101,7 +101,7 @@ public class ManualAssignOrder extends OrderActivity implements HL7Visitable
                             getAssignUserId());
     }
 
-    @NotNull
+
     public ManualAssignOrderBuilder toBuilder()
     {
         return new ManualAssignOrderBuilder(getTimestamp(),

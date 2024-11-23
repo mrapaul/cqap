@@ -2,7 +2,7 @@ package web;
 
 import com.peirs.datamodel.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import org.tepi.filtertable.*;
 
 public class UserPresenter implements UserView.UserViewListener
@@ -10,7 +10,7 @@ public class UserPresenter implements UserView.UserViewListener
     private final UserModel model;
     private final UserView view;
 
-    public UserPresenter(@NotNull UserModel model, @NotNull UserView view)
+    public UserPresenter(UserModel model, UserView view)
     {
         this.model = model;
         this.view = view;
@@ -28,12 +28,12 @@ public class UserPresenter implements UserView.UserViewListener
         model.refresh();
     }
 
-    @Override public void createOrUpdate(@NotNull User user)
+    @Override public void createOrUpdate(User user)
     {
         model.createOrUpdate(user);
     }
 
-    @Override public void delete(@NotNull User user)
+    @Override public void delete(User user)
     {
         model.delete(user);
     }
@@ -46,7 +46,7 @@ public class UserPresenter implements UserView.UserViewListener
         }
     }
 
-    @Override public void countrySelected(@NotNull Country country)
+    @Override public void countrySelected(Country country)
     {
         model.countrySelected(country);
     }

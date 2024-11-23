@@ -1,7 +1,7 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,7 +10,7 @@ import java.util.*;
 public class PullOrders extends OrderActivity implements HL7Visitable
 {
     public static final byte TYPE = 17;
-    @NotNull private Collection<String> orders;
+    private Collection<String> orders;
 
     public PullOrders()
     {
@@ -18,10 +18,10 @@ public class PullOrders extends OrderActivity implements HL7Visitable
     }
 
     @JsonCreator
-    public PullOrders(@NotNull Date timestamp,
-                      @NotNull String orderId,
-                      @NotNull String userId,
-                      @NotNull Collection<String> orders)
+    public PullOrders(Date timestamp,
+                      String orderId,
+                      String userId,
+                      Collection<String> orders)
     {
         super(timestamp,
               orderId,
@@ -30,22 +30,22 @@ public class PullOrders extends OrderActivity implements HL7Visitable
         this.orders = orders;
     }
 
-    @NotNull
+
     public Collection<String> getOrders()
     {
         return orders;
     }
-    public void setOrders(@NotNull Collection<String> orders)
+    public void setOrders(Collection<String> orders)
     {
         this.orders = orders;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+
     public String toString()
     {
         return "PullOrders(" +
@@ -55,7 +55,7 @@ public class PullOrders extends OrderActivity implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -84,7 +84,7 @@ public class PullOrders extends OrderActivity implements HL7Visitable
                             getOrders());
     }
 
-    @NotNull
+
     public PullOrdersBuilder toBuilder()
     {
         return new PullOrdersBuilder(getTimestamp(),

@@ -3,7 +3,6 @@ package com.capstone.server.controller;
 
 import org.apache.commons.codec.binary.*;
 import org.apache.commons.codec.binary.Base64;
-import org.jetbrains.annotations.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
@@ -18,16 +17,16 @@ import java.util.*;
 public class DicomViewer
 {
     private static final String HMAC_SHA1_ALGORITHM = "HmacSHA1";
-    @NotNull private final EUnityConfiguration eUnityConfiguration;
+    private final EUnityConfiguration eUnityConfiguration;
 
     @Autowired
-    public DicomViewer(@NotNull EUnityConfiguration eUnityConfiguration)
+    public DicomViewer(EUnityConfiguration eUnityConfiguration)
     {
         this.eUnityConfiguration = eUnityConfiguration;
     }
 
-    public String getSignedURL(@NotNull String username,
-                               @NotNull String studyInstanceUID) throws Exception
+    public String getSignedURL(String username,
+                               String studyInstanceUID) throws Exception
     {
         String host = eUnityConfiguration.getHost();
         String port = eUnityConfiguration.getPort();
@@ -65,8 +64,8 @@ public class DicomViewer
         return "http://" + host + ":" + port + requestedResource + "?" + queryParams + "&signature=" + signature;
     }
 
-    private String sign(@NotNull String secret,
-                        @NotNull String string_to_sign) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException
+    private String sign(String secret,
+                        String string_to_sign) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException
     {
         SecretKeySpec signingKey = new SecretKeySpec(secret.getBytes(), HMAC_SHA1_ALGORITHM);
         Mac mac = Mac.getInstance(HMAC_SHA1_ALGORITHM);

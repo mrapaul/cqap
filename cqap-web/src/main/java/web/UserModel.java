@@ -7,7 +7,7 @@ import com.peirs.datamodel.*;
 import com.vaadin.data.*;
 import com.vaadin.data.util.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
@@ -16,17 +16,17 @@ import static ch.lambdaj.collection.LambdaCollections.*;
 
 public class UserModel
 {
-    @NotNull private final ClientRestService risRestApi;
-    @NotNull private final CPTCodeService cptCodeService;
-    @NotNull private final UserContainer userContainer;
-    @NotNull private final InstitutionContainer institutionContainer;
-    @NotNull private final Collection<CPTCodePrimaryGroup> cptCodes;
-    @NotNull private final IndexedContainer primaryCPTCodesContainer;
-    @NotNull private final IndexedContainer secondaryCPTCodesContainer;
-    @NotNull private final BeanContainer<String, Country> countriesContainer;
-    @NotNull private final IndexedContainer timezonesContainer;
+    private final ClientRestService risRestApi;
+    private final CPTCodeService cptCodeService;
+    private final UserContainer userContainer;
+    private final InstitutionContainer institutionContainer;
+    private final Collection<CPTCodePrimaryGroup> cptCodes;
+    private final IndexedContainer primaryCPTCodesContainer;
+    private final IndexedContainer secondaryCPTCodesContainer;
+    private final BeanContainer<String, Country> countriesContainer;
+    private final IndexedContainer timezonesContainer;
 
-    public UserModel(@NotNull ClientRestService risRestApi)
+    public UserModel(ClientRestService risRestApi)
     {
         this.risRestApi = risRestApi;
         userContainer = new UserContainer();
@@ -79,13 +79,13 @@ public class UserModel
         });
     }
 
-    public void createOrUpdate(@NotNull final User user)
+    public void createOrUpdate(final User user)
     {
         risRestApi.createOrUpdateUser(user);
         refresh();
     }
 
-    public void delete(@NotNull final User user)
+    public void delete(final User user)
     {
         risRestApi.deleteUser(user);
         UI.getCurrent().access(new Runnable()
@@ -115,27 +115,27 @@ public class UserModel
         return false;
     }
 
-    @NotNull public UserContainer getUsers()
+    public UserContainer getUsers()
     {
         return userContainer;
     }
 
-    @NotNull public IndexedContainer getPrimaryCPTCodesContainer()
+    public IndexedContainer getPrimaryCPTCodesContainer()
     {
         return primaryCPTCodesContainer;
     }
 
-    @NotNull public IndexedContainer getSecondaryCPTCodesContainer()
+    public IndexedContainer getSecondaryCPTCodesContainer()
     {
         return secondaryCPTCodesContainer;
     }
 
-    @NotNull public BeanContainer<String, Country> getCountriesContainer()
+    public BeanContainer<String, Country> getCountriesContainer()
     {
         return countriesContainer;
     }
 
-    @NotNull public IndexedContainer getTimezonesContainer()
+    public IndexedContainer getTimezonesContainer()
     {
         return timezonesContainer;
     }

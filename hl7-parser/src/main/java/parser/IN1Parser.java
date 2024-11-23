@@ -7,14 +7,14 @@ import ca.uhn.hl7v2.model.v26.group.*;
 import ca.uhn.hl7v2.model.v26.segment.*;
 import com.google.common.collect.*;
 import com.lakeland.ris.ui.datamodel.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
 public class IN1Parser implements MessageParser<List<ADT_A01_INSURANCE>>
 {
-    @Override public void convert(@NotNull List<ADT_A01_INSURANCE> insurances,
-                                  @NotNull DetailedOrderBuilder orderBuilder) throws HL7Exception
+    @Override public void convert(List<ADT_A01_INSURANCE> insurances,
+                                  DetailedOrderBuilder orderBuilder) throws HL7Exception
     {
         List<PatientInsurance> patientInsurances = Lists.newArrayList();
         for (ADT_A01_INSURANCE insurance : insurances)

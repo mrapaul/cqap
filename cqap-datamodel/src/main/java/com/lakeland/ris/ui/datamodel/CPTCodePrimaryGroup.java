@@ -1,7 +1,7 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -9,8 +9,8 @@ import java.util.*;
 
 public class CPTCodePrimaryGroup
 {
-    @NotNull private String subspecialtyPrimary;
-    @NotNull private Collection<CPTCodeSecondaryGroup> secondaryGroups;
+    private String subspecialtyPrimary;
+    private Collection<CPTCodeSecondaryGroup> secondaryGroups;
 
     public CPTCodePrimaryGroup()
     {
@@ -18,8 +18,8 @@ public class CPTCodePrimaryGroup
     }
 
     @JsonCreator
-    public CPTCodePrimaryGroup(@NotNull String subspecialtyPrimary,
-                               @NotNull Collection<CPTCodeSecondaryGroup> secondaryGroups)
+    public CPTCodePrimaryGroup(String subspecialtyPrimary,
+                               Collection<CPTCodeSecondaryGroup> secondaryGroups)
     {
         super();
 
@@ -27,28 +27,28 @@ public class CPTCodePrimaryGroup
         this.secondaryGroups = secondaryGroups;
     }
 
-    @NotNull
+    
     public String getSubspecialtyPrimary()
     {
         return subspecialtyPrimary;
     }
 
-    @NotNull
+    
     public Collection<CPTCodeSecondaryGroup> getSecondaryGroups()
     {
         return secondaryGroups;
     }
-    public void setSubspecialtyPrimary(@NotNull String subspecialtyPrimary)
+    public void setSubspecialtyPrimary(String subspecialtyPrimary)
     {
         this.subspecialtyPrimary = subspecialtyPrimary;
     }
 
-    public void setSecondaryGroups(@NotNull Collection<CPTCodeSecondaryGroup> secondaryGroups)
+    public void setSecondaryGroups(Collection<CPTCodeSecondaryGroup> secondaryGroups)
     {
         this.secondaryGroups = secondaryGroups;
     }
 
-    @NotNull
+    
     public String toString()
     {
         return "CPTCodePrimaryGroup(" +
@@ -58,7 +58,7 @@ public class CPTCodePrimaryGroup
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -84,7 +84,7 @@ public class CPTCodePrimaryGroup
                             getSecondaryGroups());
     }
 
-    @NotNull
+    
     public CPTCodePrimaryGroupBuilder toBuilder()
     {
         return new CPTCodePrimaryGroupBuilder(getSubspecialtyPrimary(),

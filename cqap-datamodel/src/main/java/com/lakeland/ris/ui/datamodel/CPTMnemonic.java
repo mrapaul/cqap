@@ -1,18 +1,18 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class CPTMnemonic
 {
-    @NotNull private String modality;
-    @Nullable private String number;
-    @NotNull private String mnemonic;
-    @Nullable private String cPTCode;
-    @Nullable private String institution;
+    private String modality;
+     private String number;
+    private String mnemonic;
+     private String cPTCode;
+     private String institution;
 
     public CPTMnemonic()
     {
@@ -20,11 +20,11 @@ public class CPTMnemonic
     }
 
     @JsonCreator
-    public CPTMnemonic(@NotNull String modality,
-                       @Nullable String number,
-                       @NotNull String mnemonic,
-                       @Nullable String cPTCode,
-                       @Nullable String institution)
+    public CPTMnemonic(String modality,
+                        String number,
+                       String mnemonic,
+                        String cPTCode,
+                        String institution)
     {
         super();
 
@@ -35,61 +35,61 @@ public class CPTMnemonic
         this.institution = institution;
     }
 
-    @NotNull
+
     public String getModality()
     {
         return modality;
     }
 
-    @Nullable
+    
     public String getNumber()
     {
         return number;
     }
 
-    @NotNull
+
     public String getMnemonic()
     {
         return mnemonic;
     }
 
-    @Nullable
+    
     public String getCPTCode()
     {
         return cPTCode;
     }
 
-    @Nullable
+    
     public String getInstitution()
     {
         return institution;
     }
-    public void setModality(@NotNull String modality)
+    public void setModality(String modality)
     {
         this.modality = modality;
     }
 
-    public void setNumber(@Nullable String number)
+    public void setNumber( String number)
     {
         this.number = number;
     }
 
-    public void setMnemonic(@NotNull String mnemonic)
+    public void setMnemonic(String mnemonic)
     {
         this.mnemonic = mnemonic;
     }
 
-    public void setCPTCode(@Nullable String cPTCode)
+    public void setCPTCode( String cPTCode)
     {
         this.cPTCode = cPTCode;
     }
 
-    public void setInstitution(@Nullable String institution)
+    public void setInstitution( String institution)
     {
         this.institution = institution;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "CPTMnemonic(" +
@@ -100,7 +100,7 @@ public class CPTMnemonic
             " institution: " + getInstitution() + ")";
     }
 
-    @NotNull
+
     public CPTMnemonicBuilder toBuilder()
     {
         return new CPTMnemonicBuilder(getModality(),

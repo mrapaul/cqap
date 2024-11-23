@@ -4,7 +4,7 @@ import com.peirs.datamodel.ticket.*;
 import com.vaadin.data.*;
 import com.vaadin.data.util.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 
 import java.util.*;
 
@@ -12,19 +12,19 @@ import static web.ComponentFactory.*;
 
 public class TRERPCMOReviewView extends CssLayout
 {
-    @NotNull private final ComboBox categoryField;
-    @NotNull private final TextField medicalImageQualityScoreField;
-    @NotNull private final TextArea medicalImageQualityCommentsField;
-    @NotNull private final CheckBox technicalImageQualityCriteria1Field;
-    @NotNull private final CheckBox technicalImageQualityCriteria2Field;
-    @NotNull private final CheckBox technicalImageQualityCriteria3Field;
-    @NotNull private final CheckBox technicalImageQualityCriteria4Field;
-    @NotNull private final CheckBox technicalImageQualityCriteria5Field;
-    @NotNull private final TextArea technicalImageQualityCommentsField;
-    @NotNull private final TextArea recommendationsField;
-    @NotNull private final TextField reportQualityField;
-    @NotNull private final TextField reporterField;
-    @NotNull private final DateField reportTimeField;
+    private final ComboBox categoryField;
+    private final TextField medicalImageQualityScoreField;
+    private final TextArea medicalImageQualityCommentsField;
+    private final CheckBox technicalImageQualityCriteria1Field;
+    private final CheckBox technicalImageQualityCriteria2Field;
+    private final CheckBox technicalImageQualityCriteria3Field;
+    private final CheckBox technicalImageQualityCriteria4Field;
+    private final CheckBox technicalImageQualityCriteria5Field;
+    private final TextArea technicalImageQualityCommentsField;
+    private final TextArea recommendationsField;
+    private final TextField reportQualityField;
+    private final TextField reporterField;
+    private final DateField reportTimeField;
 
     public TRERPCMOReviewView()
     {
@@ -91,7 +91,7 @@ public class TRERPCMOReviewView extends CssLayout
         addComponent(content);
     }
 
-    public void displayReport(@NotNull final ProfessionalTicket ticket, boolean editable)
+    public void displayReport(final ProfessionalTicket ticket, boolean editable)
     {
         if (ticket.getTechReport() == null)
         {

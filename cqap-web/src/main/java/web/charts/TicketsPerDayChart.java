@@ -8,7 +8,7 @@ import com.vaadin.addon.charts.model.*;
 import com.vaadin.addon.charts.model.style.*;
 import com.vaadin.server.*;
 import com.vaadin.ui.*;
-import org.jetbrains.annotations.*;
+
 import web.*;
 
 import java.text.*;
@@ -22,7 +22,7 @@ public class TicketsPerDayChart
 {
     private static final int DAY_IN_MILLIS = 24 * 3600 * 1000;
 
-    public static  Component getChart(@NotNull ClientRestService clientRestService) {
+    public static  Component getChart(ClientRestService clientRestService) {
         Collection<TicketsPerDay> ticketsPerDay = clientRestService.getTicketsPerDay();
         List<TicketsPerDay> sortedTicketsPerDay = sort(ticketsPerDay, on(TicketsPerDay.class).getDate());
         List<Integer> counts = with(sortedTicketsPerDay).extract(on(TicketsPerDay.class).getCount());

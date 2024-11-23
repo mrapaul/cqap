@@ -1,7 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -10,7 +9,7 @@ import java.util.*;
 public class AdministrationSnapshot extends TimedMessage implements HL7Visitable
 {
     public static final byte TYPE = 31;
-    @NotNull private Collection<HL7Order> orders;
+    private Collection<HL7Order> orders;
 
     public AdministrationSnapshot()
     {
@@ -18,30 +17,30 @@ public class AdministrationSnapshot extends TimedMessage implements HL7Visitable
     }
 
     @JsonCreator
-    public AdministrationSnapshot(@NotNull Date timestamp,
-                                  @NotNull Collection<HL7Order> orders)
+    public AdministrationSnapshot(Date timestamp,
+                                  Collection<HL7Order> orders)
     {
         super(timestamp);
 
         this.orders = orders;
     }
 
-    @NotNull
+    
     public Collection<HL7Order> getOrders()
     {
         return orders;
     }
-    public void setOrders(@NotNull Collection<HL7Order> orders)
+    public void setOrders(Collection<HL7Order> orders)
     {
         this.orders = orders;
     }
 
-    public void accept(@NotNull HL7Visitor aVisitor)
+    public void accept(HL7Visitor aVisitor)
     {
         aVisitor.visit(this);
     }
 
-    @NotNull
+
     public String toString()
     {
         return "AdministrationSnapshot(" +
@@ -51,7 +50,7 @@ public class AdministrationSnapshot extends TimedMessage implements HL7Visitable
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -80,7 +79,7 @@ public class AdministrationSnapshot extends TimedMessage implements HL7Visitable
                             getOrders());
     }
 
-    @NotNull
+
     public AdministrationSnapshotBuilder toBuilder()
     {
         return new AdministrationSnapshotBuilder(getTimestamp(),

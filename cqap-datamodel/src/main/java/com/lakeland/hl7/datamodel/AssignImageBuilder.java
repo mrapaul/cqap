@@ -1,6 +1,6 @@
 package com.lakeland.hl7.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -8,14 +8,14 @@ import com.lakeland.ris.datamodel.*;
 
 public class AssignImageBuilder extends TimedMessageBuilder<AssignImage, AssignImageBuilder>
 {
-    @NotNull private String userId;
-    @NotNull private String orderId;
-    @NotNull private String dicomStudyId;
+    private String userId;
+    private String orderId;
+    private String dicomStudyId;
 
-    public AssignImageBuilder(@NotNull Date timestamp,
-                              @NotNull String userId,
-                              @NotNull String orderId,
-                              @NotNull String dicomStudyId)
+    public AssignImageBuilder(Date timestamp,
+                              String userId,
+                              String orderId,
+                              String dicomStudyId)
     {
         super(timestamp);
 
@@ -25,59 +25,59 @@ public class AssignImageBuilder extends TimedMessageBuilder<AssignImage, AssignI
     }
 
 
-    @NotNull
+
     @Override
-    public AssignImageBuilder setTimestamp(@NotNull Date timestamp)
+    public AssignImageBuilder setTimestamp(Date timestamp)
     {
         super.setTimestamp(timestamp);
 
         return self();
     }
 
-    @NotNull
-    public AssignImageBuilder setUserId(@NotNull String userId)
+
+    public AssignImageBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
-    public AssignImageBuilder setOrderId(@NotNull String orderId)
+
+    public AssignImageBuilder setOrderId(String orderId)
     {
         this.orderId = orderId;
 
         return self();
     }
 
-    @NotNull
-    public AssignImageBuilder setDicomStudyId(@NotNull String dicomStudyId)
+
+    public AssignImageBuilder setDicomStudyId(String dicomStudyId)
     {
         this.dicomStudyId = dicomStudyId;
 
         return self();
     }
 
-    @NotNull
+
     protected String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+
     protected String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+
     protected String getDicomStudyId()
     {
         return dicomStudyId;
     }
 
     @Override
-    @NotNull
+
     public AssignImage build()
     {
         return new AssignImage(getTimestamp(),
@@ -88,7 +88,7 @@ public class AssignImageBuilder extends TimedMessageBuilder<AssignImage, AssignI
 
 
     @Override
-    @NotNull
+
     protected AssignImageBuilder self()
     {
         return this;

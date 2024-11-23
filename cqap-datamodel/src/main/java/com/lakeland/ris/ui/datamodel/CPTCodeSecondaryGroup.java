@@ -1,7 +1,7 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
@@ -9,8 +9,8 @@ import java.util.*;
 
 public class CPTCodeSecondaryGroup
 {
-    @NotNull private String subspecialtySecondary;
-    @NotNull private Collection<String> codes;
+    private String subspecialtySecondary;
+    private Collection<String> codes;
 
     public CPTCodeSecondaryGroup()
     {
@@ -18,8 +18,8 @@ public class CPTCodeSecondaryGroup
     }
 
     @JsonCreator
-    public CPTCodeSecondaryGroup(@NotNull String subspecialtySecondary,
-                                 @NotNull Collection<String> codes)
+    public CPTCodeSecondaryGroup(String subspecialtySecondary,
+                                 Collection<String> codes)
     {
         super();
 
@@ -27,28 +27,28 @@ public class CPTCodeSecondaryGroup
         this.codes = codes;
     }
 
-    @NotNull
+
     public String getSubspecialtySecondary()
     {
         return subspecialtySecondary;
     }
 
-    @NotNull
+
     public Collection<String> getCodes()
     {
         return codes;
     }
-    public void setSubspecialtySecondary(@NotNull String subspecialtySecondary)
+    public void setSubspecialtySecondary(String subspecialtySecondary)
     {
         this.subspecialtySecondary = subspecialtySecondary;
     }
 
-    public void setCodes(@NotNull Collection<String> codes)
+    public void setCodes(Collection<String> codes)
     {
         this.codes = codes;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "CPTCodeSecondaryGroup(" +
@@ -58,7 +58,7 @@ public class CPTCodeSecondaryGroup
 
 
     @Override
-    public boolean equals(@Nullable Object aObject)
+    public boolean equals( Object aObject)
     {
           if (this == aObject)
           {
@@ -84,7 +84,7 @@ public class CPTCodeSecondaryGroup
                             getCodes());
     }
 
-    @NotNull
+
     public CPTCodeSecondaryGroupBuilder toBuilder()
     {
         return new CPTCodeSecondaryGroupBuilder(getSubspecialtySecondary(),

@@ -1,17 +1,17 @@
 package com.lakeland.ris.ui.datamodel;
 
 import org.codehaus.jackson.annotate.*;
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 
 
 public class Attachment
 {
-    @NotNull private String id;
-    @NotNull private String orderId;
-    @NotNull private String fileName;
-    @NotNull private Date uploadDate;
+    private String id;
+    private String orderId;
+    private String fileName;
+    private Date uploadDate;
 
     public Attachment()
     {
@@ -19,10 +19,10 @@ public class Attachment
     }
 
     @JsonCreator
-    public Attachment(@NotNull String id,
-                      @NotNull String orderId,
-                      @NotNull String fileName,
-                      @NotNull Date uploadDate)
+    public Attachment(String id,
+                      String orderId,
+                      String fileName,
+                      Date uploadDate)
     {
         super();
 
@@ -32,50 +32,50 @@ public class Attachment
         this.uploadDate = uploadDate;
     }
 
-    @NotNull
+
     public String getId()
     {
         return id;
     }
 
-    @NotNull
+
     public String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+
     public String getFileName()
     {
         return fileName;
     }
 
-    @NotNull
+
     public Date getUploadDate()
     {
         return uploadDate;
     }
-    public void setId(@NotNull String id)
+    public void setId(String id)
     {
         this.id = id;
     }
 
-    public void setOrderId(@NotNull String orderId)
+    public void setOrderId(String orderId)
     {
         this.orderId = orderId;
     }
 
-    public void setFileName(@NotNull String fileName)
+    public void setFileName(String fileName)
     {
         this.fileName = fileName;
     }
 
-    public void setUploadDate(@NotNull Date uploadDate)
+    public void setUploadDate(Date uploadDate)
     {
         this.uploadDate = uploadDate;
     }
 
-    @NotNull
+
     public String toString()
     {
         return "Attachment(" +
@@ -85,7 +85,7 @@ public class Attachment
             " uploadDate: " + getUploadDate() + ")";
     }
 
-    @NotNull
+
     public AttachmentBuilder toBuilder()
     {
         return new AttachmentBuilder(getId(),

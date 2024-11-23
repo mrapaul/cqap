@@ -1,27 +1,27 @@
 package com.lakeland.ris.ui.datamodel;
 
-import org.jetbrains.annotations.*;
+
 import java.util.*;
 import com.lakeland.ris.datamodel.*;
 import java.util.*;
 
 public class OrderReportBuilder
 {
-    @NotNull private String id;
-    @NotNull private String orderId;
-    @NotNull private Date timestamp;
-    @NotNull private String userId;
-    @NotNull private String report;
-    @NotNull private String location;
-    @NotNull private Collection<ReportAddendum> addenda;
+    private String id;
+    private String orderId;
+    private Date timestamp;
+    private String userId;
+    private String report;
+    private String location;
+    private Collection<ReportAddendum> addenda;
 
-    public OrderReportBuilder(@NotNull String id,
-                              @NotNull String orderId,
-                              @NotNull Date timestamp,
-                              @NotNull String userId,
-                              @NotNull String report,
-                              @NotNull String location,
-                              @NotNull Collection<ReportAddendum> addenda)
+    public OrderReportBuilder(String id,
+                              String orderId,
+                              Date timestamp,
+                              String userId,
+                              String report,
+                              String location,
+                              Collection<ReportAddendum> addenda)
     {
         super();
 
@@ -35,105 +35,105 @@ public class OrderReportBuilder
     }
 
 
-    @NotNull
-    public OrderReportBuilder setId(@NotNull String id)
+    
+    public OrderReportBuilder setId(String id)
     {
         this.id = id;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportBuilder setOrderId(@NotNull String orderId)
+    
+    public OrderReportBuilder setOrderId(String orderId)
     {
         this.orderId = orderId;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportBuilder setTimestamp(@NotNull Date timestamp)
+    
+    public OrderReportBuilder setTimestamp(Date timestamp)
     {
         this.timestamp = timestamp;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportBuilder setUserId(@NotNull String userId)
+    
+    public OrderReportBuilder setUserId(String userId)
     {
         this.userId = userId;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportBuilder setReport(@NotNull String report)
+    
+    public OrderReportBuilder setReport(String report)
     {
         this.report = report;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportBuilder setLocation(@NotNull String location)
+    
+    public OrderReportBuilder setLocation(String location)
     {
         this.location = location;
 
         return self();
     }
 
-    @NotNull
-    public OrderReportBuilder setAddenda(@NotNull Collection<ReportAddendum> addenda)
+    
+    public OrderReportBuilder setAddenda(Collection<ReportAddendum> addenda)
     {
         this.addenda = addenda;
 
         return self();
     }
 
-    @NotNull
+    
     protected String getId()
     {
         return id;
     }
 
-    @NotNull
+    
     protected String getOrderId()
     {
         return orderId;
     }
 
-    @NotNull
+    
     protected Date getTimestamp()
     {
         return timestamp;
     }
 
-    @NotNull
+    
     protected String getUserId()
     {
         return userId;
     }
 
-    @NotNull
+    
     protected String getReport()
     {
         return report;
     }
 
-    @NotNull
+    
     protected String getLocation()
     {
         return location;
     }
 
-    @NotNull
+    
     protected Collection<ReportAddendum> getAddenda()
     {
         return addenda;
     }
 
-    @NotNull
+    
     public OrderReport build()
     {
         return new OrderReport(getId(),
@@ -146,7 +146,7 @@ public class OrderReportBuilder
     }
 
 
-    @NotNull
+    
     protected OrderReportBuilder self()
     {
         return this;

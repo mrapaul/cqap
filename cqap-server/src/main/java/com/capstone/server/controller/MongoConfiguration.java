@@ -1,18 +1,20 @@
 package com.capstone.server.controller;
 
-import com.mongodb.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.context.annotation.*;
+import com.mongodb.Mongo;
+import com.mongodb.MongoURI;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.*;
-import org.springframework.data.mongodb.core.*;
-import org.springframework.data.mongodb.repository.config.*;
+import org.springframework.core.env.Environment;
 
-import javax.servlet.*;
-import java.net.*;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+
+import javax.servlet.MultipartConfigElement;
+import java.net.UnknownHostException;
 
 @Configuration
-@EnableMongoRepositories
 @PropertySource(value = "classpath:/mongo.properties")
 public class MongoConfiguration
 {

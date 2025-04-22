@@ -11,27 +11,27 @@ participant TechReport
 
 autonumber
 
-User -> ClientRestService : Create new ProfessionalTicket
+User -> ClientRestService : Create new ProfessionalTicket via UI
 ClientRestService -> ProfessionalTicket : Initialize ticket (NEW)
 ProfessionalTicket -> ProfessionalTicket : setStatus(NEW)
 ClientRestService -->> User : Return new ProfessionalTicket
 
 group Ticket Lifecycle
     alt Status is NEW
-        User -> ClientRestService : Fill initial details
+        User -> ClientRestService : Fill initial details in UI
         ClientRestService -> ProfessionalTicket : Validate initial details
         alt Validation fails
-            ClientRestService -->> User : Return validation errors
+            ClientRestService -->> User : Display validation errors in UI
         else Validation succeeds
             ClientRestService -> ProfessionalTicket : Save ticket
             ProfessionalTicket -> ProfessionalTicket : setStatus(OPEN_ERP_REVIEW)
-            ClientRestService -->> User : Success
+            ClientRestService -->> User : Update UI to show success
         end
     else Status is OPEN_ERP_REVIEW
-        User -> TicketTransitions : Complete ERP Review
+        User -> TicketTransitions : Complete ERP Review via UI
         TicketTransitions -> ProfessionalTicket : Validate category and findings
         alt Invalid category or missing comments
-            TicketTransitions -->> User : Request corrections
+            TicketTransitions -->> User : Display error message in UI
         else Valid category
             TicketTransitions -> ProfessionalTicket : Process ERP Report
             ProfessionalTicket -> ERPReport : getCategory()
@@ -44,7 +44,7 @@ group Ticket Lifecycle
                 else No additional findings
                     TicketTransitions -> ProfessionalTicket : Calculate report quality
                     alt Quality < 100 and no comments
-                        TicketTransitions -->> User : Request quality comments
+                        TicketTransitions -->> User : Display quality comment request in UI
                     else Quality valid
                         TicketTransitions -> ProfessionalTicket : Update report quality and time
                         TicketTransitions -> ProfessionalTicket : Set ERP status
@@ -54,7 +54,7 @@ group Ticket Lifecycle
             else Category == 1
                 TicketTransitions -> ProfessionalTicket : Calculate report quality
                 alt Quality < 100 and no comments
-                    TicketTransitions -->> User : Request quality comments
+                    TicketTransitions -->> User : Display quality comment request in UI
                 else Quality valid
                     TicketTransitions -> ProfessionalTicket : Update report quality and time
                     TicketTransitions -> ProfessionalTicket : Set ERP status
@@ -63,26 +63,26 @@ group Ticket Lifecycle
             end
         end
     else Status is OPEN_PIR_REVIEW
-        User -> TicketTransitions : Complete PIR Review
+        User -> TicketTransitions : Complete PIR Review via UI
         TicketTransitions -> ProfessionalTicket : Check agreement
         ProfessionalTicket -> IIRReport : isIIRAgree()
         alt Disagree without comments
-            TicketTransitions -->> User : Request disagreement comments
+            TicketTransitions -->> User : Display comment request in UI
         else Agree or valid disagreement
             TicketTransitions -> ProfessionalTicket : Update report time
             TicketTransitions -> ProfessionalTicket : Set PIR status
             TicketTransitions -> ClientRestService : Save ticket (COMPLETED or OPEN_CMO_REVIEW)
         end
     else Status is OPEN_CMO_REVIEW
-        User -> TicketTransitions : Complete CMO Review
+        User -> TicketTransitions : Complete CMO Review via UI
         TicketTransitions -> ProfessionalTicket : Validate category and findings
         ProfessionalTicket -> CMOReport : getCategory()
         alt Invalid category or missing comments
-            TicketTransitions -->> User : Request corrections
+            TicketTransitions -->> User : Display error in UI
         else Valid category
             TicketTransitions -> ProfessionalTicket : Calculate report quality
             alt Quality < 100 and no comments
-                TicketTransitions -->> User : Request quality comments
+                TicketTransitions -->> User : Display quality comment request in UI
             else Quality valid
                 TicketTransitions -> ProfessionalTicket : Update report quality and time
                 TicketTransitions -> ProfessionalTicket : Set CMO status
@@ -90,19 +90,19 @@ group Ticket Lifecycle
             end
         end
     else Status is OPEN_SITE_CALL_REQUIRED
-        User -> TicketTransitions : Complete Site Call
+        User -> TicketTransitions : Complete Site Call via UI
         TicketTransitions -> ProfessionalTicket : Validate site call fields
         alt Missing fields
-            TicketTransitions -->> User : Request corrections
+            TicketTransitions -->> User : Display missing field errors in UI
         else All fields valid
             TicketTransitions -> ProfessionalTicket : Update site call details
             TicketTransitions -> ClientRestService : Save ticket (COMPLETED or OPEN_PIR_REVIEW)
         end
     else Status is TECH_OPEN_ERP_REVIEW
-        User -> TicketTransitions : Complete Tech ERP Review
+        User -> TicketTransitions : Complete Tech ERP Review via UI
         TicketTransitions -> ProfessionalTicket : Validate category and quality
         alt Invalid category or missing comments
-            TicketTransitions -->> User : Request corrections
+            TicketTransitions -->> User : Display error in UI
         else Valid category and quality
             TicketTransitions -> ProfessionalTicket : Update report quality and time
             TicketTransitions -> ProfessionalTicket : Set Tech ERP status

@@ -1,0 +1,71 @@
+@startuml
+actor User
+participant ClientRestService
+participant TicketTransitions
+participant ProfessionalTicket
+participant ERPReport
+participant IIRReport
+participant CMOReport
+participant SiteCallReport
+participant TechReport
+
+autonumber
+
+User -> ClientRestService : Create new ProfessionalTicket
+ClientRestService -> ProfessionalTicket : Initialize ticket (NEW)
+ClientRestService -->> User : Return new ProfessionalTicket
+
+group Ticket Lifecycle
+    alt Status is NEW
+        User -> ClientRestService : Fill initial details
+        ClientRestService -> ProfessionalTicket : Save ticket
+        ClientRestService -->> User : Success
+    else Status is OPEN_ERP_REVIEW
+        User -> TicketTransitions : Complete ERP Review
+        TicketTransitions -> ProfessionalTicket : Validate category and findings
+        alt Invalid category or missing comments
+            TicketTransitions -->> User : Request corrections
+        else Valid category
+            TicketTransitions -> ProfessionalTicket : Process ERP Report
+            TicketTransitions -> ClientRestService : Save ticket (OPEN_PIR_REVIEW or COMPLETED)
+            ClientRestService -->> User : Success
+        end
+    else Status is OPEN_PIR_REVIEW
+        User -> TicketTransitions : Complete PIR Review
+        TicketTransitions -> ProfessionalTicket : Check agreement
+        alt Disagree without comments
+            TicketTransitions -->> User : Request disagreement comments
+        else Agree or valid disagreement
+            TicketTransitions -> ClientRestService : Save ticket (COMPLETED or OPEN_CMO_REVIEW)
+            ClientRestService -->> User : Success
+        end
+    else Status is OPEN_CMO_REVIEW
+        User -> TicketTransitions : Complete CMO Review
+        TicketTransitions -> ProfessionalTicket : Validate category and findings
+        alt Invalid category or missing comments
+            TicketTransitions -->> User : Request corrections
+        else Valid category
+            TicketTransitions -> ClientRestService : Save ticket (OPEN_SITE_CALL_REQUIRED or COMPLETED)
+            ClientRestService -->> User : Success
+        end
+    else Status is OPEN_SITE_CALL_REQUIRED
+        User -> TicketTransitions : Complete Site Call
+        TicketTransitions -> ProfessionalTicket : Validate site call fields
+        alt Missing fields
+            TicketTransitions -->> User : Request corrections
+        else All fields valid
+            TicketTransitions -> ClientRestService : Save ticket (COMPLETED or OPEN_PIR_REVIEW)
+            ClientRestService -->> User : Success
+        end
+    else Status is TECH_OPEN_ERP_REVIEW
+        User -> TicketTransitions : Complete Tech ERP Review
+        TicketTransitions -> ProfessionalTicket : Validate category and quality
+        alt Invalid category or missing comments
+            TicketTransitions -->> User : Request corrections
+        else Valid category and quality
+            TicketTransitions -> ClientRestService : Save ticket (TECH_COMPLETED)
+            ClientRestService -->> User : Success
+        end
+    end
+end
+@enduml

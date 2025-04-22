@@ -1,0 +1,31 @@
+@startuml
+actor User
+participant TicketTransitions
+participant ClientRestService
+participant ProfessionalTicket
+participant IIRReport
+
+User -> TicketTransitions : complete(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : onPIRReviewCompleted(clientService, ticket, user)
+TicketTransitions -> ProfessionalTicket : getIIRReport()
+ProfessionalTicket -> IIRReport : isIIRAgree()
+ProfessionalTicket -> IIRReport : isIIRMinorDisagree()
+ProfessionalTicket -> IIRReport : isIIRMajorDisagree()
+alt Not Agree, Minor Disagree, or Major Disagree
+    TicketTransitions -->> User : "Please Agree or Disagree with the ERP Review"
+else Disagree
+    TicketTransitions -> ProfessionalTicket : getIIRReport()
+    ProfessionalTicket -> IIRReport : getIIRDisagreeComments()
+    alt Disagree comments are empty
+        TicketTransitions -->> User : "Please enter comments as to why you disagree with the ERP review"
+    else Disagree comments exist
+        TicketTransitions -> ProfessionalTicket : getIIRReport()
+        TicketTransitions -> ProfessionalTicket : setReportTime()
+        TicketTransitions -> ProfessionalTicket : setIIR(user)
+        TicketTransitions -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.OPEN_CMO_REVIEW)
+        ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+        ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+        TicketTransitions -->> User : null
+    end
+end
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+actor User
+participant TicketTransitions
+participant ClientRestService
+participant ProfessionalTicket
+participant ERPReport
+
+User -> TicketTransitions : complete(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : onERPReviewCompleted(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : checkCategoryAndFindings(ticket)
+alt Category is invalid
+    TicketTransitions -->> User : "Please select a category" or "Please check to see that you have entered Report Accuracy comments"
+else Category is valid
+    TicketTransitions -> ProfessionalTicket : getERPReport()
+    ProfessionalTicket -> ERPReport : getCategory()
+    alt Category == 1
+     TicketTransitions -> ProfessionalTicket : calculateReportQuality()
+            alt Report quality != 100 && no comments
+                TicketTransitions -->> User : "Please enter Report Quality Comments"
+            else Report quality valid
+                TicketTransitions -> ProfessionalTicket : getERPReport()
+                TicketTransitions -> ProfessionalTicket : setReportQuality()
+                TicketTransitions -> ProfessionalTicket : setReportTime()
+                TicketTransitions -> ProfessionalTicket : setERP(user)
+                TicketTransitions -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.COMPLETED)
+                ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+                ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+                TicketTransitions -> ClientRestService : generatePRERPResponseLetter(clientService, ticket, user)
+                TicketTransitions -->> User : null
+            end
+    end
+end
+@enduml

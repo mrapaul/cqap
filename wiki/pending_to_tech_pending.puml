@@ -1,0 +1,13 @@
+@startuml
+actor User
+participant TicketTransitions
+participant ClientRestService
+participant ProfessionalTicket
+
+User -> TicketTransitions : complete(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : onPendingCompleted(clientService, ticket, user)
+TicketTransitions -> ClientRestService : saveTicket(clientService, ticket, user, ticket.getPreviousStatus())
+ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+TicketTransitions -->> User : null
+@enduml

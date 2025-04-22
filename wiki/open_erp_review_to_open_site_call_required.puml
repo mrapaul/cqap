@@ -1,0 +1,32 @@
+@startuml
+actor User
+participant TicketTransitions
+participant ClientRestService
+participant ProfessionalTicket
+participant ERPReport
+
+User -> TicketTransitions : complete(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : onERPReviewCompleted(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : checkCategoryAndFindings(ticket)
+alt Category is invalid
+    TicketTransitions -->> User : "Please select a category" or "Please check to see that you have entered Report Accuracy comments"
+else Category is valid
+    TicketTransitions -> ProfessionalTicket : getERPReport()
+    ProfessionalTicket -> ERPReport : getCategory()
+    alt Category != 1
+        TicketTransitions -> ProfessionalTicket : getERPReport()
+        ProfessionalTicket -> ERPReport : getAdditionalFactFindings()
+        alt Additional findings exist
+            TicketTransitions -> ProfessionalTicket : getERPReport()
+            ProfessionalTicket -> ERPReport : getAdditionalFactFindings()
+            TicketTransitions -> ProfessionalTicket : setReportQuality()
+            TicketTransitions -> ProfessionalTicket : setReportTime()
+            TicketTransitions -> ProfessionalTicket : setERP(user)
+            TicketTransitions -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.OPEN_SITE_CALL_REQUIRED)
+            ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+            ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+            TicketTransitions -->> User : null
+        end
+    end
+end
+@enduml

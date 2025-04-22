@@ -1,0 +1,34 @@
+@startuml
+actor User
+participant TicketTransitions
+participant ClientRestService
+participant ProfessionalTicket
+participant ERPReport
+participant SiteCallReport
+
+User -> TicketTransitions : complete(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : onSiteCallRequiredCompleted(clientService, ticket, user)
+TicketTransitions -> TicketTransitions : allSiteCallFieldsPresent(ticket, user)
+alt Not all site call fields present
+    TicketTransitions -->> User : "Please fill in all site call review fields"
+else All site call fields present
+    alt Previous status is OPEN_ERP_REVIEW
+        TicketTransitions -> TicketTransitions : checkSiteCallFields(ticket.getERPReport().getSiteCallReport(), user)
+    else Previous status is OPEN_CMO_REVIEW
+        TicketTransitions -> TicketTransitions : checkSiteCallFields(ticket.getCMOReport().getSiteCallReport(), user)
+    end
+    alt Category 1 or contains CMO Report
+        TicketTransitions -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.COMPLETED)
+        ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+        ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+        TicketTransitions -> TicketTransitions : sendResponseLetter(clientService, ticket, user, containsCMOReport)
+        TicketTransitions -->> User : null
+    else Not Category 1 and no CMO Report
+        TicketTransitions -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.OPEN_PIR_REVIEW)
+        ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+        ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+        TicketTransitions -> TicketTransitions : sendResponseLetter(clientService, ticket, user, containsCMOReport)
+        TicketTransitions -->> User : null
+    end
+end
+@enduml

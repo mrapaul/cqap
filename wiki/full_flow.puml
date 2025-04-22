@@ -1,0 +1,199 @@
+@startuml
+actor User
+participant ClientRestService
+participant TicketTransitions
+participant ProfessionalTicket
+participant ERPReport
+participant IIRReport
+participant CMOReport
+participant SiteCallReport
+participant TechReport
+
+autonumber
+
+User -> ClientRestService : Create new ProfessionalTicket
+ClientRestService -> ClientRestService : createProfessionalTicket()
+ClientRestService -> ProfessionalTicket : new ProfessionalTicket()
+ProfessionalTicket -> ProfessionalTicket : setStatus(NEW)
+ClientRestService -->> User : Return new ProfessionalTicket
+
+loop Until Ticket is COMPLETED
+    alt TicketStatus is NEW
+        User -> ClientRestService : Fill initial ticket details
+        ClientRestService -> ClientRestService : saveTicket(ticket)
+        ClientRestService -->> User : Success
+    else TicketStatus is OPEN_ERP_REVIEW
+        User -> TicketTransitions : complete(clientService, ticket, user)
+        TicketTransitions -> TicketTransitions : onERPReviewCompleted(clientService, ticket, user)
+        TicketTransitions -> TicketTransitions : checkCategoryAndFindings(ticket)
+        alt Category is invalid
+            TicketTransitions -->> User : "Please select a category" or "Please check report accuracy comments"
+        else Category is valid
+            TicketTransitions -> ProfessionalTicket : getERPReport()
+            ProfessionalTicket -> ERPReport : getCategory()
+            alt Category != 1
+                TicketTransitions -> ProfessionalTicket : getERPReport()
+                ProfessionalTicket -> ERPReport : getAdditionalFactFindings()
+                alt Additional findings exist
+                    TicketTransitions -> ProfessionalTicket : setReportQuality()
+                    TicketTransitions -> ProfessionalTicket : setReportTime()
+                    TicketTransitions -> ProfessionalTicket : setERP(user)
+                    ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.OPEN_SITE_CALL_REQUIRED)
+                    ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+                    ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+                    TicketTransitions -->> User : null
+                else No additional findings
+                    TicketTransitions -> ProfessionalTicket : calculateReportQuality()
+                    alt Report quality != 100 && no comments
+                        TicketTransitions -->> User : "Please enter Report Quality Comments"
+                    else Report quality valid
+                        TicketTransitions -> ProfessionalTicket : setReportQuality()
+                        TicketTransitions -> ProfessionalTicket : setReportTime()
+                        TicketTransitions -> ProfessionalTicket : setERP(user)
+                        ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.OPEN_PIR_REVIEW)
+                        ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+                        ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+                        TicketTransitions -> ClientRestService : generatePRERPResponseLetter(clientService, ticket, user)
+                        TicketTransitions -->> User : null
+                    end
+                end
+            else Category == 1
+                TicketTransitions -> ProfessionalTicket : calculateReportQuality()
+                alt Report quality != 100 && no comments
+                    TicketTransitions -->> User : "Please enter Report Quality Comments"
+                else Report quality valid
+                    TicketTransitions -> ProfessionalTicket : setReportQuality()
+                    TicketTransitions -> ProfessionalTicket : setReportTime()
+                    TicketTransitions -> ProfessionalTicket : setERP(user)
+                    ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.COMPLETED)
+                    ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+                    ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+                    TicketTransitions -> ClientRestService : generatePRERPResponseLetter(clientService, ticket, user)
+                    TicketTransitions -->> User : null
+                end
+            end
+        end
+    else TicketStatus is OPEN_PIR_REVIEW
+        User -> TicketTransitions : complete(clientService, ticket, user)
+        TicketTransitions -> TicketTransitions : onPIRReviewCompleted(clientService, ticket, user)
+        TicketTransitions -> ProfessionalTicket : getIIRReport()
+        ProfessionalTicket -> IIRReport : isIIRAgree()
+        ProfessionalTicket -> IIRReport : isIIRMinorDisagree()
+        ProfessionalTicket -> IIRReport : isIIRMajorDisagree()
+        alt Not Agree, Minor Disagree, or Major Disagree
+            TicketTransitions -->> User : "Please Agree or Disagree with the ERP Review"
+        else Agree
+            ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.COMPLETED)
+            ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+            ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+            TicketTransitions -->> User : null
+        else Disagree
+            TicketTransitions -> ProfessionalTicket : getIIRReport()
+            ProfessionalTicket -> IIRReport : getIIRDisagreeComments()
+            alt Disagree comments are empty
+                TicketTransitions -->> User : "Please enter comments for disagreeing with the ERP review"
+            else Disagree comments exist
+                TicketTransitions -> ProfessionalTicket : setReportTime()
+                TicketTransitions -> ProfessionalTicket : setIIR(user)
+                ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.OPEN_CMO_REVIEW)
+                ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+                ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+                TicketTransitions -->> User : null
+            end
+        end
+    else TicketStatus is OPEN_CMO_REVIEW
+        User -> TicketTransitions : complete(clientService, ticket, user)
+        TicketTransitions -> TicketTransitions : onCMOReviewCompleted(clientService, ticket, user)
+        TicketTransitions -> ProfessionalTicket : getCMOReport()
+        ProfessionalTicket -> CMOReport : getCategory()
+        alt Category is 0
+            TicketTransitions -->> User : "Please select a category"
+        else Category != 1 && Report Accuracy Comments are empty
+            TicketTransitions -->> User : "Please enter report accuracy comments"
+        else Category is valid
+            TicketTransitions -> ProfessionalTicket : calculateReportQuality()
+            alt Report quality != 100 && no comments
+                TicketTransitions -->> User : "Please enter Report Quality Comments"
+            else Report quality valid
+                TicketTransitions -> ProfessionalTicket : getCMOReport()
+                ProfessionalTicket -> CMOReport : getAdditionalFactFindings()
+                alt Additional findings exist
+                    TicketTransitions -> ProfessionalTicket : setCMO(user)
+                    TicketTransitions -> ProfessionalTicket : setReportQuality()
+                    TicketTransitions -> ProfessionalTicket : setReportTime()
+                    ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.OPEN_SITE_CALL_REQUIRED)
+                    ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+                    ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+                    TicketTransitions -> ClientRestService : generatePRCMOResponseLetter(clientService, ticket, user)
+                    TicketTransitions -->> User : null
+                else No Additional findings exist
+                    TicketTransitions -> ProfessionalTicket : setCMO(user)
+                    TicketTransitions -> ProfessionalTicket : setReportQuality()
+                    TicketTransitions -> ProfessionalTicket : setReportTime()
+                    ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.COMPLETED)
+                    ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+                    ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+                    TicketTransitions -> ClientRestService : generatePRCMOResponseLetter(clientService, ticket, user)
+                    TicketTransitions -->> User : null
+                end
+            end
+        end
+    else TicketStatus is PENDING or TECH_PENDING
+        User -> TicketTransitions : complete(clientService, ticket, user)
+        TicketTransitions -> TicketTransitions : onPendingCompleted(clientService, ticket, user)
+        ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, ticket.getPreviousStatus())
+        ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+        ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+        TicketTransitions -->> User : null
+    else TicketStatus is OPEN_SITE_CALL_REQUIRED
+        User -> TicketTransitions : complete(clientService, ticket, user)
+        TicketTransitions -> TicketTransitions : onSiteCallRequiredCompleted(clientService, ticket, user)
+        TicketTransitions -> TicketTransitions : allSiteCallFieldsPresent(ticket, user)
+        alt Not all site call fields present
+            TicketTransitions -->> User : "Please fill in all site call review fields"
+        else All site call fields present
+            alt Previous status is OPEN_ERP_REVIEW
+                TicketTransitions -> TicketTransitions : checkSiteCallFields(ticket.getERPReport().getSiteCallReport(), user)
+            else Previous status is OPEN_CMO_REVIEW
+                TicketTransitions -> TicketTransitions : checkSiteCallFields(ticket.getCMOReport().getSiteCallReport(), user)
+            end
+            alt Category 1 or contains CMO Report
+                ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.COMPLETED)
+                ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+                ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+                TicketTransitions -> TicketTransitions : sendResponseLetter(clientService, ticket, user, containsCMOReport)
+                TicketTransitions -->> User : null
+            else Not Category 1 and no CMO Report
+                ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.OPEN_PIR_REVIEW)
+                ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+                ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+                TicketTransitions -> TicketTransitions : sendResponseLetter(clientService, ticket, user, containsCMOReport)
+                TicketTransitions -->> User : null
+            end
+        end
+    else TicketStatus is TECH_OPEN_ERP_REVIEW
+        User -> TicketTransitions : complete(clientService, ticket, user)
+        TicketTransitions -> TicketTransitions : onTechERPReviewCompleted(clientService, ticket, user)
+        TicketTransitions -> TicketTransitions : checkTechTicketCategory(ticket)
+        alt Category is invalid
+            TicketTransitions -->> User : "Please select a category"
+        else Category is valid
+            TicketTransitions -> ProfessionalTicket : calculateReportQuality()
+            alt Report quality != 100 && no comments
+                TicketTransitions -->> User : "Please enter Technical Image Quality Comments"
+            else Report quality valid
+                TicketTransitions -> ProfessionalTicket : getTechReport()
+                TicketTransitions -> ProfessionalTicket : setReportQuality()
+                TicketTransitions -> ProfessionalTicket : setReportCompletedTime()
+                TicketTransitions -> ProfessionalTicket : setERP(user)
+                ClientRestService -> ClientRestService : saveTicket(clientService, ticket, user, TicketStatus.TECH_COMPLETED)
+                ClientRestService -> ClientRestService : createOrUpdateDicomStudy(ticket.getStudy())
+                ClientRestService -> ClientRestService : createOrUpdateProfessionalTicket(ticket, user)
+                TicketTransitions -> ClientRestService : generateTRERPResponseLetter(clientService, ticket, user)
+                TicketTransitions -->> User : null
+            end
+        end
+    end
+end
+
+@enduml
